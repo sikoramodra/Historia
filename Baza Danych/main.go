@@ -1,6 +1,7 @@
 package main
 
 import (
+	"API/api"
 	"fmt"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
@@ -21,8 +22,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	//usersGroup := e.Group("/users")
-	//peopleGroup := e.Group("/people")
+	usersGroup := e.Group("/users")
+	api.UsersGroup(usersGroup)
+	peopleGroup := e.Group("/people")
+	api.PeopleGroup(peopleGroup)
 
 	// test endpoint
 	e.GET("/", func(c echo.Context) error {
