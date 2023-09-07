@@ -1,0 +1,14 @@
+[build]
+
+delay = 500
+kill_delay = 10
+
+cmd = "go build -o ./tmp/main ."
+
+[log]
+
+time = true
+
+[misc]
+
+clean_on_exit = true
