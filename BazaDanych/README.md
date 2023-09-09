@@ -21,9 +21,9 @@
 
 | Endpoint              | Type     | Description          | Status                                           |
 |:----------------------|:---------|:---------------------|:-------------------------------------------------|
-| `GET /people`         |          | Get all people       | ![](https://img.shields.io/badge/Test-FE640B)    |
-| `POST /people/add`    |          | Add person           | ![](https://img.shields.io/badge/To%20Do-D20F39) |
-| `GET /people/{id}`    | `number` | Get person with {id} | ![](https://img.shields.io/badge/Test-FE640B)    |
+| `GET /people`         |          | Get all people       | ![](https://img.shields.io/badge/WIP-DF8E1D)     |
+| `POST /people/add`    |          | Add person           | ![](https://img.shields.io/badge/Test-FE640B)    |
+| `GET /people/{id}`    | `number` | Get person with {id} | ![](https://img.shields.io/badge/WIP-DF8E1D)     |
 | `PUT /people/{id}`    | `number` | Update person        | ![](https://img.shields.io/badge/To%20Do-D20F39) |
 | `DELETE /people/{id}` | `number` | Delete person        | ![](https://img.shields.io/badge/To%20Do-D20F39) |
 

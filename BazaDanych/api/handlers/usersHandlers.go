@@ -1,9 +1,10 @@
 package handlers
 
 import (
-	"github.com/labstack/echo/v4"
 	"net/http"
 	"strconv"
+
+	"github.com/labstack/echo/v4"
 )
 
 type User struct {
@@ -11,7 +12,7 @@ type User struct {
 	Name string `json:"name"`
 }
 
-var Users = []Person{
+var Users = []User{
 	{1, "User1"},
 	{2, "User2"},
 	{3, "User3"},

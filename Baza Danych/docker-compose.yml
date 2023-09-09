@@ -1,8 +1,0 @@
-services:
-  api:
-    build: .
-    ports:
-      - ${PORT}:${PORT}
-    volumes:
-      - .:/api
-    command: air
