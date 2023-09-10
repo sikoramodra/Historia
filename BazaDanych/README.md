@@ -8,13 +8,13 @@
 
 #### Users (login)
 
-| Endpoint             | Type     | Description        | Status                                       |
-|:---------------------|:---------|:-------------------|:---------------------------------------------|
-| `GET /users`         |          | Get all users      | ![](https://img.shields.io/badge/WIP-DF8E1D) |
-| `POST /users`        |          | Add user           | ![](https://img.shields.io/badge/WIP-DF8E1D) |
-| `GET /users/{id}`    | `number` | Get user with {id} | ![](https://img.shields.io/badge/WIP-DF8E1D) |
-| `PUT /users/{id}`    | `number` | Update user        | ![](https://img.shields.io/badge/WIP-DF8E1D) |
-| `DELETE /users/{id}` | `number` | Delete user        | ![](https://img.shields.io/badge/WIP-DF8E1D) |
+| Endpoint             | Type     | Description        | Status                                        |
+|:---------------------|:---------|:-------------------|:----------------------------------------------|
+| `GET /users`         |          | Get all users      | ![](https://img.shields.io/badge/Done-40A02B) |
+| `POST /users`        |          | Add user           | ![](https://img.shields.io/badge/Done-40A02B) |
+| `GET /users/{id}`    | `number` | Get user with {id} | ![](https://img.shields.io/badge/Done-40A02B) |
+| `PUT /users/{id}`    | `number` | Update user        | ![](https://img.shields.io/badge/Done-40A02B) |
+| `DELETE /users/{id}` | `number` | Delete user        | ![](https://img.shields.io/badge/Done-40A02B) |
 
 
 #### People
@@ -28,9 +28,7 @@
 | `DELETE /people/{id}` | `number` | Delete person        | ![](https://img.shields.io/badge/Done-40A02B) |
 
 
-## DB: Postgres
-
-#### Schema: ![](https://img.shields.io/badge/To%20Do-D20F39)
+## [DB Schema](https://dbdiagram.io/d/64fde3db02bd1c4a5e4a8afc)
 
 ## Run Locally
 

@@ -10,3 +10,8 @@ type Person struct {
 	ID   int32
 	Name string
 }
+
+type User struct {
+	ID   int32
+	Name string
+}

@@ -37,7 +37,7 @@ func main() {
 	}
 
 	usersGroup := e.Group("/users")
-	api.UsersGroup(usersGroup)
+	api.UsersGroup(usersGroup, DB)
 	peopleGroup := e.Group("/people")
 	api.PeopleGroup(peopleGroup, DB)
 

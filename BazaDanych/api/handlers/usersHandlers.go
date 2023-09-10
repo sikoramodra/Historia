@@ -1,8 +1,11 @@
 package handlers
 
 import (
+	"context"
 	"net/http"
 	"strconv"
+
+	"API/db"
 
 	"github.com/labstack/echo/v4"
 )
@@ -12,23 +15,76 @@ type User struct {
 	Name string `json:"name"`
 }
 
-var Users = []User{
-	{1, "User1"},
-	{2, "User2"},
-	{3, "User3"},
+func (h *DBHandler) GetUsers(c echo.Context) error {
+	people, err := h.DB.GetUsers(context.Background())
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err)
+	}
+
+	return c.JSON(http.StatusOK, people)
 }
 
-func GetUsers(c echo.Context) error {
-	return c.JSON(http.StatusOK, Users)
+func (h *DBHandler) CreateUser(c echo.Context) error {
+	u := new(User)
+	if err := c.Bind(u); err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+
+	err := h.DB.CreateUser(context.Background(), u.Name)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err)
+	}
+
+	return c.NoContent(http.StatusOK)
 }
 
-//func CreateUser(c echo.Context) error {}
+func (h *DBHandler) GetUser(c echo.Context) error {
+	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
 
-func GetUser(c echo.Context) error {
-	id, _ := strconv.Atoi(c.Param("id"))
-	return c.JSON(http.StatusOK, Users[id])
+	u, err := h.DB.GetUser(context.Background(), int32(id))
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err)
+	}
+
+	return c.JSON(http.StatusOK, u)
 }
 
-//func UpdateUser(c echo.Context) error {}
+func (h *DBHandler) UpdateUser(c echo.Context) error {
+	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+	u := new(User)
+	if err := c.Bind(u); err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
 
-//func DeleteUser(c echo.Context) error {}
+	data := db.UpdateUserParams{
+		ID:   int32(id),
+		Name: u.Name,
+	}
+
+	err = h.DB.UpdateUser(context.Background(), data)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	return c.NoContent(http.StatusOK)
+}
+
+func (h *DBHandler) DeleteUser(c echo.Context) error {
+	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+
+	err = h.DB.DeleteUser(context.Background(), int32(id))
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err)
+	}
+
+	return c.NoContent(http.StatusOK)
+}
