@@ -9,8 +9,8 @@ import (
 func PeopleGroup(g *echo.Group, h *handlers.DBHandler) {
 
 	g.GET("/", h.GetPeople)
-	g.POST("/add", h.CreatePerson)
+	g.POST("/", h.CreatePerson)
 	g.GET("/:id", h.GetPerson)
-	//g.PUT("/:id", handlers.UpdatePerson)
-	//g.DELETE("/:id", handlers.DeletePerson)
+	g.PUT("/:id", h.UpdatePerson)
+	g.DELETE("/:id", h.DeletePerson)
 }

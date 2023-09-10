@@ -41,9 +41,8 @@ func main() {
 	peopleGroup := e.Group("/people")
 	api.PeopleGroup(peopleGroup, DB)
 
-	// test endpoint
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "test")
+		return c.NoContent(http.StatusOK)
 	})
 
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", os.Getenv("PORT"))))
