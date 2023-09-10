@@ -6,10 +6,10 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func UsersGroup(e *echo.Group, h *handlers.DBHandler) {
-	e.GET("/", h.GetUsers)
-	e.POST("/add", h.CreateUser)
-	e.GET("/:id", h.GetUser)
-	e.PUT("/:id", h.UpdateUser)
-	e.DELETE("/:id", h.DeleteUser)
+func UsersGroup(g *echo.Group, h *handlers.DBHandler) {
+	g.GET("/", h.GetUsers)
+	g.POST("/", h.CreateUser)
+	g.GET("/:id", h.GetUser)
+	g.PUT("/:id", h.UpdateUser)
+	g.DELETE("/:id", h.DeleteUser)
 }

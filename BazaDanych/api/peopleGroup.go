@@ -7,7 +7,6 @@ import (
 )
 
 func PeopleGroup(g *echo.Group, h *handlers.DBHandler) {
-
 	g.GET("/", h.GetPeople)
 	g.POST("/", h.CreatePerson)
 	g.GET("/:id", h.GetPerson)

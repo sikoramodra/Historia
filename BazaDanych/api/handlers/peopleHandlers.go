@@ -46,7 +46,7 @@ func (h *DBHandler) GetPerson(c echo.Context) error {
 
 	p, err := h.DB.GetPerson(context.Background(), int32(id))
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err.Error())
+		return c.JSON(http.StatusInternalServerError, err)
 	}
 
 	return c.JSON(http.StatusOK, p)
