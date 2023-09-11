@@ -1,0 +1,24 @@
+services:
+  api:
+    build: .
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - .:/api
+    command: air
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${PG_PASS}
+      POSTGRES_DB: ${PG_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db:
+    driver: local
