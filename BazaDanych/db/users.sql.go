@@ -14,7 +14,7 @@ INSERT INTO users (name) VALUES ($1)
 `
 
 func (q *Queries) CreateUser(ctx context.Context, name string) error {
-	_, err := q.db.Exec(ctx, createUser, name)
+	_, err := q.db.ExecContext(ctx, createUser, name)
 	return err
 }
 
@@ -23,7 +23,7 @@ DELETE FROM users WHERE id = $1
 `
 
 func (q *Queries) DeleteUser(ctx context.Context, id int32) error {
-	_, err := q.db.Exec(ctx, deleteUser, id)
+	_, err := q.db.ExecContext(ctx, deleteUser, id)
 	return err
 }
 
@@ -32,7 +32,7 @@ SELECT id, name FROM users WHERE id = $1
 `
 
 func (q *Queries) GetUser(ctx context.Context, id int32) (User, error) {
-	row := q.db.QueryRow(ctx, getUser, id)
+	row := q.db.QueryRowContext(ctx, getUser, id)
 	var i User
 	err := row.Scan(&i.ID, &i.Name)
 	return i, err
@@ -43,7 +43,7 @@ SELECT id, name FROM users
 `
 
 func (q *Queries) GetUsers(ctx context.Context) ([]User, error) {
-	rows, err := q.db.Query(ctx, getUsers)
+	rows, err := q.db.QueryContext(ctx, getUsers)
 	if err != nil {
 		return nil, err
 	}
@@ -55,6 +55,9 @@ func (q *Queries) GetUsers(ctx context.Context) ([]User, error) {
 			return nil, err
 		}
 		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
 	}
 	if err := rows.Err(); err != nil {
 		return nil, err
@@ -72,6 +75,6 @@ type UpdateUserParams struct {
 }
 
 func (q *Queries) UpdateUser(ctx context.Context, arg UpdateUserParams) error {
-	_, err := q.db.Exec(ctx, updateUser, arg.ID, arg.Name)
+	_, err := q.db.ExecContext(ctx, updateUser, arg.ID, arg.Name)
 	return err
 }

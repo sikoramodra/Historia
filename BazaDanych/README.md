@@ -35,7 +35,7 @@
 #### Dependencies:
 
 - [Docker](https://www.docker.com/)
-- [Goose](https://github.com/pressly/goose/releases)
+- [Goose](https://github.com/pressly/goose/releases) *(optional)*
 
 #### Starting project:
 
@@ -51,6 +51,12 @@ Go to the project directory
   cd Historia/BazaDanych
 ```
 
+Create proper `.env` file
+
+```bash
+  mv .env.sample .env
+```
+
 Build docker image
 
 ```bash
@@ -62,10 +68,3 @@ Run docker image
 ```bash
   docker compose up
 ```
-
-Migrate the database
-
-```bash
-  goose -dir sql/schema postgres postgres://USERNAME:PASSWORD@localhost:5432/DB_NAME up 
-```
-
