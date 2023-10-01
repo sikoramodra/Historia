@@ -6,26 +6,15 @@
 |:-------------------------------------------------|:----------------------------------------------|:---------------------------------------------|:----------------------------------------------|
 
 
-#### Users (login)
-
-| Endpoint             | Type     | Description        | Status                                        |
-|:---------------------|:---------|:-------------------|:----------------------------------------------|
-| `GET /users`         |          | Get all users      | ![](https://img.shields.io/badge/Done-40A02B) |
-| `POST /users`        |          | Add user           | ![](https://img.shields.io/badge/Done-40A02B) |
-| `GET /users/{id}`    | `number` | Get user with {id} | ![](https://img.shields.io/badge/Done-40A02B) |
-| `PUT /users/{id}`    | `number` | Update user        | ![](https://img.shields.io/badge/Done-40A02B) |
-| `DELETE /users/{id}` | `number` | Delete user        | ![](https://img.shields.io/badge/Done-40A02B) |
-
-
 #### People
 
-| Endpoint              | Type     | Description          | Status                                        | JSON                     |
-|:----------------------|:---------|:---------------------|:----------------------------------------------|--------------------------|
-| `GET /people`         |          | Get all people       | ![](https://img.shields.io/badge/Done-40A02B) | [out](#get-people---out) |
-| `POST /people`        |          | Add person           | ![](https://img.shields.io/badge/Done-40A02B) | [in](#post-people---in)  |
-| `GET /people/{id}`    | `number` | Get person with {id} | ![](https://img.shields.io/badge/Done-40A02B) |
-| `PUT /people/{id}`    | `number` | Update person        | ![](https://img.shields.io/badge/Done-40A02B) |
-| `DELETE /people/{id}` | `number` | Delete person        | ![](https://img.shields.io/badge/Done-40A02B) |
+| Endpoint              | Type     | Description          | Status                                        | JSON                       |
+|:----------------------|:---------|:---------------------|:----------------------------------------------|----------------------------|
+| `GET /people`         |          | Get all people       | ![](https://img.shields.io/badge/Test-FE640B) | [out](#get-people---out)   |
+| `POST /people`        |          | Add person           | ![](https://img.shields.io/badge/Test-FE640B) | [in](#post-people---in)    |
+| `GET /people/{id}`    | `number` | Get person with {id} | ![](https://img.shields.io/badge/Test-FE640B) | [out](#get-peopleid---out) |
+| `PUT /people/{id}`    | `number` | Update person        | ![](https://img.shields.io/badge/Test-FE640B) | [in](#put-people---in)     |
+| `DELETE /people/{id}` | `number` | Delete person        | ![](https://img.shields.io/badge/Test-FE640B) | -                          |
 
 
 ## Run Locally
@@ -76,12 +65,12 @@ Run docker image
 ```json
 [
   {
-    "ID": 1,
-    "Name": "person123"
+    "id": 1,
+    "name": "person123"
   },
   {
-    "ID": 2,
-    "Name": "person321"
+    "id": 2,
+    "name": "person321"
   }
 ]
 ```
@@ -90,6 +79,21 @@ Run docker image
 ```json
 {
   "name": "person123"
+}
+```
+
+#### `GET /people/{id}` - out
+```json
+{
+  "id": 1,
+  "name": "person123"
+}
+```
+
+#### `PUT /people` - in
+```json
+{
+  "name": "person321"
 }
 ```
 

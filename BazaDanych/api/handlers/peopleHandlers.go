@@ -10,11 +10,6 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type Person struct {
-	ID   int32  `json:"id"`
-	Name string `json:"name"`
-}
-
 func (h *DBHandler) GetPeople(c echo.Context) error {
 	people, err := h.DB.GetPeople(context.Background())
 	if err != nil {
@@ -25,7 +20,7 @@ func (h *DBHandler) GetPeople(c echo.Context) error {
 }
 
 func (h *DBHandler) CreatePerson(c echo.Context) error {
-	p := new(Person)
+	p := new(db.Person)
 	if err := c.Bind(p); err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
@@ -57,7 +52,7 @@ func (h *DBHandler) UpdatePerson(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
-	p := new(Person)
+	p := new(db.Person)
 	if err := c.Bind(p); err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
