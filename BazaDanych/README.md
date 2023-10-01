@@ -19,16 +19,14 @@
 
 #### People
 
-| Endpoint              | Type     | Description          | Status                                        |
-|:----------------------|:---------|:---------------------|:----------------------------------------------|
-| `GET /people`         |          | Get all people       | ![](https://img.shields.io/badge/Done-40A02B) |
-| `POST /people`        |          | Add person           | ![](https://img.shields.io/badge/Done-40A02B) |
+| Endpoint              | Type     | Description          | Status                                        | JSON                     |
+|:----------------------|:---------|:---------------------|:----------------------------------------------|--------------------------|
+| `GET /people`         |          | Get all people       | ![](https://img.shields.io/badge/Done-40A02B) | [out](#get-people---out) |
+| `POST /people`        |          | Add person           | ![](https://img.shields.io/badge/Done-40A02B) | [in](#post-people---in)  |
 | `GET /people/{id}`    | `number` | Get person with {id} | ![](https://img.shields.io/badge/Done-40A02B) |
 | `PUT /people/{id}`    | `number` | Update person        | ![](https://img.shields.io/badge/Done-40A02B) |
 | `DELETE /people/{id}` | `number` | Delete person        | ![](https://img.shields.io/badge/Done-40A02B) |
 
-
-## [DB Schema](https://dbdiagram.io/d/64fde3db02bd1c4a5e4a8afc)
 
 ## Run Locally
 
@@ -68,3 +66,30 @@ Run docker image
 ```bash
   docker compose up
 ```
+
+## [DB Schema](https://dbdiagram.io/d/64fde3db02bd1c4a5e4a8afc)
+
+
+## JSON Schema
+
+#### `GET /people` - out
+```json
+[
+  {
+    "ID": 1,
+    "Name": "person123"
+  },
+  {
+    "ID": 2,
+    "Name": "person321"
+  }
+]
+```
+
+#### `POST /people` - in
+```json
+{
+  "name": "person123"
+}
+```
+
