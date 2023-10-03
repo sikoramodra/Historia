@@ -4,9 +4,103 @@
 
 package db
 
-import ()
+import (
+	"database/sql"
+)
+
+type Activity struct {
+	ID            int32         `json:"id"`
+	Name          string        `json:"name"`
+	SubActivityID sql.NullInt32 `json:"sub_activity_id"`
+}
+
+type Badge struct {
+	ID         int32         `json:"id"`
+	Name       string        `json:"name"`
+	SubBadgeID sql.NullInt32 `json:"sub_badge_id"`
+}
+
+type BurialPlace struct {
+	ID         int32         `json:"id"`
+	Name       string        `json:"name"`
+	CemeteryID sql.NullInt32 `json:"cemetery_id"`
+}
+
+type Cemetery struct {
+	ID        int32         `json:"id"`
+	Name      string        `json:"name"`
+	QuarterID sql.NullInt32 `json:"quarter_id"`
+}
+
+type Event struct {
+	ID   int32  `json:"id"`
+	Name string `json:"name"`
+}
+
+type Grave struct {
+	ID   int32  `json:"id"`
+	Name string `json:"name"`
+}
+
+type PeopleActivity struct {
+	PersonID   int32 `json:"person_id"`
+	ActivityID int32 `json:"activity_id"`
+}
+
+type PeopleBadge struct {
+	PersonID int32 `json:"person_id"`
+	BadgeID  int32 `json:"badge_id"`
+}
+
+type PeopleRank struct {
+	PersonID int32 `json:"person_id"`
+	RankID   int32 `json:"rank_id"`
+}
 
 type Person struct {
+	ID            int32          `json:"id"`
+	Name          string         `json:"name"`
+	Inscription   sql.NullString `json:"inscription"`
+	OtherNames    []string       `json:"other_names"`
+	CodeNames     []string       `json:"code_names"`
+	BirthDate     sql.NullTime   `json:"birth_date"`
+	BirthPlaceID  sql.NullInt32  `json:"birth_place_id"`
+	DeathDate     sql.NullTime   `json:"death_date"`
+	DeathPlaceID  sql.NullInt32  `json:"death_place_id"`
+	BurialPlaceID sql.NullInt32  `json:"burial_place_id"`
+	Description   sql.NullString `json:"description"`
+	Sources       sql.NullString `json:"sources"`
+}
+
+type Place struct {
+	ID   int32  `json:"id"`
+	Name string `json:"name"`
+}
+
+type Quarter struct {
+	ID    int32         `json:"id"`
+	Name  string        `json:"name"`
+	RowID sql.NullInt32 `json:"row_id"`
+}
+
+type Rank struct {
+	ID   int32  `json:"id"`
+	Name string `json:"name"`
+}
+
+type Row struct {
+	ID      int32         `json:"id"`
+	Name    string        `json:"name"`
+	GraveID sql.NullInt32 `json:"grave_id"`
+}
+
+type SubActivity struct {
+	ID      int32         `json:"id"`
+	Name    string        `json:"name"`
+	EventID sql.NullInt32 `json:"event_id"`
+}
+
+type SubBadge struct {
 	ID   int32  `json:"id"`
 	Name string `json:"name"`
 }

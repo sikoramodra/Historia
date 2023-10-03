@@ -97,3 +97,37 @@ Run docker image
 }
 ```
 
+
+## activities
+```json
+{
+  "activity": {
+    "Zabory": [
+      "Liga Narodowa",
+      "Liga Polska",
+      "..."
+    ],
+    "WWI": {
+      "Formacje": [
+        "I Kompania Kadrowa",
+        "Legiony Polskie - I Brygada",
+        "..."
+      ],
+      "Bitwy": [
+        "Reims (1914)",
+        "Arras (1915)",
+        "..."
+      ]
+    },
+    "1919-1939": [
+      "Wojna polsko-bolszewicka (1919-1921)",
+      "I Powstanie Śląskie (1919)",
+      "..."
+    ],
+    "WWII": "?"
+  }
+}
+```
+
+#### `Zabory`, `WWI`, `1919-1939`, `WWII` - activity
+#### `Formacje`, `Bitwy` - sub_activity
