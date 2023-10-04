@@ -1,38 +1,34 @@
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE places (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE grave (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE row (
-   id SERIAL PRIMARY KEY,
-   name VARCHAR(255) NOT NULL,
-   grave_id INTEGER REFERENCES grave(id)
+CREATE TABLE cemetery (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    burial_place_id INTEGER REFERENCES places(id) NOT NULL
 );
 
 CREATE TABLE quarter (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    row_id INTEGER REFERENCES row(id)
+    name VARCHAR(255),
+    cemetery_id INTEGER REFERENCES cemetery(id) NOT NULL
 );
 
-CREATE TABLE cemetery (
+CREATE TABLE row (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    quarter_id INTEGER REFERENCES quarter(id)
+    name VARCHAR(255),
+    quarter_id INTEGER REFERENCES quarter(id) NOT NULL
 );
 
-CREATE TABLE burial_place (
+CREATE TABLE grave (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    cemetery_id INTEGER REFERENCES cemetery(id)
+    name VARCHAR(255),
+    row_id INTEGER REFERENCES row(id) NOT NULL
 );
+
 
 CREATE TABLE ranks (
     id SERIAL PRIMARY KEY,
@@ -45,6 +41,7 @@ CREATE TABLE people_ranks (
     rank_id INTEGER REFERENCES ranks(id),
     PRIMARY KEY (person_id, rank_id)
 );
+
 
 CREATE TABLE sub_badges (
     id SERIAL PRIMARY KEY,
@@ -71,31 +68,32 @@ ALTER TABLE people
     ADD COLUMN birth_place_id INTEGER REFERENCES places(id),
     ADD COLUMN death_date DATE,
     ADD COLUMN death_place_id INTEGER REFERENCES places(id),
-    ADD COLUMN burial_place_id INTEGER REFERENCES burial_place(id),
+    ADD COLUMN grave_id INTEGER REFERENCES grave(id),
     ADD COLUMN description TEXT,
     ADD COLUMN sources TEXT;
 
-CREATE TABLE events (
+
+CREATE TABLE activity (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE sub_activity (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    event_id INTEGER REFERENCES events(id)
+    name VARCHAR(255),
+    activity_id INTEGER REFERENCES activity(id) NOT NULL
 );
 
-CREATE TABLE activity (
+CREATE TABLE events (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    sub_activity_id INTEGER REFERENCES sub_activity(id)
+    name VARCHAR(255),
+    sub_activity_id INTEGER REFERENCES sub_activity(id) NOT NULL
 );
 
 CREATE TABLE people_activity (
     person_id INTEGER REFERENCES people(id),
-    activity_id INTEGER REFERENCES activity(id),
-    PRIMARY KEY (person_id, activity_id)
+    event_id INTEGER REFERENCES events(id),
+    PRIMARY KEY (person_id, event_id)
 );
 -- +goose StatementEnd
 
@@ -109,11 +107,11 @@ ALTER TABLE people
     DROP COLUMN birth_place_id,
     DROP COLUMN death_date,
     DROP COLUMN death_place_id,
-    DROP COLUMN burial_place_id,
+    DROP COLUMN grave_id,
     DROP COLUMN description,
     DROP COLUMN sources;
 
-DROP TABLE places, grave, row, quarter, cemetery, burial_place,
+DROP TABLE places, grave, row, quarter, cemetery,
     ranks, people_ranks, sub_badges, badges, people_badges,
     events, sub_activity, activity, people_activity;
 -- +goose StatementEnd
