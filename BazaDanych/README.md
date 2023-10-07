@@ -8,13 +8,13 @@
 
 #### People
 
-| Endpoint              | Type     | Description          | Status                                        | JSON                       |
-|:----------------------|:---------|:---------------------|:----------------------------------------------|----------------------------|
-| `GET /people`         |          | Get all people       | ![](https://img.shields.io/badge/Test-FE640B) | [out](#get-people---out)   |
-| `POST /people`        |          | Add person           | ![](https://img.shields.io/badge/Test-FE640B) | [in](#post-people---in)    |
-| `GET /people/{id}`    | `number` | Get person with {id} | ![](https://img.shields.io/badge/Test-FE640B) | [out](#get-peopleid---out) |
-| `PUT /people/{id}`    | `number` | Update person        | ![](https://img.shields.io/badge/Test-FE640B) | [in](#put-people---in)     |
-| `DELETE /people/{id}` | `number` | Delete person        | ![](https://img.shields.io/badge/Test-FE640B) | -                          |
+| Endpoint              | Type     | Description          | Status                                        | JSON                              |
+|:----------------------|:---------|:---------------------|:----------------------------------------------|-----------------------------------|
+| `GET /people`         |          | Get all people       | ![](https://img.shields.io/badge/Test-FE640B) | [out](JSON.md#get-people---out)   |
+| `POST /people`        |          | Add person           | ![](https://img.shields.io/badge/Test-FE640B) | [in](JSON.md#post-people---in)    |
+| `GET /people/{id}`    | `number` | Get person with {id} | ![](https://img.shields.io/badge/Test-FE640B) | [out](JSON.md#get-peopleid---out) |
+| `PUT /people/{id}`    | `number` | Update person        | ![](https://img.shields.io/badge/Test-FE640B) | [in](JSON.md#put-people---in)     |
+| `DELETE /people/{id}` | `number` | Delete person        | ![](https://img.shields.io/badge/Test-FE640B) | -                                 |
 
 
 ## Run Locally
@@ -56,78 +56,19 @@ Run docker image
   docker compose up
 ```
 
+#### **For pgadmin*
+
+- Open http://localhost:5050/ in your browser
+- login using `PG_EMAIL` and `PG_PASS` from your `.env` file
+- Click on `Add New Server`
+- Give it a name eg. `db`
+- In connection tab you need to enter `address` and `password`
+- `password` can be found in `.env` file as `PG_PASS`
+- You can get `address` from docker by typing:
+```bash
+  docker inspect db -f "{{json .NetworkSettings.Networks }}" | tr ',' '\n' | grep "IPAddress"
+```
+
+
 ## [DB Schema](https://dbdiagram.io/d/64fde3db02bd1c4a5e4a8afc)
 
-
-## JSON Schema
-
-#### `GET /people` - out
-```json
-[
-  {
-    "id": 1,
-    "name": "person123"
-  },
-  {
-    "id": 2,
-    "name": "person321"
-  }
-]
-```
-
-#### `POST /people` - in
-```json
-{
-  "name": "person123"
-}
-```
-
-#### `GET /people/{id}` - out
-```json
-{
-  "id": 1,
-  "name": "person123"
-}
-```
-
-#### `PUT /people` - in
-```json
-{
-  "name": "person321"
-}
-```
-
-
-## activities
-```json
-{
-  "activity": {
-    "Zabory": [
-      "Liga Narodowa",
-      "Liga Polska",
-      "..."
-    ],
-    "WWI": {
-      "Formacje": [
-        "I Kompania Kadrowa",
-        "Legiony Polskie - I Brygada",
-        "..."
-      ],
-      "Bitwy": [
-        "Reims (1914)",
-        "Arras (1915)",
-        "..."
-      ]
-    },
-    "1919-1939": [
-      "Wojna polsko-bolszewicka (1919-1921)",
-      "I Powstanie Śląskie (1919)",
-      "..."
-    ],
-    "WWII": "?"
-  }
-}
-```
-
-#### `Zabory`, `WWI`, `1919-1939`, `WWII` - activity
-#### `Formacje`, `Bitwy` - sub_activity
