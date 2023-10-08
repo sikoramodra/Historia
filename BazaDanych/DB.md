@@ -66,7 +66,9 @@ SELECT * FROM show_peoples_activity_json;
 ```
 
 #### Show main view
-
+```postgresql
+SELECT * FROM main_view;
+```
 
 
 ## INSERTS
