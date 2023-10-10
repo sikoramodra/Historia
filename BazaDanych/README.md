@@ -29,7 +29,7 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/SevenPik/Historia
+  git clone https://github.com/sikoramodra/Historia
 ```
 
 Go to the project directory
