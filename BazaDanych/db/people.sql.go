@@ -7,6 +7,8 @@ package db
 
 import (
 	"context"
+
+	"github.com/lib/pq"
 )
 
 const createPerson = `-- name: CreatePerson :exec
@@ -28,7 +30,7 @@ func (q *Queries) DeletePerson(ctx context.Context, id int32) error {
 }
 
 const getPeople = `-- name: GetPeople :many
-SELECT id, name FROM people
+SELECT id, name, inscription, other_names, code_names, birth_date, birth_place_id, death_date, death_place_id, burial_place_id, description, sources FROM people
 `
 
 func (q *Queries) GetPeople(ctx context.Context) ([]Person, error) {
@@ -40,7 +42,20 @@ func (q *Queries) GetPeople(ctx context.Context) ([]Person, error) {
 	var items []Person
 	for rows.Next() {
 		var i Person
-		if err := rows.Scan(&i.ID, &i.Name); err != nil {
+		if err := rows.Scan(
+			&i.ID,
+			&i.Name,
+			&i.Inscription,
+			pq.Array(&i.OtherNames),
+			pq.Array(&i.CodeNames),
+			&i.BirthDate,
+			&i.BirthPlaceID,
+			&i.DeathDate,
+			&i.DeathPlaceID,
+			&i.BurialPlaceID,
+			&i.Description,
+			&i.Sources,
+		); err != nil {
 			return nil, err
 		}
 		items = append(items, i)
@@ -55,13 +70,26 @@ func (q *Queries) GetPeople(ctx context.Context) ([]Person, error) {
 }
 
 const getPerson = `-- name: GetPerson :one
-SELECT id, name FROM people WHERE id = $1
+SELECT id, name, inscription, other_names, code_names, birth_date, birth_place_id, death_date, death_place_id, burial_place_id, description, sources FROM people WHERE id = $1
 `
 
 func (q *Queries) GetPerson(ctx context.Context, id int32) (Person, error) {
 	row := q.db.QueryRowContext(ctx, getPerson, id)
 	var i Person
-	err := row.Scan(&i.ID, &i.Name)
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Inscription,
+		pq.Array(&i.OtherNames),
+		pq.Array(&i.CodeNames),
+		&i.BirthDate,
+		&i.BirthPlaceID,
+		&i.DeathDate,
+		&i.DeathPlaceID,
+		&i.BurialPlaceID,
+		&i.Description,
+		&i.Sources,
+	)
 	return i, err
 }
 
@@ -70,8 +98,8 @@ UPDATE people SET name = $2 WHERE id = $1
 `
 
 type UpdatePersonParams struct {
-	ID   int32
-	Name string
+	ID   int32  `json:"id"`
+	Name string `json:"name"`
 }
 
 func (q *Queries) UpdatePerson(ctx context.Context, arg UpdatePersonParams) error {

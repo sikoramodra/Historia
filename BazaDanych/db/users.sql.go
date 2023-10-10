@@ -70,8 +70,8 @@ UPDATE users SET name = $2 WHERE id = $1
 `
 
 type UpdateUserParams struct {
-	ID   int32
-	Name string
+	ID   int32  `json:"id"`
+	Name string `json:"name"`
 }
 
 func (q *Queries) UpdateUser(ctx context.Context, arg UpdateUserParams) error {
