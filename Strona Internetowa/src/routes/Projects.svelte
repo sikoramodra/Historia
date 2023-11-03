@@ -1,3 +1,3 @@
-<div class="text-4xl font-bold text-center">
+<div class="text-4xl font-bold text-center h-full">
     Projects
 </div>
