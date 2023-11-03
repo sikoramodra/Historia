@@ -13,15 +13,18 @@
 <!-- Kminie nad innym navbarem -->
 <nav class="fixed top-0 left-0 right-0 z-[60] px-8 h-20 text-black">
     <div class="font-semibold text-2xl flex flex-row items-center h-full">
+        <!-- <div class="w-1/5">
+            <Link to="/" class="text-left text-4xl px-12 font-bold">Home</Link>
+        </div> -->
         <div class="w-1/5">
-            <Link to="/" class="text-left text-4xl px-4 font-bold">Home</Link>
+            <Link to="/" class="text-left text-4xl px-12 font-bold"><img src="../res/logo/Logo poziom_jasne tło_PNG.png" alt="Home" /></Link>
         </div>
         <div class="w-3/5 text-left">
             <Link to="/library">Library</Link>
-            <Link to="/projects" class="w-3/5 mx-4">Projects</Link>
+            <Link to="/projects" class="w-3/5 mx-8">Projects</Link>
         </div>
         <div class="w-1/5 text-right">
-            <Link to="/search-site">Search Site <i class="fa-solid fa-magnifying-glass"></i></Link>
-        </div>
+            <Link to="/search-site" class="border-2 border-black p-2 rounded-lg" >Search Site <i class="fa-solid fa-magnifying-glass"></i></Link>
+        </div>        
     </div>
 </nav>
