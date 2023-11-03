@@ -17,7 +17,7 @@
             <Link to="/" class="text-left text-4xl px-12 font-bold">Home</Link>
         </div> -->
         <div class="w-1/5">
-            <Link to="/" class="text-left text-4xl px-12 font-bold"><img src="../res/logo/Logo poziom_jasne tło_PNG.png" alt="Home" /></Link>
+            <Link to="/" class="text-left text-4xl px-12 font-bold"><img src="" alt="Home" /></Link>
         </div>
         <div class="w-3/5 text-left">
             <Link to="/library">Library</Link>
