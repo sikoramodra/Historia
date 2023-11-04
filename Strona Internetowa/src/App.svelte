@@ -6,7 +6,7 @@
 	export let url = "";
 </script>
 
-<main>
+<main class="bg-slate-950">
 	<Router {url}>
 		<Navbar />
 		<Content />
