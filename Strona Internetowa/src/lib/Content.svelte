@@ -6,7 +6,7 @@
     import Projects from "../routes/Projects.svelte";
 </script>
 
-<div class="h-screen">
+<div>
     <Route path="/" component={Home} />
     <Route path="/library" component={Library} />
     <Route path="/projects" component={Projects} />

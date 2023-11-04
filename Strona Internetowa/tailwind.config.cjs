@@ -4,6 +4,9 @@ const config = {
 
   theme: {
     extend: {
+      height: {
+        'full105': '105vh'
+      },
       colors: {
         'DomCzerw': '#ed1915',
       },

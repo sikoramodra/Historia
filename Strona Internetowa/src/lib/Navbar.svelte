@@ -11,17 +11,14 @@
 
 
 <!-- Kminie nad innym navbarem -->
-<nav class="fixed top-0 left-0 right-0 z-[60] px-8 h-20 text-black">
+<nav class="fixed top-0 left-0 right-0 z-[60] px-8 h-20 text-white">
     <div class="font-semibold text-2xl flex flex-row items-center h-full">
-        <!-- <div class="w-1/5">
-            <Link to="/" class="text-left text-4xl px-12 font-bold">Home</Link>
-        </div> -->
-        <div class="w-1/5">
-            <Link to="/" class="text-left text-4xl px-12 font-bold"><img src="" alt="Home" /></Link>
+        <div class="w-1/5 pl-8">
+            <Link to="/" class="text-left text-5xl px-12 font-bold"><img src="" alt="Home" /></Link>
         </div>
         <div class="w-3/5 text-left">
             <Link to="/library">Library</Link>
-            <Link to="/projects" class="w-3/5 mx-8">Projects</Link>
+            <Link to="/projects" class="w-3/5 mx-12">Projects</Link>
         </div>
         <div class="w-1/5 text-right">
             <Link to="/search-site" class="border-2 border-black p-2 rounded-lg" >Search Site <i class="fa-solid fa-magnifying-glass"></i></Link>
