@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"net/http"
 	"os"
 
 	"API/api"
@@ -39,18 +38,9 @@ func main() {
 	if err != nil {
 		log.Fatal("Failed to migrate the database")
 	}
-	DB := &handlers.DBHandler{
-		DB: db.New(conn),
-	}
+	DB := &handlers.Handler{DB: db.New(conn)}
 
-	usersGroup := e.Group("/users")
-	api.UsersGroup(usersGroup, DB)
-	peopleGroup := e.Group("/people")
-	api.PeopleGroup(peopleGroup, DB)
-
-	e.GET("/", func(c echo.Context) error {
-		return c.NoContent(http.StatusOK)
-	})
+	api.SetRoutes(e, DB)
 
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", os.Getenv("PORT"))))
 }

@@ -4,6 +4,6 @@ import (
 	"API/db"
 )
 
-type DBHandler struct {
+type Handler struct {
 	DB *db.Queries
 }
