@@ -1,14 +1,14 @@
 -- name: GetPeople :many
-SELECT * FROM people;
+SELECT * FROM person;
 
 -- name: GetPerson :one
-SELECT * FROM people WHERE id = $1;
+SELECT * FROM person WHERE id = $1;
 
 -- name: CreatePerson :exec
-INSERT INTO people (name) VALUES ($1);
+INSERT INTO person (name) VALUES ($1);
 
 -- name: UpdatePerson :exec
-UPDATE people SET name = $2 WHERE id = $1;
+UPDATE person SET name = $2 WHERE id = $1;
 
 -- name: DeletePerson :exec
-DELETE FROM people WHERE id = $1;
+DELETE FROM person WHERE id = $1;

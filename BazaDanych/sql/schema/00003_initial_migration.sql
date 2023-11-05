@@ -1,6 +1,8 @@
 -- +goose Up
 -- +goose StatementBegin
-CREATE TABLE places (
+ALTER TABLE people RENAME TO person;
+
+CREATE TABLE place (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
@@ -8,7 +10,7 @@ CREATE TABLE places (
 CREATE TABLE cemetery (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    burial_place_id INTEGER REFERENCES places(id) ON DELETE CASCADE NOT NULL
+    burial_place_id INTEGER REFERENCES place(id) ON DELETE CASCADE NOT NULL
 );
 
 CREATE TABLE quarter (
@@ -30,44 +32,44 @@ CREATE TABLE grave (
 );
 
 
-CREATE TABLE ranks (
+CREATE TABLE rank (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
 -- arrays of FK are not supported https://commitfest.postgresql.org/17/1252/
-CREATE TABLE people_ranks (
-    person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
-    rank_id INTEGER REFERENCES ranks(id) ON DELETE CASCADE,
+CREATE TABLE person_rank (
+    person_id INTEGER REFERENCES person(id) ON DELETE CASCADE,
+    rank_id INTEGER REFERENCES rank(id) ON DELETE CASCADE,
     PRIMARY KEY (person_id, rank_id)
 );
 
 
-CREATE TABLE sub_badges (
+CREATE TABLE badge (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE badges (
+CREATE TABLE sub_badge (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    sub_badge_id INTEGER REFERENCES sub_badges(id) ON DELETE CASCADE
+    badge_id INTEGER REFERENCES badge(id) ON DELETE CASCADE
 );
 
-CREATE TABLE people_badges (
-    person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
-    badge_id INTEGER REFERENCES badges(id) ON DELETE CASCADE,
-    PRIMARY KEY (person_id, badge_id)
+CREATE TABLE person_sub_badge (
+    person_id INTEGER REFERENCES person(id) ON DELETE CASCADE,
+    sub_badge_id INTEGER REFERENCES sub_badge(id) ON DELETE CASCADE,
+    PRIMARY KEY (person_id, sub_badge_id)
 );
 
-ALTER TABLE people
+ALTER TABLE person
     ADD COLUMN inscription VARCHAR(255),
     ADD COLUMN other_names VARCHAR(255)[],
     ADD COLUMN code_names VARCHAR(255)[],
     ADD COLUMN birth_date DATE,
-    ADD COLUMN birth_place_id INTEGER REFERENCES places(id) ON DELETE SET NULL,
+    ADD COLUMN birth_place_id INTEGER REFERENCES place(id) ON DELETE SET NULL,
     ADD COLUMN death_date DATE,
-    ADD COLUMN death_place_id INTEGER REFERENCES places(id) ON DELETE SET NULL,
+    ADD COLUMN death_place_id INTEGER REFERENCES place(id) ON DELETE SET NULL,
     ADD COLUMN grave_id INTEGER REFERENCES grave(id) ON DELETE SET NULL,
     ADD COLUMN description TEXT,
     ADD COLUMN sources TEXT;
@@ -84,21 +86,23 @@ CREATE TABLE sub_activity (
     activity_id INTEGER REFERENCES activity(id) ON DELETE CASCADE NOT NULL
 );
 
-CREATE TABLE events (
+CREATE TABLE event (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     sub_activity_id INTEGER REFERENCES sub_activity(id) ON DELETE CASCADE NOT NULL
 );
 
-CREATE TABLE people_activity (
-    person_id INTEGER REFERENCES people(id) ON DELETE CASCADE,
-    event_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
+CREATE TABLE person_activity (
+    person_id INTEGER REFERENCES person(id) ON DELETE CASCADE,
+    event_id INTEGER REFERENCES event(id) ON DELETE CASCADE,
     PRIMARY KEY (person_id, event_id)
 );
 -- +goose StatementEnd
 
 -- +goose Down
 -- +goose StatementBegin
+ALTER TABLE person RENAME TO people;
+
 ALTER TABLE people
     DROP COLUMN inscription,
     DROP COLUMN other_names,
@@ -111,7 +115,7 @@ ALTER TABLE people
     DROP COLUMN description,
     DROP COLUMN sources;
 
-DROP TABLE places, grave, row, quarter, cemetery,
-    ranks, people_ranks, sub_badges, badges, people_badges,
-    events, sub_activity, activity, people_activity;
+DROP TABLE place, grave, row, quarter, cemetery,
+    rank, person_rank, sub_badge, badge, person_sub_badge,
+    event, sub_activity, activity, person_activity;
 -- +goose StatementEnd
