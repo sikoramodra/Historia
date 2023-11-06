@@ -1,27 +1,52 @@
 <script>
+	// --- Imports ---
+
 	import { onMount } from "svelte";
 
-	let container;
-    let y;
+	// ---
+	// --- Colors of navbar ---
+
+	export let mainColorText;
+	export let mainColorBorder;
+
+	// ---
 
 	onMount(() => {
-		container = document.getElementById("container2").offsetTop;
+		const mainContainer = document.getElementById("main-container");
 
-		console.log(container);
+		// --- Function to change colors of Navbar depending on which div it is ---
 
-		// window.addEventListener("scroll", () => {
-		// 	console.log("dziala");
-		// });
+		mainContainer.addEventListener("scroll", () => {
+			const scrollY = mainContainer.scrollTop;
+			const container1 = document.getElementById("container1");
+			const container2 = document.getElementById("container2");
+			const container3 = document.getElementById("container3");
 
-		// window.addEventListener("scroll", () => {
-		// 	// Smoothly scroll to the center position
-		// 	console.log(container);
-		// 	// Add your scrolling logic here
-		// });
+			if (scrollY < container2.offsetTop - container1.offsetTop) {
+				//currentdiv = 1
+				mainColorText = "text-white";
+				mainColorBorder = "border-white";
+				//---
+			} else if (scrollY < container3.offsetTop - container1.offsetTop) {
+				//currentdiv = 2
+				mainColorText = "text-red";
+				mainColorBorder = "border-red";
+				//---
+			} else {
+				//currentdiv = 3
+				mainColorText = "text-black";
+				mainColorBorder = "border-black";
+				//---
+			}
+
+			//console.log(mainColorBorder, mainColorText);
+		});
+
+		// ---
 	});
 </script>
 
-<div id="main-container" class="font-bold h-screen w-full overflow-auto scroll">
+<div id="main-container" class="font-bold h-screen w-full overflow-auto">
 	<div id="container1" class="h-screen flex justify-center items-center text-white w-full">
 		<p class="text-7xl">Home</p>
 	</div>
@@ -39,38 +64,28 @@
     2. Trzeba umiescic tu jeszcze box z Najnowszymi postami z Library - jako Nowość -->
 </div>
 
-<svelte:window bind:scrollY={y} />
-
 <style>
+	/* Making snaping scroll */
+
 	#main-container > div {
 		scroll-snap-align: start;
-		transition: scroll-snap-align 2s ease;
 	}
-    
-
 	#main-container {
 		scroll-snap-type: y mandatory;
 		scroll-behavior: smooth;
 		overscroll-behavior-y: none;
 	}
-
-	* {
-		scrollbar-width: auto;
-		scrollbar-color: #8f54a0 #ffffff;
-	}
-
-	/* Chrome, Edge, and Safari */
 	*::-webkit-scrollbar {
 		width: 14px;
 	}
-
 	*::-webkit-scrollbar-track {
 		background: transparent;
 	}
-
 	*::-webkit-scrollbar-thumb {
-		background-color: rgba(144, 84, 160, 0.7);
+		background-color: rgba(30, 41, 59, 0.7);
 		border-radius: 10px;
 		border: 1px solid transparent;
 	}
+
+	/* ---   ---   --- */
 </style>

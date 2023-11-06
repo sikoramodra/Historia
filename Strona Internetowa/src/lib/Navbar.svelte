@@ -1,5 +1,9 @@
 <script>
 	import { Link } from "svelte-routing";
+    // import { mainColorText } from "../routes/Home.svelte";
+    // import { mainColorBorder } from "../routes/Home.svelte";
+
+    // console.log($mainColorText, $mainColorBorder);
 </script>
 
 <!-- <nav class="flex flex-row justify-around bg-DomCzerw p-6 text-2xl subpixel-antialiased font-bold text-slate-200">
