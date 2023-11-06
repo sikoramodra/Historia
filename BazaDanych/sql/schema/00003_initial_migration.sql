@@ -52,7 +52,7 @@ CREATE TABLE badge (
 
 CREATE TABLE sub_badge (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255),
     badge_id INTEGER REFERENCES badge(id) ON DELETE CASCADE
 );
 
