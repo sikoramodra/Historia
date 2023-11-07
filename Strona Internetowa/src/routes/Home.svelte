@@ -2,14 +2,9 @@
 	// --- Imports ---
 
 	import { onMount } from "svelte";
+	import { mainColorText, mainColorBorder } from '../store.js';
 
-	// ---
-	// --- Colors of navbar ---
-
-	export let mainColorText;
-	export let mainColorBorder;
-
-	// ---
+	// --- --- ---
 
 	onMount(() => {
 		const mainContainer = document.getElementById("main-container");
@@ -24,25 +19,23 @@
 
 			if (scrollY < container2.offsetTop - container1.offsetTop) {
 				//currentdiv = 1
-				mainColorText = "text-white";
-				mainColorBorder = "border-white";
-				//---
+				mainColorText.set("text-white");
+				mainColorBorder.set("border-white");
+				//--- --- ---
 			} else if (scrollY < container3.offsetTop - container1.offsetTop) {
 				//currentdiv = 2
-				mainColorText = "text-red";
-				mainColorBorder = "border-red";
-				//---
+				mainColorText.set("text-red-700");
+				mainColorBorder.set("border-red-700");
+				//--- --- ---
 			} else {
 				//currentdiv = 3
-				mainColorText = "text-black";
-				mainColorBorder = "border-black";
-				//---
+				mainColorText.set("text-black");
+				mainColorBorder.set("border-black");
+				//--- --- ---
 			}
-
-			//console.log(mainColorBorder, mainColorText);
+			// console.log($mainColorText, $mainColorBorder);
 		});
-
-		// ---
+		// --- --- ---
 	});
 </script>
 
@@ -76,10 +69,12 @@
 		overscroll-behavior-y: none;
 	}
 	*::-webkit-scrollbar {
-		width: 14px;
+		width: 0; /* naprawilem problem z scrollbarem */
+		visibility: hidden;
 	}
 	*::-webkit-scrollbar-track {
 		background: transparent;
+		visibility: hidden;
 	}
 	*::-webkit-scrollbar-thumb {
 		background-color: rgba(30, 41, 59, 0.7);
