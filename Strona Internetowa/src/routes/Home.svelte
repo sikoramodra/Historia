@@ -17,15 +17,15 @@
 			const container2 = document.getElementById("container2");
 			const container3 = document.getElementById("container3");
 
-			if (scrollY < container2.offsetTop - container1.offsetTop) {
+			if (scrollY < container2.offsetTop - 60) {
 				//currentdiv = 1
 				mainColorText.set("text-white");
 				mainColorBorder.set("border-white");
 				//--- --- ---
-			} else if (scrollY < container3.offsetTop - container1.offsetTop) {
+			} else if (scrollY < container3.offsetTop - 60) {
 				//currentdiv = 2
-				mainColorText.set("text-red-700");
-				mainColorBorder.set("border-red-700");
+				mainColorText.set("text-red-600");
+				mainColorBorder.set("border-red-600");
 				//--- --- ---
 			} else {
 				//currentdiv = 3
@@ -43,10 +43,10 @@
 	<div id="container1" class="h-screen flex justify-center items-center text-white w-full">
 		<p class="text-7xl">Home</p>
 	</div>
-	<div id="container2" class="h-screen flex justify-center items-center text-red-700 w-full bg-white">
+	<div id="container2" class="h-screen flex justify-center items-center text-red-600 w-full bg-white">
 		<p class="text-7xl">Home</p>
 	</div>
-	<div id="container3" class="h-screen flex justify-center items-center text-slate-950 w-full bg-red-700">
+	<div id="container3" class="h-screen flex justify-center items-center text-slate-950 w-full bg-red-600">
 		<p class="text-7xl">Home</p>
 	</div>
 
