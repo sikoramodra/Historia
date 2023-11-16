@@ -34,7 +34,7 @@ func main() {
 		log.Fatal("Database URL is not found in the environment", err)
 	}
 
-	err = goose.Up(conn, "sql/schema/")
+	err = goose.Up(conn, "sql/migrations/")
 	if err != nil {
 		log.Fatal("Failed to migrate the database")
 	}
