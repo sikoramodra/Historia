@@ -7,8 +7,6 @@ package db
 
 import (
 	"context"
-
-	"github.com/lib/pq"
 )
 
 const createPerson = `-- name: CreatePerson :exec
@@ -16,7 +14,7 @@ INSERT INTO person (name) VALUES ($1)
 `
 
 func (q *Queries) CreatePerson(ctx context.Context, name string) error {
-	_, err := q.db.ExecContext(ctx, createPerson, name)
+	_, err := q.db.Exec(ctx, createPerson, name)
 	return err
 }
 
@@ -25,43 +23,47 @@ DELETE FROM person WHERE id = $1
 `
 
 func (q *Queries) DeletePerson(ctx context.Context, id int32) error {
-	_, err := q.db.ExecContext(ctx, deletePerson, id)
+	_, err := q.db.Exec(ctx, deletePerson, id)
 	return err
 }
 
 const getPeople = `-- name: GetPeople :many
-SELECT id, name, inscription, other_names, code_names, birth_date, birth_place_id, death_date, death_place_id, grave_id, description, sources FROM person
+SELECT id, name, inscription, other_names, code_names, birth_date, birth_place, death_date, death_place, burial_place, cemetery, quarter, row, grave, ranks, badges, activity, description, sources FROM main_view
 `
 
-func (q *Queries) GetPeople(ctx context.Context) ([]Person, error) {
-	rows, err := q.db.QueryContext(ctx, getPeople)
+func (q *Queries) GetPeople(ctx context.Context) ([]MainView, error) {
+	rows, err := q.db.Query(ctx, getPeople)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Person
+	var items []MainView
 	for rows.Next() {
-		var i Person
+		var i MainView
 		if err := rows.Scan(
 			&i.ID,
 			&i.Name,
 			&i.Inscription,
-			pq.Array(&i.OtherNames),
-			pq.Array(&i.CodeNames),
+			&i.OtherNames,
+			&i.CodeNames,
 			&i.BirthDate,
-			&i.BirthPlaceID,
+			&i.BirthPlace,
 			&i.DeathDate,
-			&i.DeathPlaceID,
-			&i.GraveID,
+			&i.DeathPlace,
+			&i.BurialPlace,
+			&i.Cemetery,
+			&i.Quarter,
+			&i.Row,
+			&i.Grave,
+			&i.Ranks,
+			&i.Badges,
+			&i.Activity,
 			&i.Description,
 			&i.Sources,
 		); err != nil {
 			return nil, err
 		}
 		items = append(items, i)
-	}
-	if err := rows.Close(); err != nil {
-		return nil, err
 	}
 	if err := rows.Err(); err != nil {
 		return nil, err
@@ -74,14 +76,14 @@ SELECT id, name, inscription, other_names, code_names, birth_date, birth_place_i
 `
 
 func (q *Queries) GetPerson(ctx context.Context, id int32) (Person, error) {
-	row := q.db.QueryRowContext(ctx, getPerson, id)
+	row := q.db.QueryRow(ctx, getPerson, id)
 	var i Person
 	err := row.Scan(
 		&i.ID,
 		&i.Name,
 		&i.Inscription,
-		pq.Array(&i.OtherNames),
-		pq.Array(&i.CodeNames),
+		&i.OtherNames,
+		&i.CodeNames,
 		&i.BirthDate,
 		&i.BirthPlaceID,
 		&i.DeathDate,
@@ -103,6 +105,6 @@ type UpdatePersonParams struct {
 }
 
 func (q *Queries) UpdatePerson(ctx context.Context, arg UpdatePersonParams) error {
-	_, err := q.db.ExecContext(ctx, updatePerson, arg.ID, arg.Name)
+	_, err := q.db.Exec(ctx, updatePerson, arg.ID, arg.Name)
 	return err
 }

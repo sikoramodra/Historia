@@ -22,7 +22,7 @@ declare
     person_badges json;
 BEGIN
     SELECT json_agg(row_to_json(json)) INTO person_badges
-    FROM (SELECT b.name                                                               AS badge,
+    FROM (SELECT b.name                                                               AS name,
                  coalesce(json_agg(sb.name) FILTER (WHERE sb.name IS NOT NULL), '[]') AS sub_badges
           FROM person_sub_badge pb
                    LEFT JOIN sub_badge sb on pb.sub_badge_id = sb.id
@@ -46,11 +46,11 @@ BEGIN
           FROM (SELECT a.name                                                             AS activity,
                        sa.name                                                            AS name,
                        coalesce(json_agg(e.name) FILTER (WHERE e.name IS NOT NULL), '[]') AS events
-                FROM person_activity pa
-                         LEFT JOIN public.event e on pa.event_id = e.id
+                FROM person_event pe
+                         LEFT JOIN public.event e on pe.event_id = e.id
                          LEFT JOIN public.sub_activity sa on e.sub_activity_id = sa.id
                          LEFT JOIN public.activity a on sa.activity_id = a.id
-                WHERE pa.person_id = person
+                WHERE pe.person_id = person
                 GROUP BY a.name, sa.name) json
           GROUP BY json.activity) json;
 
@@ -63,8 +63,8 @@ SELECT
     p.id,
     p.name AS name,
     p.inscription,
-    array_to_json(p.other_names) AS other_names,
-    array_to_json(p.code_names) AS code_names,
+    p.other_names AS other_names,
+    p.code_names AS code_names,
     p.birth_date,
     p1.name AS birth_place,
     p.death_date,

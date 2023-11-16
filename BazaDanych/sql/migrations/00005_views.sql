@@ -120,8 +120,8 @@ SELECT p.id    AS person_id,
        e.name  AS event_name
 
 FROM person p
-         LEFT JOIN public.person_activity pa on p.id = pa.person_id
-         LEFT JOIN public.event e on pa.event_id = e.id
+         LEFT JOIN public.person_event pe on p.id = pe.person_id
+         LEFT JOIN public.event e on pe.event_id = e.id
          LEFT JOIN public.sub_activity sa on e.sub_activity_id = sa.id
          LEFT JOIN public.activity a on sa.activity_id = a.id;
 
@@ -149,8 +149,8 @@ FROM (SELECT json.person,
                    sa.name                                                            AS name,
                    coalesce(json_agg(e.name) FILTER (WHERE e.name IS NOT NULL), '[]') AS events
             FROM person p
-                     LEFT JOIN public.person_activity pa on p.id = pa.person_id
-                     LEFT JOIN public.event e on pa.event_id = e.id
+                     LEFT JOIN public.person_event pe on p.id = pe.person_id
+                     LEFT JOIN public.event e on pe.event_id = e.id
                      LEFT JOIN public.sub_activity sa on e.sub_activity_id = sa.id
                      LEFT JOIN public.activity a on sa.activity_id = a.id
             GROUP BY p.name, a.name, sa.name) json

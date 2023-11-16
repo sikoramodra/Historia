@@ -1,5 +1,5 @@
 -- name: GetPeople :many
-SELECT * FROM person;
+SELECT * FROM main_view;
 
 -- name: GetPerson :one
 SELECT * FROM person WHERE id = $1;

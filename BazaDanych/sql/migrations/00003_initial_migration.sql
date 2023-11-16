@@ -92,7 +92,7 @@ CREATE TABLE event (
     sub_activity_id INTEGER REFERENCES sub_activity(id) ON DELETE CASCADE NOT NULL
 );
 
-CREATE TABLE person_activity (
+CREATE TABLE person_event (
     person_id INTEGER REFERENCES person(id) ON DELETE CASCADE,
     event_id INTEGER REFERENCES event(id) ON DELETE CASCADE,
     PRIMARY KEY (person_id, event_id)
@@ -117,5 +117,5 @@ ALTER TABLE people
 
 DROP TABLE place, grave, row, quarter, cemetery,
     rank, person_rank, sub_badge, badge, person_sub_badge,
-    event, sub_activity, activity, person_activity;
+    event, sub_activity, activity, person_event;
 -- +goose StatementEnd
