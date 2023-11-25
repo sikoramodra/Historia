@@ -1,14 +1,17 @@
 -- name: GetPeople :many
-SELECT * FROM people;
+SELECT * FROM main_view;
 
 -- name: GetPerson :one
-SELECT * FROM people WHERE id = $1;
+SELECT * FROM main_view WHERE id = $1;
 
--- name: CreatePerson :exec
-INSERT INTO people (name) VALUES ($1);
+-- name: CreatePerson :one
+INSERT INTO person (name, inscription, other_names, code_names, birth_date, birth_place_id, death_date, death_place_id,
+                    grave_id, description, sources)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+RETURNING id;
 
 -- name: UpdatePerson :exec
-UPDATE people SET name = $2 WHERE id = $1;
+UPDATE person SET name = $2 WHERE id = $1;
 
 -- name: DeletePerson :exec
-DELETE FROM people WHERE id = $1;
+DELETE FROM person WHERE id = $1;

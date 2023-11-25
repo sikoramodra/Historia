@@ -10,13 +10,8 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type User struct {
-	ID   int32  `json:"id"`
-	Name string `json:"name"`
-}
-
-func (h *DBHandler) GetUsers(c echo.Context) error {
-	people, err := h.DB.GetUsers(context.Background())
+func (h *Handler) GetPeople(c echo.Context) error {
+	people, err := h.DB.GetPeople(context.Background())
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
@@ -24,50 +19,50 @@ func (h *DBHandler) GetUsers(c echo.Context) error {
 	return c.JSON(http.StatusOK, people)
 }
 
-func (h *DBHandler) CreateUser(c echo.Context) error {
-	u := new(User)
-	if err := c.Bind(u); err != nil {
+func (h *Handler) CreatePerson(c echo.Context) error {
+	p := new(db.CreatePersonParams)
+	if err := c.Bind(p); err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
 
-	err := h.DB.CreateUser(context.Background(), u.Name)
+	id, err := h.DB.CreatePerson(context.Background(), *p)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
 
-	return c.NoContent(http.StatusOK)
+	return c.JSON(http.StatusOK, id)
 }
 
-func (h *DBHandler) GetUser(c echo.Context) error {
+func (h *Handler) GetPerson(c echo.Context) error {
 	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
 
-	u, err := h.DB.GetUser(context.Background(), int32(id))
+	p, err := h.DB.GetPerson(context.Background(), int32(id))
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
 
-	return c.JSON(http.StatusOK, u)
+	return c.JSON(http.StatusOK, p)
 }
 
-func (h *DBHandler) UpdateUser(c echo.Context) error {
+func (h *Handler) UpdatePerson(c echo.Context) error {
 	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
-	u := new(User)
-	if err := c.Bind(u); err != nil {
+	p := new(db.Person)
+	if err := c.Bind(p); err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
 
-	data := db.UpdateUserParams{
+	data := db.UpdatePersonParams{
 		ID:   int32(id),
-		Name: u.Name,
+		Name: p.Name,
 	}
 
-	err = h.DB.UpdateUser(context.Background(), data)
+	err = h.DB.UpdatePerson(context.Background(), data)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
@@ -75,13 +70,13 @@ func (h *DBHandler) UpdateUser(c echo.Context) error {
 	return c.NoContent(http.StatusOK)
 }
 
-func (h *DBHandler) DeleteUser(c echo.Context) error {
+func (h *Handler) DeletePerson(c echo.Context) error {
 	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
 
-	err = h.DB.DeleteUser(context.Background(), int32(id))
+	err = h.DB.DeletePerson(context.Background(), int32(id))
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}

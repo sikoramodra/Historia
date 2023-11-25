@@ -5,71 +5,89 @@
 package db
 
 import (
-	"database/sql"
+	"encoding/json"
+
+	"github.com/jackc/pgx/v5/pgtype"
 )
 
 type Activity struct {
-	ID            int32         `json:"id"`
-	Name          string        `json:"name"`
-	SubActivityID sql.NullInt32 `json:"sub_activity_id"`
+	ID   int32  `json:"id"`
+	Name string `json:"name"`
 }
 
 type Badge struct {
-	ID         int32         `json:"id"`
-	Name       string        `json:"name"`
-	SubBadgeID sql.NullInt32 `json:"sub_badge_id"`
-}
-
-type BurialPlace struct {
-	ID         int32         `json:"id"`
-	Name       string        `json:"name"`
-	CemeteryID sql.NullInt32 `json:"cemetery_id"`
+	ID   int32  `json:"id"`
+	Name string `json:"name"`
 }
 
 type Cemetery struct {
-	ID        int32         `json:"id"`
-	Name      string        `json:"name"`
-	QuarterID sql.NullInt32 `json:"quarter_id"`
+	ID            int32   `json:"id"`
+	Name          *string `json:"name"`
+	BurialPlaceID int32   `json:"burial_place_id"`
 }
 
 type Event struct {
-	ID   int32  `json:"id"`
-	Name string `json:"name"`
+	ID            int32   `json:"id"`
+	Name          *string `json:"name"`
+	SubActivityID int32   `json:"sub_activity_id"`
 }
 
 type Grave struct {
-	ID   int32  `json:"id"`
-	Name string `json:"name"`
+	ID    int32   `json:"id"`
+	Name  *string `json:"name"`
+	RowID int32   `json:"row_id"`
 }
 
-type PeopleActivity struct {
-	PersonID   int32 `json:"person_id"`
-	ActivityID int32 `json:"activity_id"`
+type MainView struct {
+	ID          int32           `json:"id"`
+	Name        string          `json:"name"`
+	Inscription *string         `json:"inscription"`
+	OtherNames  []string        `json:"other_names"`
+	CodeNames   []string        `json:"code_names"`
+	BirthDate   pgtype.Date     `json:"birth_date"`
+	BirthPlace  *string         `json:"birth_place"`
+	DeathDate   pgtype.Date     `json:"death_date"`
+	DeathPlace  *string         `json:"death_place"`
+	BurialPlace *string         `json:"burial_place"`
+	Cemetery    *string         `json:"cemetery"`
+	Quarter     *string         `json:"quarter"`
+	Row         *string         `json:"row"`
+	Grave       *string         `json:"grave"`
+	Ranks       json.RawMessage `json:"ranks"`
+	Badges      json.RawMessage `json:"badges"`
+	Activity    json.RawMessage `json:"activity"`
+	Description *string         `json:"description"`
+	Sources     *string         `json:"sources"`
 }
 
-type PeopleBadge struct {
+type Person struct {
+	ID           int32       `json:"id"`
+	Name         string      `json:"name"`
+	Inscription  *string     `json:"inscription"`
+	OtherNames   []string    `json:"other_names"`
+	CodeNames    []string    `json:"code_names"`
+	BirthDate    pgtype.Date `json:"birth_date"`
+	BirthPlaceID *int32      `json:"birth_place_id"`
+	DeathDate    pgtype.Date `json:"death_date"`
+	DeathPlaceID *int32      `json:"death_place_id"`
+	GraveID      *int32      `json:"grave_id"`
+	Description  *string     `json:"description"`
+	Sources      *string     `json:"sources"`
+}
+
+type PersonEvent struct {
 	PersonID int32 `json:"person_id"`
-	BadgeID  int32 `json:"badge_id"`
+	EventID  int32 `json:"event_id"`
 }
 
-type PeopleRank struct {
+type PersonRank struct {
 	PersonID int32 `json:"person_id"`
 	RankID   int32 `json:"rank_id"`
 }
 
-type Person struct {
-	ID            int32          `json:"id"`
-	Name          string         `json:"name"`
-	Inscription   sql.NullString `json:"inscription"`
-	OtherNames    []string       `json:"other_names"`
-	CodeNames     []string       `json:"code_names"`
-	BirthDate     sql.NullTime   `json:"birth_date"`
-	BirthPlaceID  sql.NullInt32  `json:"birth_place_id"`
-	DeathDate     sql.NullTime   `json:"death_date"`
-	DeathPlaceID  sql.NullInt32  `json:"death_place_id"`
-	BurialPlaceID sql.NullInt32  `json:"burial_place_id"`
-	Description   sql.NullString `json:"description"`
-	Sources       sql.NullString `json:"sources"`
+type PersonSubBadge struct {
+	PersonID   int32 `json:"person_id"`
+	SubBadgeID int32 `json:"sub_badge_id"`
 }
 
 type Place struct {
@@ -78,9 +96,9 @@ type Place struct {
 }
 
 type Quarter struct {
-	ID    int32         `json:"id"`
-	Name  string        `json:"name"`
-	RowID sql.NullInt32 `json:"row_id"`
+	ID         int32   `json:"id"`
+	Name       *string `json:"name"`
+	CemeteryID int32   `json:"cemetery_id"`
 }
 
 type Rank struct {
@@ -89,20 +107,120 @@ type Rank struct {
 }
 
 type Row struct {
-	ID      int32         `json:"id"`
-	Name    string        `json:"name"`
-	GraveID sql.NullInt32 `json:"grave_id"`
+	ID        int32   `json:"id"`
+	Name      *string `json:"name"`
+	QuarterID int32   `json:"quarter_id"`
+}
+
+type ShowAllActivitiesJson struct {
+	Activity json.RawMessage `json:"activity"`
+}
+
+type ShowAllActivity struct {
+	ActivityID      *int32  `json:"activity_id"`
+	ActivityName    *string `json:"activity_name"`
+	SubActivityID   *int32  `json:"sub_activity_id"`
+	SubActivityName *string `json:"sub_activity_name"`
+	EventID         int32   `json:"event_id"`
+	EventName       *string `json:"event_name"`
+}
+
+type ShowAllBadge struct {
+	BadgeID      *int32  `json:"badge_id"`
+	BadgeName    *string `json:"badge_name"`
+	SubBadgeID   int32   `json:"sub_badge_id"`
+	SubBadgeName *string `json:"sub_badge_name"`
+}
+
+type ShowAllBadgesJson struct {
+	Badges json.RawMessage `json:"badges"`
+}
+
+type ShowAllGrafe struct {
+	BurialPlaceID   *int32  `json:"burial_place_id"`
+	BurialPlaceName *string `json:"burial_place_name"`
+	CemeteryID      *int32  `json:"cemetery_id"`
+	CemeteryName    *string `json:"cemetery_name"`
+	QuarterID       *int32  `json:"quarter_id"`
+	QuarterName     *string `json:"quarter_name"`
+	RowID           *int32  `json:"row_id"`
+	RowName         *string `json:"row_name"`
+	GraveID         int32   `json:"grave_id"`
+	GraveName       *string `json:"grave_name"`
+}
+
+type ShowAllPlace struct {
+	PlaceID   int32  `json:"place_id"`
+	PlaceName string `json:"place_name"`
+}
+
+type ShowAllRank struct {
+	RankID   int32  `json:"rank_id"`
+	RamkName string `json:"ramk_name"`
+}
+
+type ShowPeoplesActivitiesJson struct {
+	Person   string `json:"person"`
+	Activity []byte `json:"activity"`
+}
+
+type ShowPeoplesActivity struct {
+	PersonID        int32   `json:"person_id"`
+	PersonName      string  `json:"person_name"`
+	ActivityID      *int32  `json:"activity_id"`
+	ActivityName    *string `json:"activity_name"`
+	SubActivityID   *int32  `json:"sub_activity_id"`
+	SubActivityName *string `json:"sub_activity_name"`
+	EventID         *int32  `json:"event_id"`
+	EventName       *string `json:"event_name"`
+}
+
+type ShowPeoplesBadge struct {
+	PersonID     int32   `json:"person_id"`
+	PersonName   string  `json:"person_name"`
+	BadgeID      *int32  `json:"badge_id"`
+	BadgeName    *string `json:"badge_name"`
+	SubBadgeID   *int32  `json:"sub_badge_id"`
+	SubBadgeName *string `json:"sub_badge_name"`
+}
+
+type ShowPeoplesBadgesJson struct {
+	Person string          `json:"person"`
+	Badges json.RawMessage `json:"badges"`
+}
+
+type ShowPeoplesGrafe struct {
+	PersonID        int32   `json:"person_id"`
+	PersonName      string  `json:"person_name"`
+	BurialPlaceID   *int32  `json:"burial_place_id"`
+	BurialPlaceName *string `json:"burial_place_name"`
+	CemeteryID      *int32  `json:"cemetery_id"`
+	CemeteryName    *string `json:"cemetery_name"`
+	QuarterID       *int32  `json:"quarter_id"`
+	QuarterName     *string `json:"quarter_name"`
+	RowID           *int32  `json:"row_id"`
+	RowName         *string `json:"row_name"`
+	GraveID         *int32  `json:"grave_id"`
+	GraveName       *string `json:"grave_name"`
+}
+
+type ShowPeoplesRank struct {
+	PersonID   *int32  `json:"person_id"`
+	PersonName *string `json:"person_name"`
+	RankID     int32   `json:"rank_id"`
+	RankName   string  `json:"rank_name"`
 }
 
 type SubActivity struct {
-	ID      int32         `json:"id"`
-	Name    string        `json:"name"`
-	EventID sql.NullInt32 `json:"event_id"`
+	ID         int32   `json:"id"`
+	Name       *string `json:"name"`
+	ActivityID int32   `json:"activity_id"`
 }
 
 type SubBadge struct {
-	ID   int32  `json:"id"`
-	Name string `json:"name"`
+	ID      int32   `json:"id"`
+	Name    *string `json:"name"`
+	BadgeID *int32  `json:"badge_id"`
 }
 
 type User struct {
