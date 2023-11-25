@@ -16,9 +16,9 @@ func SetRoutes(e *echo.Echo, h *handlers.Handler) {
 	people := e.Group("/people")
 	people.GET("", h.GetPeople)
 	people.POST("", h.CreatePerson)
-	people.GET(":id", h.GetPerson)
+	people.GET("/:id", h.GetPerson)
 	//people.PUT("/:id", h.UpdatePerson)
-	people.DELETE(":id", h.DeletePerson)
+	people.DELETE("/:id", h.DeletePerson)
 
 	//handlers.UsersGroup(e.Group("/users"), h)
 }

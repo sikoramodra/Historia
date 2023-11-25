@@ -7,15 +7,48 @@ package db
 
 import (
 	"context"
+
+	"github.com/jackc/pgx/v5/pgtype"
 )
 
-const createPerson = `-- name: CreatePerson :exec
-INSERT INTO person (name) VALUES ($1)
+const createPerson = `-- name: CreatePerson :one
+INSERT INTO person (name, inscription, other_names, code_names, birth_date, birth_place_id, death_date, death_place_id,
+                    grave_id, description, sources)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+RETURNING id
 `
 
-func (q *Queries) CreatePerson(ctx context.Context, name string) error {
-	_, err := q.db.Exec(ctx, createPerson, name)
-	return err
+type CreatePersonParams struct {
+	Name         string      `json:"name"`
+	Inscription  *string     `json:"inscription"`
+	OtherNames   []string    `json:"other_names"`
+	CodeNames    []string    `json:"code_names"`
+	BirthDate    pgtype.Date `json:"birth_date"`
+	BirthPlaceID *int32      `json:"birth_place_id"`
+	DeathDate    pgtype.Date `json:"death_date"`
+	DeathPlaceID *int32      `json:"death_place_id"`
+	GraveID      *int32      `json:"grave_id"`
+	Description  *string     `json:"description"`
+	Sources      *string     `json:"sources"`
+}
+
+func (q *Queries) CreatePerson(ctx context.Context, arg CreatePersonParams) (int32, error) {
+	row := q.db.QueryRow(ctx, createPerson,
+		arg.Name,
+		arg.Inscription,
+		arg.OtherNames,
+		arg.CodeNames,
+		arg.BirthDate,
+		arg.BirthPlaceID,
+		arg.DeathDate,
+		arg.DeathPlaceID,
+		arg.GraveID,
+		arg.Description,
+		arg.Sources,
+	)
+	var id int32
+	err := row.Scan(&id)
+	return id, err
 }
 
 const deletePerson = `-- name: DeletePerson :exec
@@ -72,12 +105,12 @@ func (q *Queries) GetPeople(ctx context.Context) ([]MainView, error) {
 }
 
 const getPerson = `-- name: GetPerson :one
-SELECT id, name, inscription, other_names, code_names, birth_date, birth_place_id, death_date, death_place_id, grave_id, description, sources FROM person WHERE id = $1
+SELECT id, name, inscription, other_names, code_names, birth_date, birth_place, death_date, death_place, burial_place, cemetery, quarter, row, grave, ranks, badges, activity, description, sources FROM main_view WHERE id = $1
 `
 
-func (q *Queries) GetPerson(ctx context.Context, id int32) (Person, error) {
+func (q *Queries) GetPerson(ctx context.Context, id int32) (MainView, error) {
 	row := q.db.QueryRow(ctx, getPerson, id)
-	var i Person
+	var i MainView
 	err := row.Scan(
 		&i.ID,
 		&i.Name,
@@ -85,10 +118,17 @@ func (q *Queries) GetPerson(ctx context.Context, id int32) (Person, error) {
 		&i.OtherNames,
 		&i.CodeNames,
 		&i.BirthDate,
-		&i.BirthPlaceID,
+		&i.BirthPlace,
 		&i.DeathDate,
-		&i.DeathPlaceID,
-		&i.GraveID,
+		&i.DeathPlace,
+		&i.BurialPlace,
+		&i.Cemetery,
+		&i.Quarter,
+		&i.Row,
+		&i.Grave,
+		&i.Ranks,
+		&i.Badges,
+		&i.Activity,
 		&i.Description,
 		&i.Sources,
 	)

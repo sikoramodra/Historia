@@ -8,13 +8,13 @@
 
 #### Endpoints
 
-| Endpoint              | Type     | Description             | Status                                           | JSON                              |
-|:----------------------|:---------|:------------------------|:-------------------------------------------------|-----------------------------------|
-| `GET /people`         |          | Get all people          | ![](https://img.shields.io/badge/Done-40A02B)    | [out](JSON.md#get-people---out)   |
-| `POST /people`        |          | Add person              | ![](https://img.shields.io/badge/WIP-DF8E1D)     | [in](JSON.md#post-people---in)    |
-| `GET /people/{id}`    | `number` | Get person with {id}    | ![](https://img.shields.io/badge/Test-FE640B)    | [out](JSON.md#get-peopleid---out) |
-| `PUT /people/{id}`    | `number` | Update person with {id} | ![](https://img.shields.io/badge/To%20Do-D20F39) | [in](JSON.md#put-people---in)     |
-| `DELETE /people/{id}` | `number` | Delete person with {id} | ![](https://img.shields.io/badge/Test-FE640B)    | -                                 |
+| Endpoint              | Type     | Description             | Status                                           | JSON                                                            |
+|:----------------------|:---------|:------------------------|:-------------------------------------------------|-----------------------------------------------------------------|
+| `GET /people`         |          | Get all people          | ![](https://img.shields.io/badge/Done-40A02B)    | [out](JSON.md#get-people---out)                                 |
+| `POST /people`        |          | Add person              | ![](https://img.shields.io/badge/Done-40A02B)    | [in](JSON.md#post-people---in)/[out](JSON.md#post-people---out) |
+| `GET /people/{id}`    | `number` | Get person with {id}    | ![](https://img.shields.io/badge/Done-40A02B)    | [out](JSON.md#get-peopleid---out)                               |
+| `PUT /people/{id}`    | `number` | Update person with {id} | ![](https://img.shields.io/badge/To%20Do-D20F39) | [in](JSON.md#put-people---in)                                   |
+| `DELETE /people/{id}` | `number` | Delete person with {id} | ![](https://img.shields.io/badge/Done-40A02B)    | -                                                               |
 
 
 ## Run Locally

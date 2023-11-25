@@ -20,17 +20,17 @@ func (h *Handler) GetPeople(c echo.Context) error {
 }
 
 func (h *Handler) CreatePerson(c echo.Context) error {
-	p := new(db.Person)
+	p := new(db.CreatePersonParams)
 	if err := c.Bind(p); err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
 
-	err := h.DB.CreatePerson(context.Background(), p.Name)
+	id, err := h.DB.CreatePerson(context.Background(), *p)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
 
-	return c.NoContent(http.StatusOK)
+	return c.JSON(http.StatusOK, id)
 }
 
 func (h *Handler) GetPerson(c echo.Context) error {
