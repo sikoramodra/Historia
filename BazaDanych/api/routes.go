@@ -19,4 +19,9 @@ func SetRoutes(e *echo.Echo, h *handlers.Handler) {
 	people.GET("/:id", h.GetPerson)
 	people.PUT("/:id", h.UpdatePerson)
 	people.DELETE("/:id", h.DeletePerson)
+
+	people.GET("/:id/ranks", h.GetPersonRanks)
+	people.POST("/:id/ranks", h.CreatePersonRank)
+	people.DELETE("/:id/ranks/:id", h.DeletePersonRank)
+
 }

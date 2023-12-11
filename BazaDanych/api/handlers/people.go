@@ -3,7 +3,6 @@ package handlers
 import (
 	"context"
 	"net/http"
-	"strconv"
 
 	"API/db"
 
@@ -11,12 +10,12 @@ import (
 )
 
 func (h *Handler) GetPeople(c echo.Context) error {
-	people, err := h.DB.GetPeople(context.Background())
+	p, err := h.DB.GetPeople(context.Background())
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
 
-	return c.JSON(http.StatusOK, people)
+	return c.JSON(http.StatusOK, p)
 }
 
 func (h *Handler) CreatePerson(c echo.Context) error {
@@ -34,12 +33,12 @@ func (h *Handler) CreatePerson(c echo.Context) error {
 }
 
 func (h *Handler) GetPerson(c echo.Context) error {
-	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
+	id, err := h.GetParamId(c)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
 
-	p, err := h.DB.GetPerson(context.Background(), int32(id))
+	p, err := h.DB.GetPerson(context.Background(), id)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
@@ -48,7 +47,7 @@ func (h *Handler) GetPerson(c echo.Context) error {
 }
 
 func (h *Handler) UpdatePerson(c echo.Context) error {
-	pId, err := strconv.ParseInt(c.Param("id"), 10, 32)
+	pId, err := h.GetParamId(c)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
@@ -57,7 +56,7 @@ func (h *Handler) UpdatePerson(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, err)
 	}
 
-	p.ID = int32(pId)
+	p.ID = pId
 
 	id, err := h.DB.UpdatePerson(context.Background(), *p)
 	if err != nil {
@@ -68,12 +67,72 @@ func (h *Handler) UpdatePerson(c echo.Context) error {
 }
 
 func (h *Handler) DeletePerson(c echo.Context) error {
-	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
+	id, err := h.GetParamId(c)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
 
-	err = h.DB.DeletePerson(context.Background(), int32(id))
+	err = h.DB.DeletePerson(context.Background(), id)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err)
+	}
+
+	return c.NoContent(http.StatusOK)
+}
+
+func (h *Handler) GetPersonRanks(c echo.Context) error {
+	id, err := h.GetParamId(c)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+
+	pr, err := h.DB.GetPersonRanks(context.Background(), &id)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err)
+	}
+
+	return c.JSON(http.StatusOK, pr)
+}
+
+func (h *Handler) CreatePersonRank(c echo.Context) error {
+	id, err := h.GetParamId(c)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+
+	pr := new(db.CreatePersonRankParams)
+	if err := c.Bind(pr); err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+
+	pr.PersonID = id
+
+	err = h.DB.CreatePersonRank(context.Background(), *pr)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err)
+	}
+
+	return c.NoContent(http.StatusOK)
+}
+
+func (h *Handler) DeletePersonRank(c echo.Context) error {
+	personId, err := h.GetParamId(c)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+
+	rankId, err := h.GetParamId(c)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+
+	pr := &db.DeletePersonRankParams{
+		PersonID: personId,
+		RankID:   rankId,
+	}
+
+	err = h.DB.DeletePersonRank(context.Background(), *pr)
+
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}

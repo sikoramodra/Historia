@@ -51,8 +51,25 @@ func (q *Queries) CreatePerson(ctx context.Context, arg CreatePersonParams) (int
 	return id, err
 }
 
+const createPersonRank = `-- name: CreatePersonRank :exec
+INSERT INTO person_rank (person_id, rank_id)
+VALUES ($1, $2)
+`
+
+type CreatePersonRankParams struct {
+	PersonID int32 `json:"person_id"`
+	RankID   int32 `json:"rank_id"`
+}
+
+func (q *Queries) CreatePersonRank(ctx context.Context, arg CreatePersonRankParams) error {
+	_, err := q.db.Exec(ctx, createPersonRank, arg.PersonID, arg.RankID)
+	return err
+}
+
 const deletePerson = `-- name: DeletePerson :exec
-DELETE FROM person WHERE id = $1
+DELETE
+FROM person
+WHERE id = $1
 `
 
 func (q *Queries) DeletePerson(ctx context.Context, id int32) error {
@@ -60,8 +77,26 @@ func (q *Queries) DeletePerson(ctx context.Context, id int32) error {
 	return err
 }
 
+const deletePersonRank = `-- name: DeletePersonRank :exec
+DELETE
+FROM person_rank
+WHERE person_id = $1
+  AND rank_id = $2
+`
+
+type DeletePersonRankParams struct {
+	PersonID int32 `json:"person_id"`
+	RankID   int32 `json:"rank_id"`
+}
+
+func (q *Queries) DeletePersonRank(ctx context.Context, arg DeletePersonRankParams) error {
+	_, err := q.db.Exec(ctx, deletePersonRank, arg.PersonID, arg.RankID)
+	return err
+}
+
 const getPeople = `-- name: GetPeople :many
-SELECT id, name, inscription, other_names, code_names, birth_date, birth_place, death_date, death_place, burial_place, cemetery, quarter, row, grave, ranks, badges, activity, description, sources FROM main_view
+SELECT id, name, inscription, other_names, code_names, birth_date, birth_place, death_date, death_place, burial_place, cemetery, quarter, row, grave, ranks, badges, activity, description, sources
+FROM main_view
 `
 
 func (q *Queries) GetPeople(ctx context.Context) ([]MainView, error) {
@@ -105,7 +140,9 @@ func (q *Queries) GetPeople(ctx context.Context) ([]MainView, error) {
 }
 
 const getPerson = `-- name: GetPerson :one
-SELECT id, name, inscription, other_names, code_names, birth_date, birth_place, death_date, death_place, burial_place, cemetery, quarter, row, grave, ranks, badges, activity, description, sources FROM main_view WHERE id = $1
+SELECT id, name, inscription, other_names, code_names, birth_date, birth_place, death_date, death_place, burial_place, cemetery, quarter, row, grave, ranks, badges, activity, description, sources
+FROM main_view
+WHERE id = $1
 `
 
 func (q *Queries) GetPerson(ctx context.Context, id int32) (MainView, error) {
@@ -133,6 +170,32 @@ func (q *Queries) GetPerson(ctx context.Context, id int32) (MainView, error) {
 		&i.Sources,
 	)
 	return i, err
+}
+
+const getPersonRanks = `-- name: GetPersonRanks :many
+SELECT rank_name AS ranks
+FROM show_peoples_ranks
+WHERE person_id = $1
+`
+
+func (q *Queries) GetPersonRanks(ctx context.Context, personID *int32) ([]string, error) {
+	rows, err := q.db.Query(ctx, getPersonRanks, personID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []string
+	for rows.Next() {
+		var ranks string
+		if err := rows.Scan(&ranks); err != nil {
+			return nil, err
+		}
+		items = append(items, ranks)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
 }
 
 const updatePerson = `-- name: UpdatePerson :one

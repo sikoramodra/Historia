@@ -1,8 +1,11 @@
 -- name: GetPeople :many
-SELECT * FROM main_view;
+SELECT *
+FROM main_view;
 
 -- name: GetPerson :one
-SELECT * FROM main_view WHERE id = $1;
+SELECT *
+FROM main_view
+WHERE id = $1;
 
 -- name: CreatePerson :one
 INSERT INTO person (name, inscription, other_names, code_names, birth_date, birth_place_id, death_date, death_place_id,
@@ -27,4 +30,22 @@ WHERE id = $1
 RETURNING id;
 
 -- name: DeletePerson :exec
-DELETE FROM person WHERE id = $1;
+DELETE
+FROM person
+WHERE id = $1;
+
+
+-- name: GetPersonRanks :many
+SELECT rank_name AS ranks
+FROM show_peoples_ranks
+WHERE person_id = $1;
+
+-- name: CreatePersonRank :exec
+INSERT INTO person_rank (person_id, rank_id)
+VALUES ($1, $2);
+
+-- name: DeletePersonRank :exec
+DELETE
+FROM person_rank
+WHERE person_id = $1
+  AND rank_id = $2;
