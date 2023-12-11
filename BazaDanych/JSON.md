@@ -192,7 +192,7 @@
   "grave": null,
   "ranks": [
     "Admirał",
-    "Komisarz "
+    "Komisarz"
   ],
   "badges": [
     {
@@ -234,6 +234,37 @@
 #### `PUT /people` - in
 ```json
 {
-  "name": "person321"
+  "name": "person123",
+  "inscription": "Inscription for Person123",
+  "other_names": [
+    "Person_123",
+    "Person_321"
+  ],
+  "code_names": [
+    "P123",
+    "P321"
+  ],
+  "birth_date": "1945-01-01",
+  "birth_place": 1,
+  "death_date": "1995-01-01",
+  "death_place": null,
+  "grave": 1,
+  "description": "Description for person123",
+  "sources": "Source for person123"
+}
+```
+
+#### `GET /people/{id}/ranks` - out
+```json
+[
+  "Admirał",
+  "Komisarz"
+]
+```
+
+#### `POST /people/{id}/ranks` - in
+```json
+{
+  "rank_id": 1
 }
 ```
