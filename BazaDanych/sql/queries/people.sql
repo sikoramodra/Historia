@@ -10,8 +10,21 @@ INSERT INTO person (name, inscription, other_names, code_names, birth_date, birt
 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
 RETURNING id;
 
--- name: UpdatePerson :exec
-UPDATE person SET name = $2 WHERE id = $1;
+-- name: UpdatePerson :one
+UPDATE person
+SET name           = $2,
+    inscription    = $3,
+    other_names    = $4,
+    code_names     = $5,
+    birth_date     = $6,
+    birth_place_id = $7,
+    death_date     = $8,
+    death_place_id = $9,
+    grave_id       = $10,
+    description    = $11,
+    sources        = $12
+WHERE id = $1
+RETURNING id;
 
 -- name: DeletePerson :exec
 DELETE FROM person WHERE id = $1;

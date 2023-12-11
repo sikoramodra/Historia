@@ -135,16 +135,54 @@ func (q *Queries) GetPerson(ctx context.Context, id int32) (MainView, error) {
 	return i, err
 }
 
-const updatePerson = `-- name: UpdatePerson :exec
-UPDATE person SET name = $2 WHERE id = $1
+const updatePerson = `-- name: UpdatePerson :one
+UPDATE person
+SET name           = $2,
+    inscription    = $3,
+    other_names    = $4,
+    code_names     = $5,
+    birth_date     = $6,
+    birth_place_id = $7,
+    death_date     = $8,
+    death_place_id = $9,
+    grave_id       = $10,
+    description    = $11,
+    sources        = $12
+WHERE id = $1
+RETURNING id
 `
 
 type UpdatePersonParams struct {
-	ID   int32  `json:"id"`
-	Name string `json:"name"`
+	ID           int32       `json:"id"`
+	Name         string      `json:"name"`
+	Inscription  *string     `json:"inscription"`
+	OtherNames   []string    `json:"other_names"`
+	CodeNames    []string    `json:"code_names"`
+	BirthDate    pgtype.Date `json:"birth_date"`
+	BirthPlaceID *int32      `json:"birth_place_id"`
+	DeathDate    pgtype.Date `json:"death_date"`
+	DeathPlaceID *int32      `json:"death_place_id"`
+	GraveID      *int32      `json:"grave_id"`
+	Description  *string     `json:"description"`
+	Sources      *string     `json:"sources"`
 }
 
-func (q *Queries) UpdatePerson(ctx context.Context, arg UpdatePersonParams) error {
-	_, err := q.db.Exec(ctx, updatePerson, arg.ID, arg.Name)
-	return err
+func (q *Queries) UpdatePerson(ctx context.Context, arg UpdatePersonParams) (int32, error) {
+	row := q.db.QueryRow(ctx, updatePerson,
+		arg.ID,
+		arg.Name,
+		arg.Inscription,
+		arg.OtherNames,
+		arg.CodeNames,
+		arg.BirthDate,
+		arg.BirthPlaceID,
+		arg.DeathDate,
+		arg.DeathPlaceID,
+		arg.GraveID,
+		arg.Description,
+		arg.Sources,
+	)
+	var id int32
+	err := row.Scan(&id)
+	return id, err
 }
