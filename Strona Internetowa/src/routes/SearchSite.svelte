@@ -1,3 +1,73 @@
-<div class="text-4xl font-bold text-center h-full">
-    Search
+<script>
+	import { Link } from "svelte-routing";
+	import { mainColorText, mainColorBorder } from "../store.js";
+
+	mainColorText.set("text-white");
+	mainColorBorder.set("border-white");
+
+	let inputValue = "";
+
+	let handleInput = (event) => {
+		inputValue = event.target.value;
+	};
+
+	let clearInput = () => {
+		inputValue = "";
+	};
+
+	let handleClearInputKeyPress = (event) => {
+		if (event.key == "Enter") {
+			event.preventDefault();
+			clearInput();
+		}
+	}
+</script>
+
+<!-- <div class="h-screen">
+	<Link to="/" class="text-white w-10"><img src="" alt="Home" /></Link>
+</div>
+<div class="text-4xl font-bold h-screen flex items-center justify-center text-white">
+	<p>Search</p>
+</div> -->
+
+<div class="min-h-screen flex flex-col items-center justify-center text-white bg-gradient-to-b from-slate-950 to-slate-800">
+	<div class="h-1/2">
+		<Link to="/" class="text-white w-10 mb-8">
+			<img src="your-image-path-here" alt="Home" class="text-9xl font-bold" />
+		</Link>
+	</div>
+	<div class="text-4xl font-semibold flex items-center h-1/2 mt-12 relative">
+		<span class="absolute left-4 top-1/2 transform -translate-y-1/2">
+			<!-- Add your search icon here -->
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-slate-700">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 2a9 9 0 0 1 9 9c0 5-4 9-9 9a9 9 0 0 1-9-9c0-5 4-9 9-9z"
+				></path>
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6"></path>
+			</svg>
+		</span>
+		
+		<input
+			type="text"
+			placeholder="Wyszukaj Groby..."
+			class="p-3 pl-12 pr-10 bg-slate-800 text-white border-2 border-slate-700 rounded-full transition-all duration-300"
+			bind:value={inputValue}
+			on:input={handleInput}
+		/>
+
+		{#if inputValue !== ""}
+			<span
+				class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+				on:click={clearInput}
+				on:keydown={handleClearInputKeyPress}
+				role="button"
+				tabindex="0"
+				aria-label="Clear input"
+			>
+				<!-- Add your close (x) icon here -->
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-slate-700">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+				</svg>
+			</span>
+		{/if}
+	</div>
 </div>

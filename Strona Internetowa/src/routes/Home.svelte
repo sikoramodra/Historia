@@ -1,12 +1,20 @@
 <script>
 	// --- Imports ---
-
+	
+	import Navbar from './../lib/Navbar.svelte';
+	import Footer from '../lib/Footer.svelte';
 	import { onMount } from "svelte";
 	import { mainColorText, mainColorBorder } from '../store.js';
 
 	// --- --- ---
 
+	mainColorText.set("text-white");
+	mainColorBorder.set("border-white");
+
+	// --- --- ---
+
 	onMount(() => {
+
 		const mainContainer = document.getElementById("main-container");
 
 		// --- Function to change colors of Navbar depending on which div it is ---
@@ -39,6 +47,7 @@
 	});
 </script>
 
+<Navbar />
 <div id="main-container" class="font-bold h-screen w-full overflow-auto">
 	<div id="container1" class="h-screen flex justify-center items-center text-white w-full">
 		<p class="text-7xl">Home</p>
@@ -56,6 +65,7 @@
 
     2. Trzeba umiescic tu jeszcze box z Najnowszymi postami z Library - jako Nowość -->
 </div>
+<Footer />
 
 <style>
 	/* Making snaping scroll */
