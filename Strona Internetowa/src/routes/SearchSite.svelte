@@ -23,20 +23,13 @@
 	}
 </script>
 
-<!-- <div class="h-screen">
-	<Link to="/" class="text-white w-10"><img src="" alt="Home" /></Link>
-</div>
-<div class="text-4xl font-bold h-screen flex items-center justify-center text-white">
-	<p>Search</p>
-</div> -->
-
 <div class="min-h-screen flex flex-col items-center justify-center text-white bg-gradient-to-b from-slate-950 to-slate-800">
 	<div class="h-1/2">
 		<Link to="/" class="text-white w-10 mb-8">
 			<img src="your-image-path-here" alt="Home" class="text-9xl font-bold" />
 		</Link>
 	</div>
-	<div class="text-4xl font-semibold flex items-center h-1/2 mt-12 relative">
+	<form action="" method="" class="text-4xl font-semibold flex items-center h-1/2 mt-12 relative">
 		<span class="absolute left-4 top-1/2 transform -translate-y-1/2">
 			<!-- Add your search icon here -->
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-slate-700">
@@ -48,8 +41,8 @@
 		
 		<input
 			type="text"
-			placeholder="Wyszukaj Groby..."
-			class="p-3 pl-12 pr-10 bg-slate-800 text-white border-2 border-slate-700 rounded-full transition-all duration-300"
+			placeholder="Wyszukaj Nagrobki..."
+			class="p-3 pl-12 pr-10 bg-slate-800 text-white border-2 border-slate-700 rounded-full transition-all duration-300 leading-none"
 			bind:value={inputValue}
 			on:input={handleInput}
 		/>
@@ -69,5 +62,5 @@
 				</svg>
 			</span>
 		{/if}
-	</div>
+	</form>
 </div>
