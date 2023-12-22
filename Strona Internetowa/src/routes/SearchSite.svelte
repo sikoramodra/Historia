@@ -20,15 +20,18 @@
 			event.preventDefault();
 			clearInput();
 		}
-	}
+	};
 </script>
 
-<div class="min-h-screen flex flex-col items-center justify-center text-white bg-gradient-to-b from-slate-950 to-slate-800">
+<div class="min-h-screen flex flex-col items-center justify-center text-white bg-gradient-to-b from-slate-950 to-slate-800 relative">
 	<div class="h-1/2">
 		<Link to="/" class="text-white w-10 mb-8">
-			<img src="https://raw.githubusercontent.com/sikoramodra/Historia/stronka/Strona%20Internetowa/src/res/Logo%20poziom_ciemne%20tło_PNG.png" alt="Home" class="h-[8em] md:h-[10em] lg:h-[12em]" />
+			<img
+				src="https://raw.githubusercontent.com/sikoramodra/Historia/stronka/Strona%20Internetowa/src/res/Logo%20pion%20%20%20tagline_ciemne%20tło_PNG.png"
+				alt="Home"
+				class="h-[14em] md:h-[16em] lg:h-[18em]"
+			/>
 		</Link>
-		<!-- <Link to="/" class="text-left font-bold h-full items-center flex justify-left"><img src="https://raw.githubusercontent.com/sikoramodra/Historia/stronka/Strona%20Internetowa/src/res/Logo%20poziom_ciemne%20tło_PNG.png" alt="Home" class="h-[2.5em] md:h-[2.5em] lg:h-[3em]" /></Link> -->
 	</div>
 	<form action="" method="" class="text-2xl xl:text-4xl font-semibold flex items-center h-1/2 mt-12 relative">
 		<span class="absolute left-4 top-1/2 transform -translate-y-1/2">
@@ -39,7 +42,7 @@
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6"></path>
 			</svg>
 		</span>
-		
+
 		<input
 			type="text"
 			placeholder="Szukaj..."
@@ -64,4 +67,11 @@
 			</span>
 		{/if}
 	</form>
+
+	<Link to="/add-person" class="absolute bottom-4 right-4">
+		<div class="bg-slate-800 rounded-full cursor-pointer shadow-lg hover:scale-105 hover:bg-slate-700 transition-transform duration-300 flex items-center leading-none text-lg p-4">
+			<span class="text-white font-semibold mr-2">+</span>
+			<span class="text-white font-semibold tracking-wide">Add Person</span>
+		</div>
+	</Link>
 </div>

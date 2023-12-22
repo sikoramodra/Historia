@@ -2,7 +2,7 @@
 
 </script>
 
-<div>
+<div class="min-h-screen">
     <form action="">
         
     </form>
