@@ -24,4 +24,11 @@ func SetRoutes(e *echo.Echo, h *handlers.Handler) {
 	people.POST("/:id/ranks", h.CreatePersonRank)
 	people.DELETE("/:id/ranks/:id", h.DeletePersonRank)
 
+	//people.GET("/:id/sub_badges", h.GetPersonSubBadges)
+	//people.POST("/:id/sub_badges", h.CreatePersonSubBadge)
+	//people.DELETE("/:id/sub_badges/:id", h.DeletePersonSubBadge)
+
+	//people.GET("/:id/events", h.GetPersonEvents)
+	//people.POST("/:id/events", h.CreatePersonEvent)
+	//people.DELETE("/:id/events/:id", h.DeletePersonEvent)
 }

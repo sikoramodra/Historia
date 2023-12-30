@@ -66,6 +66,21 @@ func (q *Queries) CreatePersonRank(ctx context.Context, arg CreatePersonRankPara
 	return err
 }
 
+const createPersonSubBadge = `-- name: CreatePersonSubBadge :exec
+INSERT INTO person_rank (person_id, rank_id)
+VALUES ($1, $2)
+`
+
+type CreatePersonSubBadgeParams struct {
+	PersonID int32 `json:"person_id"`
+	RankID   int32 `json:"rank_id"`
+}
+
+func (q *Queries) CreatePersonSubBadge(ctx context.Context, arg CreatePersonSubBadgeParams) error {
+	_, err := q.db.Exec(ctx, createPersonSubBadge, arg.PersonID, arg.RankID)
+	return err
+}
+
 const deletePerson = `-- name: DeletePerson :exec
 DELETE
 FROM person
@@ -91,6 +106,23 @@ type DeletePersonRankParams struct {
 
 func (q *Queries) DeletePersonRank(ctx context.Context, arg DeletePersonRankParams) error {
 	_, err := q.db.Exec(ctx, deletePersonRank, arg.PersonID, arg.RankID)
+	return err
+}
+
+const deletePersonSubBadge = `-- name: DeletePersonSubBadge :exec
+DELETE
+FROM person_rank
+WHERE person_id = $1
+  AND rank_id = $2
+`
+
+type DeletePersonSubBadgeParams struct {
+	PersonID int32 `json:"person_id"`
+	RankID   int32 `json:"rank_id"`
+}
+
+func (q *Queries) DeletePersonSubBadge(ctx context.Context, arg DeletePersonSubBadgeParams) error {
+	_, err := q.db.Exec(ctx, deletePersonSubBadge, arg.PersonID, arg.RankID)
 	return err
 }
 
@@ -173,13 +205,45 @@ func (q *Queries) GetPerson(ctx context.Context, id int32) (MainView, error) {
 }
 
 const getPersonRanks = `-- name: GetPersonRanks :many
+SELECT rank_id   AS id,
+       rank_name AS rank
+FROM show_peoples_ranks
+WHERE person_id = $1
+`
+
+type GetPersonRanksRow struct {
+	ID   int32  `json:"id"`
+	Rank string `json:"rank"`
+}
+
+func (q *Queries) GetPersonRanks(ctx context.Context, personID *int32) ([]GetPersonRanksRow, error) {
+	rows, err := q.db.Query(ctx, getPersonRanks, personID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []GetPersonRanksRow
+	for rows.Next() {
+		var i GetPersonRanksRow
+		if err := rows.Scan(&i.ID, &i.Rank); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getPersonSubBadges = `-- name: GetPersonSubBadges :many
 SELECT rank_name AS ranks
 FROM show_peoples_ranks
 WHERE person_id = $1
 `
 
-func (q *Queries) GetPersonRanks(ctx context.Context, personID *int32) ([]string, error) {
-	rows, err := q.db.Query(ctx, getPersonRanks, personID)
+func (q *Queries) GetPersonSubBadges(ctx context.Context, personID *int32) ([]string, error) {
+	rows, err := q.db.Query(ctx, getPersonSubBadges, personID)
 	if err != nil {
 		return nil, err
 	}

@@ -36,7 +36,8 @@ WHERE id = $1;
 
 
 -- name: GetPersonRanks :many
-SELECT rank_name AS ranks
+SELECT rank_id   AS id,
+       rank_name AS rank
 FROM show_peoples_ranks
 WHERE person_id = $1;
 
