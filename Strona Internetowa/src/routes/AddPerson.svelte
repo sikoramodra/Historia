@@ -41,37 +41,14 @@
 	}
 </script>
 
-<!-- <div class="min-h-screen bg-slate-800 flex justify-center items-center">
-	<div class="bg-slate-600 h-[80vh] w-[80vw] rounded-2xl shadow-xl border border-slate-400">
-		<form action="" class="h-full">
-			<input type="text" name="name" id="name" />
-			<input type="text" name="other_names" id="other_names" />  add option, so that when input have smth in it, you create new input next to it
-			<input type="text" name="inscription" id="inscription" />
-			<input type="text" name="code_names" id="code_names" />  add smth here also
-			<input type="date" name="birth_date" id="birth_date" />
-			<input type="number" name="birth_place" id="birth_place" />
-			<input type="date" name="death_date" id="death_date" />
-			<input type="number" name="death_place" id="death_place" />
-			<input type="number" name="grave" id="grave" />
-            <input type="text" name="description" id="description" />
-            <input type="text" name="sources" id="sources" />
-		</form>
-	</div>
-</div> -->
-
 <div class="min-h-screen bg-gray-800 flex justify-center items-center">
 	<div class="bg-gray-600 h-[80vh] w-[80vw] rounded-2xl shadow-xl border border-gray-400 relative p-2">
-		<form action="" method="POST" class="h-full overflow-auto p-6">
+		<form action="http://localhost:5000/people" method="POST" class="h-full overflow-auto p-6">
 			<div id="official-info" class="border border-white p-4 rounded-xl mb-4">
 				<div class="mb-4 relative p-4">
 					<label for="name" class="block text-white font-bold mb-2">Name:</label>
 					<input type="text" name="name" id="name" class="w-full p-2 border rounded-md" />
 				</div>
-
-				<!-- <div class="mb-4 relative col-span-2">
-					<label for="other_names" class="block text-white font-bold mb-2">Other Names:</label>
-					<input type="text" name="other_names" id="other_names" class="w-full p-2 border rounded-md" />
-				</div> -->
 
 				<div class="mb-4 relative col-span-2 border border-white p-4 rounded-xl">
 					{#each otherNames as value, index (index)}
@@ -80,11 +57,10 @@
 								{index === 0 ? "Other Names:" : "Additional Name:"}
 							</label>
 							<input
-                                required
 								type="text"
 								name="other_names"
 								id="other_names"
-								class="w-full p-2 border rounded-md"
+								class="w-full p-2 border rounded-md {index === 0 ? 'w-full' : 'w-11/12'}"
 								bind:value
 								on:input={(e) => handleInputChange(index, e, 1)}
 							/>
@@ -105,7 +81,7 @@
 								type="text"
 								name="code_names"
 								id="code_names"
-								class="p-2 border rounded-md {index === 0 ? 'w-full' : 'w-4/5'}"
+								class="p-2 border rounded-md {index === 0 ? 'w-full' : 'w-11/12'}"
 								bind:value
 								on:input={(e) => handleInputChange(index, e, 2)}
 							/>
@@ -117,7 +93,7 @@
 				</div>
 			</div>
 
-			<div id="date-place-info" class="border border-white p-4 rounded-xl mb-4">
+			<div id="date-place-info" class="border border-white p-8 rounded-xl mb-4">
 				<div class="mb-4 relative ">
 					<label for="birth_date" class="block text-white font-bold mb-2">Birth Date:</label>
 					<input type="date" name="birth_date" id="birth_date" class="w-full p-2 border rounded-md" />
@@ -139,27 +115,29 @@
 				</div>
 			</div>
 
-			<div id="other-info" class="border border-white p-4 rounded-xl">
-				<div class="mb-4 relative p-4">
+			<div id="other-info" class="border border-white p-8 rounded-xl">
+				<div class="mb-4 relative">
 					<label for="grave" class="block text-white font-bold mb-2">Grave:</label>
 					<input type="number" name="grave" id="grave" class="w-full p-2 border rounded-md" />
 				</div>
 
-				<div class="mb-4 relative p-4">
+				<div class="mb-4 relative">
 					<label for="inscription" class="block text-white font-bold mb-2">Inscription:</label>
 					<input type="text" name="inscription" id="inscription" class="w-full p-2 border rounded-md" />
 				</div>
 
-				<div class="col-span-2 mb-4 relative p-4">
+				<div class="col-span-2 mb-4 relative">
 					<label for="description" class="block text-white font-bold mb-2">Description:</label>
 					<input type="text" name="description" id="description" class="w-full p-2 border rounded-md" />
 				</div>
 
-				<div class="col-span-2 mb-4 relative p-4">
+				<div class="col-span-2 mb-4 relative">
 					<label for="sources" class="block text-white font-bold mb-2">Sources:</label>
 					<input type="text" name="sources" id="sources" class="w-full p-2 border rounded-md" />
 				</div>
 			</div>
+
+			<button type="submit">Click Me</button>
 		</form>
 	</div>
 </div>
