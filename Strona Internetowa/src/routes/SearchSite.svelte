@@ -24,7 +24,7 @@
 </script>
 
 <div class="min-h-screen flex flex-col items-center justify-center text-white bg-gradient-to-b from-slate-950 to-slate-800 relative">
-	<div class="h-1/2">
+	<div class="h-1/2 user-select-none">
 		<Link to="/" class="text-white w-10 mb-8">
 			<img
 				src="https://raw.githubusercontent.com/sikoramodra/Historia/stronka/Strona%20Internetowa/src/res/Logo%20pion%20%20%20tagline_ciemne%20tło_PNG.png"
@@ -68,10 +68,10 @@
 		{/if}
 	</form>
 
-	<Link to="/add-person" class="absolute bottom-4 right-4">
-		<div class="bg-slate-800 rounded-full cursor-pointer shadow-lg hover:scale-105 hover:bg-slate-700 transition-transform duration-300 flex items-center leading-none text-lg p-4">
-			<span class="text-white font-semibold mr-2">+</span>
-			<span class="text-white font-semibold tracking-wide">Add Person</span>
+	<Link to="/add-person" class="absolute bottom-4 right-4 user-select-none">
+		<div class="bg-slate-800 rounded-full user-select-none cursor-pointer shadow-lg hover:scale-105 hover:bg-slate-700 transition-transform duration-300 flex items-center leading-none text-lg p-4">
+			<span class="text-white font-semibold mr-2 user-select-none">+</span>
+			<span class="text-white font-semibold tracking-wide user-select-none">Add Person</span>
 		</div>
 	</Link>
 </div>

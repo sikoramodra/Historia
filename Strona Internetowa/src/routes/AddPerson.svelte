@@ -1,4 +1,6 @@
 <script>
+	import { Link } from "svelte-routing";
+
 	let otherNames = [""];
 	let codeNames = [""];
 
@@ -41,13 +43,16 @@
 	}
 </script>
 
-<div class="min-h-screen bg-gray-800 flex justify-center items-center">
-	<div class="bg-gray-600 h-[80vh] w-[80vw] rounded-2xl shadow-xl border border-gray-400 relative p-2">
+<div class="min-h-screen bg-gray-800 flex justify-center flex-col items-center">
+	<div class="mb-6 text-2xl">
+		<Link to="/" class="font-bold h-full items-center flex justify-left"><img src="https://raw.githubusercontent.com/sikoramodra/Historia/stronka/Strona%20Internetowa/src/res/Logo%20poziom_ciemne%20tło_PNG.png" alt="Home" class="h-[2.5em] md:h-[2.5em] lg:h-[3em]" /></Link>
+	</div>
+	<div class="bg-gray-600 h-[80vh] w-[80vw] rounded-2xl shadow-xl border border-gray-400 relative p-1">
 		<form action="http://localhost:5000/people" method="POST" class="h-full overflow-auto p-6">
 			<div id="official-info" class="border border-white p-4 rounded-xl mb-4">
 				<div class="mb-4 relative p-4">
-					<label for="name" class="block text-white font-bold mb-2">Name:</label>
-					<input type="text" name="name" id="name" class="w-full p-2 border rounded-md" />
+					<label for="name" class="block text-white font-bold mb-2">Name*:</label>
+					<input type="text" name="name" id="name" placeholder="Name and Sirname" class="w-full p-2 border rounded-md" />
 				</div>
 
 				<div class="mb-4 relative col-span-2 border border-white p-4 rounded-xl">
@@ -60,7 +65,7 @@
 								type="text"
 								name="other_names"
 								id="other_names"
-								class="w-full p-2 border rounded-md {index === 0 ? 'w-full' : 'w-11/12'}"
+								class="p-2 border rounded-md {index === 0 ? 'w-full' : 'w-11/12'}"
 								bind:value
 								on:input={(e) => handleInputChange(index, e, 1)}
 							/>
@@ -94,14 +99,14 @@
 			</div>
 
 			<div id="date-place-info" class="border border-white p-8 rounded-xl mb-4">
-				<div class="mb-4 relative ">
+				<div class="mb-4 relative">
 					<label for="birth_date" class="block text-white font-bold mb-2">Birth Date:</label>
 					<input type="date" name="birth_date" id="birth_date" class="w-full p-2 border rounded-md" />
 				</div>
 
 				<div class="mb-4 relative">
 					<label for="birth_place" class="block text-white font-bold mb-2">Birth Place:</label>
-					<input type="number" min="0" name="birth_place" id="birth_place" class="w-full p-2 border rounded-md" />
+					<input type="number" min="0" name="birth_place_id" id="birth_place" class="w-full p-2 border rounded-md" />
 				</div>
 
 				<div class="mb-4 relative">
@@ -111,14 +116,14 @@
 
 				<div class="mb-4 relative">
 					<label for="death_place" class="block text-white font-bold mb-2">Death Place:</label>
-					<input type="number" min="0" name="death_place" id="death_place" class="w-full p-2 border rounded-md" />
+					<input type="number" min="0" name="death_place_id" id="death_place" class="w-full p-2 border rounded-md" />
 				</div>
 			</div>
 
 			<div id="other-info" class="border border-white p-8 rounded-xl">
 				<div class="mb-4 relative">
 					<label for="grave" class="block text-white font-bold mb-2">Grave:</label>
-					<input type="number" name="grave" id="grave" class="w-full p-2 border rounded-md" />
+					<input type="number" name="grave_id" id="grave" class="w-full p-2 border rounded-md" />
 				</div>
 
 				<div class="mb-4 relative">
@@ -136,8 +141,11 @@
 					<input type="text" name="sources" id="sources" class="w-full p-2 border rounded-md" />
 				</div>
 			</div>
-
-			<button type="submit">Click Me</button>
+			<div class="flex justify-center items-center mt-4">
+				<div>
+					<button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Click Me</button>
+				</div>
+			</div>
 		</form>
 	</div>
 </div>
@@ -149,7 +157,7 @@
 
 	::-webkit-scrollbar-track {
 		background-color: transparent; /* Change the background color of the track */
-        border-radius: 6px;
+		border-radius: 6px;
 	}
 
 	::-webkit-scrollbar-thumb {
