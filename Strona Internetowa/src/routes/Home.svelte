@@ -71,13 +71,15 @@
 	/* Making snaping scroll */
 
 	#main-container > div {
-		scroll-snap-align: start;
-	}
+	scroll-snap-align: start;
+	scroll-padding: 100px; /* Dostosuj wartość do swoich potrzeb */
+}
 	#main-container {
-		scroll-snap-type: y mandatory;
-		scroll-behavior: smooth;
-		overscroll-behavior-y: none;
-	}
+	scroll-snap-type: y mandatory;
+	scroll-snap-stop: always;
+	scroll-behavior: smooth;
+	overscroll-behavior-y: none;
+}
 	*::-webkit-scrollbar {
 		width: 0; /* naprawilem problem z scrollbarem */
 		visibility: hidden;
@@ -94,3 +96,4 @@
 
 	/* ---   ---   --- */
 </style>
+
