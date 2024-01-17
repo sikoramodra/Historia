@@ -4,7 +4,7 @@
 	import Navbar from './../lib/Navbar.svelte';
 	import Footer from '../lib/Footer.svelte';
 	import { onMount } from "svelte";
-	import { mainColorText, mainColorBorder } from '../store.js';
+	import { mainColorText, mainColorBorder } from '../stores/ColorStore.js';
 
 	// --- --- ---
 

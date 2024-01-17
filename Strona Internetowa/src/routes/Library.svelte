@@ -4,7 +4,7 @@
     import Tile from '../lib/Tile.svelte';
     import Footer from '../lib/Footer.svelte';
     import Navbar from '../lib/Navbar.svelte';
-    import { mainColorText, mainColorBorder } from '../store.js';
+    import { mainColorText, mainColorBorder } from '../stores/ColorStore.js';
   
     mainColorText.set("text-white");
     mainColorBorder.set("border-white");
