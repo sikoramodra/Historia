@@ -1,8 +1,8 @@
 <script>
 	// --- Imports ---
 	
-	import Navbar from './../lib/Navbar.svelte';
-	import Footer from '../lib/Footer.svelte';
+	import Navbar from '../lib/sections/Navbar.svelte';
+	import Footer from '../lib/sections/Footer.svelte';
 	import { onMount } from "svelte";
 	import { mainColorText, mainColorBorder } from '../stores/ColorStore.js';
 

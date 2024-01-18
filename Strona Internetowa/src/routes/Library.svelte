@@ -1,9 +1,9 @@
 
 <script>
     import { onMount } from 'svelte';
-    import Tile from '../lib/Tile.svelte';
-    import Footer from '../lib/Footer.svelte';
-    import Navbar from '../lib/Navbar.svelte';
+    import Tile from '../lib/layouts/Tile.svelte';
+    import Footer from '../lib/sections/Footer.svelte';
+    import Navbar from '../lib/sections/Navbar.svelte';
     import { mainColorText, mainColorBorder } from '../stores/ColorStore.js';
   
     mainColorText.set("text-white");
@@ -55,7 +55,7 @@
   
   <Navbar />
   
-  <div class="main-container text-4xl font-bold text-white">
+  <div class="main-container text-4xl font-bold text-white overflow-auto">
     <p>Library</p>
     
     <!-- Wyświetl kafelki za pomocą pętli -->

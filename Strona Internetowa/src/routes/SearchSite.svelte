@@ -140,6 +140,12 @@
 	{#if $searchStore.search !== ""}
 		<div transition:slide class="bg-slate-700 w-[90vw] h-[80vh] rounded-2xl m-4 overflow-auto p-4">
 			<pre class="text-sm">{JSON.stringify($searchStore.filtered, null, 2)}</pre>
+			{#each $searchStore.filtered as person}
+				<div>
+					<h1>{person.name}</h1>
+					
+				</div>
+			{/each}
 		</div>
 	{/if}
 

@@ -1,6 +1,6 @@
 <script>
 	import { Link } from "svelte-routing";
-	import { mainColorText, mainColorBorder } from "../stores/ColorStore.js";
+	import { mainColorText, mainColorBorder } from "../../stores/ColorStore.js";
 	// import "../res/Logo poziom_ciemne tło_PNG.png";
 
 	let NavColorText;
