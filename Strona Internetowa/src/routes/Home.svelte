@@ -5,7 +5,7 @@
 	import Footer from '../lib/sections/Footer.svelte';
 	import { onMount } from "svelte";
 	import { mainColorText, mainColorBorder } from '../stores/ColorStore.js';
-
+	const src = "https://media.discordapp.net/attachments/973965163600416768/1200197749409337354/image0.gif?ex=65c54e42&is=65b2d942&hm=c52a162cf4fffd54f42b773c8757c21b1654fcb43b5269d25db4bda2eefd4b19&"
 	// --- --- ---
 
 	mainColorText.set("text-white");
@@ -50,7 +50,9 @@
 <Navbar />
 <div id="main-container" class="font-bold h-screen w-full overflow-auto">
 	<div id="container1" class="h-screen flex justify-center items-center text-white w-full">
+		<div id="ograniczenie głównej">
 		<p class="text-7xl">Home</p>
+	</div>
 	</div>
 	<div id="container2" class="h-screen flex justify-center items-center text-red-600 w-full bg-white">
 		<p class="text-7xl">Home</p>
@@ -93,7 +95,16 @@
 		border-radius: 10px;
 		border: 1px solid transparent;
 	}
+	#container1 {
+        min-height: 100vh; /* Minimum height of the viewport */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: url ({src}); /* Adjust gradient colors */        color: white; /* Text color on the gradient background */
+	}
+/* ... (existing styles) */
 
-	/* ---   ---   --- */
+
 </style>
 
