@@ -101,9 +101,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: url ({src}); /* Adjust gradient colors */        color: white; /* Text color on the gradient background */
+        background: black; 
 	}
-/* ... (existing styles) */
 
 
 </style>
