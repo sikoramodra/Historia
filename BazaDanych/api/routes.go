@@ -39,4 +39,24 @@ func SetRoutes(e *echo.Echo, h *handlers.Handler) {
 	places.DELETE("/:id", h.DeletePlace)
 
 	places.GET("/full", h.GetPlacesFull)
+
+	cemeteries := places.Group("/cemeteries")
+	cemeteries.GET("", h.GetCemeteries)
+	cemeteries.POST("", h.CreateCemetery)
+	cemeteries.DELETE("/:id", h.DeleteCemetery)
+
+	quarters := places.Group("/quarters")
+	quarters.GET("", h.GetQuarters)
+	quarters.POST("", h.CreateQuarter)
+	quarters.DELETE("/:id", h.DeleteQuarter)
+
+	rows := places.Group("/rows")
+	rows.GET("", h.GetRows)
+	rows.POST("", h.CreateRow)
+	rows.DELETE("/:id", h.DeleteRow)
+
+	graves := places.Group("/graves")
+	graves.GET("", h.GetGraves)
+	graves.POST("", h.CreateGrave)
+	graves.DELETE("/:id", h.DeleteGrave)
 }
