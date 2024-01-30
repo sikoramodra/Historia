@@ -51,6 +51,21 @@ func (q *Queries) CreatePerson(ctx context.Context, arg CreatePersonParams) (int
 	return id, err
 }
 
+const createPersonEvent = `-- name: CreatePersonEvent :exec
+INSERT INTO person_event (person_id, event_id)
+VALUES ($1, $2)
+`
+
+type CreatePersonEventParams struct {
+	PersonID int32 `json:"person_id"`
+	EventID  int32 `json:"event_id"`
+}
+
+func (q *Queries) CreatePersonEvent(ctx context.Context, arg CreatePersonEventParams) error {
+	_, err := q.db.Exec(ctx, createPersonEvent, arg.PersonID, arg.EventID)
+	return err
+}
+
 const createPersonRank = `-- name: CreatePersonRank :exec
 INSERT INTO person_rank (person_id, rank_id)
 VALUES ($1, $2)
@@ -67,17 +82,17 @@ func (q *Queries) CreatePersonRank(ctx context.Context, arg CreatePersonRankPara
 }
 
 const createPersonSubBadge = `-- name: CreatePersonSubBadge :exec
-INSERT INTO person_rank (person_id, rank_id)
+INSERT INTO person_sub_badge (person_id, sub_badge_id)
 VALUES ($1, $2)
 `
 
 type CreatePersonSubBadgeParams struct {
-	PersonID int32 `json:"person_id"`
-	RankID   int32 `json:"rank_id"`
+	PersonID   int32 `json:"person_id"`
+	SubBadgeID int32 `json:"sub_badge_id"`
 }
 
 func (q *Queries) CreatePersonSubBadge(ctx context.Context, arg CreatePersonSubBadgeParams) error {
-	_, err := q.db.Exec(ctx, createPersonSubBadge, arg.PersonID, arg.RankID)
+	_, err := q.db.Exec(ctx, createPersonSubBadge, arg.PersonID, arg.SubBadgeID)
 	return err
 }
 
@@ -89,6 +104,23 @@ WHERE id = $1
 
 func (q *Queries) DeletePerson(ctx context.Context, id int32) error {
 	_, err := q.db.Exec(ctx, deletePerson, id)
+	return err
+}
+
+const deletePersonEvent = `-- name: DeletePersonEvent :exec
+DELETE
+FROM person_event
+WHERE person_id = $1
+  AND event_id = $2
+`
+
+type DeletePersonEventParams struct {
+	PersonID int32 `json:"person_id"`
+	EventID  int32 `json:"event_id"`
+}
+
+func (q *Queries) DeletePersonEvent(ctx context.Context, arg DeletePersonEventParams) error {
+	_, err := q.db.Exec(ctx, deletePersonEvent, arg.PersonID, arg.EventID)
 	return err
 }
 
@@ -111,18 +143,18 @@ func (q *Queries) DeletePersonRank(ctx context.Context, arg DeletePersonRankPara
 
 const deletePersonSubBadge = `-- name: DeletePersonSubBadge :exec
 DELETE
-FROM person_rank
+FROM person_sub_badge
 WHERE person_id = $1
-  AND rank_id = $2
+  AND sub_badge_id = $2
 `
 
 type DeletePersonSubBadgeParams struct {
-	PersonID int32 `json:"person_id"`
-	RankID   int32 `json:"rank_id"`
+	PersonID   int32 `json:"person_id"`
+	SubBadgeID int32 `json:"sub_badge_id"`
 }
 
 func (q *Queries) DeletePersonSubBadge(ctx context.Context, arg DeletePersonSubBadgeParams) error {
-	_, err := q.db.Exec(ctx, deletePersonSubBadge, arg.PersonID, arg.RankID)
+	_, err := q.db.Exec(ctx, deletePersonSubBadge, arg.PersonID, arg.SubBadgeID)
 	return err
 }
 
@@ -204,11 +236,56 @@ func (q *Queries) GetPerson(ctx context.Context, id int32) (MainView, error) {
 	return i, err
 }
 
+const getPersonEvents = `-- name: GetPersonEvents :many
+SELECT pe.event_id AS id,
+       e.name      AS event_name,
+       sa.name     AS sub_activity_name,
+       a.name      AS activity_name
+FROM activity a
+         LEFT JOIN sub_activity sa ON a.id = sa.activity_id
+         LEFT JOIN event e ON sa.id = e.sub_activity_id
+         LEFT JOIN person_event pe ON e.id = pe.event_id
+WHERE pe.person_id = $1
+`
+
+type GetPersonEventsRow struct {
+	ID              *int32  `json:"id"`
+	EventName       *string `json:"event_name"`
+	SubActivityName *string `json:"sub_activity_name"`
+	ActivityName    string  `json:"activity_name"`
+}
+
+func (q *Queries) GetPersonEvents(ctx context.Context, personID int32) ([]GetPersonEventsRow, error) {
+	rows, err := q.db.Query(ctx, getPersonEvents, personID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []GetPersonEventsRow
+	for rows.Next() {
+		var i GetPersonEventsRow
+		if err := rows.Scan(
+			&i.ID,
+			&i.EventName,
+			&i.SubActivityName,
+			&i.ActivityName,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const getPersonRanks = `-- name: GetPersonRanks :many
-SELECT rank_id   AS id,
-       rank_name AS rank
-FROM show_peoples_ranks
-WHERE person_id = $1
+SELECT r.id   AS id,
+       r.name AS rank
+FROM rank r
+         LEFT JOIN person_rank pr ON r.id = pr.rank_id
+WHERE pr.person_id = $1
 `
 
 type GetPersonRanksRow struct {
@@ -216,7 +293,7 @@ type GetPersonRanksRow struct {
 	Rank string `json:"rank"`
 }
 
-func (q *Queries) GetPersonRanks(ctx context.Context, personID *int32) ([]GetPersonRanksRow, error) {
+func (q *Queries) GetPersonRanks(ctx context.Context, personID int32) ([]GetPersonRanksRow, error) {
 	rows, err := q.db.Query(ctx, getPersonRanks, personID)
 	if err != nil {
 		return nil, err
@@ -237,24 +314,34 @@ func (q *Queries) GetPersonRanks(ctx context.Context, personID *int32) ([]GetPer
 }
 
 const getPersonSubBadges = `-- name: GetPersonSubBadges :many
-SELECT rank_name AS ranks
-FROM show_peoples_ranks
-WHERE person_id = $1
+SELECT pb.sub_badge_id AS id,
+       sb.name         AS sub_badge,
+       b.name          AS badge
+FROM badge b
+         LEFT JOIN sub_badge sb ON b.id = sb.badge_id
+         LEFT JOIN person_sub_badge pb ON sb.id = pb.sub_badge_id
+WHERE pb.person_id = $1
 `
 
-func (q *Queries) GetPersonSubBadges(ctx context.Context, personID *int32) ([]string, error) {
+type GetPersonSubBadgesRow struct {
+	ID       *int32  `json:"id"`
+	SubBadge *string `json:"sub_badge"`
+	Badge    string  `json:"badge"`
+}
+
+func (q *Queries) GetPersonSubBadges(ctx context.Context, personID int32) ([]GetPersonSubBadgesRow, error) {
 	rows, err := q.db.Query(ctx, getPersonSubBadges, personID)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	var items []string
+	var items []GetPersonSubBadgesRow
 	for rows.Next() {
-		var ranks string
-		if err := rows.Scan(&ranks); err != nil {
+		var i GetPersonSubBadgesRow
+		if err := rows.Scan(&i.ID, &i.SubBadge, &i.Badge); err != nil {
 			return nil, err
 		}
-		items = append(items, ranks)
+		items = append(items, i)
 	}
 	if err := rows.Err(); err != nil {
 		return nil, err

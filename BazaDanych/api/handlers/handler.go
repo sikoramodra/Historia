@@ -12,8 +12,8 @@ type Handler struct {
 	DB *db.Queries
 }
 
-func (h *Handler) GetParamId(c echo.Context) (int32, error) {
-	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
+func (h *Handler) GetParamByName(c echo.Context, name string) (int32, error) {
+	id, err := strconv.Atoi(c.Param(name))
 	if err != nil {
 		return -1, err
 	}

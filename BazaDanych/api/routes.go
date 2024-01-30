@@ -22,13 +22,21 @@ func SetRoutes(e *echo.Echo, h *handlers.Handler) {
 
 	people.GET("/:id/ranks", h.GetPersonRanks)
 	people.POST("/:id/ranks", h.CreatePersonRank)
-	people.DELETE("/:id/ranks/:id", h.DeletePersonRank)
+	people.DELETE("/:pid/ranks/:rid", h.DeletePersonRank)
 
-	//people.GET("/:id/sub_badges", h.GetPersonSubBadges)
-	//people.POST("/:id/sub_badges", h.CreatePersonSubBadge)
-	//people.DELETE("/:id/sub_badges/:id", h.DeletePersonSubBadge)
+	people.GET("/:id/sub_badges", h.GetPersonSubBadges)
+	people.POST("/:id/sub_badges", h.CreatePersonSubBadge)
+	people.DELETE("/:pid/sub_badges/:bid", h.DeletePersonSubBadge)
 
-	//people.GET("/:id/events", h.GetPersonEvents)
-	//people.POST("/:id/events", h.CreatePersonEvent)
-	//people.DELETE("/:id/events/:id", h.DeletePersonEvent)
+	people.GET("/:id/events", h.GetPersonEvents)
+	people.POST("/:id/events", h.CreatePersonEvent)
+	people.DELETE("/:pid/events/:eid", h.DeletePersonEvent)
+
+	places := e.Group("/places")
+	places.GET("", h.GetPlaces)
+	places.POST("", h.CreatePlace)
+	places.PUT("/:id", h.UpdatePlace)
+	places.DELETE("/:id", h.DeletePlace)
+
+	places.GET("/full", h.GetPlacesFull)
 }

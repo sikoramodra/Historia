@@ -36,10 +36,12 @@ WHERE id = $1;
 
 
 -- name: GetPersonRanks :many
-SELECT rank_id   AS id,
-       rank_name AS rank
-FROM show_peoples_ranks
-WHERE person_id = $1;
+SELECT r.id   AS id,
+       r.name AS rank
+FROM rank r
+         LEFT JOIN person_rank pr ON r.id = pr.rank_id
+WHERE pr.person_id = $1;
+
 
 -- name: CreatePersonRank :exec
 INSERT INTO person_rank (person_id, rank_id)
@@ -50,3 +52,45 @@ DELETE
 FROM person_rank
 WHERE person_id = $1
   AND rank_id = $2;
+
+
+-- name: GetPersonSubBadges :many
+SELECT pb.sub_badge_id AS id,
+       sb.name         AS sub_badge,
+       b.name          AS badge
+FROM badge b
+         LEFT JOIN sub_badge sb ON b.id = sb.badge_id
+         LEFT JOIN person_sub_badge pb ON sb.id = pb.sub_badge_id
+WHERE pb.person_id = $1;
+
+-- name: CreatePersonSubBadge :exec
+INSERT INTO person_sub_badge (person_id, sub_badge_id)
+VALUES ($1, $2);
+
+-- name: DeletePersonSubBadge :exec
+DELETE
+FROM person_sub_badge
+WHERE person_id = $1
+  AND sub_badge_id = $2;
+
+
+-- name: GetPersonEvents :many
+SELECT pe.event_id AS id,
+       e.name      AS event_name,
+       sa.name     AS sub_activity_name,
+       a.name      AS activity_name
+FROM activity a
+         LEFT JOIN sub_activity sa ON a.id = sa.activity_id
+         LEFT JOIN event e ON sa.id = e.sub_activity_id
+         LEFT JOIN person_event pe ON e.id = pe.event_id
+WHERE pe.person_id = $1;
+
+-- name: CreatePersonEvent :exec
+INSERT INTO person_event (person_id, event_id)
+VALUES ($1, $2);
+
+-- name: DeletePersonEvent :exec
+DELETE
+FROM person_event
+WHERE person_id = $1
+  AND event_id = $2;
