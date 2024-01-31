@@ -257,8 +257,14 @@
 #### `GET /people/{id}/ranks` - out
 ```json
 [
-  "Admirał",
-  "Komisarz"
+  {
+    "id": 1,
+    "rank": "Admirał"
+  },
+  {
+    "id": 2,
+    "rank": "Komisarz"
+  }
 ]
 ```
 
@@ -268,3 +274,113 @@
   "rank_id": 1
 }
 ```
+
+#### `GET /people/{id}/sub_badges` - out
+```json
+[
+  {
+    "id": 1,
+    "sub_badge": "Złoty Krzyż Zasługi",
+    "badge": "Krzyż Zasługi"
+  },
+  {
+    "id": 2,
+    "sub_badge": "Srebrny Krzyż Zasługi",
+    "badge": "Krzyż Zasługi"
+  },
+  {
+    "id": 3,
+    "sub_badge": "Krzyż Srebrny Orderu Virtuti Militari",
+    "badge": "Krzyż Orderu Virtuti Militari"
+  }
+]
+```
+
+#### `POST /people/{id}/sub_badges` - in
+```json
+{
+  "sub_badge_id": 5
+}
+```
+
+#### `GET /people/{id}/events` - out
+```json
+[
+  {
+    "id": 1,
+    "event_name": "Powstanie warszawskie",
+    "sub_activity_name": "Powstania",
+    "activity_name": "WWII"
+  },
+  {
+    "id": 2,
+    "event_name": "Reims (1914)",
+    "sub_activity_name": "Battles",
+    "activity_name": "WWI"
+  },
+  {
+    "id": 3,
+    "event_name": "I Kompania Kadrowa",
+    "sub_activity_name": "Formations",
+    "activity_name": "WWI"
+  }
+]
+
+```
+
+#### `POST /people/{id}/events` - in
+```json
+{
+  "event_id": 2
+}
+```
+
+#### `GET /places` - out
+```json
+[
+  {
+    "id": 1,
+    "name": "Szczecin"
+  },
+  {
+    "id": 2,
+    "name": "Warszawa"
+  }
+]
+```
+
+#### `POST /places` - in
+```json
+  "Warszawa"
+```
+
+#### `GET /places/full` - out
+```json
+[
+  {
+    "id": null,
+    "grave": null,
+    "row": null,
+    "quarter": null,
+    "cemetery": "Cmentarz centralny w Szczecinie",
+    "place": "Szczecin"
+  },
+  {
+    "id": 1,
+    "grave": "test123",
+    "row": "test123",
+    "quarter": "test123",
+    "cemetery": "Cmentarz centralny w Szczecinie",
+    "place": "Szczecin"
+  },
+  {
+    "id": null,
+    "grave": null,
+    "row": null,
+    "quarter": null,
+    "cemetery": null,
+    "place": "Szczecin"
+  }
+]
+```
+

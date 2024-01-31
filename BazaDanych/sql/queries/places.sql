@@ -22,13 +22,13 @@ SELECT g.id   AS id,
        g.name AS grave,
        r.name AS row,
        q.name AS quarter,
-       c.name AS cementery,
+       c.name AS cemetery,
        p.name AS place
 FROM place p
-         INNER JOIN cemetery c ON p.id = c.burial_place_id
-         INNER JOIN quarter q ON c.id = q.cemetery_id
-         INNER JOIN row r ON q.id = r.quarter_id
-         INNER JOIN grave g ON r.id = g.row_id;
+         LEFT JOIN cemetery c ON p.id = c.burial_place_id
+         LEFT JOIN quarter q ON c.id = q.cemetery_id
+         LEFT JOIN row r ON q.id = r.quarter_id
+         LEFT JOIN grave g ON r.id = g.row_id;
 
 
 -- name: GetCemeteries :many

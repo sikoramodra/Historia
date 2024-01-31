@@ -226,22 +226,22 @@ SELECT g.id   AS id,
        g.name AS grave,
        r.name AS row,
        q.name AS quarter,
-       c.name AS cementery,
+       c.name AS cemetery,
        p.name AS place
 FROM place p
-         INNER JOIN cemetery c ON p.id = c.burial_place_id
-         INNER JOIN quarter q ON c.id = q.cemetery_id
-         INNER JOIN row r ON q.id = r.quarter_id
-         INNER JOIN grave g ON r.id = g.row_id
+         LEFT JOIN cemetery c ON p.id = c.burial_place_id
+         LEFT JOIN quarter q ON c.id = q.cemetery_id
+         LEFT JOIN row r ON q.id = r.quarter_id
+         LEFT JOIN grave g ON r.id = g.row_id
 `
 
 type GetPlacesFullRow struct {
-	ID        int32   `json:"id"`
-	Grave     *string `json:"grave"`
-	Row       *string `json:"row"`
-	Quarter   *string `json:"quarter"`
-	Cementery *string `json:"cementery"`
-	Place     string  `json:"place"`
+	ID       *int32  `json:"id"`
+	Grave    *string `json:"grave"`
+	Row      *string `json:"row"`
+	Quarter  *string `json:"quarter"`
+	Cemetery *string `json:"cemetery"`
+	Place    string  `json:"place"`
 }
 
 func (q *Queries) GetPlacesFull(ctx context.Context) ([]GetPlacesFullRow, error) {
@@ -258,7 +258,7 @@ func (q *Queries) GetPlacesFull(ctx context.Context) ([]GetPlacesFullRow, error)
 			&i.Grave,
 			&i.Row,
 			&i.Quarter,
-			&i.Cementery,
+			&i.Cemetery,
 			&i.Place,
 		); err != nil {
 			return nil, err
