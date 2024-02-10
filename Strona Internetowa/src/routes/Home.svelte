@@ -37,8 +37,8 @@
 				//--- --- ---
 			} else {
 				//currentdiv = 3
-				mainColorText.set("text-black");
-				mainColorBorder.set("border-black");
+				mainColorText.set("text-white");
+				mainColorBorder.set("border-white");
 				//--- --- ---
 			}
 			// console.log($mainColorText, $mainColorBorder);
@@ -79,7 +79,7 @@
 	scroll-padding: 100px; /* Dostosuj wartość do swoich potrzeb */
 }
 	#main-container {
-	scroll-snap-type: y mandatory;
+	scroll-snap-type: y proximity;
 	scroll-snap-stop: always;
 	scroll-behavior: smooth;
 	overscroll-behavior-y: none;

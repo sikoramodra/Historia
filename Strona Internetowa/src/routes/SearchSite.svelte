@@ -1,4 +1,5 @@
 <script>
+	import PeopleCards from './../lib/layouts/PeopleCards.svelte';
 	// --- Imports ---
 	
 		import { Link } from "svelte-routing";
@@ -55,11 +56,50 @@
 					description: "",
 					sources: "",
 				},
+				{
+					name: "Andrzej Migrewski",
+					inscription: "Spoczywaj w pokoju",
+					other_names: ["Jędrula", "Ciekawy Pan"],
+					code_names: ["werit2", "człowie"],
+					birth_date: "2000-08-10",
+					birth_place: 1,
+					death_date: "2024-01-01",
+					death_place: 2,
+					grave: 1,
+					description: "Był człowiekiem mądrym i tak dalej i tak dalej",
+					sources: "wikipedia",
+				},
+				{
+					name: "Dawid Andrzej",
+					inscription: "Spoczywaj w pokoju nierobie",
+					other_names: ["AlKoCHolik", "Ciekawy Pań", "gołąb"],
+					code_names: ["Dawciopff", "człek"],
+					birth_date: "2000-08-10",
+					birth_place: 1,
+					death_date: "2024-01-01",
+					death_place: 2,
+					grave: 1,
+					description: "Był człowiekiem mądrym i tak dalej i tak dalej",
+					sources: "wikipedia",
+				},
+				{
+					name: "Mateusz Rozer",
+					inscription: "nierobie",
+					other_names: ["On", "Jest"],
+					code_names: ["taki"],
+					birth_date: "2000-08-10",
+					birth_place: 1,
+					death_date: "2024-01-01",
+					death_place: 2,
+					grave: 1,
+					description: "",
+					sources: "",
+				},
 			];
 
 			const searchProducts = dbData.map((product) => ({
 				...product,
-				searchTerms: `${product.name} ${product.other_names.toString().replace(/,/g, ' ')} ${product.code_names.toString().replace(/,/g, ' ')} ${product.birth_place} ${product.birth_date.substr(0, 4)} ${product.death_place} ${product.death_date.substr(0, 4)} ${product.grave} `
+				searchTerms: `${product.name} ${product.other_names.toString().replace(/,/g, ' ')} ${product.code_names.toString().replace(/,/g, ' ')} ${product.birth_place} ${product.birth_date.substring(0, 4)} ${product.death_place} ${product.death_date.substring(0, 4)} ${product.grave} `
 			}))
 
 			const searchStore = createSearchStore(searchProducts)
@@ -138,13 +178,10 @@
 
 	<!-- Search Results -->
 	{#if $searchStore.search !== ""}
-		<div transition:slide class="bg-slate-700 w-[90vw] h-[80vh] rounded-2xl m-4 overflow-auto p-4">
-			<pre class="text-sm">{JSON.stringify($searchStore.filtered, null, 2)}</pre>
+		<div transition:slide class="flex flex-row flex-wrap justify-around bg-slate-700 w-[90vw] h-[80vh] rounded-2xl m-4 overflow-auto p-4">
+			<!-- <pre class="text-sm">{JSON.stringify($searchStore.filtered, null, 2)}</pre> -->
 			{#each $searchStore.filtered as person}
-				<div>
-					<h1>{person.name}</h1>
-					
-				</div>
+				<PeopleCards data={person} />
 			{/each}
 		</div>
 	{/if}
