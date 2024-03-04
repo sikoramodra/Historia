@@ -1,18 +1,12 @@
 <script>
 	export let data;
 
-	const birthDateFormatted = `${data.birth_date.substring(8, 10)}.${data.birth_date.substring(5, 7)}.${data.birth_date.substring(
-		0,
-		4
-	)}`;
+	const birthDateFormatted = `${data.birth_date.substring(8, 10)}.${data.birth_date.substring(5, 7)}.${data.birth_date.substring(0, 4)}`;
 
-	const deathDateFormatted = `${data.death_date.substring(8, 10)}.${data.death_date.substring(5, 7)}.${data.death_date.substring(
-		0,
-		4
-	)}`;
+	const deathDateFormatted = `${data.death_date.substring(8, 10)}.${data.death_date.substring(5, 7)}.${data.death_date.substring(0, 4)}`;
 </script>
 
-<div class="flex flex-col border border-gray-700 shadow-lg p-4 rounded-lg mb-4 bg-gray-800 text-white h-min">
+<div class="flex flex-col border border-gray-700 shadow-lg p-4 rounded-lg bg-gray-800 text-white h-min">
 	<div class="text-center">
 		<h1 class="font-bold text-lg lg:text-xl mb-2">{data.name}</h1>
 		<div class="border-b border-gray-700 mb-2"></div>
@@ -60,5 +54,3 @@
 		</div>
 	</div>
 </div>
-
-

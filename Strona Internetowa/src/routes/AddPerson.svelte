@@ -164,7 +164,7 @@
 		>
 	</div>
 	<div class="bg-gray-600 h-[80vh] w-[80vw] rounded-2xl shadow-xl border border-gray-400 relative p-1">
-		<form on:submit|preventDefault={handleSubmit} action="http://localhost:5000/people" method="POST" class="h-full overflow-auto p-6">
+		<form on:submit|preventDefault={handleSubmit} action="/people" method="POST" class="h-full overflow-auto p-6">
 			<div id="official-info" class="border border-white p-4 rounded-xl mb-4">
 				<div class="mb-4 relative p-8">
 					<label for="name" class="block text-white font-bold mb-2">Name*:</label>
