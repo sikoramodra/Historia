@@ -1,12 +1,12 @@
 <script>
-	import PeopleInfo from "./../lib/layouts/PeopleInfo.svelte";
 	// --- Imports ---
 
+	import PeopleInfo from "./../lib/layouts/PeopleInfo.svelte";
 	import { Link } from "svelte-routing";
 	import { slide } from "svelte/transition";
 	import { mainColorText, mainColorBorder } from "../stores/ColorStore.js";
 	import { createSearchStore, searchHandler } from "./../stores/SearchStore.js";
-	import { onDestroy } from "svelte";
+	import { onDestroy, onMount } from "svelte";
 	import PeopleCards from "./../lib/layouts/PeopleCards.svelte";
 
 	// --- --- ---
@@ -120,6 +120,18 @@
 
 	// --- Functions ---
 
+	const fetchData = async () => {
+		try {
+			const response = await fetch("/people");
+			if (!response.ok) {
+				throw new Error("Failed to fetch data");
+			}
+			dbData = await response.json();
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	let clearInput = () => {
 		$searchStore.search = "";
 	};
@@ -152,6 +164,11 @@
 	};
 
 	// --- --- ---
+	// --- Svelte Functions ---
+
+	onMount(fetchData);
+
+	// --- --- ---
 </script>
 
 <div class="min-h-screen flex flex-col items-center justify-center text-white bg-gradient-to-b from-slate-950 to-slate-800 relative">
@@ -164,7 +181,7 @@
 			tabindex="0"
 			class="absolute h-[100vh] w-[100vw] flex items-center justify-center bg-black bg-opacity-50 z-20"
 		>
-			<PeopleInfo data={chosenPerson} />
+			<PeopleInfo data={chosenPerson} {closePopup} />
 		</div>
 	{/if}
 
