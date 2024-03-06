@@ -51,9 +51,8 @@
 <div id="main-container" class="font-bold h-screen w-full overflow-auto">
 	<div id="container1" class="h-screen flex justify-center items-center text-white w-full">
 		
-			<h1 class="text-6xl">Jesteśmy by Pamiętać</h1>
-			<button class="text-4xl">Button</button>
-	
+	<h1 class="text-6xl">Jesteśmy by Pamiętać</h1>
+	<button class="text-4xl">Button</button>
 		
 	</div>
 	<div id="container2" class="h-screen flex justify-center items-center text-red-600 w-full bg-white">
@@ -109,4 +108,3 @@
 }
 	
 </style>
-
