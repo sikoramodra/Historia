@@ -1,10 +1,10 @@
 <script>
 	// --- Imports ---
 	
-	import Navbar from './../lib/Navbar.svelte';
-	import Footer from '../lib/Footer.svelte';
+	import Navbar from '../lib/sections/Navbar.svelte';
+	import Footer from '../lib/sections/Footer.svelte';
 	import { onMount } from "svelte";
-	import { mainColorText, mainColorBorder } from '../store.js';
+	import { mainColorText, mainColorBorder } from '../stores/ColorStore.js';
 
 	// --- --- ---
 
@@ -37,8 +37,8 @@
 				//--- --- ---
 			} else {
 				//currentdiv = 3
-				mainColorText.set("text-black");
-				mainColorBorder.set("border-black");
+				mainColorText.set("text-white");
+				mainColorBorder.set("border-white");
 				//--- --- ---
 			}
 			// console.log($mainColorText, $mainColorBorder);
@@ -50,7 +50,10 @@
 <Navbar />
 <div id="main-container" class="font-bold h-screen w-full overflow-auto">
 	<div id="container1" class="h-screen flex justify-center items-center text-white w-full">
-		<p class="text-7xl">Home</p>
+		
+	<h1 class="text-6xl">Jesteśmy by Pamiętać</h1>
+	<button class="text-4xl">Button</button>
+		
 	</div>
 	<div id="container2" class="h-screen flex justify-center items-center text-red-600 w-full bg-white">
 		<p class="text-7xl">Home</p>
@@ -71,13 +74,15 @@
 	/* Making snaping scroll */
 
 	#main-container > div {
-		scroll-snap-align: start;
-	}
+	scroll-snap-align: start;
+	scroll-padding: 100px; /* Dostosuj wartość do swoich potrzeb */
+}
 	#main-container {
-		scroll-snap-type: y mandatory;
-		scroll-behavior: smooth;
-		overscroll-behavior-y: none;
-	}
+	scroll-snap-type: y proximity;
+	scroll-snap-stop: always;
+	scroll-behavior: smooth;
+	overscroll-behavior-y: none;
+}
 	*::-webkit-scrollbar {
 		width: 0; /* naprawilem problem z scrollbarem */
 		visibility: hidden;
@@ -91,6 +96,15 @@
 		border-radius: 10px;
 		border: 1px solid transparent;
 	}
-
-	/* ---   ---   --- */
+	#container1 {
+        position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(https://github.com/SevenPik/StronyInternetoweSpeedrun/blob/main/image0-ezgif.com-gif-to-mp4-converter.mp4);
+    z-index: 1;
+}
+	
 </style>

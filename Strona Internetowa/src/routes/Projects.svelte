@@ -1,7 +1,7 @@
 <script>
-	import Navbar from './../lib/Navbar.svelte';
-	import Footer from '../lib/Footer.svelte';
-	import { mainColorText, mainColorBorder } from '../store.js';
+	import Navbar from '../lib/sections/Navbar.svelte';
+	import Footer from '../lib/sections/Footer.svelte';
+	import { mainColorText, mainColorBorder } from '../stores/ColorStore.js';
 
     mainColorText.set("text-white");
     mainColorBorder.set("border-white");
