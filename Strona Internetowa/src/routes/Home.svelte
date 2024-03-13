@@ -99,8 +99,8 @@
 <div id="main-container" class="font-bold h-screen w-full overflow-auto">
     <!--kontener1-->
     <div id="container1" class="h-dvh flex justify-center items-center bg-gradient-to-b from-slate-950 to-slate-800 text-white w-full relative">
-        <div id="osiem" class="w-full absolute top-20 left-0 bottom-0 right-0 justify-center items-center h-screen flex">
-            <h1 class="text-6xl">{$textToAnimate}</h1>
+        <div id="osiem" class="w-full absolute top-20 left-0 bottom-0 right-0 h-screen text-left flex justify-between items-center">
+            <h1 class="text-6xl select-none">{$textToAnimate}</h1>
             <button class="text-4xl">Button</button>
         </div>
     </div>
@@ -139,6 +139,7 @@
         scroll-behavior: smooth;
         overscroll-behavior-y: contain;
         overscroll-behavior-inline: contain;
+        -webkit-user-drag:none;
     }
 
     
