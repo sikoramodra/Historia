@@ -1,5 +1,6 @@
 <script>
 	import { Link } from "svelte-routing";
+	import Logo from "../res/Logo_poziom_ciemne_tło_PNG.png";
 
 	let formData = {
 		name: "",
@@ -35,8 +36,6 @@
 
 			const maxDaysInMonth = new Date(year, month, 0);
 
-			console.log("first: " + day);
-
 			birthData.maxDay = maxDaysInMonth.getDate() ? maxDaysInMonth.getDate() : 31;
 			day = Math.min(day, maxDaysInMonth.getDate() ? maxDaysInMonth.getDate() : 31);
 			day = Math.max(day, 1);
@@ -45,13 +44,9 @@
 			year = Math.max(year, 1);
 			year = Math.min(year, birthData.maxYear);
 
-			console.log("second: " + day);
-
 			birthData.day = day;
 			birthData.month = month;
 			birthData.year = year;
-
-			console.log("third: " + day);
 
 			birthData.date = `${year.toString().padStart(4, "0")}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
 		} else {
@@ -60,7 +55,6 @@
 			birthData.year = `${birthData.date[0]}${birthData.date[1]}${birthData.date[2]}${birthData.date[3]}`;
 		}
 		formData.birth_date = birthData.date;
-		console.log(formData.birth_date);
 	}
 
 	// --- Death Inputs ---
@@ -82,8 +76,6 @@
 
 			const maxDaysInMonth = new Date(year, month, 0);
 
-			console.log("first: " + day);
-
 			deathData.maxDay = maxDaysInMonth.getDate() ? maxDaysInMonth.getDate() : 31;
 			day = Math.min(day, maxDaysInMonth.getDate() ? maxDaysInMonth.getDate() : 31);
 			day = Math.max(day, 1);
@@ -92,13 +84,9 @@
 			year = Math.max(year, 1);
 			year = Math.min(year, deathData.maxYear);
 
-			console.log("second: " + day);
-
 			deathData.day = day;
 			deathData.month = month;
 			deathData.year = year;
-
-			console.log("third: " + day);
 
 			deathData.date = `${year.toString().padStart(4, "0")}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
 		} else {
@@ -106,8 +94,8 @@
 			deathData.month = `${deathData.date[5]}${deathData.date[6]}`;
 			deathData.year = `${deathData.date[0]}${deathData.date[1]}${deathData.date[2]}${deathData.date[3]}`;
 		}
-		formData.birth_date = deathData.date;
-		console.log(formData.death_date);
+		console.log(deathData.date);
+		formData.death_date = deathData.date;
 	}
 
 	// --- --- ---
@@ -133,8 +121,11 @@
 	}
 
 	async function handleSubmit() {
+		formData.birth_date = formData.birth_date === "" ? null : formData.birth_date;
+		formData.death_date = formData.death_date === "" ? null : formData.death_date;
+		alert(JSON.stringify(formData));
 		try {
-			const response = await fetch("http://localhost:5000/people", {
+			const response = await fetch(`${import.meta.env.VITE_DB_URL}/people`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -142,11 +133,15 @@
 				body: JSON.stringify(formData),
 			});
 
+			console.log(response);
+
 			if (!response.ok) {
 				throw new Error("Failed to submit form");
 			}
 
 			console.log("Form submitted successfully");
+
+			window.location.href = "/search-site";
 		} catch (error) {
 			console.error("Error submitting form:", error.message);
 		}
@@ -156,11 +151,7 @@
 <div class="min-h-screen bg-gray-800 flex justify-center flex-col items-center">
 	<div class="mb-6 text-2xl">
 		<Link to="/" class="font-bold h-full items-center flex justify-left"
-			><img
-				src="https://raw.githubusercontent.com/sikoramodra/Historia/stronka/Strona%20Internetowa/src/res/Logo%20poziom_ciemne%20tło_PNG.png"
-				alt="Home"
-				class="h-[2.5em] md:h-[2.5em] lg:h-[3em]"
-			/></Link
+			><img src={Logo} alt="Home" class="h-[2.5em] md:h-[2.5em] lg:h-[3em]" /></Link
 		>
 	</div>
 	<div class="bg-gray-600 h-[80vh] w-[80vw] rounded-2xl shadow-xl border border-gray-400 relative p-1">
@@ -290,7 +281,7 @@
 				<div class="border border-white p-8 rounded-xl">
 					<div class="">
 						<div class="relative">
-							<label for="death_date" class="block text-white font-bold mb-2">Birth Date:</label>
+							<label for="death_date" class="block text-white font-bold mb-2">Death Date:</label>
 							<div class="flex flex-row">
 								<input
 									type="number"
@@ -374,7 +365,12 @@
 			</div>
 			<div class="flex justify-center items-center mt-4">
 				<div>
-					<button type="submit" class="active:bg-white active:text-red-600 px-4 py-2 rounded bg-red-600 text-white hover:scale-105 hover:bg-red-500"> <strong>+</strong> <i class="fas fa-user"></i> Add Person</button>
+					<button
+						type="submit"
+						class="active:bg-white active:text-red-600 px-4 py-2 rounded bg-red-600 text-white hover:scale-105 hover:bg-red-500"
+					>
+						<strong>+</strong> <i class="fas fa-user"></i> Add Person</button
+					>
 				</div>
 			</div>
 		</form>

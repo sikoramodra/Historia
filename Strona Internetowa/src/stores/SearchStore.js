@@ -26,8 +26,11 @@ export const searchHandler = (store) => {
         'ź': 'z',
         'ż': 'z'
     };
-    const searchTerm = store.search.toLowerCase().replace(/[ąćęłńóśźż]/g, match => polishToEnglishMap[match] || match) || "";
-    store.filtered = store.data.filter((item) => {
-        return item.searchTerms.toLowerCase().replace(/[ąćęłńóśźż]/g, match => polishToEnglishMap[match] || match).includes(searchTerm);
-    })
+
+    if(store.search.length > 0){
+        const searchTerm = store.search.toLowerCase().replace(/[ąćęłńóśźż]/g, match => polishToEnglishMap[match] || match) || "";
+        store.filtered = store.data.filter((item) => {
+            return item.searchTerms.toLowerCase().replace(/[ąćęłńóśźż]/g, match => polishToEnglishMap[match] || match).includes(searchTerm);
+        })
+    }
 };

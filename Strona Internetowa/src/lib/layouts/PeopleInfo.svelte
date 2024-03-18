@@ -8,13 +8,13 @@
 </div> -->
 
 <div class="text-center h-[85%] w-[85%] bg-slate-800 rounded-xl overflow-auto p-4 shadow-lg relative">
-	<button class="absolute top-4 right-1 text-right text-white text-lg focus:outline-none" on:click={closePopup()}>
+	<button class="absolute top-4 right-4 text-right text-white text-lg focus:outline-none" on:click={closePopup()}>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
 			<path
 				d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
 			/>
-		</svg></button
-	>
+		</svg>
+	</button>
 	{#if data}
 		<h2 class="text-4xl font-bold text-white mb-4">{data.name}</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-y-4">

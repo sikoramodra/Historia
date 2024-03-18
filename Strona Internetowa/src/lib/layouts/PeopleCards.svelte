@@ -1,9 +1,10 @@
 <script>
+	
 	export let data;
+	
+	const birthDateFormatted = data.birth_date === null ? null : `${data.birth_date.substring(8, 10)}.${data.birth_date.substring(5, 7)}.${data.birth_date.substring(0, 4)}`;
+	const deathDateFormatted = data.death_date === null ? null : `${data.death_date.substring(8, 10)}.${data.death_date.substring(5, 7)}.${data.death_date.substring(0, 4)}`;
 
-	const birthDateFormatted = `${data.birth_date.substring(8, 10)}.${data.birth_date.substring(5, 7)}.${data.birth_date.substring(0, 4)}`;
-
-	const deathDateFormatted = `${data.death_date.substring(8, 10)}.${data.death_date.substring(5, 7)}.${data.death_date.substring(0, 4)}`;
 </script>
 
 <div class="flex flex-col border border-gray-700 shadow-lg p-4 rounded-lg bg-gray-800 text-white h-min">
