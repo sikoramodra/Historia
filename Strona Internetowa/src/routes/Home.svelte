@@ -33,15 +33,16 @@
             if (index < text.length) {
                 const currentChar = text.charAt(index);
                 if (currentChar === ' ') {
-                    textToAnimate.update(oldValue => oldValue + ' '); // Append space without removing it
+                  textToAnimate.update(oldValue => oldValue + currentChar); // Append space without removing it
                 } else {
-                    textToAnimate.update(oldValue => oldValue + currentChar);
+                  textToAnimate.update(oldValue => oldValue + currentChar);
                 }
                 index++;
                 setTimeout(type, speed);
-            }type();
+            }
           };
-          const parallax = document.getElementById("parallax");
+        type(); 
+         const parallax = document.getElementById("parallax");
 
 // Parallax Effect for DIV 1
 window.addEventListener("scroll", function () {
@@ -75,7 +76,7 @@ onMount(() => {
 
 <section id="section">
     <div id="parallax" class="parallax-item">
-      <h2>Jesteśmy by Pamiętać</h2>
+      <h2 id="unique-heading">{ $textToAnimate }</h2>
     </div>
     <div class="parallax-item">
       <h2>Coś tam że cudowna historia</h2>
@@ -110,22 +111,26 @@ html {
   min-height: 100vh;
 }
 
-.parallax-item h2 {
-  font-size: 3rem;
-  text-transform: uppercase;
-  background-color: whitesmoke;
-  padding: 1rem;
-  border-radius: 1rem;
+#unique-heading {
+  color:whitesmoke;
+  font-size:100px;
+  margin-left: 15vh;
+  margin-right: 85vh;
+  margin-top: 40vh;
+  margin-bottom:60vh;
+  display:inline-block;
+  position:absolute;
 }
 
 .parallax-item:first-child {
-  background: url("./defiladapolski.png");
-  background-size: cover;
+  background: url("./defiladapolski.png") no-repeat center center;
+  background-size:cover;
   backdrop-filter: brightness(20%);
   position: relative; /* Ustawienie pozycji względnej, aby umożliwić pozycjonowanie pseudo-elementu */
+  
 }
 
-.parallax-item:first-child h2::before {
+.parallax-item:first-child::before {
   content: '';
   position: absolute;
   top: 0;
@@ -153,10 +158,14 @@ html {
 
 @media screen and (max-width: 768px) {
   .parallax-item h2 {
-    font-size: 1.5rem;
+    font-size: 1vh;
   }
 }
 
+.parallax-item h2 {
+  font-size: 3rem;
+ 
+}
 </style>
 <button id="scroll-down">Scroll Down</button>
 <Navbar/>
