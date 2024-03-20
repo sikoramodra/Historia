@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/W10"
     tools:context=".ProfileActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,34 +26,50 @@
             android:layout_height="match_parent"
             android:layout_weight="6">
 
+
             <ImageButton
                 android:id="@+id/homebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400dp"
+                android:layout_height="115dp"
                 android:layout_weight="1"
+                android:background="@color/W5"
                 android:onClick="homeact"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="16dp"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/search_icon"
+                app:srcCompat="@drawable/search"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/addpostbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400dp"
+                android:layout_height="115dp"
                 android:layout_weight="1"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:onClick="addpostact"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/add_icon"
+                app:srcCompat="@drawable/add"
+                android:background="@color/W5"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/profilebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400dp"
+                android:layout_height="115dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:layout_weight="1"
                 android:onClick="profileact"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/profile_icon"
+                app:srcCompat="@drawable/profile"
+                android:background="@color/W5"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
     </LinearLayout>

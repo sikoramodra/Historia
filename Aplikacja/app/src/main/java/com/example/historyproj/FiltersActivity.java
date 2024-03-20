@@ -11,6 +11,9 @@ public class FiltersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.filters_lay);
         Button bgoback = findViewById(R.id.backtopost);
         String nam = getIntent().getStringExtra("EXTRA_NAME");

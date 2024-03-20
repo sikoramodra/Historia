@@ -1,8 +1,9 @@
 package com.example.historyproj;
 
-import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Intent;
-import android.content.res.AssetManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,27 +14,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.historyproj.R;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-
 public class MainActivity extends AppCompatActivity {
 
-    public EditText usernameEditText;
-    public EditText passwordEditText;
-    public String username;
-    public String password;
+    private EditText usernameEditText;
+    private EditText passwordEditText;
+    private String username;
+    private String password;
+    private DbHelper dbHelper;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_main);
 
-        usernameEditText = findViewById(R.id.usernameEditText);
-        passwordEditText = findViewById(R.id.passwordEditText);
+        dbHelper = new DbHelper(this);
+
+        //usernameEditText = findViewById(R.id.usernameEditText);
+        //passwordEditText = findViewById(R.id.passwordEditText);
         Button loginButton = findViewById(R.id.loginButton);
         Button Rejestrator = findViewById(R.id.Register);
         Button Gosc = findViewById(R.id.guest);
@@ -41,90 +41,75 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                username = usernameEditText.getText().toString();
-                password = passwordEditText.getText().toString();
-
-                if (username.length() >= 5 && password.length() >= 5) {
-                    if (login(username, password)) {
-                        Log.e(username, password);
-                        Toast.makeText(MainActivity.this, "Zalogowano", Toast.LENGTH_SHORT).show();
-                        SendToHome();
-                    } else {
-                        Toast.makeText(MainActivity.this, "Login lub hasło nie istnieje.", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(MainActivity.this, "Login i hasło muszą mieć co najmniej 5 znaków.", Toast.LENGTH_SHORT).show();
-                }
+                handleLogin();
             }
         });
+
         Rejestrator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = usernameEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
-
-                if (username.length() >= 5 && password.length() >= 5) {
-                    Rejestrator(username, password);
-                    Toast.makeText(MainActivity.this, "Zarejestrowano pomyślnie" + username + password, Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "Login i hasło muszą mieć co najmniej 5 znaków.", Toast.LENGTH_SHORT).show();
-                }
+                handleRegistration();
             }
         });
+
         Gosc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                username = "guest";
-                password = "guest";
-                Toast.makeText(MainActivity.this,  username + password, Toast.LENGTH_SHORT).show();
-                SendToHome();
+                handleGuestLogin();
             }
         });
     }
 
-    private boolean login(String username, String password) {
-        try {
-            AssetManager assetManager = getAssets();
-            InputStream inputStream = assetManager.open("logowanie.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(":");
-                if (parts.length == 2) {
-                    String storedUsername = parts[0].trim();
-                    String storedPassword = parts[1].trim();
-                    if (username.equals(storedUsername) && password.equals(storedPassword)) {
-                        return true;
-                    }
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-    private void Rejestrator(String username, String password) {
-        try {
-            AssetManager assetManager = getAssets();
-            InputStream inputStream = assetManager.open("logowanie.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder fileContents = new StringBuilder();
+    private void handleLogin() {
+        username = usernameEditText.getText().toString();
+        password = passwordEditText.getText().toString();
 
-            String line;
-            while ((line = reader.readLine()) != null) {
-                fileContents.append(line).append("\n");
-            }
-            reader.close();
-            fileContents.append(username).append(":").append(password).append("\n");
-            OutputStream outputStream = openFileOutput("logowanie.txt", MODE_PRIVATE);
-            outputStream.write(fileContents.toString().getBytes());
-            outputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (login(username, password)) {
+            Log.e(username, password);
+            Toast.makeText(MainActivity.this, "Zalogowano", Toast.LENGTH_SHORT).show();
+            sendToHome();
+        } else {
+            Toast.makeText(MainActivity.this, "Login lub hasło nie istnieje.", Toast.LENGTH_SHORT).show();
         }
     }
-    public void SendToHome(){
+
+    private void handleRegistration() {
+        String newUsername = usernameEditText.getText().toString();
+        String newPassword = passwordEditText.getText().toString();
+        registerUser(newUsername, newPassword);
+        Toast.makeText(MainActivity.this, "Zarejestrowano pomyślnie" + newUsername + newPassword, Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleGuestLogin() {
+        username = "guest";
+        password = "guest";
+        Toast.makeText(MainActivity.this, username + password, Toast.LENGTH_SHORT).show();
+        sendToHome();
+    }
+
+    private boolean login(String username, String password) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String[] columns = {"username", "password"};
+        String selection = "username = ? AND password = ?";
+        String[] selectionArgs = {username, password};
+
+        Cursor cursor = db.query("users", columns, selection, selectionArgs, null, null, null);
+
+        boolean isValid = cursor.getCount() > 0;
+        cursor.close();
+        return isValid;
+    }
+
+    private void registerUser(String username, String password) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("username", username);
+        values.put("password", password);
+
+        db.insert("users", null, values);
+    }
+
+    private void sendToHome() {
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
         startActivity(intent);
     }

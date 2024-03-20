@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/postNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+
+            android:textSize="18sp"
+            android:textColor="@color/W"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/postPlaceTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/W"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/postInfoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/W"
+            android:textSize="14sp" />
+
+
+        <Button
+            android:id="@+id/edit_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="edytuj" />
+
+        <Button
+            android:id="@+id/delete_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            android:text="usun" />
+
+    </LinearLayout>
+</LinearLayout>

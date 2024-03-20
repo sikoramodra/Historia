@@ -10,6 +10,9 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.profileactivity_lay);
 
         ImageButton homeButton = findViewById(R.id.homebutton);

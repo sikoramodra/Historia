@@ -11,6 +11,9 @@ public class PostSentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.postsent_lay);
 
         ImageButton homeButton = findViewById(R.id.homebutton);

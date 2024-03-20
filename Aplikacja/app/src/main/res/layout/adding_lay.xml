@@ -7,8 +7,8 @@
     tools:context=".AddingActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,37 +23,58 @@
 
             <EditText
                 android:id="@+id/Name_add"
-                android:layout_width="368dp"
+                android:background="@drawable/textadd"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
                 android:hint="Nazwa śp. osoby:"
                 android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/Place_add"
-                android:layout_width="328dp"
+                android:background="@drawable/textadd"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
                 android:hint="Miejsce pochówku:"
                 android:inputType="textPersonName"
+
                 tools:ignore="TouchTargetSizeCheck" />
 
             <EditText
                 android:id="@+id/info_add"
+                android:background="@drawable/textadd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="start|top"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
                 android:hint="Informacje o osobie:"
-                android:inputType="textMultiLine"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/pickfilters"
-                android:layout_width="268dp"
-                android:layout_height="66dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="64dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
                 android:layout_gravity="center"
                 android:text="wybierz filtry:" />
 
@@ -61,15 +82,28 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/W"
                 android:text="Wybrane filtry: "
                 android:textSize="24sp" />
 
             <Button
                 android:id="@+id/sendpost"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="64dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
                 android:layout_gravity="center"
-                android:text="wyslij post!!!" />
+                android:text="wyslij post!" />
         </LinearLayout>
 
         <LinearLayout
@@ -77,34 +111,50 @@
             android:layout_height="match_parent"
             android:layout_weight="6">
 
+
             <ImageButton
                 android:id="@+id/homebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400dp"
+                android:layout_height="115dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:layout_weight="1"
                 android:onClick="homeact"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/search_icon"
+                app:srcCompat="@drawable/search"
+                android:background="@color/W5"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/addpostbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400dp"
+                android:layout_height="115dp"
                 android:layout_weight="1"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:onClick="addpostact"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/add_icon"
+                app:srcCompat="@drawable/add"
+                android:background="@color/W5"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/profilebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400dp"
+                android:layout_height="115dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:layout_weight="1"
                 android:onClick="profileact"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/profile_icon"
+                app:srcCompat="@drawable/profile"
+                android:background="@color/W5"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
     </LinearLayout>
