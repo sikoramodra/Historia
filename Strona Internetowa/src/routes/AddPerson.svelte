@@ -125,7 +125,7 @@
 		formData.death_date = formData.death_date === "" ? null : formData.death_date;
 		alert(JSON.stringify(formData));
 		try {
-			const response = await fetch(`${import.meta.env.VITE_DB_URL}/people`, {
+			const response = await fetch(`${import.meta.env.VITE_DB_URL}people`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

@@ -20,87 +20,6 @@
 
 	// --- Search Related Variables ---
 
-	// let dbData = [
-	// 	{
-	// 		name: "Andrzej",
-	// 		inscription: "Spoczywaj w pokoju",
-	// 		other_names: ["Jędrula", "Ciekawy Pan"],
-	// 		code_names: ["werit2", "człowie"],
-	// 		birth_date: "2000-08-10",
-	// 		birth_place: 1,
-	// 		death_date: "2024-01-01",
-	// 		death_place: 2,
-	// 		grave: 1,
-	// 		description: "Był człowiekiem mądrym i tak dalej i tak dalej",
-	// 		sources: "wikipedia",
-	// 	},
-	// 	{
-	// 		name: "Dawid",
-	// 		inscription: "Spoczywaj w pokoju nierobie",
-	// 		other_names: ["AlKoCHolik", "Ciekawy Pań", "gołąb"],
-	// 		code_names: ["Dawciopff", "człek"],
-	// 		birth_date: "2000-08-10",
-	// 		birth_place: 1,
-	// 		death_date: "2024-01-01",
-	// 		death_place: 2,
-	// 		grave: 1,
-	// 		description: "Był człowiekiem mądrym i tak dalej i tak dalej",
-	// 		sources: "wikipedia",
-	// 	},
-	// 	{
-	// 		name: "Mateusz",
-	// 		inscription: "nierobie",
-	// 		other_names: ["On", "Jest"],
-	// 		code_names: ["taki"],
-	// 		birth_date: "2000-08-10",
-	// 		birth_place: 1,
-	// 		death_date: "2024-01-01",
-	// 		death_place: 2,
-	// 		grave: 1,
-	// 		description: "",
-	// 		sources: "",
-	// 	},
-	// 	{
-	// 		name: "Andrzej Migrewski",
-	// 		inscription: "Spoczywaj w pokoju",
-	// 		other_names: ["Jędrula", "Ciekawy Pan"],
-	// 		code_names: ["werit2", "człowie"],
-	// 		birth_date: "2000-08-10",
-	// 		birth_place: 1,
-	// 		death_date: "2024-01-01",
-	// 		death_place: 2,
-	// 		grave: 1,
-	// 		description: "Był człowiekiem mądrym i tak dalej i tak dalej",
-	// 		sources: "wikipedia",
-	// 	},
-	// 	{
-	// 		name: "Dawid Andrzej",
-	// 		inscription: "Spoczywaj w pokoju nierobie",
-	// 		other_names: ["AlKoCHolik", "Ciekawy Pań", "gołąb"],
-	// 		code_names: ["Dawciopff", "człek"],
-	// 		birth_date: "2000-08-10",
-	// 		birth_place: 1,
-	// 		death_date: "2024-01-01",
-	// 		death_place: 2,
-	// 		grave: 1,
-	// 		description: "Był człowiekiem mądrym i tak dalej i tak dalej",
-	// 		sources: "wikipedia",
-	// 	},
-	// 	{
-	// 		name: "Mateusz Rozer",
-	// 		inscription: "nierobie",
-	// 		other_names: ["On", "Jest"],
-	// 		code_names: ["taki"],
-	// 		birth_date: "2000-08-10",
-	// 		birth_place: 1,
-	// 		death_date: "2024-01-01",
-	// 		death_place: 2,
-	// 		grave: 1,
-	// 		description: "",
-	// 		sources: "",
-	// 	},
-	// ];
-
 	let dbData = [];
 
 	const searchProducts = dbData.map((product) => ({
@@ -125,7 +44,7 @@
 
 	const fetchData = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_DB_URL}/people`);
+			const response = await fetch(`${import.meta.env.VITE_DB_URL}people`);
 			if (!response.ok) {
 				throw new Error("Failed to fetch data");
 			}
