@@ -2,6 +2,7 @@
 	import { Link } from "svelte-routing";
 	import { mainColorText, mainColorBorder } from "../../stores/ColorStore.js";
     import { onMount } from "svelte";
+    import Logo from "../../res/Logo_poziom_ciemne_tło_PNG.png"
     // import "../../res/Logo poziom_ciemne tło_PNG.png"
 
     let isScrolled = false;
@@ -32,7 +33,7 @@
     <div class="font-semibold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl flex flex-row items-center h-full">
         <div class="w-1/5 min-w-fit h-full">
             <Link to="/" class="text-left font-bold h-full items-center flex justify-left">
-                <img src="https://raw.githubusercontent.com/sikoramodra/Historia/stronka/Strona%20Internetowa/src/res/Logo%20poziom_ciemne%20tło_PNG.png" alt="Home" class="h-12 md:h-14 lg:h-16" />
+                <img src={Logo} alt="Home" class="h-12 md:h-14 lg:h-16" />
             </Link>
         </div>
         <div class="w-3/5 min-w-fit">
