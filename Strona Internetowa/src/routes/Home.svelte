@@ -79,7 +79,11 @@ onMount(() => {
       <h2 id="unique-heading">{ $textToAnimate }</h2>
     </div>
     <div class="parallax-item">
-      <h2>Coś tam że cudowna historia</h2>
+      <div class="text">
+        <p>Tutaj umieść swój tekst</p>
+    </div>
+    <img src="obraz1.jpg" alt="Obraz 1">
+    <img src="obraz2.jpg" alt="Obraz 2">
     </div>
     <div class="parallax-item">
       <h2>Wzium</h2>
@@ -140,10 +144,23 @@ html {
   background-color: rgba(0, 0, 0, 0.61); /* Przezroczyste tło */
   z-index: -1; }
 
-.parallax-item:nth-child(2) {
-  background: #05051b;
+  .parallax-item:nth-child(2) {
+    display: flex;
+    flex-direction: row-reverse; /* Odwróć kierunek flexboxa, aby zdjęcia znalazły się po prawej stronie */
+    align-items: center; /* Wyrównaj elementy w pionie */
+    background:#02021b;
 }
 
+.parallax-item:nth-child(2) .text {
+    flex: 1; /* Rozszerz tekst na całą dostępną przestrzeń */
+    padding: 20px; /* Dodaj trochę marginesu dla estetyki */
+}
+
+.parallax-item:nth-child(2) img {
+    max-width: 50%; /* Ogranicz szerokość zdjęć do 50% szerokości kontenera */
+    float: right; /* Zdjęcia będą wyrównane do prawej strony */
+    margin-left: 20px; /* Dodaj odstęp między tekstem a zdjęciami */
+}
 .parallax-item:nth-child(3) {
   background: url("./gittest2.gif");
   background-size: cover;
