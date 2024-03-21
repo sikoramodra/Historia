@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 // apilient- wazne do polaczeni tego zmieniac nie będziesz najprawdopodobniej-juleczka
 public class ApiClient {
-    private static final String BASE_URL = "tutaj_wpisz_url";
+    private static final String BASE_URL = "SKIBIDI TOILET";
 
     private static Retrofit retrofit = null;
 
