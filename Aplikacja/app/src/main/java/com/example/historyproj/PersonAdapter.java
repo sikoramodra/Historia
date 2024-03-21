@@ -9,8 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.historyproj.Person;
-
 import java.util.List;
 
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
@@ -42,14 +40,14 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
     public static class PersonViewHolder extends RecyclerView.ViewHolder {
 
         private TextView nameTextView;
-        private TextView placeTextView;
-        private TextView infoTextView;
+        private TextView postothernames;
+        private TextView postcodenames;
 
         public PersonViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.postNameTextView);
-            placeTextView = itemView.findViewById(R.id.postPlaceTextView);
-            infoTextView = itemView.findViewById(R.id.postInfoTextView);
+            postothernames = itemView.findViewById(R.id.postOtherNamesTextView);
+            postcodenames = itemView.findViewById(R.id.postCodeNamesTextView);
         }
 
         public void bind(Person person) {
@@ -64,15 +62,9 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
             String description = removeBrackets(person.getDescription());
             String sources = removeBrackets(person.getSources());
 
-            nameTextView.setText(name);
-            placeTextView.setText(birthPlace);
-            infoTextView.setText("Other Names: " + otherNames + "\n" +
-                    "Code Names: " + codeNames + "\n" +
-                    "Birth Date: " + birthDate + "\n" +
-                    "Death Date: " + deathDate + "\n" +
-                    "Burial Place: " + burialPlace + "\n" +
-                    "Description: " + description + "\n" +
-                    "Sources: " + sources);
+            nameTextView.setText("Name: "+ name.toString());
+            postothernames.setText("Other Names: " + otherNames);
+            postcodenames.setText("Code Names: "+codeNames);
         }
 
         // Metoda pomocnicza do usuwania znaków "[" i "]" z tekstu

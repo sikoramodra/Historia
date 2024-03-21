@@ -28,9 +28,9 @@ public class EditPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_post);
 
         editName = findViewById(R.id.editName);
-        editPlace = findViewById(R.id.editPlace);
-        editInfo = findViewById(R.id.editInfo);
-        saveButton = findViewById(R.id.saveButton);
+        //editPlace = findViewById(R.id.editPlace);
+        //editInfo = findViewById(R.id.editInfo);
+        saveButton = findViewById(R.id.backButton);
 
         // Otrzymaj dane przekazane z PostAdapter
         postId = getIntent().getIntExtra("POST_ID", -1);

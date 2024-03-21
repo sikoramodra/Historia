@@ -26,7 +26,17 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/postPlaceTextView"
+            android:id="@+id/postCodeNamesTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:textColor="@color/W"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/postOtherNamesTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -36,35 +46,63 @@
             android:textColor="@color/W"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/postInfoTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/W"
-            android:textSize="14sp" />
 
-
-        <Button
-            android:id="@+id/edit_post"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="edytuj" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/delete_post"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="16dp"
-            android:text="usun" />
+            <View
+                android:id="@+id/view4"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/edit_post"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/editing" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/show_post"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/transparent"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/info" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/delete_post"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/delete" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_weight="1" />
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

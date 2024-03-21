@@ -27,48 +27,48 @@ public class AddingActivity extends AppCompatActivity {
 
         dbHelper = new DbHelper(this);
 
-        EditText setname = findViewById(R.id.Name_add);
-        setname.setText(name_add_id);
+        //EditText setname = findViewById(R.id.Name_add);
+        //setname.setText(name_add_id);
 
-        EditText setplace = findViewById(R.id.Place_add);
-        setplace.setText(place_add_id);
+        //EditText setplace = findViewById(R.id.Place_add);
+        //setplace.setText(place_add_id);
 
-        EditText setinfo = findViewById(R.id.info_add);
-        setinfo.setText(info_add_id);
+        //EditText setinfo = findViewById(R.id.info_add);
+        //setinfo.setText(info_add_id);
 
         ImageButton homeButton = findViewById(R.id.homebutton);
         ImageButton addPostButton = findViewById(R.id.addpostbutton);
         ImageButton profileButton = findViewById(R.id.profilebutton);
-        Button pickfiltersbutton = findViewById(R.id.pickfilters);
-        Button sendPost = findViewById(R.id.sendpost);
+        //Button pickfiltersbutton = findViewById(R.id.pickfilters);
+       // Button sendPost = findViewById(R.id.sendpost);
 
-        pickfiltersbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                name_add_id = setname.getText().toString();
-                place_add_id = setplace.getText().toString();
-                info_add_id = setinfo.getText().toString();
+        //pickfiltersbutton.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void onClick(View view) {
+                //name_add_id = setname.getText().toString();
+               // place_add_id = setplace.getText().toString();
+               // info_add_id = setinfo.getText().toString();
 
-                Intent intent = new Intent(AddingActivity.this, FiltersActivity.class);
-                startActivity(intent);
-            }
-        });
+               // Intent intent = new Intent(AddingActivity.this, FiltersActivity.class);
+               // startActivity(intent);
+          //  }
+      //  });
 
-        sendPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                name_add_id = setname.getText().toString();
-                place_add_id = setplace.getText().toString();
-                info_add_id = setinfo.getText().toString();
-
+    //   sendPost.setOnClickListener(new View.OnClickListener() {
+     //       @Override
+    //        public void onClick(View view) {
+     //           name_add_id = setname.getText().toString();
+      //          place_add_id = setplace.getText().toString();
+      //          info_add_id = setinfo.getText().toString();
+//
                 // Insert data into the database
-                insertDataToDatabase(name_add_id, place_add_id, info_add_id);
+           //     insertDataToDatabase(name_add_id, place_add_id, info_add_id);
 
                 // Navigate to PostSentActivity or perform other actions as needed
-                Intent intent = new Intent(AddingActivity.this, PostSentActivity.class);
-                startActivity(intent);
-            }
-        });
+          //      Intent intent = new Intent(AddingActivity.this, PostSentActivity.class);
+         //       startActivity(intent);
+        //    }
+     //   });
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override

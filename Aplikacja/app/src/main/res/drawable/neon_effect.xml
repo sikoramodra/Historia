@@ -1,0 +1,13 @@
+<!-- neon_effect.xml -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#9AED0606">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:width="5dp"
+                android:color="#9AED0606" />
+            <corners android:radius="20dp" />
+        </shape>
+    </item>
+</ripple>

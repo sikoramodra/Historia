@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="621dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="622dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/profile_pic" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="50dp" />
+
+                        <TextView
+                            android:id="@+id/Name_titler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Name"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp" />
+
+                        <View
+                            android:id="@+id/view12"
+                            android:layout_width="2dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/postName"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:fontFamily="sans-serif"
+                            android:hint="Name"
+                            android:text="Name is not added"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="25sp"
+                            android:textStyle="italic" />
+
+                        <View
+                            android:id="@+id/view12"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/OtherNames_titler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Other Names"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/postOtherNames"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:hint="Other Names"
+                            android:text="Other Names are not added"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="25sp"
+                            android:textStyle="italic" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/CodeNames_titler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Code Names"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp" />
+
+                        <View
+                            android:id="@+id/view13"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/postCodeNames"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:hint="Code Names"
+                            android:text="Code Names are not added"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="25sp"
+                            android:textStyle="italic" />
+
+                        <View
+                            android:id="@+id/Inscr"
+                            android:layout_width="10dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/Inscription_titler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Inscription"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp" />
+
+                        <View
+                            android:id="@+id/view14"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/postInscription"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:hint="Inscription"
+                            android:text="Inscription is not added"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="25sp"
+                            android:textStyle="italic" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="40dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/postBirthDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="89dp"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:hint="Birth Date"
+                            android:text="Birth Date is not added"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="25sp" />
+
+                        <View
+                            android:id="@+id/view16"
+                            android:layout_width="2dp"
+                            android:layout_height="60dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/postDeathDate"
+                            android:layout_width="186dp"
+                            android:layout_height="85dp"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Death Date is not added"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="25sp" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view17"
+                        android:layout_width="30dp"
+                        android:layout_height="2dp"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/BirthPlace_titler"
+                            android:layout_width="187dp"
+                            android:layout_height="50dp"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Birth Place"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="15dp" />
+
+                        <TextView
+                            android:id="@+id/postBirthPlace"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:hint="Birth Place is not added"
+                            android:inputType="text"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="16sp"
+                            android:textStyle="italic" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="35dp" />
+
+                        <TextView
+                            android:id="@+id/DeathPlace_titler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Death Place"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/view19"
+                            android:layout_width="match_parent"
+                            android:layout_height="15dp" />
+
+                        <TextView
+                            android:id="@+id/postDeathPlace"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:hint="Death Place"
+                            android:inputType="text"
+                            android:text="Death Place is not added"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="16sp"
+                            android:textStyle="italic" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="12dp" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        app:srcCompat="@drawable/grave" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/BurialPlace_titler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Burial place"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp" />
+
+                        <View
+                            android:id="@+id/view"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/postBurialPlace"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:text="Burial Place is not added"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="16sp"
+                            android:textStyle="italic" />
+
+                        <View
+                            android:id="@+id/view20"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/Cementery_titler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Cementery"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/postCemetery"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:text="Cementery is not added"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="40dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/postQuarter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@android:color/transparent"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Quarter"
+                        android:textAlignment="center"
+                        android:textColor="@color/W"
+                        android:textColorHint="@color/W"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/postRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@android:color/transparent"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Row"
+                        android:textAlignment="center"
+                        android:textColor="@color/W"
+                        android:textColorHint="@color/W"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/postGrave"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@android:color/transparent"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Grave"
+                        android:textAlignment="center"
+                        android:textColor="@color/W"
+                        android:textColorHint="@color/W"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="40dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        app:srcCompat="@drawable/medal" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Ranks"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/postRanks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:text="Ranks are not added"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="16sp"
+                            android:textStyle="italic" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/Badges_titler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Badges"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp" />
+
+                        <View
+                            android:id="@+id/view21"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/postBadges"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:text="Badges are not added"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="16sp"
+                            android:textStyle="italic" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/Activity_titler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Activity"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textSize="24sp" />
+
+                        <View
+                            android:id="@+id/view22"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:id="@+id/postActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:ems="10"
+                            android:inputType="text"
+                            android:text="Activity is not added"
+                            android:textAlignment="center"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"
+                            android:textSize="16sp"
+                            android:textStyle="italic" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:id="@+id/Description_titler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloo_bhaina"
+                    android:text="Description"
+                    android:textAlignment="center"
+                    android:textColor="@color/W"
+                    android:textSize="24sp" />
+
+                <View
+                    android:id="@+id/view23"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:id="@+id/postDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:text="Description is not added"
+                    android:textAlignment="center"
+                    android:textColor="@color/W"
+                    android:textColorHint="@color/W"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:id="@+id/Sources_titler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloo_bhaina"
+                    android:text="Sources"
+                    android:textAlignment="center"
+                    android:textColor="@color/W"
+                    android:textSize="24sp" />
+
+                <View
+                    android:id="@+id/view24"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:id="@+id/postSources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Sources are not added"
+                    android:textAlignment="center"
+                    android:textColor="@color/W"
+                    android:textColorHint="@color/W"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="40dp" />
+
+                <Button
+                    android:id="@+id/backButton"
+                    android:layout_width="365dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Go Back"
+                    android:textColor="@color/W" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="84dp">
+
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/homebutton"
+                android:layout_width="400dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/F"
+                android:onClick="homeact"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="16dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/search"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/addpostbutton"
+                android:layout_width="400dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/F"
+                android:onClick="addpostact"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="16dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/add"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <View
+                android:id="@+id/view9"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/profilebutton"
+                android:layout_width="400dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/F"
+                android:onClick="profileact"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="16dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/profile_pic"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <View
+                android:id="@+id/view10"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
