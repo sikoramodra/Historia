@@ -64,20 +64,6 @@ public class EditPostActivity extends AppCompatActivity {
             return;
         }
 
-        // Aktualizuj bazę danych
-        DbHelper dbHelper = new DbHelper(this);
-        ContentValues values = new ContentValues();
-        values.put(DbHelper.COLUMN_POST_NAME, updatedName);
-        values.put(DbHelper.COLUMN_POST_PLACE, updatedPlace);
-        values.put(DbHelper.COLUMN_POST_INFO, updatedInfo);
-
-        dbHelper.getWritableDatabase().update(
-                DbHelper.TABLE_POSTS,
-                values,
-                DbHelper.COLUMN_POST_ID + " = ?",
-                new String[]{String.valueOf(postId)});
-
-        dbHelper.close();
 
         // Wyświetl komunikat o sukcesie
         Toast.makeText(this, "Post zaktualizowany", Toast.LENGTH_SHORT).show();

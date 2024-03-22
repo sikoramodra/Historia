@@ -127,7 +127,7 @@
                             android:layout_width="10dp"
                             android:layout_height="15dp" />
 
-                        <EditText
+                        <DatePicker
                             android:id="@+id/editBirthDate"
                             android:layout_width="187dp"
                             android:layout_height="50dp"
@@ -147,8 +147,8 @@
                             android:layout_width="10dp"
                             android:layout_height="5dp" />
 
-                        <EditText
-                            android:id="@+id/postDeathDate"
+                        <DatePicker
+                            android:id="@+id/editDeathDate"
                             android:layout_width="187dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"
@@ -177,7 +177,7 @@
                             android:layout_height="30dp" />
 
                         <EditText
-                            android:id="@+id/postBirthPlace"
+                            android:id="@+id/editBirthPlace"
                             android:layout_width="365dp"
                             android:layout_height="50dp"
                             android:backgroundTint="@color/W"
@@ -192,7 +192,7 @@
                             android:layout_height="45dp" />
 
                         <EditText
-                            android:id="@+id/postDeathPlace"
+                            android:id="@+id/editDeathPlace"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/W"
@@ -269,7 +269,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/postQuarter"
+                        android:id="@+id/editQuarter"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -282,7 +282,7 @@
                         android:textColorHint="@color/W" />
 
                     <EditText
-                        android:id="@+id/postRow"
+                        android:id="@+id/editRow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -295,7 +295,7 @@
                         android:textColorHint="@color/W" />
 
                     <EditText
-                        android:id="@+id/postGrave"
+                        android:id="@+id/editGrave"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -335,7 +335,7 @@
                             android:layout_height="40dp" />
 
                         <EditText
-                            android:id="@+id/postRanks"
+                            android:id="@+id/editRanks"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/W"
@@ -413,7 +413,7 @@
                     android:layout_height="40dp" />
 
                 <Button
-                    android:id="@+id/backButton"
+                    android:id="@+id/saveButton"
                     android:layout_width="365dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"

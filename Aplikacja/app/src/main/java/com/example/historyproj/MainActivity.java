@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private String username;
     private String password;
-    private DbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
 
-        dbHelper = new DbHelper(this);
 
         //usernameEditText = findViewById(R.id.usernameEditText);
         //passwordEditText = findViewById(R.id.passwordEditText);
@@ -38,12 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Button Rejestrator = findViewById(R.id.Register);
         Button Gosc = findViewById(R.id.guest);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleLogin();
-            }
-        });
+
 
         Rejestrator.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,23 +53,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void handleLogin() {
-        username = usernameEditText.getText().toString();
-        password = passwordEditText.getText().toString();
-
-        if (login(username, password)) {
-            Log.e(username, password);
-            Toast.makeText(MainActivity.this, "Zalogowano", Toast.LENGTH_SHORT).show();
-            sendToHome();
-        } else {
-            Toast.makeText(MainActivity.this, "Login lub hasło nie istnieje.", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     private void handleRegistration() {
         String newUsername = usernameEditText.getText().toString();
         String newPassword = passwordEditText.getText().toString();
-        registerUser(newUsername, newPassword);
         Toast.makeText(MainActivity.this, "Zarejestrowano pomyślnie" + newUsername + newPassword, Toast.LENGTH_SHORT).show();
     }
 
@@ -87,27 +67,7 @@ public class MainActivity extends AppCompatActivity {
         sendToHome();
     }
 
-    private boolean login(String username, String password) {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String[] columns = {"username", "password"};
-        String selection = "username = ? AND password = ?";
-        String[] selectionArgs = {username, password};
 
-        Cursor cursor = db.query("users", columns, selection, selectionArgs, null, null, null);
-
-        boolean isValid = cursor.getCount() > 0;
-        cursor.close();
-        return isValid;
-    }
-
-    private void registerUser(String username, String password) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("username", username);
-        values.put("password", password);
-
-        db.insert("users", null, values);
-    }
 
     private void sendToHome() {
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);

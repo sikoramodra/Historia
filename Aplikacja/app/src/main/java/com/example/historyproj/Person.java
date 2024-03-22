@@ -138,4 +138,58 @@ public class Person {
     public String getSources() {
         return sources;
     }
+    public void setName(String val) {
+        this.name = val;
+    }
+    public void setOtherNames(List<String> val) {
+        this.otherNames = val;
+    }
+    public void setCodeNames(List<String> val) {
+        this.codeNames = val;
+    }
+    public void setInscription(String val) {
+        this.inscription = val;
+    }
+    public void setBirthDate(String val) {
+        this.birthDate = val;
+    }
+    public void setDeathDate(String val) {
+        this.deathDate = val;
+    }
+    public void setBirthPlace(String val) {
+        this.birthPlace = val;
+    }
+    public void setDeathPlace(String val) {
+        this.deathPlace = val;
+    }
+    public void setBurialPlace(String val) {
+        this.burialPlace = val;
+    }
+    public void setCemetery(String val) {
+        this.cemetery = val;
+    }
+    public void setQuarter(String val) {
+        this.quarter = val;
+    }
+    public void setRow(String val) {
+        this.row = val;
+    }
+    public void setGrave(String val) {
+        this.grave = val;
+    }
+    public void setRanks(String val) {
+        this.ranks = val;
+    }
+    public void setBadges(String val) {
+        this.badges = val;
+    }
+    public void setActivity(String val) {
+        this.activity= val;
+    }
+    public void setDescription(String val) {
+        this.description= val;
+    }
+    public void setSources(String val) {
+        this.sources= val;
+    }
 }
