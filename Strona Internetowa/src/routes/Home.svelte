@@ -5,7 +5,11 @@
     import Footer from '../lib/sections/Footer.svelte';
     import Navbar from '../lib/sections/Navbar.svelte';
     import { mainColorBorder, mainColorText } from '../stores/ColorStore.js';
-    
+  import { Timeline, TimelineItem, Button } from 'flowbite-svelte';
+  import { ArrowRightOutline } from 'flowbite-svelte-icons';
+
+
+
   //import Scrollbar from 'smooth-scrollbar'
 
   
@@ -89,7 +93,27 @@ onMount(() => {
       <h2>Wzium</h2>
     </div>
     <div class="parallax-item">
-      <h2>Footer po tym</h2>
+      <h2><div class="ogracz"><Timeline>
+        <TimelineItem title="Application UI code in Tailwind CSS" date="February 2022">
+          <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
+          <Button color="alternative">Learn more<ArrowRightOutline class="ms-2 w-3 h-3" /></Button>
+        </TimelineItem>
+        <TimelineItem title="Application UI code in Tailwind CSS" date="March 2022">
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.</p>
+        </TimelineItem>
+        <TimelineItem title="Application UI code in Tailwind CSS" date="April 2022">
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
+        </TimelineItem>
+        <TimelineItem title="Application UI code in Tailwind CSS" date="April 2022">
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
+        </TimelineItem>
+        <TimelineItem title="Application UI code in Tailwind CSS" date="April 2022">
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
+        </TimelineItem>
+        <TimelineItem title="Application UI code in Tailwind CSS" date="April 2022">
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
+        </TimelineItem>
+      </Timeline></div></h2>
     </div>
   </section>
 </html>
@@ -170,8 +194,10 @@ html {
 }
 
 .parallax-item:nth-child(4) {
-  background: #1565c0;
+  background: #00070f;
+
 }
+
 
 @media screen and (max-width: 768px) {
   .parallax-item h2 {
@@ -183,8 +209,21 @@ html {
   font-size: 3rem;
  
 }
+.ogracz {
+    max-width: 70%; /* Zmiana z 30% na 40% */
+    max-height: 100px; /* Zmiana z 30% na 70% */
+   overflow-y: auto;/* Dodanie przewijania w pionie */
+    border: 2px red; /* Dodanie początkowego bordera */
+    transition: border-color 0.3s ease; /* Dodanie płynnego przejścia dla bordera */
+    display:block;
+    min-height:20em;
+    
+  }
+  .ogracz:not(:hover){
+    overflow:hidden;
+  }
 </style>
-<button id="scroll-down">Scroll Down</button>
+
 <Navbar/>
 
 
