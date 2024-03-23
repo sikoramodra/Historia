@@ -127,8 +127,8 @@ FROM person p
 
 CREATE VIEW show_all_activities_json AS
 SELECT json_agg(to_json(json)) AS activity
-FROM (SELECT json.activity,
-             json_agg(row_to_json(json)::jsonb - 'activity') AS sub_activity
+FROM (SELECT json.activity AS name,
+             json_agg(row_to_json(json)::jsonb - 'activity') AS sub_activities
       FROM (SELECT a.name                                                             AS activity,
                    sa.name                                                            AS name,
                    coalesce(json_agg(e.name) FILTER (WHERE e.name IS NOT NULL), '[]') AS events
