@@ -59,4 +59,7 @@ func SetRoutes(e *echo.Echo, h *handlers.Handler) {
 	graves.GET("", h.GetGraves)
 	graves.POST("", h.CreateGrave)
 	graves.DELETE("/:id", h.DeleteGrave)
+
+	activities := e.Group("/activities")
+	activities.GET("/full", h.GetActivitiesFull)
 }

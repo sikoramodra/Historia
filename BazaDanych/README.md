@@ -40,6 +40,7 @@
 | `GET /places/graves`                    | Get all graves                           | ![](https://img.shields.io/badge/Test-FE640B) |                                                                 |
 | `POST /places/graves`                   | Add grave                                | ![](https://img.shields.io/badge/Test-FE640B) |                                                                 |
 | `DELETE /places/graves/{id}`            | Delete grave {id}                        | ![](https://img.shields.io/badge/Done-40A02B) | -                                                               |
+| `GET /activities/full`                  | Get all activities-events                | ![](https://img.shields.io/badge/Done-40A02B) | [out](JSON.md#get-activitiesfull---out)                         |
 
 
 

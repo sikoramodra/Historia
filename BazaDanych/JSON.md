@@ -132,8 +132,7 @@
     ],
     "description": "Description for person2",
     "sources": "Source for person2"
-  },
-  ...
+  }
 ]
 ```
 
@@ -384,3 +383,85 @@
 ]
 ```
 
+
+#### `GET /activities/full` - out
+```json
+[
+  {
+    "id": 4,
+    "name": "WWII",
+    "sub_activities": [
+      {
+        "id": 17,
+        "name": "Bitwy 1940-1945 - Front zachodni",
+        "events": [
+          {
+            "id": 201,
+            "name": null
+          },
+          {
+            "id": 202,
+            "name": "Narvik"
+          },
+          {
+            "id": 203,
+            "name": "Monte Cassino"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Okręgi AK",
+        "events": [
+          {
+            "id": 76,
+            "name": null
+          },
+          {
+            "id": 77,
+            "name": "Białystok"
+          },
+          {
+            "id": 78,
+            "name": "Kraków"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Zabory",
+    "sub_activities": [
+      {
+        "id": 1,
+        "name": null,
+        "events": [
+          {
+            "id": 1,
+            "name": null
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Organizacje",
+        "events": [
+          {
+            "id": 2,
+            "name": null
+          },
+          {
+            "id": 3,
+            "name": "Liga Narodowa"
+          },
+          {
+            "id": 4,
+            "name": "Liga Polska"
+          }
+        ]
+      }
+    ]
+  }
+]
+```
