@@ -106,7 +106,7 @@ public class AddingActivity extends AppCompatActivity {
                 int deathYear = Integer.parseInt(editDeathYear.getText().toString());
                 int deathMonth = Integer.parseInt(editDeathMonth.getText().toString());
                 int deathDay = Integer.parseInt(editDeathDay.getText().toString());
-                selectedDate_death = String.format("%04d-%02d-%02d", editDeathYear, editDeathMonth, editDeathDay);
+                selectedDate_death = String.format("%04d-%02d-%02d", deathYear, deathMonth, deathDay);
             }
             String name = editName.getText().toString();
             String otherNames = editOtherNames.getText().toString();
@@ -129,9 +129,13 @@ public class AddingActivity extends AppCompatActivity {
             person.setOtherNames(Arrays.asList(otherNames.split("\\s*,\\s*")));
             person.setCodeNames(Arrays.asList(codeNames.split("\\s*,\\s*")));
             person.setInscription(inscription);
-            person.setBirthDate(selectedDate_birth);
+            if(selectedDate_birth != null) {
+                person.setBirthDate(selectedDate_birth);
+            }
+            if(selectedDate_death != null){
+                person.setDeathDate(selectedDate_death);
+            }
             person.setBirthPlace(birthPlace);
-            person.setDeathDate(selectedDate_death);
             person.setDeathPlace(deathPlace);
             person.setBurialPlace(burialPlace);
             person.setCemetery(cemetery);
