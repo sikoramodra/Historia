@@ -1,9 +1,9 @@
 <script>
-	import { Link } from "svelte-routing";
-	import { mainColorText, mainColorBorder } from "../../stores/ColorStore.js";
     import { onMount } from "svelte";
     import Logo from "../../res/Logo_poziom_ciemne_tło_PNG.png"
     // import "../../res/Logo poziom_ciemne tło_PNG.png"
+    import { Link } from "svelte-routing";
+    import { mainColorBorder, mainColorText } from "../../stores/ColorStore.js";
 
     let isScrolled = false;
 
@@ -11,7 +11,7 @@
         window.addEventListener("scroll", handleScroll);
 
         return () => {
-        window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("scroll", handleScroll);
         };
     });
 
@@ -19,17 +19,16 @@
         isScrolled = window.scrollY > 0;
     }
 
-	let NavColorText;
-	let NavColorBorder;
+    let NavColorText;
+    let NavColorBorder;
 
-	$: {
-		NavColorText = $mainColorText;
-		NavColorBorder = $mainColorBorder;
-	}
-
+    $: {
+        NavColorText = $mainColorText;
+        NavColorBorder = $mainColorBorder;
+    }
 </script>
 
-<nav class="fixed top-0 left-0 right-0 z-[60] px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 h-20 bg-slate-900 { NavColorText }">
+<nav class="fixed top-0 left-0 right-0 z-[60] px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 h-20 transition-colors  { NavColorText } { isScrolled ? 'scrolled' : '' }">
     <div class="font-semibold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl flex flex-row items-center h-full">
         <div class="w-1/5 min-w-fit h-full">
             <Link to="/" class="text-left font-bold h-full items-center flex justify-left">
@@ -46,5 +45,13 @@
     </div>
 </nav>
 
-
-
+<style>
+    .scrolled {
+        background-color: rgb(2 6 23); /* Ustaw tutaj kolor tła po przewinięciu */
+        
+        
+    }
+    .scrolled, .fixed {
+        transition: background-color 0.5s ease-in-out; /* Dodaj efekt ease in and out na 1 sekundę */
+    }
+</style>
