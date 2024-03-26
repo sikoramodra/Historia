@@ -123,23 +123,33 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
+                        <EditText
+                            android:id="@+id/EditBirthDay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/W"
+                            android:ems="10"
+                            android:hint="Birth Day"
+                            android:inputType="number"
+                            android:min="1"
+                            android:max="31"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W"/>
+
                         <View
                             android:layout_width="10dp"
                             android:layout_height="15dp" />
 
-                        <DatePicker
-                            android:id="@+id/editBirthDate"
-                            android:layout_width="187dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
+                        <EditText
+                            android:id="@+id/EditBirthMonth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/W"
                             android:ems="10"
-                            android:hint="Birth Date"
-                            android:inputType="date"
-                            android:shadowColor="@color/W"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="8"
-                            android:textAlignment="textStart"
+                            android:hint="Birth Month"
+                            android:inputType="number"
+                            android:min="1"
+                            android:max="12"
                             android:textColor="@color/W"
                             android:textColorHint="@color/W" />
 
@@ -147,19 +157,71 @@
                             android:layout_width="10dp"
                             android:layout_height="5dp" />
 
-                        <DatePicker
-                            android:id="@+id/editDeathDate"
-                            android:layout_width="187dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
+                        <View
+                            android:id="@+id/view18"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp" />
+
+                        <EditText
+                            android:id="@+id/EditBirthYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/W"
                             android:ems="10"
-                            android:hint="Death Date"
-                            android:inputType="date"
-                            android:shadowColor="@color/W"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="8"
-                            android:textAlignment="textStart"
+                            android:hint="Birth Year"
+                            android:inputType="number"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W" />
+
+                        <View
+                            android:id="@+id/view26"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp" />
+
+                        <EditText
+                            android:id="@+id/EditDeathDay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/W"
+                            android:ems="10"
+                            android:hint="Death Day"
+                            android:inputType="number"
+                            android:min="1"
+                            android:max="31"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W" />
+
+                        <View
+                            android:id="@+id/view15"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp" />
+
+                        <EditText
+                            android:id="@+id/EditDeathMonth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/W"
+                            android:ems="10"
+                            android:hint="Death Month"
+                            android:inputType="number"
+                            android:min="1"
+                            android:max="12"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W" />
+
+                        <View
+                            android:id="@+id/view25"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp" />
+
+                        <EditText
+                            android:id="@+id/EditDeathYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/W"
+                            android:ems="10"
+                            android:hint="Death Year"
+                            android:inputType="number"
                             android:textColor="@color/W"
                             android:textColorHint="@color/W" />
 
@@ -350,13 +412,24 @@
                             android:layout_height="40dp" />
 
                         <EditText
-                            android:id="@+id/editBadges"
+                            android:id="@+id/badges_amount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/W"
                             android:ems="10"
-                            android:hint="Badges"
-                            android:inputType="text"
+                            android:hint="Amount of badges"
+                            android:inputType="number"
+                            android:textColor="@color/W"
+                            android:textColorHint="@color/W" />
+
+                        <EditText
+                            android:id="@+id/activities_amount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/W"
+                            android:ems="10"
+                            android:hint="Amount of activities"
+                            android:inputType="number"
                             android:textColor="@color/W"
                             android:textColorHint="@color/W" />
 
@@ -364,16 +437,6 @@
                             android:layout_width="10dp"
                             android:layout_height="40dp" />
 
-                        <EditText
-                            android:id="@+id/editActivity"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/W"
-                            android:ems="10"
-                            android:hint="Activity"
-                            android:inputType="text"
-                            android:textColor="@color/W"
-                            android:textColorHint="@color/W" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -465,7 +528,7 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <View
-                android:id="@+id/view6"
+                android:id="@+id/view90"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content" />
 

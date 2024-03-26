@@ -72,57 +72,47 @@ public class AddingActivity extends AppCompatActivity {
     }
 
         void sendDataToServer() {
-            EditText editName;
-            EditText editOtherNames;
-            EditText editCodeNames;
-            EditText editInscription;
-            DatePicker editBirthDate;
-            EditText editBirthPlace;
-            DatePicker editDeathDate;
-            EditText editDeathPlace;
-            EditText editBurialPlace;
-            EditText editCemetery;
-            EditText editQuarter;
-            EditText editRow;
-            EditText editGrave;
-            EditText editRanks;
-            EditText editBadges;
-            EditText editActivity;
-            EditText editDescription;
-            EditText editSources;
-            editName = findViewById(R.id.editName);
-            editOtherNames = findViewById(R.id.editOtherNames);
-            editCodeNames = findViewById(R.id.editCodeNames);
-            editInscription = findViewById(R.id.editInscription);
-            editBirthDate = findViewById(R.id.editBirthDate);
-            editBirthPlace = findViewById(R.id.editBirthPlace);
-            editDeathDate = findViewById(R.id.editDeathDate);
-            editDeathPlace = findViewById(R.id.editDeathPlace);
-            editBurialPlace = findViewById(R.id.editBurialPlace);
-            editCemetery = findViewById(R.id.editCemetery);
-            editQuarter = findViewById(R.id.editQuarter);
-            editRow = findViewById(R.id.editRow);
-            editGrave = findViewById(R.id.editGrave);
-            editRanks = findViewById(R.id.editRanks);
-            editBadges = findViewById(R.id.editBadges);
-            editActivity = findViewById(R.id.editActivity);
-            editDescription = findViewById(R.id.editDescription);
-            editSources = findViewById(R.id.editSources);
-            int year_birth = editBirthDate.getYear();
-            int month_birth = (editBirthDate.getMonth() + 1);
-            int day_birth = editBirthDate.getDayOfMonth();
-            String selectedDate_birth = String.format("%04d-%02d-%02d", year_birth, month_birth, day_birth);
-            int year_death = editDeathDate.getYear();
-            int month_death = (editDeathDate.getMonth() + 1);
-            int day_death = editDeathDate.getDayOfMonth();
-            String selectedDate_death = String.format("%04d-%02d-%02d", year_death, month_death, day_death);
+            EditText editName = findViewById(R.id.editName);
+            EditText editOtherNames = findViewById(R.id.editOtherNames);
+            EditText editCodeNames = findViewById(R.id.editCodeNames);
+            EditText editInscription = findViewById(R.id.editInscription);
+            EditText editBirthPlace = findViewById(R.id.editBirthPlace);
+            EditText editDeathPlace = findViewById(R.id.editDeathPlace);
+            EditText editBurialPlace = findViewById(R.id.editBurialPlace);
+            EditText editCemetery = findViewById(R.id.editCemetery);
+            EditText editQuarter = findViewById(R.id.editQuarter);
+            EditText editRow = findViewById(R.id.editRow);
+            EditText editGrave = findViewById(R.id.editGrave);
+            EditText editRanks = findViewById(R.id.editRanks);
+            EditText editBadges = findViewById(R.id.editBadges);
+            EditText editActivity = findViewById(R.id.editActivity);
+            EditText editDescription = findViewById(R.id.editDescription);
+            EditText editSources = findViewById(R.id.editSources);
+            EditText editBirthday = findViewById(R.id.EditBirthDay);
+            EditText editBirthmonth = findViewById(R.id.EditBirthMonth);
+            EditText editBirthyear = findViewById(R.id.EditBirthYear);
+            String selectedDate_birth = null;
+            if(editBirthyear.length() > 0 && editBirthmonth.length() > 0 && editBirthday.length() > 0) {
+                int birthYear = Integer.parseInt(editBirthyear.getText().toString());
+                int birthMonth = Integer.parseInt(editBirthmonth.getText().toString());
+                int birthDay = Integer.parseInt(editBirthday.getText().toString());
+                selectedDate_birth = String.format("%04d-%02d-%02d", birthYear, birthMonth, birthDay);
+            }
+            EditText editDeathDay = findViewById(R.id.EditDeathDay);
+            EditText editDeathMonth = findViewById(R.id.EditDeathMonth);
+            EditText editDeathYear = findViewById(R.id.EditDeathYear);
+            String selectedDate_death = null;
+            if(editDeathYear.length() > 0 && editDeathMonth.length() > 0 && editDeathDay.length() > 0) {
+                int deathYear = Integer.parseInt(editDeathYear.getText().toString());
+                int deathMonth = Integer.parseInt(editDeathMonth.getText().toString());
+                int deathDay = Integer.parseInt(editDeathDay.getText().toString());
+                selectedDate_death = String.format("%04d-%02d-%02d", editDeathYear, editDeathMonth, editDeathDay);
+            }
             String name = editName.getText().toString();
             String otherNames = editOtherNames.getText().toString();
             String codeNames = editCodeNames.getText().toString();
             String inscription = editInscription.getText().toString();
-            String birthDate = selectedDate_birth;
             String birthPlace = editBirthPlace.getText().toString();
-            String deathDate = selectedDate_death;
             String deathPlace = editDeathPlace.getText().toString();
             String burialPlace = editBurialPlace.getText().toString();
             String cemetery = editCemetery.getText().toString();
@@ -130,8 +120,8 @@ public class AddingActivity extends AppCompatActivity {
             String row = editRow.getText().toString();
             String grave = editGrave.getText().toString();
             String ranks = editRanks.getText().toString();
-            String badges = editBadges.getText().toString();
-            String activity = editActivity.getText().toString();
+            //String badges = editBadges.getText().toString();
+            //String activity = editActivity.getText().toString();
             String description = editDescription.getText().toString();
             String sources = editSources.getText().toString();
             Person person = new Person();
@@ -139,9 +129,9 @@ public class AddingActivity extends AppCompatActivity {
             person.setOtherNames(Arrays.asList(otherNames.split("\\s*,\\s*")));
             person.setCodeNames(Arrays.asList(codeNames.split("\\s*,\\s*")));
             person.setInscription(inscription);
-            person.setBirthDate(birthDate);
+            person.setBirthDate(selectedDate_birth);
             person.setBirthPlace(birthPlace);
-            person.setDeathDate(deathDate);
+            person.setDeathDate(selectedDate_death);
             person.setDeathPlace(deathPlace);
             person.setBurialPlace(burialPlace);
             person.setCemetery(cemetery);
@@ -149,8 +139,8 @@ public class AddingActivity extends AppCompatActivity {
             person.setRow(row);
             person.setGrave(grave);
             person.setRanks(ranks);
-            person.setBadges(badges);
-            person.setActivity(activity);
+            //person.setBadges(badges);
+            //person.setActivity(activity);
             person.setDescription(description);
             person.setSources(sources);
 
