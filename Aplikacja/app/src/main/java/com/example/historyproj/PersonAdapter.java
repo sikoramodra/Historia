@@ -1,5 +1,11 @@
 package com.example.historyproj;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +72,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                         // Get the person object at this position
                         Person person = people.get(position);
                         // Call a method to delete this person from the database
-                        deletePerson(person.getId(), position);
+                        showDeleteConfirmationDialog(person.getId(), person.getName(), position);
                     }
                 }
             });
@@ -114,12 +120,34 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                     }
                 }
 
+
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
                     // Handle failure
                     Toast.makeText(itemView.getContext(), "Failed to delete person: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+        }
+        private void showDeleteConfirmationDialog(final int personId, final String personName, final int position) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+            SpannableString spannableString = new SpannableString("Do you really want to delete " + personName + "?");
+            spannableString.setSpan(new ForegroundColorSpan(Color.WHITE), 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.setMessage(spannableString)
+
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // User confirmed deletion, proceed with deletion
+                            deletePerson(personId, position);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // User canceled deletion, do nothing
+                        }
+                    })
+                    .show();
         }
     }
 }
