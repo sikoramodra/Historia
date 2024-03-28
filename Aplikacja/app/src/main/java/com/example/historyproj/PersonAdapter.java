@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,11 +29,28 @@ import retrofit2.Response;
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
 
     private static List<Person> people;
+    private List<Person> allPeople;
 
     public PersonAdapter(List<Person> people) {
         this.people = people;
+        this.allPeople = new ArrayList<>(people);
     }
+    public void filter(String query) {
+        people.clear(); // Clear existing items
 
+        // If the query is empty, add all items from allPeople
+        if (query.isEmpty()) {
+            people.addAll(allPeople);
+        } else {
+            query = query.toLowerCase(); // Convert query to lowercase for case-insensitive search
+            for (Person person : allPeople) {
+                if (person.getName().toLowerCase().contains(query)) {
+                    people.add(person);
+                }
+            }
+        }
+        notifyDataSetChanged(); // Notify adapter about the change
+    }
     @NonNull
     @Override
     public PersonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
