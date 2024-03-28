@@ -36,20 +36,33 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
         this.allPeople = new ArrayList<>(people);
     }
     public void filter(String query) {
-        people.clear(); // Clear existing items
+        people.clear();
 
-        // If the query is empty, add all items from allPeople
+
         if (query.isEmpty()) {
             people.addAll(allPeople);
         } else {
-            query = query.toLowerCase(); // Convert query to lowercase for case-insensitive search
+            query = query.toLowerCase();
             for (Person person : allPeople) {
                 if (person.getName().toLowerCase().contains(query)) {
                     people.add(person);
+                } else {
+                    for (String otherName : person.getOtherNames()) {
+                        if (otherName.toLowerCase().contains(query)) {
+                            people.add(person);
+                            break;
+                        }
+                    }
+                    for (String codeName : person.getCodeNames()) {
+                        if (codeName.toLowerCase().contains(query)) {
+                            people.add(person);
+                            break;
+                        }
+                    }
                 }
             }
         }
-        notifyDataSetChanged(); // Notify adapter about the change
+        notifyDataSetChanged();
     }
     @NonNull
     @Override
@@ -162,7 +175,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            // User canceled deletion, do nothing
+                        //skibidi sigma
                         }
                     })
                     .show();

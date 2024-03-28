@@ -77,7 +77,6 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // Call filter method of PersonAdapter with the new text
                 personAdapter.filter(newText);
                 return true;
             }
