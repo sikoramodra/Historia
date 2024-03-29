@@ -1,5 +1,11 @@
 package com.example.historyproj;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -22,11 +29,41 @@ import retrofit2.Response;
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
 
     private static List<Person> people;
+    private List<Person> allPeople;
 
     public PersonAdapter(List<Person> people) {
         this.people = people;
+        this.allPeople = new ArrayList<>(people);
     }
+    public void filter(String query) {
+        people.clear();
 
+
+        if (query.isEmpty()) {
+            people.addAll(allPeople);
+        } else {
+            query = query.toLowerCase();
+            for (Person person : allPeople) {
+                if (person.getName().toLowerCase().contains(query)) {
+                    people.add(person);
+                } else {
+                    for (String otherName : person.getOtherNames()) {
+                        if (otherName.toLowerCase().contains(query)) {
+                            people.add(person);
+                            break;
+                        }
+                    }
+                    for (String codeName : person.getCodeNames()) {
+                        if (codeName.toLowerCase().contains(query)) {
+                            people.add(person);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public PersonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -66,7 +103,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                         // Get the person object at this position
                         Person person = people.get(position);
                         // Call a method to delete this person from the database
-                        deletePerson(person.getId(), position);
+                        showDeleteConfirmationDialog(person.getId(), person.getName(), position);
                     }
                 }
             });
@@ -114,12 +151,34 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                     }
                 }
 
+
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
                     // Handle failure
                     Toast.makeText(itemView.getContext(), "Failed to delete person: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+        }
+        private void showDeleteConfirmationDialog(final int personId, final String personName, final int position) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+            SpannableString spannableString = new SpannableString("Do you really want to delete " + personName + "?");
+            spannableString.setSpan(new ForegroundColorSpan(Color.WHITE), 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.setMessage(spannableString)
+
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // User confirmed deletion, proceed with deletion
+                            deletePerson(personId, position);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        //skibidi sigma
+                        }
+                    })
+                    .show();
         }
     }
 }

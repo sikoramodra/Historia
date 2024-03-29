@@ -34,7 +34,7 @@ public class ApiClient {
         }
     }*/
 
-    private static final String BASE_URL = "your_url_goes_here";
+    private static final String BASE_URL = "CODY RHODES BEDZIE MISTRZEM 7 KWIETNIA, ZDETRONIZUJE ROMANA I ZROBI FINISH THE STORY. JAK TAK NIE BEDZIE TO MOZESZ MI WYMYSLEC CHALLENGE!!!!!!!!!!!!!!!!!!!!";
 
     private static Retrofit retrofit = null;
 
