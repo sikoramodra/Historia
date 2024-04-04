@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
-    import Logo from "../../res/Logo_poziom_ciemne_tło_PNG.png"
-    // import "../../res/Logo poziom_ciemne tło_PNG.png"
+    import Logo from "../../res/Logo_poziom_ciemne_tło_PNG.png";
+// import "../../res/Logo poziom_ciemne tło_PNG.png"
     import { Link } from "svelte-routing";
     import { mainColorBorder, mainColorText } from "../../stores/ColorStore.js";
 
@@ -36,7 +36,7 @@
             </Link>
         </div>
         <div class="w-3/5 min-w-fit">
-            <Link to="/library" class="w-1/2 ml-2 sm:ml-4 md:ml-6 lg:ml-8 xl:ml-10 2xl:ml-12">Library</Link>
+            <Link to="/library" class="w-1/2 ml-2 sm:ml-4 md:ml-6 lg:ml-8 xl:ml-10 2xl:ml-12">Articles</Link>
             <Link to="/projects" class="w-1/2 ml-2 sm:ml-4 md:ml-6 lg:ml-8 xl:ml-10 2xl:ml-12">Projects</Link>
         </div>
         <div class="w-1/5 text-right min-w-fit">

@@ -117,7 +117,7 @@ border-radius: 1rem;
 }
 
 .parallax-item:first-child {
-background: url("./defiladapolski.png");
+background: url("../res/defiladapolski.png");
 background-size: cover;
 backdrop-filter: brightness(20%);
 position: relative; /* Ustawienie pozycji względnej, aby umożliwić pozycjonowanie pseudo-elementu */
