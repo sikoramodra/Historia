@@ -1,12 +1,9 @@
 <script>
-	import Tile from "../lib/layouts/Tile.svelte";
 	import Navbar from "../lib/sections/Navbar.svelte";
-	import { mainColorText, mainColorBorder } from "../stores/ColorStore.js";
-	import { fade } from "svelte/transition";
-	import { Card, Button, Toggle } from "flowbite-svelte";
+	import { mainColorBorder, mainColorText } from "../stores/ColorStore.js";
+	
 	import Footer from "../lib/sections/Footer.svelte";
-	import Akali from "../res/Akali.png";
-
+	
 	mainColorText.set("text-white");
 	mainColorBorder.set("border-white");
 
@@ -16,12 +13,7 @@
 <div class="bg">
 	<div class="as">
 		<div class="space-y-4 card-container">
-			<Card class="card" img={Akali} href="/" horizontal size="md" reverse={hCard}>
-				<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400 leading-tight">
-					Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-				</p>
-			</Card>
+			
 		</div>
 	</div>
 </div>
