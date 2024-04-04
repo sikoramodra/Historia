@@ -644,13 +644,13 @@
 :root{
     --light-color: #fff;
     --light-color-alt: #afb6cd;
-    --primary-background-color: #131417;
+    --primary-background-color: linear-gradient(red, green);
     --secondary-background-color: #252830;
     --hover-light-color: var(--light-color);
     --hover-dark-color: var(--primary-background-color);
     --gradient-color: linear-gradient(
         115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
-    --transparent-light-color: rgba(255,255,255,.05);
+    --transparent-light-color: rgba(255, 255, 255, 0.212);
     --transparent-dark-color: rgba(0,0,0,.75);
     --font-family: 'Poppins', sans-serif;
     --font-size-xsm: 1.2rem;
@@ -680,7 +680,7 @@ body{
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     color: var(--light-color-alt);
-    background-color: var(--primary-background-color);
+    background: linear-gradient(green,black);
     letter-spacing: 1px;
     transition: background-color .25s,color .25s;
 }
