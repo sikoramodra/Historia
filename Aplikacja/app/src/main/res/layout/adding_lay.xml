@@ -131,10 +131,10 @@
                             android:ems="10"
                             android:hint="Birth Day"
                             android:inputType="number"
-                            android:min="1"
                             android:max="31"
+                            android:min="1"
                             android:textColor="@color/W"
-                            android:textColorHint="@color/W"/>
+                            android:textColorHint="@color/W" />
 
                         <View
                             android:layout_width="10dp"
@@ -148,8 +148,8 @@
                             android:ems="10"
                             android:hint="Birth Month"
                             android:inputType="number"
-                            android:min="1"
                             android:max="12"
+                            android:min="1"
                             android:textColor="@color/W"
                             android:textColorHint="@color/W" />
 
@@ -186,8 +186,8 @@
                             android:ems="10"
                             android:hint="Death Day"
                             android:inputType="number"
-                            android:min="1"
                             android:max="31"
+                            android:min="1"
                             android:textColor="@color/W"
                             android:textColorHint="@color/W" />
 
@@ -204,8 +204,8 @@
                             android:ems="10"
                             android:hint="Death Month"
                             android:inputType="number"
-                            android:min="1"
                             android:max="12"
+                            android:min="1"
                             android:textColor="@color/W"
                             android:textColorHint="@color/W" />
 
@@ -475,6 +475,12 @@
                     android:layout_width="10dp"
                     android:layout_height="40dp" />
 
+                <LinearLayout
+                    android:id="@+id/mainLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"></LinearLayout>
+
                 <Button
                     android:id="@+id/saveButton"
                     android:layout_width="365dp"
@@ -485,7 +491,14 @@
                     android:text="Save"
                     android:textColor="@color/W" />
 
+                <Button
+                    android:id="@+id/checkButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="check activities" />
+
             </LinearLayout>
+
         </ScrollView>
     </LinearLayout>
 

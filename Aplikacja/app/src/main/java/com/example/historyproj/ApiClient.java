@@ -20,21 +20,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 // apilient- wazne do polaczeni tego zmieniac nie będziesz najprawdopodobniej-juleczka
 public class ApiClient {
-    /*
-    static String url;
-
-    static {
-        try {
-            url = new String(Files.readAllBytes(Paths.get("url_val.env")));
-            Log.d("tag", "MY URL LOVELY: "+ url);
-        } catch (IOException e) {
-            Log.d("tag", "it didnt work");
-            throw new RuntimeException(e);
-
-        }
-    }*/
-
-    private static final String BASE_URL = "your_url_goes_here";
+    //CODY RHODES BEDZIE MISTRZEM 7 KWIETNIA, ZDETRONIZUJE ROMANA I ZROBI FINISH THE STORY. JAK TAK NIE BEDZIE TO MOZESZ MI WYMYSLEC CHALLENGE!!!!!!!!!!!!!!!!!!!!-seler
+    //zapisze sobie w kalendrzu specjalniue xd-julka
+    private static final String BASE_URL = "url is here- baza pls dzialaj bo nmg testowac";
 
     private static Retrofit retrofit = null;
 

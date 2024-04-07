@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Historyproj"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".HomeActivity">
+        <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".ProfileActivity">
         </activity>
@@ -37,6 +37,8 @@
         <activity android:name=".PostSentActivity">
         </activity>
         <activity android:name=".EditPostActivity" >
+        </activity>
+        <activity android:name=".ShowPostActivity" >
         </activity>
 
         <meta-data

@@ -53,7 +53,7 @@ public class Person {
     private String badges;
 
     @SerializedName("activity")
-    private String activity;
+    private List<Activity> activity;
 
     @SerializedName("description")
     private String description;
@@ -127,7 +127,7 @@ public class Person {
         return badges;
     }
 
-    public String getActivity() {
+    public List<Activity> getActivity() {
         return activity;
     }
 
@@ -183,8 +183,8 @@ public class Person {
     public void setBadges(String val) {
         this.badges = val;
     }
-    public void setActivity(String val) {
-        this.activity= val;
+    public void setActivity(List<Activity> activity) {
+        this.activity = activity;
     }
     public void setDescription(String val) {
         this.description= val;

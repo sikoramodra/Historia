@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -26,26 +27,26 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditPostActivity extends AppCompatActivity {
+public class ShowPostActivity extends AppCompatActivity {
 
-    private EditText editName;
-    private EditText editOtherName;
-    private EditText editCodeName;
-    private EditText editInscription;
-    private EditText editBirthDate;
-    private EditText editDeathDate;
-    private EditText editBirthPlace;
-    private EditText editDeathPlace;
-    private EditText editBurialPlace;
-    private EditText editCementery;
-    private EditText editQuarter;
-    private EditText editRow;
-    private EditText editGrave;
-    private EditText editRanks;
-    private EditText editBadges;
-    private EditText editDescripiton;
-    private EditText editSources;
-    private EditText editActivities;
+    private TextView editName;
+    private TextView editOtherName;
+    private TextView editCodeName;
+    private TextView editInscription;
+    private TextView editBirthDate;
+    private TextView editDeathDate;
+    private TextView editBirthPlace;
+    private TextView editDeathPlace;
+    private TextView editBurialPlace;
+    private TextView editCementery;
+    private TextView editQuarter;
+    private TextView editRow;
+    private TextView editGrave;
+    private TextView editRanks;
+    private TextView editBadges;
+    private TextView editDescripiton;
+    private TextView editSources;
+    private TextView editActivities;
 
     private Button saveButton;
 
@@ -57,45 +58,31 @@ public class EditPostActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-        setContentView(R.layout.activity_edit_post);
+        setContentView(R.layout.item_details);
         postId = getIntent().getIntExtra("personId", -1);
 
-        editName = findViewById(R.id.editName);
-        editOtherName = findViewById(R.id.editOtherNames);
-        editCodeName = findViewById(R.id.editCodeNames);
+        editName = findViewById(R.id.postName);
+        editOtherName = findViewById(R.id.postOtherNames);
+        editCodeName = findViewById(R.id.postCodeNames);
         editBirthPlace = findViewById(R.id.editBirthPlace);
-        editBurialPlace = findViewById(R.id.editBurialPlace);
-        editInscription = findViewById(R.id.editInscription);
+        editBurialPlace = findViewById(R.id.postBurialPlace);
+        editInscription = findViewById(R.id.postInscription);
         editDeathPlace = findViewById(R.id.editDeathPlace);
-        editBadges = findViewById(R.id.editBadges);
-        editSources = findViewById(R.id.editSources);
+        editBadges = findViewById(R.id.postBadges);
+        editSources = findViewById(R.id.postSources);
         editRanks = findViewById(R.id.editRanks);
         editGrave = findViewById(R.id.editGrave);
         editRow = findViewById(R.id.editRow);
         editQuarter = findViewById(R.id.editQuarter);
-        editActivities = findViewById(R.id.editActivity);
-        editCementery = findViewById(R.id.editCemetery);
-        editDescripiton = findViewById(R.id.editDescription);
-        saveButton = findViewById(R.id.saveButton);
+        editActivities = findViewById(R.id.postActivity);
+        editCementery = findViewById(R.id.postCemetery);
+        editDescripiton = findViewById(R.id.postDescription);
+        saveButton = findViewById(R.id.backButton);
         fetchPersonDetails(postId);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = editName.getText().toString();
-                String othername = editOtherName.getText().toString();
-                String codename = editCodeName.getText().toString();
-                String inscription = editInscription.getText().toString();
-                String birthplace = editBirthPlace.getText().toString();
-                String deathplace = editDeathPlace.getText().toString();
-                String ranks = editRanks.getText().toString();
-                String sources = editSources.getText().toString();
-                String description = editDescripiton.getText().toString();
-                postId = getIntent().getIntExtra("personId", -1);
-                //String cementery = editCementery.getText().toString();
-                //String quarter = editQuarter.getText().toString();
-                //String row = editRow.getText().toString();
-                //String badges = editBadges.getText().toString();
-                updatePersonInDatabase(name, othername, codename, inscription, birthplace, deathplace, ranks, description, sources, postId);
+                finish();
             }
         });
 
@@ -154,7 +141,7 @@ public class EditPostActivity extends AppCompatActivity {
                         }
                     }
                 } else {
-                    Toast.makeText(EditPostActivity.this, "Failed to fetch person details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ShowPostActivity.this, "Failed to fetch person details", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -176,38 +163,5 @@ public class EditPostActivity extends AppCompatActivity {
         }
         return stringBuilder.toString();
     }
-    private void updatePersonInDatabase(String name, String othername, String codename, String inscription, String birthplace, String deathplace, String ranks, String description, String sources, int personId) {
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
-        Person updatedPerson = new Person();
-        updatedPerson.setName(name);
-        updatedPerson.setOtherNames(Arrays.asList(othername.split("\\s*,\\s*")));
-        updatedPerson.setCodeNames(Arrays.asList(codename.split("\\s*,\\s*")));
-        updatedPerson.setBirthPlace(birthplace);
-        updatedPerson.setDeathPlace(deathplace);
-        updatedPerson.setRanks(ranks);
-        updatedPerson.setInscription(inscription);
-        updatedPerson.setDescription(description);
-        updatedPerson.setSources(sources);
-        Gson gson = new GsonBuilder().create();
-        String json = gson.toJson(updatedPerson);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), json);
-        Call<List<Person>> call = apiService.updatePerson(personId, requestBody);
-        call.enqueue(new Callback() {
-            @Override
-            public void onResponse(Call call, Response response) {
-                if (response.isSuccessful()) {
-                    finish();
-                } else {
-                   Log.e("Error", "prob the begin array issue");
-                }
-            }
 
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                Log.e("Error", t.getMessage());
-            }
-        });
-
-
-    }
 }
