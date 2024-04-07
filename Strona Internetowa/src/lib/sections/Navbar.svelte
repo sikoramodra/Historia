@@ -54,4 +54,7 @@
     .scrolled, .fixed {
         transition: background-color 0.5s ease-in-out; /* Dodaj efekt ease in and out na 1 sekundę */
     }
+   div {
+        scale:0.95;
+    }
 </style>

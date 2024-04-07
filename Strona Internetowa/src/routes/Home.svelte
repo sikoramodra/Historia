@@ -85,12 +85,15 @@ onMount(() => {
     <h2>Footer po tym</h2>
   </div>
 </section>
+
+
 </html>
 
 <style>
 * {
 padding: 0;
 margin: 0;
+
 }
 
 html {
@@ -156,7 +159,7 @@ background: #1565c0;
 }
 
 </style>
-<button id="scroll-down">Scroll Down</button>
+
 <Navbar/>
 
 

@@ -31,26 +31,7 @@
 	
 		</header>
 	
-		<!-- Search -->
-		<div class="search-form-container container" id="search-form-container">
 	
-			<div class="form-container-inner">
-	
-				<form action="" class="form">
-					<input class="form-input" type="text" placeholder="What are you looking for?">
-					<button class="btn form-btn" type="submit">
-						<i class="ri-search-line"></i>
-					</button>
-				</form>
-				<span class="form-note">Or press ESC to close.</span>
-	
-			</div>
-	
-			<button class="btn form-close-btn place-items-center" id="form-close-btn">
-				<i class="ri-close-line"></i>
-			</button>
-	
-		</div>
 	
 		<!-- Featured articles -->
 		<section class="featured-articles section section-header-offset">
@@ -224,105 +205,7 @@
 	
 		</section>
 	
-		<!-- Quick read -->
-		<section class="quick-read section">
-	
-			<div class="container">
-	
-				<h2 class="title section-title" data-name="Quick read">Quick read</h2>
-				<!-- Slider main container -->
-				<div class="swiper">
-					<!-- Additional required wrapper -->
-					<div class="swiper-wrapper">
-						<!-- Slides -->
-						<a href="#" class="article swiper-slide">
-							<img src="./assets/images/quick_read/quick_read_1.jpg" alt="" class="article-image">
-	
-							<div class="article-data-container">
-								<div class="article-data">
-									<span>23 Dec 2021</span>
-									<span class="article-data-spacer"></span>
-									<span>3 Min read</span>
-								</div>
-								<h3 class="title article-title">Sample article title</h3>
-							</div>
-						</a>
-						<!-- Slides -->
-						<a href="#" class="article swiper-slide">
-							<img src="./assets/images/quick_read/quick_read_2.jpg" alt="" class="article-image">
-	
-							<div class="article-data-container">
-								<div class="article-data">
-									<span>23 Dec 2021</span>
-									<span class="article-data-spacer"></span>
-									<span>3 Min read</span>
-								</div>
-								<h3 class="title article-title">Sample article title</h3>
-							</div>
-						</a>
-						<!-- Slides -->
-						<a href="#" class="article swiper-slide">
-							<img src="./assets/images/quick_read/quick_read_3.jpg" alt="" class="article-image">
-	
-							<div class="article-data-container">
-								<div class="article-data">
-									<span>23 Dec 2021</span>
-									<span class="article-data-spacer"></span>
-									<span>3 Min read</span>
-								</div>
-								<h3 class="title article-title">Sample article title</h3>
-							</div>
-						</a>
-						<!-- Slides -->
-						<a href="#" class="article swiper-slide">
-							<img src="./assets/images/quick_read/quick_read_4.jpg" alt="" class="article-image">
-	
-							<div class="article-data-container">
-								<div class="article-data">
-									<span>23 Dec 2021</span>
-									<span class="article-data-spacer"></span>
-									<span>3 Min read</span>
-								</div>
-								<h3 class="title article-title">Sample article title</h3>
-							</div>
-						</a>
-						<!-- Slides -->
-						<a href="#" class="article swiper-slide">
-							<img src="./assets/images/quick_read/quick_read_5.jpg" alt="" class="article-image">
-	
-							<div class="article-data-container">
-								<div class="article-data">
-									<span>23 Dec 2021</span>
-									<span class="article-data-spacer"></span>
-									<span>3 Min read</span>
-								</div>
-								<h3 class="title article-title">Sample article title</h3>
-							</div>
-						</a>
-						<!-- Slides -->
-						<a href="#" class="article swiper-slide">
-							<img src="./assets/images/quick_read/quick_read_6.jpg" alt="" class="article-image">
-	
-							<div class="article-data-container">
-								<div class="article-data">
-									<span>23 Dec 2021</span>
-									<span class="article-data-spacer"></span>
-									<span>3 Min read</span>
-								</div>
-								<h3 class="title article-title">Sample article title</h3>
-							</div>
-						</a>
-					</div>
-					<!-- Navigation buttons -->
-					<div class="swiper-button-prev swiper-controls"></div>
-					<div class="swiper-button-next swiper-controls"></div>
-					<!-- Pagination -->
-					<div class="swiper-pagination"></div>
-				</div>
-	
-			</div>
-	
-		</section>
+
 	
 		<!-- Older posts -->
 		<section class="older-posts section">
@@ -409,97 +292,14 @@
 						</div>
 					</a>
 	
-					<a href="#" class="article d-grid">
-						<div class="older-posts-article-image-wrapper">
-							<img src="./assets/images/older_posts/older_posts_5.jpg" alt="" class="article-image">
-						</div>
-	
-						<div class="article-data-container">
-	
-							<div class="article-data">
-								<span>23 Dec 2021</span>
-								<span class="article-data-spacer"></span>
-								<span>3 Min read</span>
-							</div>
-	
-							<h3 class="title article-title">Sample article title</h3>
-							<p class="article-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique a tempore sapiente corporis, eaque fuga placeat odit voluptatibus.</p>
-	
-						</div>
-					</a>
-	
-					<a href="#" class="article d-grid">
-						<div class="older-posts-article-image-wrapper">
-							<img src="./assets/images/older_posts/older_posts_6.jpg" alt="" class="article-image">
-						</div>
-	
-						<div class="article-data-container">
-	
-							<div class="article-data">
-								<span>23 Dec 2021</span>
-								<span class="article-data-spacer"></span>
-								<span>3 Min read</span>
-							</div>
-	
-							<h3 class="title article-title">Sample article title</h3>
-							<p class="article-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique a tempore sapiente corporis, eaque fuga placeat odit voluptatibus.</p>
-	
-						</div>
-					</a>
-	
-				</div>
-	
-				<div class="see-more-container">
-					<a href="#" class="btn see-more-btn place-items-center">See more <i class="ri-arrow-right-s-line"></i></a>
-				</div>
+					
 	
 			</div>
 	
 		</section>
 	
 		<!-- Popular tags -->
-		<section class="popular-tags section">
-	
-			<div class="container">
-	
-				<h2 class="title section-title" data-name="Popular tags">Popular tags</h2>
-	
-				<div class="popular-tags-container d-grid">
-	
-					<a href="#" class="article">
-						<span class="tag-name">#Travel</span>
-						<img src="./assets/images/tags/travel-tag.jpg" alt="" class="article-image">
-					</a>
-	
-					<a href="#" class="article">
-						<span class="tag-name">#Food</span>
-						<img src="./assets/images/tags/food-tag.jpg" alt="" class="article-image">
-					</a>
-	
-					<a href="#" class="article">
-						<span class="tag-name">#Technology</span>
-						<img src="./assets/images/tags/technology-tag.jpg" alt="" class="article-image">
-					</a>
-	
-					<a href="#" class="article">
-						<span class="tag-name">#Health</span>
-						<img src="./assets/images/tags/health-tag.jpg" alt="" class="article-image">
-					</a>
-	
-					<a href="#" class="article">
-						<span class="tag-name">#Nature</span>
-						<img src="./assets/images/tags/nature-tag.jpg" alt="" class="article-image">
-					</a>
-	
-					<a href="#" class="article">
-						<span class="tag-name">#Fitness</span>
-						<img src="./assets/images/tags/fitness-tag.jpg" alt="" class="article-image">
-					</a>
-	
-				</div>
-	
-			</div>
-		</section>
+		
 	
 		<!-- Newsletter -->
 		<section class="newsletter section">
@@ -538,17 +338,12 @@
 					
 					<ul class="list social-media">
 						<li class="list-item">
-							<a href="#" class="list-link"><i class="ri-instagram-line"></i></a>
+							<a href="https://www.instagram.com/jestesmybypamietac/" target="_blank" class="list-link"><i class="ri-instagram-line"></i></a>
 						</li>
 						<li class="list-item">
-							<a href="#" class="list-link"><i class="ri-facebook-circle-line"></i></a>
+							<a href="https://www.facebook.com/jestesmybypamietac2023?locale=pl_PL" target="_blank" class="list-link"><i class="ri-facebook-circle-line"></i></a>
 						</li>
-						<li class="list-item">
-							<a href="#" class="list-link"><i class="ri-twitter-line"></i></a>
-						</li>
-						<li class="list-item">
-							<a href="#" class="list-link"><i class="ri-pinterest-line"></i></a>
-						</li>
+						
 					</ul>
 	
 					<span class="copyright-notice">&copy;2021 NewsFlash. All rights reserved.</span>
@@ -567,15 +362,7 @@
 						<li class="list-item">
 							<a href="#" class="list-link">Technology</a>
 						</li>
-						<li class="list-item">
-							<a href="#" class="list-link">Health</a>
-						</li>
-						<li class="list-item">
-							<a href="#" class="list-link">Nature</a>
-						</li>
-						<li class="list-item">
-							<a href="#" class="list-link">Fitness</a>
-						</li>
+						
 					</ul>
 	
 				</div>
@@ -670,19 +457,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+	zoom: 95%;
 }
 
 html{
     font-size: 62.5%;
+	
 }
 
 body{
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     color: var(--light-color-alt);
-    background: linear-gradient(green,black);
+    background: linear-gradient(rgb(2 6 23),rgb(30 41 59));
     letter-spacing: 1px;
     transition: background-color .25s,color .25s;
+	
 }
 
 a{
@@ -709,16 +499,7 @@ button {
 i{
     font-size: var(--font-size-md);
 }
-/* Theme color change */
-body.light-theme{
-    --light-color: #3d3d3d;
-    --light-color-alt: rgba(0,0,0,.6);
-    --primary-background-color: #fff;
-    --secondary-background-color: #f1f1f1;
-    --hover-light-color: #fff;
-    --transparent-dark-color: var(--secondary-background-color);
-    --transparent-light-color: rgba(0,0,0,.1);
-}
+
 /* Reusable classes */
 .container{
     max-width: 160rem;
@@ -740,9 +521,7 @@ body.light-theme{
     display: grid;
 }
 
-.screen-sm-hidden{
-    display: none;
-}
+
 /* Header */
 .header{
     background-color: var(--secondary-background-color);
@@ -753,12 +532,6 @@ body.light-theme{
     z-index: 999;
 }
 
-.navbar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-block: 1.5rem;
-}
 
 .logo{
     font-size: var(--font-size-md);
@@ -773,17 +546,7 @@ body.light-theme{
     gap: var(--gap);
 }
 
-.menu > .list{
-    flex-direction: column;
-}
 
-.list-link.current{
-    color: var(--light-color);
-}
-
-.close-menu-icon{
-    display: none;
-}
 
 .btn{
     cursor: pointer;
@@ -791,55 +554,9 @@ body.light-theme{
 
 .list-link:hover,
 .btn:hover,
-.btn:hover span{
-    color: var(--light-color);
-}
 
-.moon-icon{
-    display: none;
-}
-
-.light-theme .sun-icon{
-    display: none;
-}
-
-.light-theme .moon-icon{
-    display: block;
-}
-/* Header JavaScript Styles */
-.header.activated{
-    box-shadow: 0 1px .5rem var(--transparent-light-color);
-}
-
-.menu.activated{
-    box-shadow: 1px 1px 1rem var(--transparent-light-color);
-    opacity: 1;
-    transform: scale(1);
-}
-
-.menu-toggle-icon.activated .open-menu-icon{
-    display: none;
-}
-
-.menu-toggle-icon.activated .close-menu-icon{
-    display: block;
-}
 
 /* Search */
-.search-form-container{
-    width: 100%;
-    max-width: 100%;
-    height: 100vh;
-    background-color: var(--primary-background-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    display: flex;
-    opacity: 0;
-    transform: scale(0);
-    transition: opacity .5s;
-}
 
 .form-container-inner{
     margin: auto;
@@ -892,11 +609,7 @@ body.light-theme{
     display: flex;
 }
 
-/* Form JavaScript styles */
-.search-form-container.activated{
-    opacity: 1;
-    transform: scale(1);
-}
+
 
 /* Featured articles */
 .featured-articles{
@@ -904,7 +617,7 @@ body.light-theme{
 }
 
 .section-header-offset{
-    margin-top: 7.4rem;
+    padding-top:3.5em;
 }
 
 .featured-articles-container,
@@ -958,6 +671,7 @@ body.light-theme{
     display: inline-flex;
     background-color: var(--secondary-background-color);
     padding: .6rem 1.5rem;
+	scale:0.95;
 }
 
 .article{
@@ -1101,32 +815,7 @@ body.light-theme{
     left: 2rem;
 }
 
-.article.swiper-slide{
-    height: 40rem;
-}
 
-/* Quick read - Swiper */
-.swiper-wrapper{
-    height: auto;
-}
-.swiper-controls{
-    width: 3.5rem;
-    height: 3.5rem;
-    background-color: var(--secondary-background-color);
-}
-
-.swiper-controls::after{
-    font-size: 1.6rem;
-    color: var(--light-color);
-}
-
-.swiper-pagination{
-    bottom: .5rem !important;
-}
-
-.swiper-pagination-bullet{
-    background-color:var(--light-color);
-}
 
 /* Older posts */
 .older-posts-grid-wrapper{
@@ -1155,52 +844,7 @@ body.light-theme{
     margin-bottom: var(--margin-sm);
 }
 
-.see-more-container{
-    padding-top: var(--margin-md);
-}
 
-.see-more-btn{
-    text-transform: uppercase;
-}
-
-.see-more-btn:hover{
-    color: var(--light-color);
-}
-
-.see-more-btn i{
-    transition: transform .25s;
-}
-
-.see-more-btn:hover i{
-    transform: translateX(.5rem);
-}
-
-/* Popular tags */
-.popular-tags-container{
-    gap: var(--gap);
-}
-
-.popular-tags-container .article{
-    min-height: var(--item-min-height-sm);
-}
-
-.tag-name{
-    padding: 1rem 2rem;
-    background-color: var(--transparent-dark-color);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-}
-
-.popular-tags-container .article:hover .tag-name{
-    color: var(--light-color);
-}
-
-.popular-tags-container .article{
-    overflow: hidden;
-}
 
 .popular-tags-container .article:hover .article-image{
     transform: scale(1.05);
@@ -1224,9 +868,6 @@ body.light-theme{
     background-color: var(--secondary-background-color);
 }
 
-.footer-container{
-    gap: var(--gap);
-}
 
 .company-data{
     display: flex;
@@ -1274,91 +915,7 @@ body.light-theme{
 ::-webkit-scrollbar-thumb:hover {
     background: #2e303b;
 }
-  
-/* Blog post */
-.blog-post{
-    padding-bottom: 5rem;
-}
 
-.blog-post-data{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-block: 2.5rem;
-}
-
-.blog-post-title{
-    font-size: clamp(3rem, 5vw, 6rem); 
-}
-
-.blog-post-data .article-data{
-    margin-bottom: 2.5rem;
-}
-
-.blog-post-data img{
-    width: 100%;
-    height: var(--item-min-height-sm);
-    object-fit: cover;
-    object-position: center 10%;
-}
-
-.blog-post-container .container{
-    max-width: 90rem;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap);
-}
-
-.quote{
-    background-color: var(--secondary-background-color);
-    padding: 2.5rem;
-}
-
-.quote p{
-    font-style: italic;
-}
-
-.quote span{
-    font-size: 5rem;
-}
-
-.author{
-    margin-top: 5rem;
-    gap: var(--gap);
-}
-
-.author{
-    background-color: var(--secondary-background-color);
-}
-
-.author-image-box{
-    position: relative;
-    height: var(--item-min-height-sm);
-}
-
-.author-about{
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.author-name{
-    color: var(--light-color);
-    font-weight: 400;
-}
-
-.author-about p{
-    max-width: 50rem;
-    margin-bottom: 1rem;
-}
-
-.author-about .social-media{
-    margin-top: auto;
-    margin-bottom: 0;
-}
 
 @media screen and (min-width: 700px) {
 
@@ -1384,18 +941,13 @@ body.light-theme{
         align-items: center;
     }
 
-    .popular-tags-container,
-    .footer-container{
-        grid-template-columns: repeat(2, 1fr);
-    }
+   
 
     .company-data{
         order: 0;
     }
 
-    .author{
-        grid-template-columns: 25rem 1fr;
-    }
+    
 }
 
 @media screen and (min-width: 768px) {
@@ -1433,41 +985,11 @@ body.light-theme{
         height: auto;
     }
 
-    .blog-post-data img{
-        height: var(--item-min-height-md);;
-    }
+  
 }
 
 @media screen and (min-width: 1024px) {
-    .menu{
-        position: static;
-        width: initial;
-        padding: initial;
-        background-color: transparent;
-        opacity: 1;
-        transform: scale(1);
-    }
 
-    .menu > .list{
-        flex-direction: row;
-    }
-
-    .screen-lg-hidden{
-        display: none;
-    }
-
-    .screen-sm-hidden{
-        display: block;
-    }
-
-    .sign-up-btn{
-        padding: 4px;
-    }
-
-    /* Fancy button animation effect */
-    .btn.fancy-border:hover::before{
-        animation: animate_border .75s linear infinite
-    }
 
     @keyframes animate_border{
         to{
@@ -1484,9 +1006,7 @@ body.light-theme{
         height: 10rem;
     }
 
-    .popular-tags-container{
-        grid-template-columns: repeat(3, 1fr);
-    }
+
 
     .footer-container{
         grid-template-columns: repeat(5, 1fr);
@@ -1504,9 +1024,7 @@ body.light-theme{
         margin-top: auto;
     }
 
-    .blog-post-data img{
-        height: 40rem;
-    }
+   
 }
 
 @media screen and (min-width: 1200px) {
