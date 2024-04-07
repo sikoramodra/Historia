@@ -80,23 +80,6 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                personAdapter.filter(newText);
-                return true;
-            }
-        });
-
-        searchView = findViewById(R.id.search_view);
-        int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        TextView searchPlate = searchView.findViewById(searchPlateId);
-        searchPlate.setTextColor(Color.WHITE);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
                 if (personAdapter != null) {
                     //naprawilam seler bo  inaczej errory wyrzycalo idk man
                     personAdapter.filter(newText);
