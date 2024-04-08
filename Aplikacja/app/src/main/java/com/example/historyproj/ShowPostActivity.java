@@ -3,11 +3,13 @@ package com.example.historyproj;
 import static android.widget.Toast.makeText;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,7 +62,32 @@ public class ShowPostActivity extends AppCompatActivity {
         }
         setContentView(R.layout.item_details);
         postId = getIntent().getIntExtra("personId", -1);
+        ImageButton homeButton = findViewById(R.id.homebutton);
+        ImageButton addPostButton = findViewById(R.id.addpostbutton);
+        ImageButton profileButton = findViewById(R.id.profilebutton);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowPostActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        addPostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowPostActivity.this, AddingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowPostActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         editName = findViewById(R.id.postName);
         editOtherName = findViewById(R.id.postOtherNames);
         editCodeName = findViewById(R.id.postCodeNames);
@@ -151,8 +178,6 @@ public class ShowPostActivity extends AppCompatActivity {
             }
         });
     }
-
-
     private String listToString(List<String> list) {
         StringBuilder stringBuilder = new StringBuilder();
         if (list != null && !list.isEmpty()) {

@@ -21,12 +21,20 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <SearchView
-                android:id="@+id/search_view"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:background="@color/R"
-                android:textColor="#FFFFFF" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_search">
+
+                <SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="78dp"
+                    android:background="@color/R"
+                    android:outlineSpotShadowColor="@color/R"
+                    android:searchIcon="@drawable/search_better"
+                    android:textColor="#FFFFFF" />
+            </FrameLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/allposts_view"
@@ -109,7 +117,7 @@
                     android:paddingEnd="16dp"
                     android:paddingBottom="16dp"
                     android:scaleType="fitXY"
-                    app:srcCompat="@drawable/profile_pic"
+                    app:srcCompat="@drawable/settings"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <View

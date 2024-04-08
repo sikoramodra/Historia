@@ -491,12 +491,6 @@
                     android:text="Save"
                     android:textColor="@color/W" />
 
-                <Button
-                    android:id="@+id/checkButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="check activities" />
-
             </LinearLayout>
 
         </ScrollView>
@@ -577,7 +571,7 @@
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/profile_pic"
+                app:srcCompat="@drawable/settings"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <View

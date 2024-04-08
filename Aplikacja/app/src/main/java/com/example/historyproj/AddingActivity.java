@@ -50,7 +50,6 @@ public class AddingActivity extends AppCompatActivity {
         ImageButton homeButton = findViewById(R.id.homebutton);
         ImageButton addPostButton = findViewById(R.id.addpostbutton);
         ImageButton profileButton = findViewById(R.id.profilebutton);
-        Button checkButton = findViewById(R.id.checkButton);
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

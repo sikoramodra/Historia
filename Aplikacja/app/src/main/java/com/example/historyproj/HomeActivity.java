@@ -68,22 +68,6 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(HomeActivity.this, "Failed to fetch data: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        searchView = findViewById(R.id.search_view);
-        int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        TextView searchPlate = searchView.findViewById(searchPlateId);
-        searchPlate.setTextColor(Color.WHITE);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                personAdapter.filter(newText);
-                return true;
-            }
-        });
 
         searchView = findViewById(R.id.search_view);
         int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);

@@ -131,7 +131,7 @@
                     android:paddingEnd="16dp"
                     android:paddingBottom="16dp"
                     android:scaleType="fitXY"
-                    app:srcCompat="@drawable/profile_pic"
+                    app:srcCompat="@drawable/settings"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <View
