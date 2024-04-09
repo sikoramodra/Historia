@@ -594,23 +594,6 @@ i{
     width: 8rem;
 }
 
-.form-note{
-    font-size: var(--font-size-xsm);
-    align-self: flex-end;
-}
-
-.form-close-btn{
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    border: 2px solid var(--secondary-background-color);
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-}
-
-
-
 /* Featured articles */
 .featured-articles{
     padding-block: 2rem;

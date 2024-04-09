@@ -1,9 +1,9 @@
 <script>
   import { onMount } from "svelte";
   import { writable } from 'svelte/store';
+  import Footer from '../lib/sections/Footer.svelte';
   import Navbar from '../lib/sections/Navbar.svelte';
   import { mainColorBorder, mainColorText } from '../stores/ColorStore.js';
-  
 //import Scrollbar from 'smooth-scrollbar'
 
 
@@ -73,38 +73,88 @@ onMount(() => {
 
 <section id="section">
   <div id="parallax" class="parallax-item">
-    <h2>Jesteśmy by Pamiętać</h2>
+    <h2 class="napis">Jesteśmy by Pamiętać</h2>
   </div>
   <div class="parallax-item">
-    <h2>Coś tam że cudowna historia</h2>
+    <h2 class="napis1">Coś tam że cudowna historia
+    <div class="tekst">genialnie ustawiane opony w samochodzie to podstawa dobrego auta, nie wiadomo co może powodować takiego spokoju nie można napierwszy rzut oka oceniać</div>
+    </h2><divider class="divider"></divider>
+    <divider class="divider1"></divider>
+    <obrazek class="obrazek"></obrazek>
   </div>
   <div class="parallax-item">
-    <h2>Wzium</h2>
+    <h2 class="napis2">Wzium</h2>
   </div>
-  <div class="parallax-item">
-    <h2>Footer po tym</h2>
-  </div>
+
+  <Footer/>
+ 
 </section>
 
 
 </html>
 
 <style>
+.divider{
+  position: absolute;
+    height:80vh;
+    background-color:white;
+    width:1px;
+    float:left;
+    margin-top:10vh;
+    margin-bottom:10vh;
+    margin-left:49%;
+    margin-right: 51%;  }
+  .divider1{
+  position: absolute;
+    height:80vh;
+    background-color:red;
+    width:1px;
+    float:left;
+    margin-top:10vh;
+    margin-bottom:10vh;
+    margin-left:51%;
+    margin-right: 49%;  }
 * {
 padding: 0;
 margin: 0;
-
-}
+user-select: none;
+zoom: 100%;}
 
 html {
 scroll-behavior: smooth;
 
 }
+.napis1{
+  margin-top:10% ;
+  zoom:60%;
+  float:left;
+  margin-left: 5%;
+}
+.tekst{
+  font-size:20px;
+  color:blue;
+}
+.napis {
+  margin-left: 7%;
+  margin-right:55%;
+  margin-top:20rem;
+  }
+  .obrazek{
+    background: url("../res/FPWP.gif");
+    min-width:100px;
+    height:100px;
+    background-size: cover;
+    float:right;
+    margin-right:20%;
+    margin-left:50%;
+    margin-top: 20%;
+    zoom:3;
+    align-items: center;
 
+  }
 .parallax-item {
 display: flex;
-align-items: center;
-justify-content: center;
+
 font-weight: bold;
 font-family: Montserrat, sans-serif;
 width: 100%;
@@ -114,10 +164,11 @@ min-height: 100vh;
 .parallax-item h2 {
 font-size: 3rem;
 text-transform: uppercase;
-background-color: whitesmoke;
+color:white;
 padding: 1rem;
 border-radius: 1rem;
 }
+
 
 .parallax-item:first-child {
 background: url("../res/defiladapolski.png");
@@ -141,7 +192,7 @@ background: #05051b;
 }
 
 .parallax-item:nth-child(3) {
-background: url("./gittest2.gif");
+background: url("../res/gittest2.gif");
 background-size: cover;
 background-position: center;
 background-attachment: fixed; /* Parallax Effect for DIV 3 */
