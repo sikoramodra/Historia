@@ -74,7 +74,9 @@
 	{/each}
 </div> -->
 
+
 <div>
+	{#if activities.length > 0 }
 	{#each activities as activity}
 		<div class="mb-4 relative col-span-2 border border-white p-8 rounded-xl flex flex-col justify-center">
 			<button class="block text-white font-extrabold mb-2 cursor-pointer" on:click={() => activity.showSubActivities = !activity.showSubActivities}>{activity.name}</button>
@@ -107,9 +109,10 @@
 				{/each}
 			{/if}
 		</div>
-	{:else}
+		{/each}
+		{:else}
 		<p class="text-white">Nie udało się załadować Wydarzeń.</p>
-	{/each}
+	{/if}
 </div>
 
 <style>
