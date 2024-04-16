@@ -410,7 +410,7 @@
 				<div>
 					<p class="text-white font-extrabold text-center mb-4">Stopień Wojskowy:</p>
 					<div class="border border-white p-8 rounded-xl mb-4">
-						<AddRanks data={otherFormData.ranks} />
+						<AddRanks bind:data={otherFormData.ranks} />
 					</div>
 				</div>
 
@@ -418,7 +418,7 @@
 				<div>
 					<p class="text-white font-extrabold text-center mb-4">Odznaczenia:</p>
 					<div class="border border-white p-8 rounded-xl mb-4">
-						<AddBadges data={otherFormData.badges} />
+						<AddBadges bind:data={otherFormData.badges} />
 					</div>
 				</div>
 
@@ -426,7 +426,7 @@
 				<div>
 					<p class="text-white font-extrabold text-center mb-4">Wydarzenia:</p>
 					<div class="border border-white p-8 rounded-xl mb-4">
-						<AddActivities data={otherFormData.activities} />
+						<AddActivities bind:data={otherFormData.activities} />
 					</div>
 				</div>
 			</div>
@@ -502,6 +502,10 @@
 						<strong>+</strong> <i class="fas fa-user"></i> Dodaj Osobę</button
 					>
 				</div>
+			</div>
+
+			<div class="flex justify-center items-center mt-4 lg:col-span-2">
+				<button on:click={() => console.log(formData, otherFormData)} class="active:bg-white active:text-blue-600 px-4 py-2 rounded bg-blue-600 text-white hover:scale-105 hover:bg-blue-500 shadow-2xl shadow-black">Check Data</button>
 			</div>
 		</form>
 	</div>
