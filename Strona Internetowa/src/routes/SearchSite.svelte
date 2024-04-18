@@ -163,7 +163,7 @@
 	{#if $searchStore.search}
 		<div
 			transition:slide
-			class="flex flex-row flex-wrap items-stretch justify-around bg-slate-700 w-[90vw] h-[80vh] rounded-xl m-4 overflow-y-auto p-6 slide-transition"
+			class="flex flex-row flex-wrap items-stretch justify-around bg-slate-700 w-[90vw] h-[75vh] rounded-xl m-4 overflow-y-auto p-6 slide-transition"
 		>
 			{#each $searchStore.filtered as person}
 				<div
