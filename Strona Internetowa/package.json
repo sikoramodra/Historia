@@ -17,8 +17,6 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-svelte": "^2.35.1",
     "eslint-plugin-tailwindcss": "^3.15.1",
-    "flowbite": "^2.3.0",
-    "flowbite-svelte": "^0.44.24",
     "flowbite-svelte-icons": "^1.4.5",
     "postcss": "^8.4.35",
     "postcss-load-config": "^4.0.2",
@@ -31,7 +29,7 @@
     "vite": "^4.5.2"
   },
   "dependencies": {
-    "masonry-layout": "^4.2.2",
-    "gsap": "^3.12.5"
+    "gsap": "^3.12.5",
+    "masonry-layout": "^4.2.2"
   }
 }
