@@ -62,4 +62,7 @@ func SetRoutes(e *echo.Echo, h *handlers.Handler) {
 
 	activities := e.Group("/activities")
 	activities.GET("/full", h.GetActivitiesFull)
+
+	ranks := e.Group("/ranks")
+	ranks.GET("", h.GetRanks)
 }
