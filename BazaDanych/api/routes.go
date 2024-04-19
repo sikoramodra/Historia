@@ -65,4 +65,7 @@ func SetRoutes(e *echo.Echo, h *handlers.Handler) {
 
 	ranks := e.Group("/ranks")
 	ranks.GET("", h.GetRanks)
+
+	badges := e.Group("/badges")
+	badges.GET("", h.GetBadges)
 }
