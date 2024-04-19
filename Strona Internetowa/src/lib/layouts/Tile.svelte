@@ -1,19 +1,24 @@
 <script>
-	export let title;
-	export let description;
-</script>
-
-<div class="tile">
-	<h2>{title}</h2>
-	<p>{description}</p>
-</div>
-
-<style>
-	/* Dodaj odpowiedni styl dla kafelków */
-	.tile {
-		border: 1px solid #ccc;
-		padding: 16px;
-		margin: 8px;
-		border-radius: 8px;
+	let tilesContainer = document.getElementById('tiles-container');
+	
+	function addTile(title, description, data) {
+	  let tile = document.createElement('div');
+	  tile.classList.add('tile');
+	  
+	  tile.innerHTML = `
+		<div>
+		  <img src="" alt="fota">
+		  <div class="title"><b>${title}</b></div>
+		  <div class="description">${description}</div>
+		  <div class="date">${data}</div>
+		</div>
+	  `;
+	  
+	  tilesContainer.appendChild(tile);
 	}
-</style>
+  </script>
+  
+  <div id="tiles-container"></div>
+  
+  <button onclick="addTile('New Title', 'New Description', 'New Data')">Dodaj kafelek</button>
+  
