@@ -4,7 +4,7 @@
 	export let url = "";
 </script>
 
-<main class="">
+<main class="bg-slate-950">
 	<Router {url}>
 		<Content />
 	</Router>

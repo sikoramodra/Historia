@@ -1,216 +1,110 @@
 <script>
-  import { onMount } from "svelte";
-  import { writable } from 'svelte/store';
-  import Footer from '../lib/sections/Footer.svelte';
-  import Navbar from '../lib/sections/Navbar.svelte';
-  import { mainColorBorder, mainColorText } from '../stores/ColorStore.js';
-//import Scrollbar from 'smooth-scrollbar'
+	// --- Imports ---
+	
+	import Navbar from '../lib/sections/Navbar.svelte';
+	import Footer from '../lib/sections/Footer.svelte';
+	import { onMount } from "svelte";
+	import { mainColorText, mainColorBorder } from '../stores/ColorStore.js';
 
+	// --- --- ---
 
-/* import Attribution from './components/Attribution.svelte'
-import Hero from './containers/Hero.svelte'
-import Divider from './components/Divider.svelte'
-import Feature from './containers/Feature.svelte'
+	mainColorText.set("text-white");
+	mainColorBorder.set("border-white");
 
+	// --- --- ---
 
-import { initAnimations } from './scripts/animations'
-*/
+	onMount(() => {
 
-  mainColorText.set("text-white");
-  mainColorBorder.set("border-white");
+		const mainContainer = document.getElementById("main-container");
 
-  let textToAnimate = writable('');
-  let index = 0;
-  let speed = 70; // Adjust the speed of typing animation here
+		// --- Function to change colors of Navbar depending on which div it is ---
 
-  // Text to animate
-  const text = "Jesteśmy by Pamiętać";
-  
-  onMount(() => {
-      const type = () => {
-          if (index < text.length) {
-              const currentChar = text.charAt(index);
-              if (currentChar === ' ') {
-                  textToAnimate.update(oldValue => oldValue + ' '); // Append space without removing it
-              } else {
-                  textToAnimate.update(oldValue => oldValue + currentChar);
-              }
-              index++;
-              setTimeout(type, speed);
-          }type();
-        };
-        const parallax = document.getElementById("parallax");
+		mainContainer.addEventListener("scroll", () => {
+			const scrollY = mainContainer.scrollTop;
+			const container1 = document.getElementById("container1");
+			const container2 = document.getElementById("container2");
+			const container3 = document.getElementById("container3");
 
-// Parallax Effect for DIV 1
-window.addEventListener("scroll", function () {
-let offset = window.pageYOffset;
-parallax.style.backgroundPositionY = offset * 0.7 + "px";
-// DIV 1 background will move slower than other elements on scroll.
-});
-
-      });
-      
-      
-
-onMount(() => {
-      // Scroll Down Button
-      const scrollDownButton = document.getElementById("scroll-down");
-      if (scrollDownButton) {
-          scrollDownButton.addEventListener('click', () => {
-              window.scroll({
-                  top: window.innerHeight,
-                  behavior: 'smooth'
-              });
-          });
-      };
-  });
-// DIV 1 background will move slower than other elements on scroll.
+			if (scrollY < container2.offsetTop - 60) {
+				//currentdiv = 1
+				mainColorText.set("text-white");
+				mainColorBorder.set("border-white");
+				//--- --- ---
+			} else if (scrollY < container3.offsetTop - 60) {
+				//currentdiv = 2
+				mainColorText.set("text-red-600");
+				mainColorBorder.set("border-red-600");
+				//--- --- ---
+			} else {
+				//currentdiv = 3
+				mainColorText.set("text-white");
+				mainColorBorder.set("border-white");
+				//--- --- ---
+			}
+			// console.log($mainColorText, $mainColorBorder);
+		});
+		// --- --- ---
+	});
 </script>
-<html lang="en">
-<head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-</head>
 
-<section id="section">
-  <div id="parallax" class="parallax-item">
-    <h2 class="napis">Jesteśmy by Pamiętać</h2>
-  </div>
-  <div class="parallax-item">
-    <h2 class="napis1">Coś tam że cudowna historia
-    <div class="tekst">genialnie ustawiane opony w samochodzie to podstawa dobrego auta, nie wiadomo co może powodować takiego spokoju nie można napierwszy rzut oka oceniać</div>
-    </h2><divider class="divider"></divider>
-    <divider class="divider1"></divider>
-    <obrazek class="obrazek"></obrazek>
-  </div>
-  <div class="parallax-item">
-    <h2 class="napis2">Wzium</h2>
-  </div>
+<Navbar />
+<div id="main-container" class="font-bold h-screen w-full overflow-auto">
+	<div id="container1" class="h-screen flex justify-center items-center text-white w-full">
+		
+	<h1 class="text-6xl">Jesteśmy by Pamiętać</h1>
+	<button class="text-4xl">Button</button>
+		
+	</div>
+	<div id="container2" class="h-screen flex justify-center items-center text-red-600 w-full bg-white">
+		<p class="text-7xl">Home</p>
+	</div>
+	<div id="container3" class="h-screen flex justify-center items-center text-slate-950 w-full bg-red-600">
+		<p class="text-7xl">Home</p>
+	</div>
 
-  <Footer/>
- 
-</section>
+	<!-- 1. Po zjechaniu nizej, ma sie znajdowac box z about-us, uwzglednienie:
+    - opisu
+    - zdjec z podpisem
 
-
-</html>
+    2. Trzeba umiescic tu jeszcze box z Najnowszymi postami z Library - jako Nowość -->
+</div>
+<Footer />
 
 <style>
-.divider{
-  position: absolute;
-    height:80vh;
-    background-color:white;
-    width:1px;
-    float:left;
-    margin-top:10vh;
-    margin-bottom:10vh;
-    margin-left:49%;
-    margin-right: 51%;  }
-  .divider1{
-  position: absolute;
-    height:80vh;
-    background-color:red;
-    width:1px;
-    float:left;
-    margin-top:10vh;
-    margin-bottom:10vh;
-    margin-left:51%;
-    margin-right: 49%;  }
-* {
-padding: 0;
-margin: 0;
-user-select: none;
-zoom: 100%;}
+	/* Making snaping scroll */
 
-html {
-scroll-behavior: smooth;
-
+	#main-container > div {
+	scroll-snap-align: start;
+	scroll-padding: 100px; /* Dostosuj wartość do swoich potrzeb */
 }
-.napis1{
-  margin-top:10% ;
-  zoom:60%;
-  float:left;
-  margin-left: 5%;
+	#main-container {
+	scroll-snap-type: y proximity;
+	scroll-snap-stop: always;
+	scroll-behavior: smooth;
+	overscroll-behavior-y: none;
 }
-.tekst{
-  font-size:20px;
-  color:blue;
-}
-.napis {
-  margin-left: 7%;
-  margin-right:55%;
-  margin-top:20rem;
-  }
-  .obrazek{
-    background: url("../res/FPWP.gif");
-    min-width:100px;
-    height:100px;
-    background-size: cover;
-    float:right;
-    margin-right:20%;
-    margin-left:50%;
-    margin-top: 20%;
-    zoom:3;
+	*::-webkit-scrollbar {
+		width: 0; /* naprawilem problem z scrollbarem */
+		visibility: hidden;
+	}
+	*::-webkit-scrollbar-track {
+		background: transparent;
+		visibility: hidden;
+	}
+	*::-webkit-scrollbar-thumb {
+		background-color: rgba(30, 41, 59, 0.7);
+		border-radius: 10px;
+		border: 1px solid transparent;
+	}
+	#container1 {
+        position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-
-  }
-.parallax-item {
-display: flex;
-
-font-weight: bold;
-font-family: Montserrat, sans-serif;
-width: 100%;
-min-height: 100vh;
+    justify-content: center;
+    background-image: url(https://github.com/SevenPik/StronyInternetoweSpeedrun/blob/main/image0-ezgif.com-gif-to-mp4-converter.mp4);
+    z-index: 1;
 }
-
-.parallax-item h2 {
-font-size: 3rem;
-text-transform: uppercase;
-color:white;
-padding: 1rem;
-border-radius: 1rem;
-}
-
-
-.parallax-item:first-child {
-background: url("../res/defiladapolski.png");
-background-size: cover;
-backdrop-filter: brightness(20%);
-position: relative; /* Ustawienie pozycji względnej, aby umożliwić pozycjonowanie pseudo-elementu */
-}
-
-.parallax-item:first-child h2::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: rgba(0, 0, 0, 0.61); /* Przezroczyste tło */
-z-index: -1; }
-
-.parallax-item:nth-child(2) {
-background: #05051b;
-}
-
-.parallax-item:nth-child(3) {
-background: url("../res/gittest2.gif");
-background-size: cover;
-background-position: center;
-background-attachment: fixed; /* Parallax Effect for DIV 3 */
-min-height: 600px;
-}
-
-.parallax-item:nth-child(4) {
-background: #1565c0;
-}
-
-@media screen and (max-width: 768px) {
-.parallax-item h2 {
-  font-size: 1.5rem;
-}
-}
-
+	
 </style>
-
-<Navbar/>
-
-

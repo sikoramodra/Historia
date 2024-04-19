@@ -1,13 +1,13 @@
 <script>
 	// --- Imports ---
 
-	import PeopleInfo from "../lib/layouts/People/PeopleInfo.svelte";
+	import PeopleInfo from "./../lib/layouts/PeopleInfo.svelte";
 	import { Link } from "svelte-routing";
 	import { slide } from "svelte/transition";
 	import { mainColorText, mainColorBorder } from "../stores/ColorStore.js";
 	import { createSearchStore, searchHandler } from "./../stores/SearchStore.js";
 	import { onDestroy, onMount } from "svelte";
-	import PeopleCards from "../lib/layouts/People/PeopleCards.svelte";
+	import PeopleCards from "./../lib/layouts/PeopleCards.svelte";
 	import Logo from "../res/Logo pion   tagline_ciemne tło_PNG.png";
 
 	// --- --- ---
@@ -161,10 +161,7 @@
 
 	<!-- Search Results -->
 	{#if $searchStore.search}
-		<div
-			transition:slide
-			class="flex flex-row flex-wrap items-stretch justify-around bg-slate-700 w-[90vw] h-[75vh] rounded-xl m-4 overflow-y-auto p-6 slide-transition"
-		>
+		<div transition:slide class="flex flex-row flex-wrap items-stretch justify-around bg-slate-700 w-[90vw] h-[80vh] rounded-xl m-4 overflow-y-auto p-6">
 			{#each $searchStore.filtered as person}
 				<div
 					on:click={() => personClick(person)}
