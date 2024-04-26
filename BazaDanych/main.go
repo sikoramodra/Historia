@@ -2,8 +2,9 @@ package main
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
+	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/jackc/pgx/v5/stdlib"
 	"log"
 	"os"
 
@@ -11,8 +12,6 @@ import (
 	"API/api/handlers"
 	"API/db"
 
-	"github.com/jackc/pgx/v5"
-	_ "github.com/jackc/pgx/v5/stdlib" // load pgx driver (goose supports only *sql.DB)
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -31,19 +30,17 @@ func main() {
 		log.Fatal("Could not load the environment")
 	}
 
-	conn, err := pgx.Connect(context.Background(), os.Getenv("DB_URL_DOCKER"))
+	pool, err := pgxpool.New(context.Background(), os.Getenv("DB_URL_DOCKER"))
 	if err != nil {
 		log.Fatal("Database URL is not found in the environment", err)
 	}
 
-	gooseConn, err := sql.Open("pgx", os.Getenv("DB_URL_DOCKER"))
-	err = goose.Up(gooseConn, "sql/migrations/")
+	err = goose.Up(stdlib.OpenDBFromPool(pool), "sql/migrations/")
 	if err != nil {
 		log.Fatal("Failed to migrate the database")
 	}
-	gooseConn.Close()
 
-	DB := &handlers.Handler{DB: db.New(conn)}
+	DB := &handlers.Handler{DB: db.New(pool)}
 
 	api.SetRoutes(e, DB)
 
