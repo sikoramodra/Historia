@@ -7,6 +7,7 @@
     import Projects from "../../routes/Projects.svelte";
 	import AddPerson from '../../routes/AddPerson.svelte';
     import Post from '../../Post.svelte';
+    import Error from '../../routes/Error.svelte';
 </script>
 
 <div>
@@ -16,4 +17,5 @@
     <Route path="/search-site" component={SearchSite} />
     <Route path="/add-person" component={AddPerson} />
     <Route path="/library/:articleId" component={Post} />
+    <Route path="*" component={Error}/>
 </div>

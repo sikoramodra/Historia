@@ -109,7 +109,7 @@
 }
   .parallax-item {
   display: flex;
-  color:rgba(255, 255, 255, 0.747);
+  color:rgba(255, 255, 255, 0.767);
   font-weight: bold;
   font-family: Montserrat, sans-serif;
   width: 100%;
