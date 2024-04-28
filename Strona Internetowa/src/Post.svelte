@@ -33,14 +33,25 @@
   // Ten fragment pozwala na dynamiczne ładowanie komponentów w zależności od ścieżki
   // Jeśli ścieżka pasuje do któregoś z przypadków, zostanie załadowany odpowiedni komponent
 </script>
-
+<body>
 <Router>
   {#if PostComponent !== null}
     <Navbar/>
+
     <PostComponent/>
     
   {:else}
+  <Navbar/>
     <p>No content to display</p>
   {/if}
 </Router>
+ </body>
+ <style>
+body {
+		position:absolute;
+		min-height: 100%;
+		min-width: 100%;
+		background:linear-gradient(to bottom,rgb(2 6 23),rgb(30 41 59));
+	}
+ </style>
  
