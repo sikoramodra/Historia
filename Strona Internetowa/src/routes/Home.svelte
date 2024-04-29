@@ -83,7 +83,7 @@ onMount(() => {
     <obrazek class="obrazek"></obrazek>
   </div>
   <div class="parallax-item">
-    <h2 class="napis2">Wzium</h2>
+    
   </div>
 
   <Footer/>
@@ -192,7 +192,7 @@ background: #05051b;
 }
 
 .parallax-item:nth-child(3) {
-background: url("../res/gittest2.gif");
+background: url("../res/film.gif");
 background-size: cover;
 background-position: center;
 background-attachment: fixed; /* Parallax Effect for DIV 3 */

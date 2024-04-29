@@ -23,13 +23,13 @@
 	<link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
-<footer class="footer section">
+<footer class="footer section bg-gradient-to-b from-slate-950 to-slate-800">
 	
-	<div class="footer-container container d-grid">
+	<div class="footer-container container d-grid ">
 		
 		<div class="company-data">
 			<a href="./index.html">
-				<h2 class="logo">NewsFlash</h2>
+				<h2 class="logo">Jesteśmy by Pamiętać</h2>
 			</a>
 			<p class="company-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, iure. Harum, animi dolores, nam, ad magni expedita.</p>
 			
@@ -43,15 +43,15 @@
 				
 			</ul>
 
-			<span class="copyright-notice">&copy;2021 NewsFlash. All rights reserved.</span>
+			<span class="copyright-notice">&copy;2024 Jesteśmy by Pamiętać</span>
 		</div>
 
 		<div>
-			<h6 class="title footer-title">Categories</h6>
+			<h6 class="title footer-title">Wyszukiwarka</h6>
 			
 			<ul class="footer-list list">
 				<li class="list-item">
-					<a href="#" class="list-link">Travel</a>
+					<a href="#" class="list-link">Coś</a>
 				</li>
 				<li class="list-item">
 					<a href="#" class="list-link">Food</a>
@@ -65,7 +65,7 @@
 		</div>
 
 		<div>
-			<h6 class="title footer-title">Useful links</h6>
+			<h6 class="title footer-title">Artykuły</h6>
 			
 			<ul class="footer-list list">
 				<li class="list-item">
@@ -88,7 +88,7 @@
 		</div>
 
 		<div>
-			<h6 class="title footer-title">Company</h6>
+			<h6 class="title footer-title">O nas</h6>
 			
 			<ul class="footer-list list">
 				<li class="list-item">
@@ -119,7 +119,7 @@
 	/* Import font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-/* Custom properties */
+
 :root{
     --light-color: #fff;
     --light-color-alt: #afb6cd;
@@ -176,17 +176,7 @@ ul{
     list-style: none;
 }
 
-img{
-    max-width: 100%;
-}
 
-input,
-button {
-  font: inherit;
-  color: inherit;
-  border: none;
-  background-color: transparent;
-}
 
 i{
     font-size: var(--font-size-md);
@@ -199,11 +189,7 @@ i{
     padding: 0 1.5rem;
 }
 
-.place-items-center{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .section:not(.featured-articles){
     padding-block: 5rem;
@@ -214,15 +200,6 @@ i{
 }
 
 
-/* Header */
-.header{
-    background-color: var(--secondary-background-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-}
 
 
 .logo{
@@ -239,321 +216,10 @@ i{
 }
 
 
-
-.btn{
-    cursor: pointer;
-}
-
-.list-link:hover,
-.btn:hover,
-
-
-/* Search */
-
-.form-container-inner{
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap);
-    text-align: center;
-}
-
-.form{
-    display: flex;
-    justify-content: center;
-}
-
-.form-input,
-.form-btn{
-    display: inline-block;
-    outline: none;
-    border: 2px solid var(--secondary-background-color);
-    padding: 1.5rem;
-    color: var(--light-color-alt);
-}
-
-.form-input{
-    border-right: none;
-    width: 100%;
-    background-color: var(--primary-background-color);
-}
-
-.form-btn{
-    margin-left: -.5rem;
-    border-left: none;
-    background-color: var(--secondary-background-color);
-    text-transform: uppercase;
-    width: 8rem;
-}
-
-.form-note{
-    font-size: var(--font-size-xsm);
-    align-self: flex-end;
-}
-
-.form-close-btn{
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    border: 2px solid var(--secondary-background-color);
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-}
-
-
-
-/* Featured articles */
-.featured-articles{
-    padding-block: 2rem;
-}
-
-.section-header-offset{
-    padding-top:3.5em;
-}
-
-.featured-articles-container,
-.featured-content{
-    gap: var(--gap);
-}
-
-.headline-banner{
-    background-color: var(--secondary-background-color);
-    display: flex;
-    align-items: center;
-    gap: var(--gap);
-    font-size: var(--font-size-xsm);
-}
-
-.headline{
-    background-color: #000;
-    color: var(--light-color);
-    font-size: 1rem;
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 1px;
-    padding: 4px;
-    height: 100%;
-}
-
-.headline span{
-    height: inherit;
-}
-
-.fancy-border{
-    position: relative;
-    overflow: hidden;
-}
-
-.fancy-border::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background: var(--gradient-color);
-    background-size: 50% 100%;
-    z-index: 5;
-}
-
-.fancy-border span{
-    position: relative;
-    z-index: 10;
-    display: inline-flex;
-    background-color: var(--secondary-background-color);
-    padding: .6rem 1.5rem;
-	scale:0.95;
-}
-
-.article{
-    position: relative;
-    min-height: var(--item-min-height-md);
-}
-
-.article-image{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .25s;
-}
-
-.article-category{
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 1rem;
-    background-color:var(--primary-background-color);
-    font-size: 1rem;
-    color: var(--light-color);
-    text-transform: uppercase;
-    z-index: 10;
-}
-
-.article-data-container{
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 2rem 1.5rem;
-    background-color: var(--transparent-dark-color);
-    z-index: 10;
-    transition: background-color .5s;
-}
-
-/* Light theme color hover styles */
-.article:hover .article-data-container{
-    background-color: var(--hover-dark-color);
-    color: var(--hover-light-color);
-}
-
-.article:hover .article-data-spacer{
-    background-color: var(--hover-light-color);
-}
-
-.article:hover .article-title{
-    color: var(--hover-light-color);
-}
-
-
-.article-data{
-    display: flex;
-    align-items: center;
-    gap: var(--gap);
-    font-size: var(--font-size-xsm);
-    margin-bottom: 1rem;
-}
-
-.article-data-spacer{
-    width: .5rem;
-    height: .5rem;
-    background-color: var(--light-color-alt);
-    transform: rotate(45deg);
-}
-
 .title{
     color: var(--light-color);
 }
 
-.article-title{
-    font-size: var(--font-size-md);
-}
-
-/* Sidebar */
-.sidebar{
-    background-color: var(--secondary-background-color);
-    padding: 2.5rem;
-}
-
-.trending-news-box{
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap);
-    padding-block: 2rem;
-    border-bottom: 1px solid var(--transparent-light-color);
-}
-
-.trending-news-box:last-of-type{
-    border-bottom: none;
-}
-
-.featured-content-title{
-    font-size: var(--font-size-md);
-    text-align: center;
-    padding: 1rem;
-}
-
-.trending-news-img-box{
-    position: relative;
-    width: 100%;
-    height: var(--item-min-height-sm);
-}
-
-.trending-number{
-    position: absolute;
-    top: -1rem;
-    left: -1rem;
-    z-index: 15;
-    width: 3rem;
-    height: 3rem;
-    background-color: var(--secondary-background-color);
-    color: var(--light-color);
-    border-radius: 50%;
-}
-
-.trending-news-data .article-title{
-    font-size: var(--font-size-sm);
-}
-
-.trending-news-box:hover .article-title{
-    color: var(--light-color-alt);
-}
-
-/* Quick read */
-.section-title{
-    position: relative;
-    font-size: var(--font-size-md);
-    margin-bottom: 6rem;
-}
-
-.section-title::after{
-    content: attr(data-name);
-    font-size: var(--font-size-lg);
-    text-transform: uppercase;
-    opacity: .1;
-    position: absolute;
-    top: 1.5rem;
-    left: 2rem;
-}
-
-
-
-/* Older posts */
-.older-posts-grid-wrapper{
-    gap: var(--gap);
-}
-
-.older-posts-article-image-wrapper,
-.older-posts .article{
-    min-height: var(--item-min-height-sm);
-}
-
-.older-posts .article{
-    background-color: var(--secondary-background-color);
-}
-
-.older-posts-article-image-wrapper{
-    position: relative;
-}
-
-.older-posts-grid-wrapper .article-data-container{
-    position: static;
-    background-color: transparent;
-}
-
-.older-posts-grid-wrapper .article-title{
-    margin-bottom: var(--margin-sm);
-}
-
-
-
-.popular-tags-container .article:hover .article-image{
-    transform: scale(1.05);
-}
-
-/* Newsletter */
-.newsletter{
-    padding-bottom: 6rem;
-}
-
-.newsletter-title{
-    font-size: var(--font-size-lg);
-}
-
-.newsletter-description{
-    margin-bottom: 3rem;
-}
 
 /* Footer */
 .footer{
@@ -611,28 +277,7 @@ i{
 
 @media screen and (min-width: 700px) {
 
-    .trending-news-box{
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .trending-news-img-box{
-        width: 50%;
-    }
-
-    .trending-news-data{
-        margin: auto;
-        text-align: center;
-    }
     
-    .newsletter-description{
-        max-width: 40rem;
-    }
-
-    .form-container-inner{
-        align-items: center;
-    }
-
    
 
     .company-data{
@@ -644,38 +289,7 @@ i{
 
 @media screen and (min-width: 768px) {
 
-    .featured-content{
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 5rem repeat(4, 1fr);
-    }
-
-    .headline-banner{
-        grid-column: 1/-1;
-        font-size: var(--font-size-sm);
-    }
-    
-    .featured-article{
-        grid-column: 3/-1;
-        grid-row: 2/4;
-    }
-
-    .featured-article-1{
-        grid-column: 1/3;
-    }
-    
-    .featured-article-3{
-        grid-column: 1/-1;
-        grid-row: 4/6;
-    }
-
-    .older-posts .article{
-        grid-template-columns: 25rem 1fr;
-        
-    }
-
-    .older-posts-article-image-wrapper{
-        height: auto;
-    }
+   
 
   
 }
@@ -689,19 +303,12 @@ i{
         }
     }
 
-    .featured-articles-container{
-        grid-template-columns: 1fr 40rem;
-    }
-
-    .trending-news-img-box{
-        width: 10rem;
-        height: 10rem;
-    }
 
 
 
     .footer-container{
         grid-template-columns: repeat(5, 1fr);
+        
     }
 
     .company-data{
@@ -720,19 +327,10 @@ i{
 }
 
 @media screen and (min-width: 1200px) {
-    .older-posts-grid-wrapper{
-        grid-template-columns: repeat(2, 1fr);
-    }
+    
 }
 @media screen and (min-width: 1500px) {
-    .featured-article{
-        grid-column: 3/-1;
-    }
-    
-    .featured-article-1{
-        grid-column: 1/3;
-        grid-row: 2/-1;
-    }
+   
 
 }
 </style>
