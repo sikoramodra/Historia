@@ -5,10 +5,54 @@
 package db
 
 import (
+	"database/sql/driver"
 	"encoding/json"
+	"fmt"
 
 	"github.com/jackc/pgx/v5/pgtype"
 )
+
+type Status string
+
+const (
+	StatusUnverified Status = "unverified"
+	StatusVerified   Status = "verified"
+)
+
+func (e *Status) Scan(src interface{}) error {
+	switch s := src.(type) {
+	case []byte:
+		*e = Status(s)
+	case string:
+		*e = Status(s)
+	default:
+		return fmt.Errorf("unsupported scan type for Status: %T", src)
+	}
+	return nil
+}
+
+type NullStatus struct {
+	Status Status `json:"status"`
+	Valid  bool   `json:"valid"` // Valid is true if Status is not NULL
+}
+
+// Scan implements the Scanner interface.
+func (ns *NullStatus) Scan(value interface{}) error {
+	if value == nil {
+		ns.Status, ns.Valid = "", false
+		return nil
+	}
+	ns.Valid = true
+	return ns.Status.Scan(value)
+}
+
+// Value implements the driver Valuer interface.
+func (ns NullStatus) Value() (driver.Value, error) {
+	if !ns.Valid {
+		return nil, nil
+	}
+	return string(ns.Status), nil
+}
 
 type Activity struct {
 	ID   int32  `json:"id"`
@@ -58,6 +102,7 @@ type MainView struct {
 	Activity    json.RawMessage `json:"activity"`
 	Description *string         `json:"description"`
 	Sources     *string         `json:"sources"`
+	Status      NullStatus      `json:"status"`
 }
 
 type Person struct {
@@ -73,6 +118,7 @@ type Person struct {
 	GraveID      *int32      `json:"grave_id"`
 	Description  *string     `json:"description"`
 	Sources      *string     `json:"sources"`
+	Status       NullStatus  `json:"status"`
 }
 
 type PersonEvent struct {
