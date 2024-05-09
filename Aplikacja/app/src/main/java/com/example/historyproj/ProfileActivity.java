@@ -1,5 +1,6 @@
 package com.example.historyproj;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -11,17 +12,57 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.profileactivity_lay);
-        ImageView fb = findViewById(R.id.facebook);
-        ImageView ig = findViewById(R.id.instagram);
-        ImageView webs = findViewById(R.id.domena);
+        ImageView facebookImageView = findViewById(R.id.facebook);
+        ImageView instagramImageView = findViewById(R.id.instagram);
+        ImageView websiteImageView = findViewById(R.id.domena);
         ImageButton homeButton = findViewById(R.id.homebutton);
         ImageButton addPostButton = findViewById(R.id.addpostbutton);
         ImageButton profileButton = findViewById(R.id.profilebutton);
+
+        facebookImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUrl("https://www.facebook.com/jestesmybypamietac2023");
+            }
+            private void openUrl(String url) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
+        instagramImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUrl("https://www.instagram.com/bartek__pv");
+
+            }
+            private void openUrl(String url) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
+        websiteImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUrl("http://fundacjapileckiego.pl");
+            }
+
+            private void openUrl(String url) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +87,7 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 }

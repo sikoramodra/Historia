@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
     //CODY RHODES BEDZIE MISTRZEM 7 KWIETNIA, ZDETRONIZUJE ROMANA I ZROBI FINISH THE STORY. JAK TAK NIE BEDZIE TO MOZESZ MI WYMYSLEC CHALLENGE!!!!!!!!!!!!!!!!!!!!-seler
     //zapisze sobie w kalendrzu specjalniue xd-julka
-    private static final String BASE_URL = "url_here";
+    private static final String BASE_URL = "skibidi sigma";
 
     private static Retrofit retrofit = null;
 

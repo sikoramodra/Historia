@@ -1,46 +1,897 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/backgr_gradient"
+    android:outlineSpotShadowColor="#000B0000">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#00FFFFFF"
         android:orientation="vertical">
 
-        <View
-            android:id="@+id/view11"
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <EditText
-            android:id="@+id/badge_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/W"
-            android:ems="10"
-            android:hint="Badge"
-            android:inputType="text"
-            android:textColor="@color/W"
-            android:textColorHint="@color/W" />
+            android:background="#6A0A0A"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/sub_badge_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/W"
-            android:ems="10"
-            android:hint="Sub Badge"
-            android:inputType="text"
-            android:textColor="@color/W"
-            android:textColorHint="@color/W" />
+            <ImageButton
+                android:id="@+id/goback"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/goback" />
 
-        <View
-            android:id="@+id/view7"
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/savebt2"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/trans_button"
+                android:text="ZAPISZ"
+                android:textColor="@color/W" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/icon_jbp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00FFFFFF"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF" />
+
+                    <ScrollView
+                        android:layout_width="370dp"
+                        android:layout_height="match_parent"
+                        android:background="#00FFFFFF"
+
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#00FFFFFF"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#00FFFFFF"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/trans_div"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:layout_width="10dp"
+                                        android:layout_height="50dp"
+                                        android:background="#00FFFFFF" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="#00FFFFFF"
+                                        android:orientation="horizontal">
+
+                                        <View
+                                            android:id="@+id/view31"
+                                            android:layout_width="25dp"
+                                            android:layout_height="5dp"
+                                            android:layout_weight="1"
+                                            android:visibility="invisible" />
+
+                                        <EditText
+                                            android:id="@+id/editName"
+                                            android:layout_width="320dp"
+                                            android:layout_height="50dp"
+                                            android:background="@drawable/trans_div_inputs"
+                                            android:backgroundTint="@color/W"
+                                            android:elevation="50dp"
+                                            android:ems="10"
+                                            android:hint="   Imię i Nazwisko"
+                                            android:inputType="text"
+                                            android:outlineAmbientShadowColor="#000000"
+                                            android:textColor="@color/W"
+                                            android:textColorHint="@color/W" />
+
+                                        <View
+                                            android:id="@+id/view33"
+                                            android:layout_width="25dp"
+                                            android:layout_height="5dp"
+                                            android:layout_weight="1"
+                                            android:visibility="invisible" />
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="10dp"
+                                        android:layout_height="40dp"
+                                        android:background="#00FFFFFF"
+                                        android:visibility="invisible" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="#00FFFFFF"
+                                        android:orientation="horizontal">
+
+                                        <View
+                                            android:id="@+id/view34"
+                                            android:layout_width="25dp"
+                                            android:layout_height="5dp"
+                                            android:layout_weight="1"
+                                            android:visibility="invisible" />
+
+                                        <EditText
+                                            android:id="@+id/editOtherNames"
+                                            android:layout_width="320dp"
+                                            android:layout_height="50dp"
+                                            android:background="@drawable/trans_div_inputs"
+                                            android:backgroundTint="@color/W"
+                                            android:ems="10"
+                                            android:hint="   Inne imiona"
+                                            android:inputType="text"
+                                            android:outlineAmbientShadowColor="#000000"
+                                            android:textColor="@color/W"
+                                            android:textColorHint="@color/W" />
+
+                                        <View
+                                            android:id="@+id/view36"
+                                            android:layout_width="25dp"
+                                            android:layout_height="5dp"
+                                            android:layout_weight="1"
+                                            android:visibility="invisible" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="10dp"
+                                        android:layout_height="40dp"
+                                        android:background="#00FFFFFF" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="#00FFFFFF"
+                                        android:orientation="horizontal">
+
+                                        <View
+                                            android:id="@+id/view39"
+                                            android:layout_width="25dp"
+                                            android:layout_height="5dp"
+                                            android:layout_weight="1"
+                                            android:visibility="invisible" />
+
+                                        <EditText
+                                            android:id="@+id/editCodeNames"
+                                            android:layout_width="320dp"
+                                            android:layout_height="50dp"
+                                            android:background="@drawable/trans_div_inputs"
+                                            android:backgroundTint="@color/W"
+                                            android:ems="10"
+                                            android:hint="   Pseudonimy"
+                                            android:inputType="text"
+                                            android:outlineAmbientShadowColor="#000000"
+                                            android:textColor="@color/W"
+                                            android:textColorHint="@color/W" />
+
+                                        <View
+                                            android:id="@+id/view38"
+                                            android:layout_width="25dp"
+                                            android:layout_height="5dp"
+                                            android:layout_weight="1"
+                                            android:visibility="invisible" />
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="10dp"
+                                        android:layout_height="40dp"
+                                        android:background="#00FFFFFF" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="#00FFFFFF"
+                                        android:orientation="horizontal">
+
+                                        <View
+                                            android:id="@+id/views7"
+                                            android:layout_width="25dp"
+                                            android:layout_height="5dp"
+                                            android:layout_weight="1"
+                                            android:visibility="invisible" />
+
+                                        <EditText
+                                            android:id="@+id/editInscription"
+                                            android:layout_width="320dp"
+                                            android:layout_height="50dp"
+                                            android:background="@drawable/trans_div_inputs"
+                                            android:backgroundTint="@color/W"
+                                            android:ems="10"
+                                            android:hint="   Inskrypcja"
+                                            android:inputType="text"
+                                            android:outlineAmbientShadowColor="#000000"
+                                            android:textColor="@color/W"
+                                            android:textColorHint="@color/W" />
+
+                                        <View
+                                            android:id="@+id/views48"
+                                            android:layout_width="25dp"
+                                            android:layout_height="5dp"
+                                            android:layout_weight="1"
+                                            android:visibility="invisible" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="10dp"
+                                        android:layout_height="40dp"
+                                        android:background="#00FFFFFF"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/view35"
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:background="#00FFFFFF"
+                                android:visibility="invisible" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#00FFFFFF"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/trans_div"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp"
+                                        android:background="#00FFFFFF"
+                                        android:orientation="vertical">
+
+                                        <View
+                                            android:layout_width="10dp"
+                                            android:layout_height="30dp"
+                                            android:background="#00FFFFFF" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="75dp"
+                                            android:background="#00FFFFFF"
+                                            android:orientation="horizontal">
+
+                                            <View
+                                                android:id="@+id/view_78"
+                                                android:layout_width="25dp"
+                                                android:layout_height="5dp"
+                                                android:layout_weight="1"
+                                                android:visibility="invisible" />
+
+                                            <EditText
+                                                android:id="@+id/editBirthPlace"
+                                                android:layout_width="320dp"
+                                                android:layout_height="50dp"
+                                                android:background="@drawable/trans_div_inputs"
+                                                android:ems="10"
+                                                android:hint="   Miejsce urodzenia"
+                                                android:inputType="text"
+                                                android:textColor="@color/W"
+                                                android:textColorHint="@color/W" />
+
+                                            <View
+                                                android:id="@+id/view48"
+                                                android:layout_width="25dp"
+                                                android:layout_height="5dp"
+                                                android:layout_weight="1"
+                                                android:visibility="invisible" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="75dp"
+                                            android:layout_weight="1"
+                                            android:background="#00FFFFFF"
+                                            android:orientation="horizontal">
+
+                                            <View
+                                                android:id="@+id/views_78"
+                                                android:layout_width="25dp"
+                                                android:layout_height="5dp"
+                                                android:layout_weight="1"
+                                                android:visibility="invisible" />
+
+                                            <EditText
+                                                android:id="@+id/editDeathPlace"
+                                                android:layout_width="320dp"
+                                                android:layout_height="50dp"
+                                                android:background="@drawable/trans_div_inputs"
+                                                android:ems="10"
+                                                android:hint="   Miejsce śmierci"
+                                                android:inputType="text"
+                                                android:textColor="@color/W"
+                                                android:textColorHint="@color/W" />
+
+                                            <View
+                                                android:id="@+id/views_48"
+                                                android:layout_width="25dp"
+                                                android:layout_height="5dp"
+                                                android:layout_weight="1"
+                                                android:visibility="invisible" />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:id="@+id/view43"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="10dp"
+                                        android:background="#00FFFFFF"
+                                        android:visibility="invisible" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="#00FFFFFF"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="75dp"
+                                            android:layout_weight="1"
+                                            android:background="#00FFFFFF"
+                                            android:orientation="horizontal">
+
+                                            <View
+                                                android:id="@+id/view41"
+                                                android:layout_width="9dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:background="#00FFFFFF" />
+
+                                            <EditText
+                                                android:id="@+id/editBirthDay"
+                                                android:layout_width="120dp"
+                                                android:layout_height="50dp"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/trans_div_inputs"
+                                                android:ems="10"
+                                                android:hint="   Dzień ur."
+                                                android:inputType="number|numberSigned"
+                                                android:textColor="@color/W"
+                                                android:textColorHint="@color/W" />
+
+                                            <View
+                                                android:id="@+id/view42"
+                                                android:layout_width="9dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:background="#00FFFFFF" />
+
+                                            <EditText
+                                                android:id="@+id/editBirthMonth"
+                                                android:layout_width="120dp"
+                                                android:layout_height="50dp"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/trans_div_inputs"
+                                                android:ems="10"
+                                                android:hint="   Miesiąc ur."
+                                                android:inputType="number|numberSigned"
+                                                android:textColor="@color/W"
+                                                android:textColorHint="@color/W" />
+
+                                            <View
+                                                android:id="@+id/view37"
+                                                android:layout_width="9dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:background="#00FFFFFF" />
+
+                                            <EditText
+                                                android:id="@+id/editBirthYear"
+                                                android:layout_width="120dp"
+                                                android:layout_height="50dp"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/trans_div_inputs"
+                                                android:ems="10"
+                                                android:hint="  Rok ur."
+                                                android:inputType="number|numberSigned"
+                                                android:textColor="@color/W"
+                                                android:textColorHint="@color/W" />
+
+                                            <View
+                                                android:id="@+id/view40"
+                                                android:layout_width="9dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:background="#00FFFFFF" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:layout_weight="1"
+                                            android:background="#00FFFFFF"
+                                            android:orientation="horizontal">
+
+                                            <View
+                                                android:id="@+id/view44"
+                                                android:layout_width="9dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:background="#00FFFFFF" />
+
+                                            <EditText
+                                                android:id="@+id/editDeathDay"
+                                                android:layout_width="120dp"
+                                                android:layout_height="50dp"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/trans_div_inputs"
+                                                android:ems="10"
+                                                android:hint="   Dzień śm."
+                                                android:inputType="number|numberSigned"
+                                                android:textColor="@color/W"
+                                                android:textColorHint="@color/W" />
+
+                                            <View
+                                                android:id="@+id/view52"
+                                                android:layout_width="9dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:background="#00FFFFFF" />
+
+                                            <EditText
+                                                android:id="@+id/editDeathMonth"
+                                                android:layout_width="120dp"
+                                                android:layout_height="50dp"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/trans_div_inputs"
+                                                android:ems="10"
+                                                android:hint="   Miesiąc śm."
+                                                android:inputType="number|numberSigned"
+                                                android:textColor="@color/W"
+                                                android:textColorHint="@color/W" />
+
+                                            <View
+                                                android:id="@+id/view54"
+                                                android:layout_width="9dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:background="#00FFFFFF" />
+
+                                            <EditText
+                                                android:id="@+id/editDeathYear"
+                                                android:layout_width="120dp"
+                                                android:layout_height="50dp"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/trans_div_inputs"
+                                                android:ems="10"
+                                                android:hint="   Rok śm."
+                                                android:inputType="number|numberSigned"
+                                                android:textColor="@color/W"
+                                                android:textColorHint="@color/W" />
+
+                                            <View
+                                                android:id="@+id/view62"
+                                                android:layout_width="9dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:background="#00FFFFFF" />
+
+                                        </LinearLayout>
+                                        <View
+                                            android:id="@+id/view49"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="30dp"
+                                            android:background="#00FFFFFF" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#00FFFFFF"
+                                android:orientation="horizontal">
+
+                                <View
+                                    android:layout_width="10dp"
+                                    android:layout_height="12dp"
+                                    android:background="#00FFFFFF" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="#00FFFFFF"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/view"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
+                                        android:background="#00FFFFFF" />
+
+                                    <EditText
+                                        android:id="@+id/editBurialPlace"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="#00FFFFFF"
+                                        android:backgroundTint="@color/W"
+                                        android:ems="10"
+                                        android:hint="Burial Place"
+                                        android:inputType="text"
+                                        android:textColor="@color/W"
+                                        android:textColorHint="@color/W" />
+
+                                    <View
+                                        android:layout_width="10dp"
+                                        android:layout_height="40dp"
+                                        android:background="#00FFFFFF" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="10dp"
+                                android:layout_height="40dp"
+                                android:background="#00FFFFFF" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/trans_div"
+                                android:orientation="vertical">
+
+                                <View
+                                    android:id="@+id/view50"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"
+                                    android:background="#00FFFFFF" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#00FFFFFF"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:id="@+id/view57"
+                                        android:layout_width="8dp"
+                                        android:layout_height="match_parent"
+                                        android:background="#00FFFFFF" />
+
+                                    <EditText
+                                        android:id="@+id/editQuarter"
+                                        android:layout_width="112dp"
+                                        android:layout_height="45dp"
+                                        android:background="@drawable/trans_div_inputs"
+                                        android:backgroundTint="@color/W"
+                                        android:elevation="50dp"
+                                        android:ems="10"
+                                        android:hint=" Kwatera"
+                                        android:inputType="text"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/W"
+                                        android:textColorHint="@color/W" />
+
+                                    <View
+                                        android:id="@+id/view76"
+                                        android:layout_width="8dp"
+                                        android:layout_height="match_parent"
+                                        android:background="#00FFFFFF" />
+
+                                    <EditText
+                                        android:id="@+id/editRow"
+                                        android:layout_width="112dp"
+                                        android:layout_height="45dp"
+                                        android:background="@drawable/trans_div_inputs"
+                                        android:backgroundTint="@color/W"
+                                        android:elevation="50dp"
+                                        android:ems="10"
+                                        android:hint=" Rząd"
+                                        android:inputType="text"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/W"
+                                        android:textColorHint="@color/W" />
+
+                                    <View
+                                        android:id="@+id/view59"
+                                        android:layout_width="8dp"
+                                        android:layout_height="match_parent"
+                                        android:background="#00FFFFFF" />
+
+                                    <EditText
+                                        android:id="@+id/editGrave"
+                                        android:layout_width="112dp"
+                                        android:layout_height="45dp"
+                                        android:background="@drawable/trans_div_inputs"
+                                        android:backgroundTint="@color/W"
+                                        android:elevation="50dp"
+                                        android:ems="10"
+                                        android:hint=" Grób"
+                                        android:inputType="text"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/W"
+                                        android:textColorHint="@color/W" />
+
+                                    <View
+                                        android:id="@+id/view61"
+                                        android:layout_width="8dp"
+                                        android:layout_height="match_parent"
+                                        android:background="#00FFFFFF" />
+                                </LinearLayout>
+
+                                <View
+                                    android:id="@+id/view51"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:background="#00FFFFFF" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#00FFFFFF"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:id="@+id/view55"
+                                        android:layout_width="40dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                    <EditText
+                                        android:id="@+id/editCementeryPlace"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/trans_div_inputs"
+                                        android:backgroundTint="@color/W"
+                                        android:elevation="50dp"
+                                        android:ems="10"
+                                        android:hint="  Cmentarz"
+                                        android:inputType="text"
+                                        android:outlineAmbientShadowColor="#000000"
+                                        android:textColor="@color/W"
+                                        android:textColorHint="@color/W" />
+
+                                    <View
+                                        android:id="@+id/view56"
+                                        android:layout_width="40dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:id="@+id/view53"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"
+                                    android:background="#00FFFFFF" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="10dp"
+                                android:layout_height="40dp"
+                                android:background="#00FFFFFF" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/trans_div"
+                                android:orientation="vertical">
+
+                                <View
+                                    android:id="@+id/view46"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="#00FFFFFF" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#00FFFFFF"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:id="@+id/view67"
+                                        android:layout_width="25dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="#00FFFFFF" />
+
+                                    <EditText
+                                        android:id="@+id/editDescription"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/trans_div_inputs"
+                                        android:backgroundTint="@color/W"
+                                        android:elevation="50dp"
+                                        android:ems="10"
+                                        android:hint="   Opis"
+                                        android:inputType="textMultiLine"
+                                        android:textColor="@color/W"
+                                        android:textColorHint="@color/W" />
+
+                                    <View
+                                        android:id="@+id/view60"
+                                        android:layout_width="25dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="#00FFFFFF" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="10dp"
+                                    android:layout_height="40dp"
+                                    android:background="#00FFFFFF" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#00FFFFFF"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:id="@+id/view65"
+                                        android:layout_width="25dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="#00FFFFFF" />
+
+                                    <EditText
+                                        android:id="@+id/editSources"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/trans_div_inputs"
+                                        android:backgroundTint="@color/W"
+                                        android:elevation="50dp"
+                                        android:ems="10"
+                                        android:hint="   Źródła"
+                                        android:inputType="textMultiLine"
+                                        android:textColor="@color/W"
+                                        android:textColorHint="@color/W" />
+
+                                    <View
+                                        android:id="@+id/view68"
+                                        android:layout_width="25dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="#00FFFFFF" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:id="@+id/view63"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="#00FFFFFF" />
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#00FFFFFF"
+                                android:orientation="horizontal">
+
+                                <View
+                                    android:id="@+id/view18"
+                                    android:layout_width="10dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight="1"
+                                    android:background="#00FFFFFF" />
+
+                                <Button
+                                    android:id="@+id/saveButton"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/trans_button_2"
+                                    android:gravity="center"
+                                    android:letterSpacing="0.7"
+                                    android:text="ZAPISZ"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/W" />
+
+                                <View
+                                    android:id="@+id/view15"
+                                    android:layout_width="10dp"
+                                    android:layout_height="20dp"
+                                    android:background="#00FFFFFF" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </ScrollView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

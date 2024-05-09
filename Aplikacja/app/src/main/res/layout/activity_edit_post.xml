@@ -862,7 +862,7 @@
                                     android:background="@drawable/trans_button_2"
                                     android:gravity="center"
                                     android:letterSpacing="0.7"
-                                    android:text="Save"
+                                    android:text="ZAPISZ"
                                     android:textAlignment="center"
                                     android:textColor="@color/W" />
 
