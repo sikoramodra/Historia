@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "840508850818",
+    "project_id": "jbm-db",
+    "storage_bucket": "jbm-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840508850818:android:fc41864541ba02cefe2a9b",
+        "android_client_info": {
+          "package_name": "com.example.historyproj"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCYQKM1MValomZsm2Kpn1qiguPLNfhdBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

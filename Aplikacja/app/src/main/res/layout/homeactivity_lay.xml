@@ -40,7 +40,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
                         android:background="@drawable/trans_div_inputs"
-                        android:drawableStart="@drawable/search_better"
+                        android:drawableStart="@drawable/bettersearch_for_igor"
                         android:hint="    Wyszukaj..."
                         android:textColor="#800C0C"
                         android:textColorHint="#FFFFFF" />
