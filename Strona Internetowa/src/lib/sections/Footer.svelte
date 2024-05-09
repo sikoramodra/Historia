@@ -29,9 +29,9 @@
 		
 		<div class="company-data">
 			<a href="./index.html">
-				<h2 class="logo">Jesteśmy by Pamiętać</h2>
+				<h2 class="logo">Fundacja Patriotyczna <br>im. Witolda Pileckiego</h2>
 			</a>
-			<p class="company-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, iure. Harum, animi dolores, nam, ad magni expedita.</p>
+			<p class="company-description">Dowiedzieć się więcej o nas możecie na naszych socialach!</p>
 			
 			<ul class="list social-media">
 				<li class="list-item">
@@ -43,7 +43,7 @@
 				
 			</ul>
 
-			<span class="copyright-notice">&copy;2024 Jesteśmy by Pamiętać</span>
+			<span class="copyright-notice">&copy;2024 Fundacja Patriotyczna <br>im. Witolda Pileckiego</span>
 		</div>
 
 		<div>

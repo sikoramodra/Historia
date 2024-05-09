@@ -9,7 +9,7 @@
   <Navbar/>
   <html lang="en">
   <body>
-	<h1>Siemanko</h1>
+	
   <div class="linki grid-container">
 	  <div class="card"><Link to="/library/jogurt"><article class="grid-item">
 		<div class="card__header">

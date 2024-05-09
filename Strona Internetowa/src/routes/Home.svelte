@@ -82,34 +82,43 @@
       <h1 class="napis1">Fundacja Patriotyczna im. Witolda Pileckiego</h1>
       <p class="lead">
         Fundacja Patriotyczna im. Witolda Pileckiego (KRS: 0000874120) to organizacja mająca na celu kształtowanie postaw patriotycznych oraz m.in. propagowanie idei i zasad jakich w swoim życiu kierował się patron Fundacji - Rotmistrz Witold Pilecki.
-        </p>
-      <p>Systematycznie będziemy przedstawiali inicjatywy i obszary funkcjonowania naszej Fundacji. Zanim jednak do tego przejdziemy chcielibyśmy przybliżyć postać naszego Patrona, do którego będziemy w naszej działalności wielokrotnie wracać. Kim był Witold Pilecki?</p>
-      <p>Rotmistrz Witold Pilecki (1901 - 1948) był harcerzem, społecznikiem, artystą i ziemianinem, żołnierzem, oficerem Wojska Polskiego, uczestnikiem konspiracji i walk o niepodległość Rzeczypospolitej, m.in. był uczestnikiem wojny polsko-bolszewickiej 1920 r., patriotą.
       </p>
-      <p>
-        Od chwili wybuchu II wojny światowej czynnie uczestniczył w obronie Polski. Od listopada 1939 r. w podziemiu niepodległościowym - współtworzył Tajną Armię Polską.
-        </p>
-        <p>
-          W latach 1940-1943 był dobrowolnym więźniem niemieckiego obozu koncentracyjnego - KL Auschwitz, gdzie m.in. założył organizację podziemną, a także dokumentował niemieckie zbrodnie i dramat bestialsko traktowanych więźniów. Po wypełnieniu misji i ucieczce z KL Auschwitz, powrócił do walki zbrojnej.
-          </p>
-          <p>
-            Uczestnik Powstania Warszawskiego, walczący w Zgrupowaniu "Chrobry II" oraz Kompanii "Warszawianka", jeniec obozów w Lamsdorf i Murnau, a następnie żołnierz Polskich Sił Zbrojnych na Zachodzie w II Korpusie Polskim gen. Władysława Andersa.
-            </p>
-            <p>
-              Po powrocie do zniewolonej przez sowietów Polski, zaangażował się w działalność antykomunistyczną i niepodległościową. Aresztowany przez komunistów, poddany brutalnemu śledztwu, po sfingowanym procesie został skazany na śmierć i zamordowany 25 maja 1948 r. w w więzieniu mokotowskim w Warszawie. Miejsce spoczynku Rotmistrza Witolda Pileckiego nie jest do tej pory znane...
-              </p>
+      <p>Systematycznie będziemy przedstawiali inicjatywy i obszary funkcjonowania naszej Fundacji. Zanim jednak do tego przejdziemy chcielibyśmy przybliżyć postać naszego Patrona, do którego będziemy w naszej działalności wielokrotnie wracać. Kim był Witold Pilecki?</p>
+      <p>Rotmistrz Witold Pilecki (1901 - 1948) był harcerzem, społecznikiem, artystą i ziemianinem, żołnierzem, oficerem Wojska Polskiego, uczestnikiem konspiracji i walk o niepodległość Rzeczypospolitej, m.in. był uczestnikiem wojny polsko-bolszewickiej 1920 r., patriotą.</p>
+      <p>Od chwili wybuchu II wojny światowej czynnie uczestniczył w obronie Polski. Od listopada 1939 r. w podziemiu niepodległościowym - współtworzył Tajną Armię Polską.</p>
+      <p>W latach 1940-1943 był dobrowolnym więźniem niemieckiego obozu koncentracyjnego - KL Auschwitz, gdzie m.in. założył organizację podziemną, a także dokumentował niemieckie zbrodnie i dramat bestialsko traktowanych więźniów. Po wypełnieniu misji i ucieczce z KL Auschwitz, powrócił do walki zbrojnej.</p>
+      <p>Uczestnik Powstania Warszawskiego, walczący w Zgrupowaniu "Chrobry II" oraz Kompanii "Warszawianka", jeniec obozów w Lamsdorf i Murnau, a następnie żołnierz Polskich Sił Zbrojnych na Zachodzie w II Korpusie Polskim gen. Władysława Andersa.</p>
+      <p>Po powrocie do zniewolonej przez sowietów Polski, zaangażował się w działalność antykomunistyczną i niepodległościową. Aresztowany przez komunistów, poddany brutalnemu śledztwu, po sfingowanym procesie został skazany na śmierć i zamordowany 25 maja 1948 r. w w więzieniu mokotowskim w Warszawie. Miejsce spoczynku Rotmistrza Witolda Pileckiego nie jest do tej pory znane...</p>
     </column>
-    <divider class="divider"></divider>
-    <divider class="divider1"></divider>
-    <obrazek class="obrazek"></obrazek>
+    <div class="divider"></div>
+    <div class="divider1"></div>
+    <div class="obrazek"></div>
   </div>
-  <div class="parallax-item"></div>
+  
+  <div class="parallax-item">
+    <div class="row tab-content--item-header">
+      <div class="column">
+        <h1 class="nasze">Nasze działania:</h1>
+        <p class="p">
+          Jedną z inicjatyw jaką udało nam się zrealizować w 2021 r., to zakup lokalu dla działań Fundacji Patriotycznej im. Witolda Pileckiego, głównie dla działań prowadzonych przez Centrum Wolontariatu Patriotycznego "Szaniec" oraz Instytutu Ziem Zachodnich im. Lecha Karola Neymana. Zakup lokalu dofinansowano ze środków budżetu państwa w ramach Funduszu Patriotycznego.
+        </p>
+      </div>
+    </div>
+  </div>
   <Footer/>
+  
 </section>
 
 </html>
 
 <style>
+  .p{
+    font-size: 2rem;
+  }
+  .nasze{
+    color:white;
+    font-size:3rem;
+  }
   column {
     width:48%;
     position:absolute;
@@ -292,15 +301,15 @@
     
   }
   .obrazek {
-    background: url("../res/FPWP.gif");
-    min-width: 100px;
-    height: 100px;
+    background: url("../res/Zdjęcie Spotkanie.jpg");
+    min-width: 400px;
+    height: 400px;
     background-size: cover;
     float: right;
     margin-right: 20%;
     margin-left: 60%;
-    margin-top: 20%;
-    zoom: 3;
+    margin-top: 10%;
+    
     align-items: center;
   }
   .parallax-item {
