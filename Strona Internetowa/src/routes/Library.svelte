@@ -92,7 +92,7 @@
 	h1 {
 		color: white;
 		font-size: 5rem;
-		
+			
 		margin-left: auto;
 		margin-right: auto;
 		position:absolute;
