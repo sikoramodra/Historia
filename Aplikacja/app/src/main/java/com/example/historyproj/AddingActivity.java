@@ -1,5 +1,4 @@
 package com.example.historyproj;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
 import android.content.Intent;
@@ -13,7 +12,6 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Arrays;
-import java.util.Calendar;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -31,25 +29,6 @@ public class AddingActivity extends AppCompatActivity {
     private ApiService apiService;
     private String selectedMainName;
     private String selectedSubName;
-
-    private int getCurrentYear() {
-        Calendar calendar = Calendar.getInstance();
-        return calendar.get(Calendar.YEAR);
-    }
-
-    private int getCurrentMonth() {
-        Calendar calendar = Calendar.getInstance();
-        return calendar.get(Calendar.MONTH) + 1;
-    }
-
-    private int getCurrentDay() {
-        Calendar calendar = Calendar.getInstance();
-        return calendar.get(Calendar.DAY_OF_MONTH);
-    }
-    private void showNotification(String message) {
-        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show();
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +62,7 @@ public class AddingActivity extends AppCompatActivity {
         //mainLayout = findViewById(R.id.mainLayout);
         Retrofit retrofit = ApiClient.getClient();
         apiService = retrofit.create(ApiService.class);
-      }
+    }
     void sendDataToServer () {
         EditText editName = findViewById(R.id.editName);
         EditText editOtherNames = findViewById(R.id.editOtherNames);
@@ -114,47 +93,11 @@ public class AddingActivity extends AppCompatActivity {
         EditText editDeathDay = findViewById(R.id.editDeathDay);
         EditText editDeathMonth = findViewById(R.id.editDeathMonth);
         EditText editDeathYear = findViewById(R.id.editDeathYear);
-
-        int birthDay = Integer.parseInt(editBirthday.getText().toString());
-        int birthMonth = Integer.parseInt(editBirthmonth.getText().toString());
-        int birthYear = Integer.parseInt(editBirthyear.getText().toString());
-
-        int deathDay = Integer.parseInt(editDeathDay.getText().toString());
-        int deathMonth = Integer.parseInt(editDeathMonth.getText().toString());
-        int deathYear = Integer.parseInt(editDeathYear.getText().toString());
-
-        int currentYear = getCurrentYear();
-        int currentMonth = getCurrentMonth();
-        int currentDay = getCurrentDay();
-
-        if (birthDay < 1 || birthDay > 31 || birthMonth < 1 || birthMonth > 12 ||
-                deathDay < 1 || deathDay > 31 || deathMonth < 1 || deathMonth > 12) {
-            showNotification("Invalid day or month.");
-            return;
-        }
-        if (birthYear > deathYear || (birthYear == deathYear && birthMonth > deathMonth) ||
-                (birthYear == deathYear && birthMonth == deathMonth && birthDay > deathDay)) {
-            showNotification("Birth date must be before death date.");
-            return;
-        }
-        if (birthYear > currentYear || (birthYear == currentYear && birthMonth > currentMonth) ||
-                (birthYear == currentYear && birthMonth == currentMonth && birthDay > currentDay)) {
-            showNotification("Birth date cannot be in the future.");
-            return;
-        }
-        if (deathYear > currentYear || (deathYear == currentYear && deathMonth > currentMonth) ||
-                (deathYear == currentYear && deathMonth == currentMonth && deathDay > currentDay)) {
-            showNotification("Death date cannot be in the future.");
-            return;
-        }
-
-
-
         String selectedDate_death = null;
         if (editDeathYear.length() > 0 && editDeathMonth.length() > 0 && editDeathDay.length() > 0) {
-            int deathYearyeet = Integer.parseInt(editDeathYear.getText().toString());
-            int deathMonthyeet = Integer.parseInt(editDeathMonth.getText().toString());
-            int deathDayyeet = Integer.parseInt(editDeathDay.getText().toString());
+            int deathYear = Integer.parseInt(editDeathYear.getText().toString());
+            int deathMonth = Integer.parseInt(editDeathMonth.getText().toString());
+            int deathDay = Integer.parseInt(editDeathDay.getText().toString());
             selectedDate_death = String.format("%04d-%02d-%02d", deathYear, deathMonth, deathDay);
         }
         String name = editName.getText().toString();
@@ -193,27 +136,6 @@ public class AddingActivity extends AppCompatActivity {
             //person.setRanks(ranks);
             person.setDescription(description);
             person.setSources(sources);
-
-            if (birthDay < 1 || birthDay > 31 || birthMonth < 1 || birthMonth > 12 ||
-                    deathDay < 1 || deathDay > 31 || deathMonth < 1 || deathMonth > 12) {
-                showNotification("Invalid day or month.");
-                return;
-            }
-            if (birthYear > deathYear || (birthYear == deathYear && birthMonth > deathMonth) ||
-                    (birthYear == deathYear && birthMonth == deathMonth && birthDay > deathDay)) {
-                showNotification("Birth date must be before death date.");
-                return;
-            }
-            if (birthYear > getCurrentYear() || (birthYear == getCurrentYear() && birthMonth > getCurrentMonth()) ||
-                    (birthYear == getCurrentYear() && birthMonth == getCurrentMonth() && birthDay > getCurrentDay())) {
-                showNotification("Birth date cannot be in the future.");
-                return;
-            }
-            if (deathYear > getCurrentYear() || (deathYear == getCurrentYear() && deathMonth > getCurrentMonth()) ||
-                    (deathYear == getCurrentYear() && deathMonth == getCurrentMonth() && deathDay > getCurrentDay())) {
-                showNotification("Death date cannot be in the future.");
-                return;
-            }
             sendPersonToServer(person);
         }
         else{
@@ -227,9 +149,7 @@ public class AddingActivity extends AppCompatActivity {
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), json);
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<Void> call = apiService.postPerson(requestBody);
-
         call.enqueue(new Callback<Void>() {
-
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
@@ -249,4 +169,3 @@ public class AddingActivity extends AppCompatActivity {
         });
     }
 }
-
