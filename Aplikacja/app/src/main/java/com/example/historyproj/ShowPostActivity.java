@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -126,8 +127,8 @@ public class ShowPostActivity extends AppCompatActivity {
                         if (person.getDescription() != null && !person.getDescription().isEmpty()) {
                             editDescripiton.setText(person.getDescription());
                         }
-                        if (person.getRanks() != null && !person.getRanks().isEmpty()) {
-                            editRanks.setText(person.getRanks());
+                        if (person.getRanks() != null ) {
+                            editRanks.setText(TextUtils.join(", ", person.getRanks()));
                         }
                         if (person.getSources() != null && !person.getSources().isEmpty()) {
                             editSources.setText(person.getSources());
@@ -159,11 +160,18 @@ public class ShowPostActivity extends AppCompatActivity {
                         if(person.getDeathDate() != null && !person.getDeathDate().isEmpty()){
                             editDeathDate.setText(person.getDeathDate().toString());
                         }
-                        if(person.getBadges() != null && !person.getBadges().isEmpty()){
-                            editBadges.setText(person.getBadges());
+                        if (person.getBadges() != null && !person.getBadges().isEmpty()) {
+                            StringBuilder badgesText = new StringBuilder();
+                            for (Person.Badge badge : person.getBadges()) {
+                                badgesText.append(badge).append("\n"); // Dodaj nazwę odznaki z nową linią
+                            }
+                            editBadges.setText(badgesText.toString());
+                        } else {
+                            // Obsługa sytuacji, gdy lista odznak jest pusta
+                            editBadges.setText("Brak odznak");
                         }
-                        if(person.getRanks() != null && !person.getRanks().isEmpty()){
-                            editRanks.setText(person.getRanks());
+                        if(person.getRanks() != null){
+                            editRanks.setText(TextUtils.join(", ", person.getRanks()));
                         }
                     }
                 } else {

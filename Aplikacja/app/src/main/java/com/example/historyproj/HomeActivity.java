@@ -71,6 +71,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onFailure(Call<List<Person>> call, Throwable t) {
                 loadingView.setVisibility(View.GONE);
                 Toast.makeText(HomeActivity.this, "Failed to fetch data: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                System.out.println(t.getMessage());
             }
         });
 

@@ -1,9 +1,36 @@
 package com.example.historyproj;
 
 import com.google.gson.annotations.SerializedName;
+
+import java.util.Collections;
 import java.util.List;
 
 public class Person {
+    public static class Badge {
+        @SerializedName("name")
+        private String name;
+
+        @SerializedName("sub_badges")
+        private List<String> subBadges;
+
+        // Getters and setters for name and sub_badges
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public List<String> getSubBadges() {
+            return subBadges;
+        }
+
+        public void setSubBadges(List<String> subBadges) {
+            this.subBadges = subBadges;
+        }
+    }
     @SerializedName("id")
     private int id;
 
@@ -47,10 +74,10 @@ public class Person {
     private String grave;
 
     @SerializedName("ranks")
-    private String ranks;
+    private List<String> ranks;
 
     @SerializedName("badges")
-    private String badges;
+    private List<Badge> badges;
 
     @SerializedName("activity")
     private List<Activity> activity;
@@ -119,11 +146,11 @@ public class Person {
         return grave;
     }
 
-    public String getRanks() {
+    public List<String> getRanks() {
         return ranks;
     }
 
-    public String getBadges() {
+    public List<Badge> getBadges() {
         return badges;
     }
 
@@ -177,10 +204,10 @@ public class Person {
     public void setGrave(String val) {
         this.grave = val;
     }
-    public void setRanks(String val) {
-        this.ranks = val;
+    public void setRanks(List<String> val) {
+        this.ranks = Collections.singletonList(val.toString());
     }
-    public void setBadges(String val) {
+    public void setBadges(List<Badge> val) {
         this.badges = val;
     }
     public void setActivity(List<Activity> activity) {

@@ -5,6 +5,7 @@ import static android.widget.Toast.makeText;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -170,8 +171,8 @@ public class EditPostActivity extends AppCompatActivity {
                         if (person.getDescription() != null && !person.getDescription().isEmpty()) {
                             editDescripiton.setText(person.getDescription());
                         }
-                        if (person.getRanks() != null && !person.getRanks().isEmpty()) {
-                            editRanks.setText(person.getRanks());
+                        if (person.getRanks() != null) {
+                            editRanks.setText(TextUtils.join(", ", person.getRanks()));
                         }
                         if (person.getSources() != null && !person.getSources().isEmpty()) {
                             editSources.setText(person.getSources());
@@ -212,7 +213,7 @@ public class EditPostActivity extends AppCompatActivity {
                         }
                     }
                 } else {
-                    Toast.makeText(EditPostActivity.this, "Failed to fetch person details", Toast.LENGTH_SHORT).show();
+                    makeText(EditPostActivity.this, "Failed to fetch person details", Toast.LENGTH_SHORT).show();
                 }
             }
 
