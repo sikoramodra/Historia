@@ -218,7 +218,7 @@
 		>
 
 		<!-- Help -->
-		<button id="help" class="mr-6">
+		<button id="help" class="mr-6 opacity-0">
 			<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 512 512"
 				><path
 					fill="rgb(156 163 175)"
