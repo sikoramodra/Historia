@@ -3,106 +3,143 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#00FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#00FFFFFF"
         android:orientation="vertical">
 
-
-
-        <TextView
-            android:id="@+id/postNameTextView"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-
-            android:textSize="18sp"
-            android:textColor="@color/W"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/postCodeNamesTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:textColor="@color/W"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/postOtherNamesTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="4dp"
-            android:textColor="@color/W"
-            android:textSize="16sp" />
-
+            android:layout_height="20dp"
+            android:background="#00FFFFFF" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
             android:orientation="horizontal">
 
-            <View
-                android:id="@+id/view4"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
-                android:layout_weight="1" />
-
-            <ImageButton
-                android:id="@+id/edit_post"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@android:color/transparent"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/editing" />
+                android:background="#00FFFFFF" />
 
-            <View
-                android:id="@+id/view5"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
-                android:layout_weight="1" />
-
-            <ImageButton
-                android:id="@+id/show_post"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@android:color/transparent"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/info" />
+                android:background="@drawable/trans_div"
+                android:orientation="vertical">
 
-            <View
-                android:id="@+id/view2"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
-                android:layout_weight="1" />
 
-            <ImageButton
-                android:id="@+id/delete_post"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
+                <TextView
+                    android:id="@+id/postNameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="8dp"
+
+                    android:background="#00FFFFFF"
+                    android:textColor="@color/W"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/postCodeNamesTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="#00FFFFFF"
+                    android:textColor="@color/W"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/postOtherNamesTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="#00FFFFFF"
+                    android:textColor="@color/W"
+                    android:textSize="16sp" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="120dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF" />
+
+                    <ImageButton
+                        android:id="@+id/edit_post"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:backgroundTint="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/editing" />
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="120dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="110dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF" />
+
+                    <ImageButton
+                        android:id="@+id/show_post"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:backgroundTint="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/info" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@android:color/transparent"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/delete" />
+                android:background="#00FFFFFF" />
 
-            <View
-                android:id="@+id/view3"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
-                android:layout_weight="1" />
         </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>

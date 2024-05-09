@@ -100,7 +100,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
             nameTextView = itemView.findViewById(R.id.postNameTextView);
             postothernames = itemView.findViewById(R.id.postOtherNamesTextView);
             postcodenames = itemView.findViewById(R.id.postCodeNamesTextView);
-            deleteButton = itemView.findViewById(R.id.delete_post);
+            //deleteButton = itemView.findViewById(R.id.delete_post);
             detailsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -111,18 +111,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
                     }
                 }
             });
-            deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        // Get the person object at this position
-                        Person person = people.get(position);
-                        // Call a method to delete this person from the database
-                        showDeleteConfirmationDialog(person.getId(), person.getName(), position);
-                    }
-                }
-            });
+
             editButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

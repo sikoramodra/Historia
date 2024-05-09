@@ -1,8 +1,10 @@
 package com.example.historyproj;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 public class ProfileActivity extends AppCompatActivity {
@@ -14,7 +16,9 @@ public class ProfileActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.profileactivity_lay);
-
+        ImageView fb = findViewById(R.id.facebook);
+        ImageView ig = findViewById(R.id.instagram);
+        ImageView webs = findViewById(R.id.domena);
         ImageButton homeButton = findViewById(R.id.homebutton);
         ImageButton addPostButton = findViewById(R.id.addpostbutton);
         ImageButton profileButton = findViewById(R.id.profilebutton);
@@ -42,5 +46,6 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

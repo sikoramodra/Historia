@@ -16,10 +16,8 @@ public class PostSentActivity extends AppCompatActivity {
         }
         setContentView(R.layout.postsent_lay);
 
-        ImageButton homeButton = findViewById(R.id.homebutton);
-        ImageButton addPostButton = findViewById(R.id.addpostbutton);
-        ImageButton profileButton = findViewById(R.id.profilebutton);
-        homeButton.setOnClickListener(new View.OnClickListener() {
+        ImageButton goback = findViewById(R.id.goback);
+        goback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PostSentActivity.this, HomeActivity.class);
@@ -27,20 +25,5 @@ public class PostSentActivity extends AppCompatActivity {
             }
         });
 
-        addPostButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PostSentActivity.this, AddingActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PostSentActivity.this, ProfileActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

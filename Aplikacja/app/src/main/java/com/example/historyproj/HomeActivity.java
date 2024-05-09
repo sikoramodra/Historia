@@ -3,8 +3,11 @@ package com.example.historyproj;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -28,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private PersonAdapter personAdapter;
-    private SearchView searchView;
+    private EditText searchView;
     private View loadingView;
 
     @Override
@@ -68,26 +71,30 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(HomeActivity.this, "Failed to fetch data: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
         searchView = findViewById(R.id.search_view);
-        int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        TextView searchPlate = searchView.findViewById(searchPlateId);
-        searchPlate.setTextColor(Color.WHITE);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setTextColor(Color.WHITE);
+        searchView.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // This method is called before the text is changed.
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // This method is called whenever the text changes.
+                String query = charSequence.toString().trim();
                 if (personAdapter != null) {
-                    //naprawilam seler bo  inaczej errory wyrzycalo idk man
-                    personAdapter.filter(newText);
+                    personAdapter.filter(query);
                 }
-                return true;
             }
 
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // This method is called after the text is changed.
+            }
         });
+
         ImageButton homeButton = findViewById(R.id.homebutton);
         ImageButton addPostButton = findViewById(R.id.addpostbutton);
         ImageButton profileButton = findViewById(R.id.profilebutton);

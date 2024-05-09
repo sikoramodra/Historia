@@ -51,6 +51,7 @@ public class ShowPostActivity extends AppCompatActivity {
     private TextView editActivities;
 
     private Button saveButton;
+    private ImageButton goback2;
 
     private int postId;
 
@@ -62,32 +63,6 @@ public class ShowPostActivity extends AppCompatActivity {
         }
         setContentView(R.layout.item_details);
         postId = getIntent().getIntExtra("personId", -1);
-        ImageButton homeButton = findViewById(R.id.homebutton);
-        ImageButton addPostButton = findViewById(R.id.addpostbutton);
-        ImageButton profileButton = findViewById(R.id.profilebutton);
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ShowPostActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        addPostButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ShowPostActivity.this, AddingActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ShowPostActivity.this, ProfileActivity.class);
-                startActivity(intent);
-            }
-        });
         editName = findViewById(R.id.postName);
         editOtherName = findViewById(R.id.postOtherNames);
         editCodeName = findViewById(R.id.postCodeNames);
@@ -104,13 +79,20 @@ public class ShowPostActivity extends AppCompatActivity {
         editActivities = findViewById(R.id.postActivity);
         editCementery = findViewById(R.id.postCemetery);
         editDescripiton = findViewById(R.id.postDescription);
+        editBirthDate = findViewById(R.id.postBirthDate);
+        editDeathDate = findViewById(R.id.editDeathDate);
         saveButton = findViewById(R.id.backButton);
+        goback2 = findViewById(R.id.goback);
         fetchPersonDetails(postId);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
+        });
+        goback2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){finish();}
         });
 
     }
@@ -165,6 +147,21 @@ public class ShowPostActivity extends AppCompatActivity {
                         }
                         if (person.getGrave() != null && !person.getGrave().isEmpty()) {
                             editGrave.setText(person.getGrave());
+                        }
+                        if(person.getActivity() != null && !person.getActivity().isEmpty()){
+                            editActivities.setText(person.getActivity().toString());
+                        }
+                        if(person.getBirthDate() != null && !person.getBirthDate().isEmpty()){
+                            editBirthDate.setText(person.getBirthDate().toString());
+                        }
+                        if(person.getDeathDate() != null && !person.getDeathDate().isEmpty()){
+                            editDeathDate.setText(person.getDeathDate().toString());
+                        }
+                        if(person.getBadges() != null && !person.getBadges().isEmpty()){
+                            editBadges.setText(person.getBadges());
+                        }
+                        if(person.getRanks() != null && !person.getRanks().isEmpty()){
+                            editRanks.setText(person.getRanks());
                         }
                     }
                 } else {

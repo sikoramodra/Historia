@@ -10,20 +10,162 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/backgr_gradient"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"></LinearLayout>
+            android:background="#00FFFFFF"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#00FFFFFF" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/trans_div"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/trans_div"
+                        android:orientation="vertical">
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp" />
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#00FFFFFF"
+                            android:fontFamily="@font/baloo_bhaina"
+                            android:text="Dowiedz się o nas więcej!"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00FFFFFF"
+                        android:orientation="horizontal">
+
+                        <Space
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF" />
+
+                        <ImageView
+                            android:id="@+id/facebook"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:srcCompat="@drawable/facebook" />
+
+                        <Space
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF" />
+
+                        <ImageView
+                            android:id="@+id/instagram"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:srcCompat="@drawable/instagram" />
+
+                        <Space
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF" />
+
+                        <ImageView
+                            android:id="@+id/domena"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:srcCompat="@drawable/website_pic" />
+
+                        <Space
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#00FFFFFF" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,24 +174,27 @@
             <View
                 android:id="@+id/view8"
                 android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:layout_height="25dp"
+                android:background="#00FFFFFF" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="84dp">
+                android:layout_height="60dp"
+                android:background="@drawable/another_trans_div">
 
 
                 <View
                     android:id="@+id/view6"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF" />
 
                 <ImageButton
                     android:id="@+id/homebutton"
-                    android:layout_width="400dp"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/F"
+                    android:background="#001A1423"
                     android:onClick="homeact"
                     android:paddingStart="16dp"
                     android:paddingTop="16dp"
@@ -61,15 +206,16 @@
 
                 <View
                     android:id="@+id/view6"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF" />
 
                 <ImageButton
                     android:id="@+id/addpostbutton"
-                    android:layout_width="400dp"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/F"
+                    android:background="#001A1423"
                     android:onClick="addpostact"
                     android:paddingStart="16dp"
                     android:paddingTop="16dp"
@@ -81,15 +227,16 @@
 
                 <View
                     android:id="@+id/view9"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF" />
 
                 <ImageButton
                     android:id="@+id/profilebutton"
-                    android:layout_width="400dp"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/F"
+                    android:background="@drawable/trans_button_picked"
                     android:onClick="profileact"
                     android:paddingStart="16dp"
                     android:paddingTop="16dp"
@@ -101,8 +248,9 @@
 
                 <View
                     android:id="@+id/view10"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

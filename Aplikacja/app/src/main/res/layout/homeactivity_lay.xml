@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3EBEB"
+    android:background="@drawable/trans_div"
     tools:context=".HomeActivity">
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/backgr_gradient"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,58 +21,67 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#00FFFFFF"
             android:orientation="vertical">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_search">
+                android:background="@drawable/trans_div"
+                android:orientation="vertical">
 
-                <SearchView
-                    android:id="@+id/search_view"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="78dp"
-                    android:background="@color/R"
-                    android:outlineSpotShadowColor="@color/R"
-                    android:searchIcon="@drawable/search_better"
-                    android:textColor="#FFFFFF" />
-            </FrameLayout>
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF">
+
+                    <EditText
+                        android:id="@+id/search_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:background="@drawable/trans_div_inputs"
+                        android:drawableStart="@drawable/search_better"
+                        android:hint="    Wyszukaj..."
+                        android:textColor="#800C0C"
+                        android:textColorHint="#FFFFFF" />
+                </FrameLayout>
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/allposts_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <View
-                android:id="@+id/view8"
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="84dp">
+                android:layout_height="60dp"
+                android:background="@drawable/another_trans_div">
 
 
                 <View
                     android:id="@+id/view6"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF" />
 
                 <ImageButton
                     android:id="@+id/homebutton"
-                    android:layout_width="400dp"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/F"
+                    android:background="@drawable/trans_button_picked"
                     android:onClick="homeact"
                     android:paddingStart="16dp"
                     android:paddingTop="16dp"
@@ -82,15 +93,16 @@
 
                 <View
                     android:id="@+id/view6"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF" />
 
                 <ImageButton
                     android:id="@+id/addpostbutton"
-                    android:layout_width="400dp"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/F"
+                    android:background="#001A1423"
                     android:onClick="addpostact"
                     android:paddingStart="16dp"
                     android:paddingTop="16dp"
@@ -102,15 +114,16 @@
 
                 <View
                     android:id="@+id/view9"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF" />
 
                 <ImageButton
                     android:id="@+id/profilebutton"
-                    android:layout_width="400dp"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/F"
+                    android:background="#001A1423"
                     android:onClick="profileact"
                     android:paddingStart="16dp"
                     android:paddingTop="16dp"
@@ -122,8 +135,9 @@
 
                 <View
                     android:id="@+id/view10"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

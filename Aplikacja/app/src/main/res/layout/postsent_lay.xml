@@ -17,127 +17,52 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="57dp"
+            android:background="#D88F1212"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/goback"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/goback" />
 
             <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/baloo_bhaina"
-                android:text="Post został pomyślnie wysłany!"
-                android:textColor="@color/W"
-                android:textSize="24sp" />
+                android:layout_weight="1" />
 
             <Space
-                android:layout_width="match_parent"
-                android:layout_height="2dp" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/icon_jbp" />
-
-            <Space
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/icon_jbp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:orientation="vertical">
 
-            <View
-                android:id="@+id/view8"
+            <ImageView
+                android:id="@+id/imageView7"
                 android:layout_width="match_parent"
-                android:layout_height="25dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="84dp">
-
-
-                <View
-                    android:id="@+id/view6"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
-
-                <ImageButton
-                    android:id="@+id/homebutton"
-                    android:layout_width="400dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/F"
-                    android:onClick="homeact"
-                    android:paddingStart="16dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/search"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <View
-                    android:id="@+id/view6"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
-
-                <ImageButton
-                    android:id="@+id/addpostbutton"
-                    android:layout_width="400dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/F"
-                    android:onClick="addpostact"
-                    android:paddingStart="16dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/add"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <View
-                    android:id="@+id/view9"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
-
-                <ImageButton
-                    android:id="@+id/profilebutton"
-                    android:layout_width="400dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/F"
-                    android:onClick="profileact"
-                    android:paddingStart="16dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/settings"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <View
-                    android:id="@+id/view10"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/post_sent" />
         </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
