@@ -339,11 +339,13 @@
     position:relative;
   }
   .parallax-item:nth-child(3) {
-    background: url("../res/film.gif");
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("../res/defiladapolski.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     min-height: 600px;
+    
   }
   .parallax-item:nth-child(4) {
     background: #1565c0;
