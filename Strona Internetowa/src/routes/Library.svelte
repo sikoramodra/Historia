@@ -9,6 +9,7 @@
   <Navbar/>
   <html lang="en">
   <body>
+	<h1>Siemanko</h1>
   <div class="linki grid-container">
 	  <div class="card"><Link to="/library/jogurt"><article class="grid-item">
 		<div class="card__header">
@@ -32,7 +33,7 @@
 		  <h4>Defilada ulicami Warszawy</h4>
 		  <p>W sobotę, 17 lutego, złożyliśmy hołd Bohaterom Powstania Wielkopolskiego - powstańcom i żołnierzom, którzy 105 lat temu chwycili za broń i doprowadzili do największego polskiego zwycięskiego powstania!</p>
 		</div>
-		<data>17.02.2024</data>
+		<data>14.02.2024</data>
 	</article></Link></div>
 	<div class="card">
 	  <Link to="/library/inny-artykul"><article class="grid-item">
@@ -41,7 +42,7 @@
 		</div>
 		<div class="card__body">
 		  <span class="tag tag-blue"></span>
-		  <h4>W Hołdzie Powstańcom Wielkopolskim</h4>
+		  <h4>Wielkopolskiego</h4>
 		  <p>W sobotę, 17 lutego, złożyliśmy hołd Bohaterom Powstania Wielkopolskiego - powstańcom i żołnierzom, którzy 105 lat temu chwycili za broń i doprowadzili do największego polskiego zwycięskiego powstania!</p>
 		</div>
 		<data>17.02.2024</data>
@@ -52,10 +53,10 @@
 	  </div>
 	  <div class="card__body">
 		<span class="tag tag-blue"></span>
-		<h4>W Hołdzie Powstańcom Wielkopolskim</h4>
+		<h4>Spotkanie drugie</h4>
 		<p>W sobotę, 17 lutego, złożyliśmy hołd Bohaterom Powstania Wielkopolskiego - powstańcom i żołnierzom, którzy 105 lat temu chwycili za broń i doprowadzili do największego polskiego zwycięskiego powstania!</p>
 	  </div>
-	  <data>17.02.2024</data>
+	  <data>13.02.2024</data>
 	  </article></Link></div>
 
 <div class="card">
@@ -65,10 +66,10 @@
 	  </div>
 	  <div class="card__body">
 		<span class="tag tag-blue"></span>
-		<h4>W Hołdzie Powstańcom Wielkopolskim</h4>
+		<h4>Wyjście w niedziele</h4>
 		<p>W sobotę, 17 lutego, złożyliśmy hołd Bohaterom Powstania Wielkopolskiego - powstańcom i żołnierzom, którzy 105 lat temu chwycili za broń i doprowadzili do największego polskiego zwycięskiego powstania!</p>
 	  </div>
-	  <data>17.02.2024</data>
+	  <data>16.02.2024</data>
 	  </article></Link></div>
 
 <div class="card">
@@ -78,16 +79,24 @@
 	  </div>
 	  <div class="card__body">
 		<span class="tag tag-blue"></span>
-		<h4>W Hołdzie Powstańcom Wielkopolskim</h4>
+		<h4>Spotkanie</h4>
 		<p>W sobotę, 17 lutego, złożyliśmy hołd Bohaterom Powstania Wielkopolskiego - powstańcom i żołnierzom, którzy 105 lat temu chwycili za broń i doprowadzili do największego polskiego zwycięskiego powstania!</p>
 	  </div>
-	  <data>17.02.2024</data>
+	  <data>21.02.2024</data>
 	  </article></Link></div>
   </div>
 
 
   </body></html>
   <style>
+	h1 {
+		color: white;
+		font-size: 5rem;
+		
+		margin-left: auto;
+		margin-right: auto;
+		position:absolute;
+	}
 .card {
   display: flex;
   flex-direction: column;
