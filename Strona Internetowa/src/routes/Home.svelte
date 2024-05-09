@@ -79,8 +79,25 @@
 
   <div class="parallax-item">
     <column>
-      <h1 class="napis1">Coś tam że cudowna historia</h1>
-      <p>genialnie ustawiane opony w samochodzie to podstawa dobrego auta, nie wiadomo co może powodować takiego spokoju nie można napierwszy rzut oka oceniać</p>
+      <h1 class="napis1">Fundacja Patriotyczna im. Witolda Pileckiego</h1>
+      <p class="lead">
+        Fundacja Patriotyczna im. Witolda Pileckiego (KRS: 0000874120) to organizacja mająca na celu kształtowanie postaw patriotycznych oraz m.in. propagowanie idei i zasad jakich w swoim życiu kierował się patron Fundacji - Rotmistrz Witold Pilecki.
+        </p>
+      <p>Systematycznie będziemy przedstawiali inicjatywy i obszary funkcjonowania naszej Fundacji. Zanim jednak do tego przejdziemy chcielibyśmy przybliżyć postać naszego Patrona, do którego będziemy w naszej działalności wielokrotnie wracać. Kim był Witold Pilecki?</p>
+      <p>Rotmistrz Witold Pilecki (1901 - 1948) był harcerzem, społecznikiem, artystą i ziemianinem, żołnierzem, oficerem Wojska Polskiego, uczestnikiem konspiracji i walk o niepodległość Rzeczypospolitej, m.in. był uczestnikiem wojny polsko-bolszewickiej 1920 r., patriotą.
+      </p>
+      <p>
+        Od chwili wybuchu II wojny światowej czynnie uczestniczył w obronie Polski. Od listopada 1939 r. w podziemiu niepodległościowym - współtworzył Tajną Armię Polską.
+        </p>
+        <p>
+          W latach 1940-1943 był dobrowolnym więźniem niemieckiego obozu koncentracyjnego - KL Auschwitz, gdzie m.in. założył organizację podziemną, a także dokumentował niemieckie zbrodnie i dramat bestialsko traktowanych więźniów. Po wypełnieniu misji i ucieczce z KL Auschwitz, powrócił do walki zbrojnej.
+          </p>
+          <p>
+            Uczestnik Powstania Warszawskiego, walczący w Zgrupowaniu "Chrobry II" oraz Kompanii "Warszawianka", jeniec obozów w Lamsdorf i Murnau, a następnie żołnierz Polskich Sił Zbrojnych na Zachodzie w II Korpusie Polskim gen. Władysława Andersa.
+            </p>
+            <p>
+              Po powrocie do zniewolonej przez sowietów Polski, zaangażował się w działalność antykomunistyczną i niepodległościową. Aresztowany przez komunistów, poddany brutalnemu śledztwu, po sfingowanym procesie został skazany na śmierć i zamordowany 25 maja 1948 r. w w więzieniu mokotowskim w Warszawie. Miejsce spoczynku Rotmistrza Witolda Pileckiego nie jest do tej pory znane...
+              </p>
     </column>
     <divider class="divider"></divider>
     <divider class="divider1"></divider>
@@ -93,6 +110,10 @@
 </html>
 
 <style>
+  column {
+    width:48%;
+    position:absolute;
+  }
   @media screen and (max-width: 600px) {
     .intro-content--text h3 {
         font-size: 1.2rem;
@@ -139,7 +160,6 @@
     display: block;
     width: 89%;
     height: 200%;
-    
     opacity: .65;
     border-right: 1px solid rgb(255, 255, 255);
     border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -251,12 +271,16 @@
     line-height: inherit;
   }
   .napis1 {
-    color: #333;
-    font-size: 32px;
+    color: white;
+    font-size:2rem;
+    padding:0;
+    margin-bottom: 1%;
+    margin-left: 10px;
+    margin-top: 1%;
   }
   .parallax-item p {
-    color: #666;
-    font-size: 18px;
+    color: rgba(255, 255, 255, 0.842);
+    font-size: 14px;
     line-height: 1.6;
     margin-top: 20px;
     text-align: left;
@@ -274,7 +298,7 @@
     background-size: cover;
     float: right;
     margin-right: 20%;
-    margin-left: 50%;
+    margin-left: 60%;
     margin-top: 20%;
     zoom: 3;
     align-items: center;
@@ -310,7 +334,7 @@
     z-index: -1;
   }
   .parallax-item:nth-child(2) {
-    background: #05051b;
+    background: #080822;
     z-index: 11;
     position:relative;
   }
@@ -337,7 +361,7 @@
     background-color: #8dc63f;
     left: 0;
     bottom: 0;
-    font-size: 3rem;
+    font-size: 1rem;
     color: white;
   }
   h1 {
@@ -355,7 +379,24 @@
     margin-inline-end: 0px;
     unicode-bidi: isolate;
     text-rendering: optimizeLegibility;
+    font-size:3px;
+    margin-left: 10px;
   }
+  @media screen and (max-width: 1000px) {
+    column {
+        zoom: 80%;
+    }
+}
+@media screen and (max-width: 1500px) {
+    column {
+        zoom: 80%;
+    }
+}
+@media screen and (max-width: 600px) {
+    column {
+        zoom: 60%;
+    }
+}
 </style>
 
 <Navbar/>
