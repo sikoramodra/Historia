@@ -179,7 +179,7 @@
 			{/each}
 		</div>
 
-		<!-- <div transition:slide class="bg-slate-700 w-[90vw] h-[80vh] rounded-xl m-4 overflow-y-auto p-6">
+		<div transition:slide class="bg-slate-700 w-[90vw] h-[80vh] rounded-xl m-4 overflow-y-auto p-6">
 			{#each $searchStore.filtered as person}
 				<div
 					on:click={() => personClick(person)}
@@ -191,7 +191,7 @@
 					<PeopleCards data={person} />
 				</div>
 			{/each}
-		</div> -->
+		</div> 
 	{/if}
 
 	<!-- Link to add-person -->
