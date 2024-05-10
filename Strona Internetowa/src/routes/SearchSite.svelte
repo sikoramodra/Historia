@@ -172,14 +172,14 @@
 					on:keyup={(e) => handleKeyDownPersonCLick(e, person)}
 					role="button"
 					tabindex="0"
-					class="bg-red-50 h-min rounded-lg m-1 flex-grow basis-auto"
+					class="bg-red-50 h-min rounded-lg m-1 flex-grow basis-auto border {person.status.status === 'verified' ? 'border-green-600' : 'border-none'}"
 				> 	
 					<PeopleCards data={person} />
 				</div>
 			{/each}
 		</div>
 
-		<div transition:slide class="bg-slate-700 w-[90vw] h-[80vh] rounded-xl m-4 overflow-y-auto p-6">
+		<!-- <div transition:slide class="bg-slate-700 w-[90vw] h-[80vh] rounded-xl m-4 overflow-y-auto p-6">
 			{#each $searchStore.filtered as person}
 				<div
 					on:click={() => personClick(person)}
@@ -191,7 +191,7 @@
 					<PeopleCards data={person} />
 				</div>
 			{/each}
-		</div> 
+		</div>  -->
 	{/if}
 
 	<!-- Link to add-person -->
