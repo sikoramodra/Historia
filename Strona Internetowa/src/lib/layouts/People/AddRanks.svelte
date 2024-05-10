@@ -15,34 +15,30 @@
 		}
 	}
 
-	let addToData = (e, event) => {
-		if (e.target.checked) {
-			data.push(event);
-		} else {
-			data = data.filter((item) => item.id !== event.id);
-		}
-		data = [...data];
-	};
-	
-	onMount(fetchRankData);
+	onMount(() => {
+		fetchRankData();
+	});
 </script>
 
-<div class="overflow-auto {ranks.length > 0 ? 'h-48' : ''}">
-	{#if ranks.length > 0}
-		<ul>
-			{#each ranks as rank}
-				{#if rank.name !== null}
-					<label class="block text-white">
-						<input type="checkbox" class="mr-2" value={rank.id} on:change={(e) => addToData(e, rank)} />
-						{rank.name}
-					</label>
-				{/if}
-			{/each}
-		</ul>
-	{:else}
-		<p class="text-white">Nie udało się załadować Stopni Wojskowych.</p>
-	{/if}
+<div class="overflow-auto">
+    {#if ranks.length > 0}
+        <ul class="divide-y divide-gray-200">
+            {#each ranks as rank}
+                {#if rank.name !== null}
+                    <li class="py-2">
+                        <label class="flex items-center text-white">
+                            <input name="ranks-radio" id={rank.id} type="radio" class="form-radio h-5 w-5 text-indigo-600 border-gray-300 focus:ring-indigo-500" value={rank.id} bind:group={data} on:change={() => data = rank.id} />
+                            <span class="ml-2">{rank.name}</span>
+                        </label>
+                    </li>
+                {/if}
+            {/each}
+        </ul>
+    {:else}
+        <p class="text-white">Nie udało się załadować Stopni Wojskowych.</p>
+    {/if}
 </div>
+
 
 <style>
 	::-webkit-scrollbar {
@@ -51,7 +47,7 @@
 
 	::-webkit-scrollbar-track {
 		background-color: transparent; /* Change the background color of the track */
-        margin: 1px;
+		margin: 1px;
 	}
 
 	::-webkit-scrollbar-thumb {

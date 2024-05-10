@@ -49,6 +49,7 @@
 				throw new Error("Failed to fetch data");
 			}
 			dbData = await response.json();
+			// dbData = dbData.filter((person) => person.status.status === "unverified")
 			dbData = dbData.map((product) => ({
 				...product,
 				searchTerms: `${product.name} ${product.other_names.toString().replace(/,/g, " ")} ${product.code_names
@@ -172,13 +173,13 @@
 					role="button"
 					tabindex="0"
 					class="bg-red-50 h-min rounded-lg m-1 flex-grow basis-auto"
-				>
+				> 	
 					<PeopleCards data={person} />
 				</div>
 			{/each}
 		</div>
 
-		<!-- <div transition:slide class="bg-slate-700 w-[90vw] h-[80vh] rounded-xl m-4 overflow-y-auto p-6">
+		<div transition:slide class="bg-slate-700 w-[90vw] h-[80vh] rounded-xl m-4 overflow-y-auto p-6">
 			{#each $searchStore.filtered as person}
 				<div
 					on:click={() => personClick(person)}
@@ -190,7 +191,7 @@
 					<PeopleCards data={person} />
 				</div>
 			{/each}
-		</div> -->
+		</div> 
 	{/if}
 
 	<!-- Link to add-person -->
@@ -201,7 +202,7 @@
 				class="bg-slate-800 rounded-full user-select-none cursor-pointer shadow-lg hover:scale-105 hover:bg-slate-700 transition-transform duration-300 flex items-center leading-none text-lg p-4"
 			>
 				<span class="text-white font-semibold mr-2 user-select-none">+</span>
-				<span class="text-white font-semibold tracking-wide user-select-none">Add Person</span>
+				<span class="text-white font-semibold tracking-wide user-select-none">Dodaj Osobę</span>
 			</div>
 		</Link>
 	{/if}

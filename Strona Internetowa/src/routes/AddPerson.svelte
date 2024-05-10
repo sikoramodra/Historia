@@ -20,7 +20,7 @@
 	};
 
 	let otherFormData = {
-		ranks: [],
+		ranks: null,
 		badges: [],
 		activities: [],
 	};
@@ -104,7 +104,6 @@
 			deathData.month = `${deathData.date[5]}${deathData.date[6]}`;
 			deathData.year = `${deathData.date[0]}${deathData.date[1]}${deathData.date[2]}${deathData.date[3]}`;
 		}
-		console.log(deathData.date);
 		formData.death_date = deathData.date;
 	}
 
@@ -140,11 +139,10 @@
 	// --- --- ---
 
 	async function handleSubmit() {
-		formData.birth_date = formData.birth_date === "" ? null : formData.birth_date;
-		formData.death_date = formData.death_date === "" ? null : formData.death_date;
-		formData = { ...formData };
-		alert(JSON.stringify(formData));
 		try {
+			formData.birth_date = formData.birth_date === "" ? null : formData.birth_date;
+			formData.death_date = formData.death_date === "" ? null : formData.death_date;
+
 			const response = await fetch(`${import.meta.env.VITE_DB_URL}people`, {
 				method: "POST",
 				headers: {
@@ -153,19 +151,54 @@
 				body: JSON.stringify(formData),
 			});
 
-			console.log(response);
+			if (response.ok) {
+				const responseData = await response.json();
+				if (responseData) {
+					if (otherFormData.ranks !== null) {
+						await fetch(`${import.meta.env.VITE_DB_URL}people/${responseData}/ranks`, {
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify({"rank_id" : otherFormData.ranks}),
+						}).catch((error) => console.error("Error adding ranks:", error));
+					}
 
-			if (!response.ok) {
-				throw new Error("Failed to submit form");
+					if (otherFormData.badges.length > 0) {
+						for (let i = 0; i < otherFormData.badges.length; i++) {
+							await fetch(`${import.meta.env.VITE_DB_URL}people/${responseData}/sub_badges`, {
+								method: "POST",
+								headers: {
+									"Content-Type": "application/json",
+								},
+								body: JSON.stringify({"sub_badge_id": otherFormData.badges[i]}),
+							}).catch((error) => console.error("Error adding sub_badges:", error));
+						}
+					}
+
+					if (otherFormData.activities.length > 0) {
+						for (let i = 0; i < otherFormData.activities.length; i++) {
+							await fetch(`${import.meta.env.VITE_DB_URL}people/${responseData}/events`, {
+								method: "POST",
+								headers: {
+									"Content-Type": "application/json",
+								},
+								body: JSON.stringify({"event_id": otherFormData.activities[i]}),
+							}).catch((error) => console.error("Error adding events:", error));
+						}
+					}
+				}
+
+				console.log("Form submitted successfully");
+			} else {
+				console.error("Failed to submit form. Server returned status:", response.status);
 			}
-
-			console.log("Form submitted successfully");
-
-			window.location.href = "/search-site";
 		} catch (error) {
 			console.error("Error submitting form:", error.message);
 		}
 	}
+
+	let miniNavbar = 0;
 </script>
 
 <div class="min-h-screen bg-gray-900 flex justify-center flex-col items-center">
@@ -181,11 +214,11 @@
 
 		<!-- Logo -->
 		<Link to="/" class="font-bold h-full items-center flex justify-left"
-			><img src={Logo} alt="Home" class="h-[2.5em] md:h-[2.5em] lg:h-[3em]" /></Link
+			><img src={Logo} alt="Home" class="h-[2.5em] select-none md:h-[2.5em] lg:h-[3em]" /></Link
 		>
 
 		<!-- Help -->
-		<button id="help" class="mr-6">
+		<button id="help" class="mr-6 opacity-0">
 			<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 512 512"
 				><path
 					fill="rgb(156 163 175)"
@@ -196,7 +229,9 @@
 	</div>
 
 	<!-- Form -->
-	<div class="bg-gradient-to-br from-gray-900 to-gray-700 h-[80vh] w-[80vw] rounded-2xl shadow-2xl border border-gray-400 relative p-1 text-xl shadow-gray-600">
+	<div
+		class="bg-gradient-to-br from-gray-900 to-gray-700 h-[80vh] w-[80vw] rounded-2xl shadow-2xl border border-gray-400 relative p-1 text-xl shadow-gray-600"
+	>
 		<form on:submit|preventDefault action="/people" method="POST" class="h-full overflow-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
 			<div id="official-info" class="border border-white p-4 rounded-xl mb-4 shadow-2xl shadow-black flex items-center flex-col justify-evenly">
 				<!-- Name -->
@@ -405,60 +440,118 @@
 				</div>
 			</div>
 
-			<div id="military-info" class="border border-white p-4 rounded-xl mb-4 shadow-2xl shadow-black">
-				<!-- Ranks -->
-				<div>
-					<p class="text-white font-extrabold text-center mb-4">Stopień Wojskowy:</p>
-					<div class="border border-white p-8 rounded-xl mb-4">
-						<AddRanks bind:data={otherFormData.ranks} />
-					</div>
+			<div id="military-info" class="border border-white p-4 rounded-xl mb-4 shadow-2xl shadow-black flex flex-col justify-center h-[625px]">
+				<!-- Mini NavBar -->
+				<div class="flex justify-center items-center">
+					<button
+						on:click={() => (miniNavbar = 0)}
+						class="cursor-pointer select-none font-semibold {miniNavbar === 0 ? 'text-blue-500' : 'text-gray-300'} {miniNavbar === 0
+							? 'hover:text-blue-400'
+							: 'hover:text-gray-100'} {miniNavbar === 0 ? 'active:text-blue-600' : 'active:text-gray-400'}">Stopień Wojskowy</button
+					>
+					<div class="w-px h-6 bg-gray-700 mx-2"></div>
+					<button
+						on:click={() => (miniNavbar = 1)}
+						class="cursor-pointer select-none font-semibold {miniNavbar === 1 ? 'text-blue-500' : 'text-gray-300'} {miniNavbar === 1
+							? 'hover:text-blue-400'
+							: 'hover:text-gray-100'} {miniNavbar === 1 ? 'active:text-blue-600' : 'active:text-gray-400'}">Odznaczenia</button
+					>
+					<div class="w-px h-6 bg-gray-700 mx-2"></div>
+					<button
+						on:click={() => (miniNavbar = 2)}
+						class="cursor-pointer select-none font-semibold {miniNavbar === 2 ? 'text-blue-500' : 'text-gray-300'} {miniNavbar === 2
+							? 'hover:text-blue-400'
+							: 'hover:text-gray-100'} {miniNavbar === 2 ? 'active:text-blue-600' : 'active:text-gray-400'}">Wydarzenia</button
+					>
 				</div>
 
-				<!-- Badges -->
-				<div>
-					<p class="text-white font-extrabold text-center mb-4">Odznaczenia:</p>
-					<div class="border border-white p-8 rounded-xl mb-4">
-						<AddBadges bind:data={otherFormData.badges} />
-					</div>
-				</div>
+				<div class="h-px w-full bg-gray-700 my-3"></div>
 
-				<!-- Activity -->
-				<div>
-					<p class="text-white font-extrabold text-center mb-4">Wydarzenia:</p>
-					<div class="border border-white p-8 rounded-xl mb-4">
-						<AddActivities bind:data={otherFormData.activities} />
+				{#if miniNavbar === 0}
+					<!-- Ranks -->
+					<div class="h-[500px]">
+						<p class="text-white font-extrabold text-center mb-4">Stopień Wojskowy:</p>
+						<div class="border border-white p-8 rounded-xl mb-4 overflow-auto h-[90%]">
+							<AddRanks bind:data={otherFormData.ranks} />
+						</div>
 					</div>
-				</div>
+				{:else if miniNavbar === 1}
+					<!-- Badges -->
+					<div class="h-[500px]">
+						<p class="text-white font-extrabold text-center mb-4">Odznaczenia:</p>
+						<div class="border border-white p-8 rounded-xl mb-4 overflow-auto h-[90%]">
+							<AddBadges bind:data={otherFormData.badges} />
+						</div>
+					</div>
+				{:else if miniNavbar === 2}
+					<!-- Activity -->
+					<div class="h-[500px]">
+						<p class="text-white font-extrabold text-center mb-4">Wydarzenia:</p>
+						<div class="border border-white p-8 rounded-xl overflow-auto h-[90%]">
+							<AddActivities bind:data={otherFormData.activities} />
+						</div>
+					</div>
+				{/if}
 			</div>
 
 			<div id="cemetery-info" class="border border-white p-8 px-12 rounded-xl mb-4 shadow-2xl shadow-black">
 				<!-- Cemetery -->
 				<div class="mb-4 relative">
 					<label for="cemetery" class="block text-white font-bold mb-2">Cmentarz:</label>
-					<input type="text" name="cemetery" id="cemetery" placeholder="np. Cmentarz centralny w Szczecinie..." class="w-full p-2 border rounded-md" bind:value={formData.cemetery} />
+					<input
+						type="text"
+						name="cemetery"
+						id="cemetery"
+						placeholder="np. Cmentarz centralny w Szczecinie..."
+						class="w-full p-2 border rounded-md"
+						bind:value={formData.cemetery}
+					/>
 				</div>
 
 				<!-- Quarter -->
 				<div class="mb-4 relative">
 					<label for="quarter" class="block text-white font-bold mb-2">Kwatera:</label>
-					<input type="text" name="quarter" id="quarter" class="w-full p-2 border rounded-md" placeholder="np. 3C..." bind:value={formData.quarter} />
+					<input
+						type="text"
+						name="quarter"
+						id="quarter"
+						class="w-full p-2 border rounded-md"
+						placeholder="np. 3C..."
+						bind:value={formData.quarter}
+					/>
 				</div>
 
 				<!-- Row -->
 				<div class="mb-4 relative">
 					<label for="row" class="block text-white font-bold mb-2">Rząd:</label>
-					<input type="number" name="row" id="row" min="0" placeholder="np. 4..." class="w-full p-2 border rounded-md" bind:value={formData.row} />
+					<input
+						type="number"
+						name="row"
+						id="row"
+						min="0"
+						placeholder="np. 4..."
+						class="w-full p-2 border rounded-md"
+						bind:value={formData.row}
+					/>
 				</div>
 
 				<!-- Grave -->
 				<div class="mb-4 relative">
 					<label for="grave" class="block text-white font-bold mb-2">Grób:</label>
-					<input type="number" name="grave_id" id="grave" min="0" class="w-full p-2 border rounded-md" placeholder="np. 11..." bind:value={formData.grave} />
+					<input
+						type="number"
+						name="grave_id"
+						id="grave"
+						min="0"
+						class="w-full p-2 border rounded-md"
+						placeholder="np. 11..."
+						bind:value={formData.grave}
+					/>
 				</div>
 
 				<!-- Burial Place -->
 				<div class="mb-4 relative">
-					<label for="burial_place" class="block text-white font-bold mb-2">Burial Place:</label>
+					<label for="burial_place" class="block text-white font-bold mb-2">Miejsce Pochówku:</label>
 					<input
 						type="number"
 						min="0"
@@ -475,20 +568,41 @@
 				<!-- Inscription -->
 				<div class="mb-4 relative">
 					<label for="inscription" class="block text-white font-bold mb-2">Epitafium:</label>
-					<input type="text" name="inscription" id="inscription" placeholder="np. Kochany Ojciec, Brat i Mąż..." class="w-full p-2 border rounded-md" bind:value={formData.inscription} />
+					<input
+						type="text"
+						name="inscription"
+						id="inscription"
+						placeholder="np. Kochany Ojciec, Brat i Mąż..."
+						class="w-full p-2 border rounded-md"
+						bind:value={formData.inscription}
+					/>
 				</div>
 
 				<!-- Sources -->
 				<div class="col-span-2 mb-4 relative">
 					<label for="sources" class="block text-white font-bold mb-2">Źródła:</label>
-					<input type="text" name="sources" id="sources" placeholder="np. Wikipedia..." class="w-full p-2 border rounded-md" bind:value={formData.sources} />
+					<input
+						type="text"
+						name="sources"
+						id="sources"
+						placeholder="np. Wikipedia..."
+						class="w-full p-2 border rounded-md"
+						bind:value={formData.sources}
+					/>
 				</div>
 
 				<!-- Description -->
 				<div class="col-span-2 mb-4 relative">
 					<label for="description" class="block text-white font-bold mb-2">Opis:</label>
-					<textarea name="description" id="description" rows="5" placeholder="np. Andrzej urodził się we..... po roku w obozie uciekł... po wojnie osiedlił się w Szczecinie..." class="w-full p-2 border rounded-md text-left" bind:value={formData.description} />
-				</div>	
+					<textarea
+						name="description"
+						id="description"
+						rows="5"
+						placeholder="np. Andrzej urodził się we..... po roku w obozie uciekł... po wojnie osiedlił się w Szczecinie..."
+						class="w-full p-2 border rounded-md text-left"
+						bind:value={formData.description}
+					/>
+				</div>
 			</div>
 
 			<!-- Submit Button -->
@@ -502,10 +616,6 @@
 						<strong>+</strong> <i class="fas fa-user"></i> Dodaj Osobę</button
 					>
 				</div>
-			</div>
-
-			<div class="flex justify-center items-center mt-4 lg:col-span-2">
-				<button on:click={() => console.log(formData, otherFormData)} class="active:bg-white active:text-blue-600 px-4 py-2 rounded bg-blue-600 text-white hover:scale-105 hover:bg-blue-500 shadow-2xl shadow-black">Check Data</button>
 			</div>
 		</form>
 	</div>
