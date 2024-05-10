@@ -41,9 +41,9 @@ export const searchHandler = (store) => {
 
 function sortByStatus(a, b) {
 	if (a.status.status === "verified" && b.status.status !== "verified") {
-		return -1;
-	} else if (a.status.status !== "verified" && b.status.status === "verified") {
 		return 1;
+	} else if (a.status.status !== "verified" && b.status.status === "verified") {
+		return -1;
 	} else {
 		return 0;
 	}
