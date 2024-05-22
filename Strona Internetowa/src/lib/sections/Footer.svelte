@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
-<footer class="footer section bg-gradient-to-b from-slate-950 to-slate-800">
+<footer class="footer section">
 	
 	<div class="footer-container container d-grid ">
 		
@@ -161,7 +161,7 @@ body{
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     color: var(--light-color-alt);
-    background: linear-gradient(rgb(2 6 23),rgb(30 41 59));
+    
     letter-spacing: 1px;
     transition: background-color .25s,color .25s;
 	
@@ -223,7 +223,7 @@ i{
 
 /* Footer */
 .footer{
-    background-color: var(--secondary-background-color);
+    
 }
 
 

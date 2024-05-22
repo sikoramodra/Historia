@@ -112,6 +112,7 @@
 </html>
 
 <style>
+
   .p{
     font-size: 2rem;
   }
@@ -288,7 +289,7 @@
     margin-top: 1%;
   }
   .parallax-item p {
-    color: rgba(255, 255, 255, 0.842);
+    
     font-size: 14px;
     line-height: 1.6;
     margin-top: 20px;
@@ -343,7 +344,7 @@
     z-index: -1;
   }
   .parallax-item:nth-child(2) {
-    background: #080822;
+    
     z-index: 11;
     position:relative;
   }
@@ -354,11 +355,10 @@
     background-position: center;
     background-attachment: fixed;
     min-height: 600px;
+    color:white;
     
   }
-  .parallax-item:nth-child(4) {
-    background: #1565c0;
-  }
+ 
   @media screen and (max-width: 768px) {
     .parallax-item h2 {
       font-size: 1.5rem;
@@ -408,6 +408,8 @@
         zoom: 60%;
     }
 }
+
+
 </style>
 
 <Navbar/>
