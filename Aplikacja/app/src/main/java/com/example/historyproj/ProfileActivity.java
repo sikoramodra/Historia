@@ -40,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
         instagramImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openUrl("https://www.instagram.com/bartek__pv");
+                openUrl("https://www.instagram.com/jestesmybypamietac/");
 
             }
             private void openUrl(String url) {
