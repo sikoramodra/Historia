@@ -32,19 +32,9 @@
         background-color: #661111;
         color: #ffffff;
     }
-    :global(body:not(.dark-mode)) {
-        background-color: #ffffff;
-        color: #000000;
-    }
+  
     
-    :global(.footer:not(.dark-mode)) {
-        background-color: #9e1f1f;
-        color: #000000;
-    }
-    :global(.footer:is(.dark-mode)) {
-        background-color: #0b6337;
-        color: #000000;
-    }
+ 
    
     :global(.parallax-item:is(.dark-mode)){
         background-color: #571212;
