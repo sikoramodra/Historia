@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
-<footer class="footer section">
+<footer class="footer section bg-gradient-to-b  from-slate-800 to-slate-950">
 	
 	<div class="footer-container container d-grid ">
 		
