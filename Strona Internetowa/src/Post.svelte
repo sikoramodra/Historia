@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { Router, Link } from 'svelte-routing';
   import Jogurt from '../src/routes/post/jogurt.svelte'; // Importuj Jogurt.svelte
-  import Czekolada from '../src/routes/post/czekolada.svelte';
+  import historycznykalendarz from './routes/post/historyczny-kalendarz.svelte';
   import Navbar from './lib/sections/Navbar.svelte';
 
   // Ustawienie początkowej zawartości dla posta
@@ -15,8 +15,8 @@
         PostComponent = Jogurt;
         break;
       // Możesz dodać obsługę innych ścieżek tutaj
-      case "/library/czekolada":
-        PostComponent = Czekolada;
+      case "/library/historycznykalendarz":
+        PostComponent = historycznykalendarz;
         break;
    
       default:

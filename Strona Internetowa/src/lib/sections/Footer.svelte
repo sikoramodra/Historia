@@ -1,6 +1,6 @@
 <script>
 	import { mainColorBorder, mainColorText } from "../../stores/ColorStore";
-	
+	import { Link } from "svelte-routing";
 		
 	mainColorText.set("text-white");
 	mainColorBorder.set("border-white");
@@ -28,83 +28,78 @@
 	<div class="footer-container container d-grid ">
 		
 		<div class="company-data">
-			<a href="./index.html">
+			<a href="">
 				<h2 class="logo">Fundacja Patriotyczna <br>im. Witolda Pileckiego</h2>
 			</a>
 			<p class="company-description">Dowiedzieć się więcej o nas możecie na naszych socialach!</p>
 			
 			<ul class="list social-media">
 				<li class="list-item">
-					<a href="https://www.instagram.com/jestesmybypamietac/" target="_blank" class="list-link"><i class="ri-instagram-line"></i></a>
+					<a href="https://www.instagram.com/fundacjapatriotyczna/" target="_blank" class="list-link"><i class="ri-instagram-line"></i></a>
 				</li>
 				<li class="list-item">
-					<a href="https://www.facebook.com/jestesmybypamietac2023?locale=pl_PL" target="_blank" class="list-link"><i class="ri-facebook-circle-line"></i></a>
+					<a href="https://www.facebook.com/FundacjaPatriotyczna?locale=pl_PL" target="_blank" class="list-link"><i class="ri-facebook-circle-line"></i></a>
 				</li>
 				
 			</ul>
 
 			<span class="copyright-notice">&copy;2024 Fundacja Patriotyczna <br>im. Witolda Pileckiego</span>
 		</div>
+<div>
+			<h6 class="title footer-title">Projekty</h6>
+			
+			<ul class="footer-list list">
+				<li class="list-item">
+					<a href="https://www.facebook.com/jestesmybypamietac2023?locale=pl_PL" target="_blank" class="list-link">Jesteśmy by pamiętać!</a>
+				</li>
+				<li class="list-item">
+					<a href="https://www.facebook.com/PrzelejKrewPowstanie44?locale=pl_PL" target="_blank" class="list-link">Przelej krew w rocznicę Powstania Warszawskiego</a>
+				</li>
+				<li class="list-item">
+					<a href="#" class="list-link">Centrum Wolontariatu Patriotycznego „Szaniec”</a>
+				</li>
+				<li class="list-item">
+					<a href="#" class="list-link">Instytut Ziem Zachodnich im. Lecha Karola Neymana</a>
+				</li>
+				<li class="list-item">
+					<a href="#" class="list-link">7. Kartka z kalendarza</a>
+				</li>
+			</ul>
 
+		</div>
 		<div>
 			<h6 class="title footer-title">Wyszukiwarka</h6>
 			
 			<ul class="footer-list list">
 				<li class="list-item">
-					<a href="#" class="list-link">Coś</a>
+					<Link to="/search-site"><a href="/search" class="list-link">Szukanie Osób</a></Link>
 				</li>
 				<li class="list-item">
-					<a href="#" class="list-link">Food</a>
+					<Link to="/add-person"><a href="#" class="list-link">Dodaj Osobę</a></Link>
 				</li>
-				<li class="list-item">
-					<a href="#" class="list-link">Technology</a>
-				</li>
+				
 				
 			</ul>
 
 		</div>
 
-		<div>
-			<h6 class="title footer-title">Artykuły</h6>
-			
-			<ul class="footer-list list">
-				<li class="list-item">
-					<a href="#" class="list-link">Home</a>
-				</li>
-				<li class="list-item">
-					<a href="#" class="list-link">Elements</a>
-				</li>
-				<li class="list-item">
-					<a href="#" class="list-link">Tags</a>
-				</li>
-				<li class="list-item">
-					<a href="#" class="list-link">Authors</a>
-				</li>
-				<li class="list-item">
-					<a href="#" class="list-link">Membership</a>
-				</li>
-			</ul>
-
-		</div>
+		
 
 		<div>
 			<h6 class="title footer-title">O nas</h6>
 			
 			<ul class="footer-list list">
 				<li class="list-item">
-					<a href="#" class="list-link">Contact us</a>
+					<a href="mailto:biuro@fundacjapileckiego.pl" class="list-link">Skontaktuj się z nami</a>
 				</li>
 				<li class="list-item">
-					<a href="#" class="list-link">F.A.Q</a>
+					<a href="#" class="list-link">Nasza misja</a>
 				</li>
 				<li class="list-item">
-					<a href="#" class="list-link">Careers</a>
+					<a href="#" class="list-link">Kim jesteśmy?</a>
 				</li>
 				<li class="list-item">
-					<a href="#" class="list-link">Authors</a>
-				</li>
-				<li class="list-item">
-					<a href="#" class="list-link">Memberships</a>
+					<a href="#" class="list-link">Galeria</a>
 				</li>
 			</ul>
 

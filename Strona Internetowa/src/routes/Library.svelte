@@ -24,14 +24,14 @@
 		</article></Link></div>
 
 		<div class="card">
-	  <Link to="/library/czekolada"><article class="grid-item">
+	  <Link to="/library/historycznykalendarz"><article class="grid-item">
 		<div class="card__header">
-		  <img src="src/res/defilada.jpg" alt="card__image" class="card__image" width="600">
+		  <div class="img"></div>
 		</div>
 		<div class="card__body">
 		  <span class="tag tag-blue"></span>
-		  <h4>Defilada ulicami Warszawy</h4>
-		  <p>W sobotę, 17 lutego, złożyliśmy hołd Bohaterom Powstania Wielkopolskiego - powstańcom i żołnierzom, którzy 105 lat temu chwycili za broń i doprowadzili do największego polskiego zwycięskiego powstania!</p>
+		  <h4>Historyczny Kalendarz</h4>
+		  <p>👉Z historycznego kalendarza: 22 maja 1914 r., w Wiśle, urodził się mjr Adolf Plich - ps. "Góra" "Dolina" - jeden z najlepszych dowódców oddziałów AK oraz cichociemny. Uczestniczył w ponad 200 starciach z przeciwnikiem, w większości odnosił zwycięstwo.</p>
 		</div>
 		<data>14.02.2024</data>
 	</article></Link></div>
@@ -105,6 +105,8 @@ background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   display: flex;
   flex-direction: column;
   gap: .5rem;
+  z-index: 100;
+  
 }
 .card__body h4 {
   font-size: 1.5rem;
@@ -145,6 +147,19 @@ data {
   margin-right: auto;
   padding: 10px;
   margin-top:30vh;
+}
+.card__header:nth-child(1){
+	min-height: 300px;
+	max-height: 300px;
+
+}
+.img{
+	min-height: 300px;
+	max-height: 200px;
+	background-repeat: no-repeat;
+    background: url("../res/zdj.jpg");
+    background-size: cover;
+    background-position: center center;
 }
 
   </style>

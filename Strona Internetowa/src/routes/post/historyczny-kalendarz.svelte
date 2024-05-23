@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { writable } from 'svelte/store';
-
+  import Footer from "../../lib/sections/Footer.svelte";
   //import Scrollbar from 'smooth-scrollbar'
 
   
@@ -30,26 +30,15 @@
   // Parallax Effect for DIV 1
   window.addEventListener("scroll", function () {
   let offset = window.pageYOffset;
-  parallax.style.backgroundPositionY = offset * 0.7 + "px";
+  parallax.style.backgroundPositionY = offset * -2 + "px";
   // DIV 1 background will move slower than other elements on scroll.
   });
   
         });
         
         
-  
-  onMount(() => {
-        // Scroll Down Button
-        const scrollDownButton = document.getElementById("scroll-down");
-        if (scrollDownButton) {
-            scrollDownButton.addEventListener('click', () => {
-                window.scroll({
-                    top: window.innerHeight,
-                    behavior: 'smooth'
-                });
-            });
-        };
-    });
+
+
   // DIV 1 background will move slower than other elements on scroll.
   </script>
   <html lang="en">
@@ -59,24 +48,23 @@
   
   <section id="section">
     <div id="parallax" class="parallax-item">
-      <h2 class="napis">Defilada Warszawskimi ulicami</h2>
+      <h2 class="napis">Historyczny Kalendarz</h2>
     </div>
     <div class="parallax-item">
         <article>
-            <h2>Pojęcie sztucznej inteligencji</h2>
-            <p>Sztuczna inteligencja (SI) to obszar informatyki, który zajmuje się tworzeniem systemów i programów, które mogą wykonywać zadania wymagające inteligencji ludzkiej. W ostatnich latach SI stała się bardzo popularna i znalazła zastosowanie w wielu dziedzinach, takich jak medycyna, finanse, transport, czy handel.</p>
-            <p>Technologie związane ze sztuczną inteligencją, takie jak uczenie maszynowe, głębokie uczenie, czy przetwarzanie języka naturalnego, umożliwiają maszynom analizowanie dużych ilości danych, rozpoznawanie wzorców, podejmowanie decyzji i wykonywanie złożonych zadań.</p>
-            <p>Sztuczna inteligencja ma ogromny potencjał i może zmienić wiele aspektów życia codziennego. Jednakże, istnieją również wyzwania związane z jej rozwojem, takie jak prywatność danych, etyka, czy bezpieczeństwo.</p>
+            <h2>mjr. Adolf Plich</h2>
+            <p>👉 Z historycznego kalendarza: 22 maja 1914 r., w Wiśle, urodził się mjr Adolf Plich - ps. "Góra" "Dolina" - jeden z najlepszych dowódców oddziałów AK oraz cichociemny. Uczestniczył w ponad 200 starciach z przeciwnikiem, w większości odnosił zwycięstwo.
+              Nie został zmobilizowany w 1939 roku, przedostał się jednak do Francji gdzie został wcielony jako oficer do 3 Dywizji Piechoty. Po upadku Francji dotarł do Wielkiej Brytanii gdzie przeszedł szkolenie dywersyjne cichociemnych. Zrzucony do Polski w nocy z 16 na 17 lutego 1943 roku otrzymał przydział do Kedywu Okręgu AK "Czapla" Białystok, a następnie do Okręgu AK "Nów" Nowogródek, działał pod pseudonimem "Góra".</p><br>
+            <p>👉 Jako Oficer Zgrupowania Stołpeckiego AK walczył w puszczy Nalibockiej atakując głównie oddziały niemieckie i policję białoruską. W wyniku zdradzieckiej napaści partyzantki sowieckiej oddział polski został rozbity, a cześć partyzantów została wcielona do sowietów. Utworzył oddział składający się z 40 partyzantów, który rozrósł się do 800 w 1944 roku. Chronił wówczas ludzi przed partyzantką sowiecką. </p><br>
+            <p>👉 W 1944 roku przedarł się w okolice Warszawy z oddziałem liczącym 861 ludzi i taborem, możliwe było to głównie ze względu na reorganizację niemieckich jednostek. W lipcu 1944 przemianował też pseudonim z "Góry" na "Dolinę" i podporządkował się kpt. Józefowi Krzyczkowskiemu ps. "Szymon" komendantowi VII Rejonu "Łęgów" VII Odwodu "Obroża" Okręgu Warszawskiego AK. W nocy 2-3 września dokonał ataku na batalion SS-RONA rozgramiając go i zabijając 250 rosyjskich esesmanów. Walczył do stycznia 1945 roku, kiedy to ruszyła ofensywa zimowa Armii Czerwonej. W obliczu ofensywy sowieckiej zdecydował się przedostać przez Czechosłowację do Wielkiej Brytanii (do 1954 pracował jako kamieniarz, następnie przy produkcji lodów w firmie „Egec British J. Partners”, od 1979 w dziale finansowym Narodowej Służby Zdrowia), odwiedził kraj w 1990 roku, gdzie został entuzjastycznie przywitany z honorami. Zmarł w 2000 roku na emigracji.</p><br>
           </article>
       
           <aside>
-            <h3>Popularne technologie SI</h3>
+            <h3>Hashtagi:</h3>
             <ul>
-              <li>Uczenie maszynowe</li>
-              <li>Głębokie uczenie</li>
-              <li>Przetwarzanie języka naturalnego</li>
-              <li>Robotyka</li>
-              <li>Rozpoznawanie obrazów</li>
+              <li>#PamiećHistoryczna</li>
+              <li>#AK</li>
+        
             </ul>
           </aside>
       
@@ -86,7 +74,7 @@
    
   </section>
   
-  
+<Footer/>
   </html>
   
   <style>
@@ -116,8 +104,9 @@
   min-height: 50vh;
   }
   .parallax-item:nth-child(2)
-  {
-    min-height: 200vh;
+  { 
+    background:linear-gradient(to bottom,rgb(2 6 23),rgb(30 41 59));
+    min-height: 10vh;
   }
   .parallax-item h2 {
   font-size: 3rem;
@@ -134,11 +123,15 @@
 }
   
   .parallax-item:first-child {
-  background: url("../../res/defilada.jpg");
+  background: url("../../res/zdj.jpg");
   background-size: cover;
+  zoom:100%;
+  background-repeat: no-repeat;
+  
   backdrop-filter: brightness(20%);
   position: relative; /* Ustawienie pozycji względnej, aby umożliwić pozycjonowanie pseudo-elementu */
   }
+ 
   
   .parallax-item:first-child h2::before {
   content: '';
@@ -150,9 +143,7 @@
   background-color: rgba(0, 0, 0, 0.61); /* Przezroczyste tło */
   z-index: -1; }
   
-  .parallax-item:nth-child(2) {
-  background: #05051b;
-  }
+ 
   
 
   
