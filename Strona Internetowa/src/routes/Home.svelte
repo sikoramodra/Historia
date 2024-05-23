@@ -4,7 +4,9 @@
   import Footer from '../lib/sections/Footer.svelte';
   import Navbar from '../lib/sections/Navbar.svelte';
   import { mainColorBorder, mainColorText } from '../stores/ColorStore.js';
-
+  import { isDarkMode, currentChartMode, appColors, chartBGColors } from '../lib/sections/stores';
+  import NotAChart from '../lib/sections/NotAChart.svelte';
+	
   mainColorText.set("text-white");
   mainColorBorder.set("border-white");
 
@@ -77,7 +79,9 @@
   </div>
   
 
-  <div class="parallax-item">
+  <div class="parallax-item bg-gradient-to-b from-slate-950 to-slate-800 content-center">
+<div class="divider"></div>
+<div class="divider1"></div>  
     <column>
       <h1 class="napis1">Fundacja Patriotyczna im. Witolda Pileckiego</h1>
       <p class="lead">
@@ -91,12 +95,11 @@
       <p>Po powrocie do zniewolonej przez sowietów Polski, zaangażował się w działalność antykomunistyczną i niepodległościową. Aresztowany przez komunistów, poddany brutalnemu śledztwu, po sfingowanym procesie został skazany na śmierć i zamordowany 25 maja 1948 r. w w więzieniu mokotowskim w Warszawie. Miejsce spoczynku Rotmistrza Witolda Pileckiego nie jest do tej pory znane...</p>
     </column>
     <div class="divider"></div>
-    <div class="divider1"></div>
-    <div class="obrazek"></div>
+   <div class="divider1"></div> 
   </div>
   
   <div class="parallax-item">
-    <div class="row tab-content--item-header">
+    <div class="row tab-content--item-header content-center">
       <div class="column">
         <h1 class="nasze">Nasze działania:</h1>
         <p class="p">
@@ -114,15 +117,29 @@
 <style>
 
   .p{
-    font-size: 2rem;
+    font-size: 40rem;
+    
   }
   .nasze{
     color:white;
     font-size:3rem;
+    margin-left: auto;
+    margin-right: auto;
+    
   }
   column {
-    width:48%;
-    position:absolute;
+    width:80%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .column {
+    width:80%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
   @media screen and (max-width: 600px) {
     .intro-content--text h3 {
@@ -225,15 +242,12 @@
     left: 30%;
   }
   .divider {
-    position: absolute;
-    height: 80vh;
+    margin-left: auto;
+    min-height: 80vh;
     background-color: white;
     width: 1px;
     float: left;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    margin-left: 49%;
-    margin-right: 51%;
+ 
   }
   .s-intro--static::after {
     display: block;
@@ -247,15 +261,13 @@
     opacity: .6;
 }
   .divider1 {
-    position: absolute;
-    height: 80vh;
+    margin-right: auto;
+    min-height: 90vh;
     background-color: red;
-    width: 1px;
+    width: 1px; 
+    margin-left: 3px;
     float: left;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    margin-left: 51%;
-    margin-right: 49%;
+ 
   }
   * {
     padding: 0;
@@ -282,7 +294,7 @@
   }
   .napis1 {
     color: white;
-    font-size:2rem;
+    font-size:4rem;
     padding:0;
     margin-bottom: 1%;
     margin-left: 10px;
@@ -290,7 +302,7 @@
   }
   .parallax-item p {
     
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1.6;
     margin-top: 20px;
     text-align: left;
@@ -301,24 +313,13 @@
     margin-right: 50%;
     
   }
-  .obrazek {
-    background: url("../res/Zdjęcie Spotkanie.jpg");
-    min-width: 400px;
-    height: 400px;
-    background-size: cover;
-    float: right;
-    margin-right: 20%;
-    margin-left: 60%;
-    margin-top: 10%;
-    
-    align-items: center;
-  }
+
   .parallax-item {
     display: flex;
     font-weight: bold;
     font-family: Montserrat, sans-serif;
     width: 100%;
-    min-height: 100vh;
+   
   }
   .parallax-item h2 {
     font-size: 3rem;
@@ -344,9 +345,10 @@
     z-index: -1;
   }
   .parallax-item:nth-child(2) {
-    
     z-index: 11;
     position:relative;
+    min-height: 400px;
+    color:white;
   }
   .parallax-item:nth-child(3) {
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
@@ -354,9 +356,9 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    min-height: 600px;
+    min-height: 700px;
     color:white;
-    
+    align-content: center;
   }
  
   @media screen and (max-width: 768px) {
@@ -367,7 +369,7 @@
   h1::after {
     display: block;
     content: "";
-    width: 8rem;
+    max-width: 77rem;
     height: 1px;
     background-color: #8dc63f;
     left: 0;
@@ -378,8 +380,7 @@
   h1 {
     font-family: "DM Serif Display", serif;
     font-weight: 400;
-    padding-bottom: 3.6rem;
-    margin-bottom: 3.6rem;
+    text-align: center;
     position: relative;
   }
   p {
