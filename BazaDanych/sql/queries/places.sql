@@ -18,17 +18,39 @@ FROM place
 WHERE id = $1;
 
 -- name: GetPlacesFull :many
-SELECT g.id   AS id,
-       g.name AS grave,
-       r.name AS row,
-       q.name AS quarter,
-       c.name AS cemetery,
-       p.name AS place
-FROM place p
-         LEFT JOIN cemetery c ON p.id = c.burial_place_id
-         LEFT JOIN quarter q ON c.id = q.cemetery_id
-         LEFT JOIN row r ON q.id = r.quarter_id
-         LEFT JOIN grave g ON r.id = g.row_id;
+SELECT json.p_id                                                                                    AS id,
+       json.p_name                                                                                  AS name,
+       json_agg(json_build_object('id', json.c_id, 'name', json.c_name, 'quarters', json.quarters)) AS cemeteries
+FROM (SELECT json.p_id,
+             json.p_name,
+             json.c_id,
+             json.c_name,
+             json_agg(json_build_object('id', json.q_id, 'name', json.q_name, 'rows', json.rows)) AS quarters
+      FROM (SELECT json.p_id,
+                   json.p_name,
+                   json.c_id,
+                   json.c_name,
+                   json.q_id,
+                   json.q_name,
+                   json_agg(json_build_object('id', json.r_id, 'name', json.r_name, 'graves', json.graves)) AS rows
+            FROM (SELECT p.id                                                    AS p_id,
+                         p.name                                                  AS p_name,
+                         c.id                                                    AS c_id,
+                         c.name                                                  AS c_name,
+                         q.id                                                    AS q_id,
+                         q.name                                                  AS q_name,
+                         r.id                                                    AS r_id,
+                         r.name                                                  AS r_name,
+                         json_agg(json_build_object('id', g.id, 'name', g.name)) AS graves
+                  FROM place p
+                           LEFT JOIN cemetery c ON p.id = c.burial_place_id
+                           LEFT JOIN quarter q ON c.id = q.cemetery_id
+                           LEFT JOIN row r ON q.id = r.quarter_id
+                           LEFT JOIN grave g ON r.id = g.row_id
+                  GROUP BY p.id, c.id, q.id, r.id) json
+            GROUP BY json.p_id, json.p_name, json.c_id, json.c_name, json.q_id, json.q_name) json
+      GROUP BY json.p_id, json.p_name, json.c_id, json.c_name) json
+GROUP BY json.p_id, json.p_name;
 
 
 -- name: GetCemeteries :many

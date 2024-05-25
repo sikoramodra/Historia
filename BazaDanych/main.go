@@ -25,6 +25,7 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORS())
+	e.Use(middleware.RateLimiter(middleware.NewRateLimiterMemoryStore(3)))
 
 	if err := godotenv.Load(".env"); err != nil {
 		log.Fatal("Could not load the environment")

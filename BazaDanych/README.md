@@ -28,17 +28,17 @@
 | `POST /places`                          | Add place                                | ![](https://img.shields.io/badge/Done-40A02B) | [in](JSON.md#post-places---in)                                  |
 | `DELETE /places/{id}`                   | Delete place {id}                        | ![](https://img.shields.io/badge/Done-40A02B) | -                                                               |
 | `GET /places/full`                      | Get all burial places                    | ![](https://img.shields.io/badge/Done-40A02B) | [out](JSON.md#get-placesfull---out)                             |
-| `GET /places/cemeteries`                | Get all cemeteries                       | ![](https://img.shields.io/badge/Test-FE640B) |                                                                 |
-| `POST /places/cemeteries`               | Add cemetery                             | ![](https://img.shields.io/badge/Test-FE640B) |                                                                 |
+| `GET /places/cemeteries`                | Get all cemeteries                       | ![](https://img.shields.io/badge/Done-40A02B) |                                                                 |
+| `POST /places/cemeteries`               | Add cemetery                             | ![](https://img.shields.io/badge/Done-40A02B) |                                                                 |
 | `DELETE /places/cemeteries/{id}`        | Delete cemetery {id}                     | ![](https://img.shields.io/badge/Done-40A02B) | -                                                               |
-| `GET /places/quarters`                  | Get all quarters                         | ![](https://img.shields.io/badge/Test-FE640B) |                                                                 |
-| `POST /places/quarters`                 | Add quarter                              | ![](https://img.shields.io/badge/Test-FE640B) |                                                                 |
+| `GET /places/quarters`                  | Get all quarters                         | ![](https://img.shields.io/badge/Done-40A02B) |                                                                 |
+| `POST /places/quarters`                 | Add quarter                              | ![](https://img.shields.io/badge/Done-40A02B) |                                                                 |
 | `DELETE /places/quarters/{id}`          | Delete quarter {id}                      | ![](https://img.shields.io/badge/Done-40A02B) | -                                                               |
-| `GET /places/rows`                      | Get all rows                             | ![](https://img.shields.io/badge/Test-FE640B) |                                                                 |
-| `POST /places/rows`                     | Add row                                  | ![](https://img.shields.io/badge/Test-FE640B) |                                                                 |
+| `GET /places/rows`                      | Get all rows                             | ![](https://img.shields.io/badge/Done-40A02B) |                                                                 |
+| `POST /places/rows`                     | Add row                                  | ![](https://img.shields.io/badge/Done-40A02B) |                                                                 |
 | `DELETE /places/rows/{id}`              | Delete row {id}                          | ![](https://img.shields.io/badge/Done-40A02B) | -                                                               |
-| `GET /places/graves`                    | Get all graves                           | ![](https://img.shields.io/badge/Test-FE640B) |                                                                 |
-| `POST /places/graves`                   | Add grave                                | ![](https://img.shields.io/badge/Test-FE640B) |                                                                 |
+| `GET /places/graves`                    | Get all graves                           | ![](https://img.shields.io/badge/Done-40A02B) |                                                                 |
+| `POST /places/graves`                   | Add grave                                | ![](https://img.shields.io/badge/Done-40A02B) |                                                                 |
 | `DELETE /places/graves/{id}`            | Delete grave {id}                        | ![](https://img.shields.io/badge/Done-40A02B) | -                                                               |
 | `GET /activities/full`                  | Get all activities-events                | ![](https://img.shields.io/badge/Done-40A02B) | [out](JSON.md#get-activitiesfull---out)                         |
 
