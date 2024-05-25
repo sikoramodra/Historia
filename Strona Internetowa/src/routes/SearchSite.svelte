@@ -178,25 +178,11 @@
 				</div>
 			{/each}
 		</div>
-
-		<!-- <div transition:slide class="bg-slate-700 w-[90vw] h-[80vh] rounded-xl m-4 overflow-y-auto p-6">
-			{#each $searchStore.filtered as person}
-				<div
-					on:click={() => personClick(person)}
-					on:keyup={(e) => handleKeyDownPersonCLick(e, person)}
-					role="button"
-					tabindex="0"
-					class="bg-red-50 h-min rounded-lg m-1 flex-grow basis-auto"
-				>
-					<PeopleCards data={person} />
-				</div>
-			{/each}
-		</div>  -->
 	{/if}
 
 	<!-- Link to add-person -->
 	{#if !$searchStore.search}
-		<Link to="/add-person" class="absolute bottom-4 right-4 user-select-none">
+		<Link to="/add-person" class="mt-8 user-select-none">
 			<div
 				transition:slide={{ delay: 0, duration: 400 }}
 				class="bg-slate-800 rounded-full user-select-none cursor-pointer shadow-lg hover:scale-105 hover:bg-slate-700 transition-transform duration-300 flex items-center leading-none text-lg p-4"

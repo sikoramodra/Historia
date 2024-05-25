@@ -3,7 +3,7 @@
 	export let closePopup;
 </script>
 
-<div class="text-center h-[85%] w-[85%] bg-slate-800 bg rounded-xl overflow-auto p-1 shadow-lg relative m-4">
+<div class="text-center h-[85%] w-[85%] bg-slate-800 bg rounded-xl overflow-auto p-1 shadow-lg relative m-4 cursor-default">
 	<div class="bg-slate-900 bg-opacity-20 rounded-xl shadow-2xl shadow-slate-900 relative p-4">
 		<button class="absolute top-4 right-4 text-white text-2xl focus:outline-none" on:click={closePopup}>
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">

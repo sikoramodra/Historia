@@ -160,7 +160,7 @@
 							headers: {
 								"Content-Type": "application/json",
 							},
-							body: JSON.stringify({"rank_id" : otherFormData.ranks}),
+							body: JSON.stringify({ rank_id: otherFormData.ranks }),
 						}).catch((error) => console.error("Error adding ranks:", error));
 					}
 
@@ -171,7 +171,7 @@
 								headers: {
 									"Content-Type": "application/json",
 								},
-								body: JSON.stringify({"sub_badge_id": otherFormData.badges[i]}),
+								body: JSON.stringify({ sub_badge_id: otherFormData.badges[i] }),
 							}).catch((error) => console.error("Error adding sub_badges:", error));
 						}
 					}
@@ -183,7 +183,7 @@
 								headers: {
 									"Content-Type": "application/json",
 								},
-								body: JSON.stringify({"event_id": otherFormData.activities[i]}),
+								body: JSON.stringify({ event_id: otherFormData.activities[i] }),
 							}).catch((error) => console.error("Error adding events:", error));
 						}
 					}
@@ -201,9 +201,9 @@
 	let miniNavbar = 0;
 </script>
 
-<div class="min-h-screen bg-gray-900 flex justify-center flex-col items-center">
+<div class="h-screen bg-gray-900 flex justify-center flex-col items-center">
 	<!-- Navbar -->
-	<div class="mb-6 text-2xl flex flex-row justify-between w-full items-center">
+	<div class=" text-2xl flex flex-row justify-between w-full items-center">
 		<!-- Go Back -->
 		<Link to="/search-site" class="ml-6">
 			<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
@@ -361,8 +361,7 @@
 					<div class="mb-4 relative">
 						<label for="birth_place" class="block text-white font-bold mb-2">Miejsce Urodzenia:</label>
 						<input
-							type="number"
-							min="0"
+							type="text"
 							name="birth_place_id"
 							id="birth_place"
 							placeholder="np. Warszawa..."
@@ -428,8 +427,7 @@
 					<div class="mb-4 relative">
 						<label for="death_place" class="block text-white font-bold mb-2">Miejsce Śmierci:</label>
 						<input
-							type="number"
-							min="0"
+							type="text"
 							name="death_place_id"
 							id="death_place"
 							placeholder="np. Warszawa..."
@@ -604,20 +602,19 @@
 					/>
 				</div>
 			</div>
-
-			<!-- Submit Button -->
-			<div class="flex justify-center items-center mt-4 lg:col-span-2">
-				<div>
-					<button
-						type="submit"
-						class="active:bg-white active:text-red-600 px-4 py-2 rounded bg-red-600 text-white hover:scale-105 hover:bg-red-500 shadow-2xl shadow-black"
-						on:click={handleSubmit}
-					>
-						<strong>+</strong> <i class="fas fa-user"></i> Dodaj Osobę</button
-					>
-				</div>
-			</div>
 		</form>
+	</div>
+	<!-- Submit Button -->
+	<div class="flex justify-center items-center mt-4 lg:col-span-2">
+		<div>
+			<button
+				type="submit"
+				class="active:bg-white active:text-red-600 px-4 py-2 rounded bg-red-600 text-white hover:scale-105 hover:bg-red-500 shadow-2xl shadow-black"
+				on:click={handleSubmit}
+			>
+				<strong>+</strong> <i class="fas fa-user"></i> Dodaj Osobę</button
+			>
+		</div>
 	</div>
 </div>
 
