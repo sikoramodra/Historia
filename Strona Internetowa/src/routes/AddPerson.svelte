@@ -602,19 +602,20 @@
 					/>
 				</div>
 			</div>
+
+			<!-- Submit Button -->
+			<div class="flex justify-center items-center mt-4 lg:col-span-2">
+				<div>
+					<button
+						type="submit"
+						class="active:bg-white active:text-red-600 px-4 py-2 rounded bg-red-600 text-white hover:scale-105 hover:bg-red-500 shadow-2xl shadow-black"
+						on:click={handleSubmit}
+					>
+						<strong>+</strong> <i class="fas fa-user"></i> Dodaj Osobę</button
+					>
+				</div>
+			</div>
 		</form>
-	</div>
-	<!-- Submit Button -->
-	<div class="flex justify-center items-center mt-4 lg:col-span-2">
-		<div>
-			<button
-				type="submit"
-				class="active:bg-white active:text-red-600 px-4 py-2 rounded bg-red-600 text-white hover:scale-105 hover:bg-red-500 shadow-2xl shadow-black"
-				on:click={handleSubmit}
-			>
-				<strong>+</strong> <i class="fas fa-user"></i> Dodaj Osobę</button
-			>
-		</div>
 	</div>
 </div>
 
@@ -624,16 +625,16 @@
 	}
 
 	::-webkit-scrollbar-track {
-		background-color: transparent; /* Change the background color of the track */
+		background-color: transparent;
 		border-radius: 6px;
 	}
 
 	::-webkit-scrollbar-thumb {
-		background-color: rgb(107 114 128); /* Change the color of the scrollbar thumb */
-		border-radius: 6px; /* Add rounded corners to the scrollbar thumb */
+		background-color: rgb(107 114 128);
+		border-radius: 6px;
 	}
 
 	::-webkit-scrollbar-thumb:active {
-		background-color: rgb(51 65 85); /* Change the color on hover */
+		background-color: rgb(51 65 85);
 	}
 </style>
