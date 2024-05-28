@@ -4,7 +4,7 @@
 	export let url = "";
 </script>
 
-<main class="">
+<main>
 	<Router {url}>
 		<Content />
 	</Router>

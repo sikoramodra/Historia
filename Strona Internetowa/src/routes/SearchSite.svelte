@@ -26,7 +26,7 @@
 		...product,
 		searchTerms: `${product.name} ${product.other_names.toString().replace(/,/g, " ")} ${product.code_names.toString().replace(/,/g, " ")} ${
 			product.birth_place
-		} ${product.birth_date.substring(0, 4)} ${product.death_place} ${product.death_date.substring(0, 4)} ${product.grave} `,
+		} ${product.birth_date.substring(0, 4)} ${product.death_place} ${product.death_date.substring(0, 4)} ${product.grave} ${product.ranks[0]}`,
 	}));
 
 	const searchStore = createSearchStore(searchProducts);
@@ -49,13 +49,14 @@
 				throw new Error("Failed to fetch data");
 			}
 			dbData = await response.json();
+			// dbData = dbData.filter((person) => person.status.status === "unverified")
 			dbData = dbData.map((product) => ({
 				...product,
 				searchTerms: `${product.name} ${product.other_names.toString().replace(/,/g, " ")} ${product.code_names
 					.toString()
 					.replace(/,/g, " ")} ${product.birth_place} ${product.birth_date === null ? "" : product.birth_date.substring(0, 4)} ${
 					product.death_place
-				} ${product.death_date === null ? "" : product.death_date.substring(0, 4)} ${product.grave} `,
+				} ${product.death_date === null ? "" : product.death_date.substring(0, 4)} ${product.grave} ${product.ranks}`,
 			}));
 			console.log(dbData);
 			$searchStore.data = dbData;
@@ -104,7 +105,6 @@
 </script>
 
 <div class="min-h-screen flex flex-col items-center justify-center text-white bg-gradient-to-b from-slate-950 to-slate-800 relative">
-	<!-- Div with Chosen Person Card Info -->
 	{#if chosenPerson}
 		<div
 			on:click|self={closePopup}
@@ -161,47 +161,34 @@
 
 	<!-- Search Results -->
 	{#if $searchStore.search}
-		<div
-			transition:slide
-			class="flex flex-row flex-wrap items-stretch justify-around bg-slate-700 w-[90vw] h-[75vh] rounded-xl m-4 overflow-y-auto p-6 slide-transition"
-		>
-			{#each $searchStore.filtered as person}
-				<div
-					on:click={() => personClick(person)}
-					on:keyup={(e) => handleKeyDownPersonCLick(e, person)}
-					role="button"
-					tabindex="0"
-					class="bg-red-50 h-min rounded-lg m-1 flex-grow basis-auto"
-				>
-					<PeopleCards data={person} />
-				</div>
-			{/each}
+		<div transition:slide class="flex flex-col bg-slate-700 w-[90vw] h-[75vh] rounded-xl m-4 overflow-y-auto p-2 border border-slate-500">
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+				{#each $searchStore.filtered as person}
+					<div
+						on:click={() => personClick(person)}
+						on:keyup={(e) => handleKeyDownPersonCLick(e, person)}
+						role="button"
+						tabindex="0"
+						class="min-w-[300px] bg-gray-800 rounded-lg p-4 flex flex-col border {person.status.status === 'verified'
+							? 'border-green-500'
+							: 'border-gray-600'} hover:shadow-lg transition-shadow duration-200"
+					>
+						<PeopleCards data={person} />
+					</div>
+				{/each}
+			</div>
 		</div>
-
-		<!-- <div transition:slide class="bg-slate-700 w-[90vw] h-[80vh] rounded-xl m-4 overflow-y-auto p-6">
-			{#each $searchStore.filtered as person}
-				<div
-					on:click={() => personClick(person)}
-					on:keyup={(e) => handleKeyDownPersonCLick(e, person)}
-					role="button"
-					tabindex="0"
-					class="bg-red-50 h-min rounded-lg m-1 flex-grow basis-auto"
-				>
-					<PeopleCards data={person} />
-				</div>
-			{/each}
-		</div> -->
 	{/if}
 
 	<!-- Link to add-person -->
 	{#if !$searchStore.search}
-		<Link to="/add-person" class="absolute bottom-4 right-4 user-select-none">
+		<Link to="/add-person" class="mt-8 user-select-none">
 			<div
 				transition:slide={{ delay: 0, duration: 400 }}
 				class="bg-slate-800 rounded-full user-select-none cursor-pointer shadow-lg hover:scale-105 hover:bg-slate-700 transition-transform duration-300 flex items-center leading-none text-lg p-4"
 			>
 				<span class="text-white font-semibold mr-2 user-select-none">+</span>
-				<span class="text-white font-semibold tracking-wide user-select-none">Add Person</span>
+				<span class="text-white font-semibold tracking-wide user-select-none">Dodaj Osobę</span>
 			</div>
 		</Link>
 	{/if}
@@ -215,6 +202,8 @@
 	::-webkit-scrollbar-track {
 		background-color: transparent;
 		border-radius: 32px;
+		margin-top: 2px;
+		margin-bottom: 2px;
 	}
 
 	::-webkit-scrollbar-thumb {

@@ -159,7 +159,7 @@ func (q *Queries) DeletePersonSubBadge(ctx context.Context, arg DeletePersonSubB
 }
 
 const getPeople = `-- name: GetPeople :many
-SELECT id, name, inscription, other_names, code_names, birth_date, birth_place, death_date, death_place, burial_place, cemetery, quarter, row, grave, ranks, badges, activity, description, sources
+SELECT id, name, inscription, other_names, code_names, birth_date, birth_place, death_date, death_place, burial_place, cemetery, quarter, row, grave, ranks, badges, activity, description, sources, status
 FROM main_view
 `
 
@@ -192,6 +192,7 @@ func (q *Queries) GetPeople(ctx context.Context) ([]MainView, error) {
 			&i.Activity,
 			&i.Description,
 			&i.Sources,
+			&i.Status,
 		); err != nil {
 			return nil, err
 		}
@@ -204,7 +205,7 @@ func (q *Queries) GetPeople(ctx context.Context) ([]MainView, error) {
 }
 
 const getPerson = `-- name: GetPerson :one
-SELECT id, name, inscription, other_names, code_names, birth_date, birth_place, death_date, death_place, burial_place, cemetery, quarter, row, grave, ranks, badges, activity, description, sources
+SELECT id, name, inscription, other_names, code_names, birth_date, birth_place, death_date, death_place, burial_place, cemetery, quarter, row, grave, ranks, badges, activity, description, sources, status
 FROM main_view
 WHERE id = $1
 `
@@ -232,6 +233,7 @@ func (q *Queries) GetPerson(ctx context.Context, id int32) (MainView, error) {
 		&i.Activity,
 		&i.Description,
 		&i.Sources,
+		&i.Status,
 	)
 	return i, err
 }
