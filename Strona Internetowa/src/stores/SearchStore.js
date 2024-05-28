@@ -35,5 +35,16 @@ export const searchHandler = (store) => {
 				.replace(/[ąćęłńóśźż]/g, (match) => polishToEnglishMap[match] || match)
 				.includes(searchTerm);
 		});
+		store.filtered.sort(sortByStatus);
 	}
 };
+
+function sortByStatus(a, b) {
+	if (a.status.status === "verified" && b.status.status !== "verified") {
+		return -1;
+	} else if (a.status.status !== "verified" && b.status.status === "verified") {
+		return 1;
+	} else {
+		return 0;
+	}
+}

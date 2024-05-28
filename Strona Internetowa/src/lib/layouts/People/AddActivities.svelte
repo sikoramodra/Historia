@@ -37,6 +37,51 @@
 	// --- --- ---
 </script>
 
+<!-- 
+<div class="mb-4 relative col-span-2 border border-white p-8 rounded-xl flex flex-col justify-center">
+	{#each data as activityData, i (i)}
+		<div class="mb-2">
+			<p class="block text-white font-bold mb-2">{i === 0 ? "Activity:" : "Other Activities:"}</p>
+			<select name="activities" id="activities" bind:value={activityData.id}>
+				<option value="" disabled selected>Choose an activity</option>
+				{#each activities as activity}
+					<option value={activity.id}>{activity.name}</option>
+				{/each}
+			</select>
+			{#if activityData.id}
+				{#each activityData.sub_activities as sub_activityData, j (j)}
+					<select name="sub_activities" id="sub_activities" bind:value={sub_activityData.id}>
+						<option value="" disabled selected>Choose a sub-activity</option>
+						{#each activities.find((item) => item.id == activityData.id).sub_activities as sub_activity}
+							<option value={sub_activity.id}>{sub_activity.name}</option>
+						{/each}
+					</select>
+					{#if sub_activityData.id}
+						<div id="events" class="overflow-y-auto h-40">
+							{#each activities
+								.find((item) => item.id === activityData.id)
+								.sub_activities.find((item) => item.id === sub_activityData.id).events as event}
+								{#if event.name !== null}
+									<label class="block text-white">
+										<input
+											type="checkbox"
+											class="mr-2"
+											value={event.id}
+											on:change={(e) => addToData(e, event, i, j)}
+											on:click={() => console.log(data)}
+										/>
+										{event.name}
+									</label>
+								{/if}
+							{/each}
+						</div>
+					{/if}
+				{/each}
+			{/if}
+		</div>
+	{/each}
+</div> -->
+
 <div>
 	{#if activities.length > 0}
 		{#each activities as activity}
