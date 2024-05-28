@@ -165,6 +165,10 @@
 						}).catch((error) => console.error("Error adding ranks:", error));
 					}
 
+					function delay(ms) {
+						return new Promise((resolve) => setTimeout(resolve, ms));
+					}
+
 					if (otherFormData.badges.length > 0) {
 						for (let i = 0; i < otherFormData.badges.length; i++) {
 							await fetch(`${import.meta.env.VITE_DB_URL}people/${responseData}/sub_badges`, {
@@ -174,6 +178,8 @@
 								},
 								body: JSON.stringify({ sub_badge_id: otherFormData.badges[i] }),
 							}).catch((error) => console.error("Error adding sub_badges:", error));
+
+							await delay(300);
 						}
 					}
 
@@ -186,8 +192,12 @@
 								},
 								body: JSON.stringify({ event_id: otherFormData.activities[i] }),
 							}).catch((error) => console.error("Error adding events:", error));
+
+							await delay(300);
 						}
 					}
+
+					window.location.href = `/search-site`;
 				}
 
 				console.log("Form submitted successfully");
@@ -966,7 +976,10 @@
 					</div>
 				</div>
 			{:else if biggerNavbar === 4}
-				<div id="other-info" class="overflow-auto h-full border border-white p-8 px-12 pb-0 rounded-xl shadow-2xl shadow-gray-700 lg:col-span-2">
+				<div
+					id="other-info"
+					class="overflow-auto h-full border border-white p-8 px-12 pb-0 rounded-xl shadow-2xl shadow-gray-700 lg:col-span-2"
+				>
 					<div class="mb-4 relative">
 						<label for="inscription" class="block text-white font-bold mb-2">Epitafium:</label>
 						<input
