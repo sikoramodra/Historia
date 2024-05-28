@@ -60,7 +60,7 @@
     <h1 class="font-bold text-3xl mb-2 text-center flex items-center justify-center border-b-2 border-gray-600 pb-2">
         {data.name}
     </h1>
-    <p class="italic text-sm text-center mb-4">"{data.inscription}"</p>
+    <p class="italic text-sm text-center pt-2">"{data.inscription}"</p>
     <div class="border-t border-gray-600 my-4"></div>
     <div class="grid grid-cols-1 gap-4">
         <div class="flex items-center">
