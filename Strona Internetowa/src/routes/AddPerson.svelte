@@ -1,10 +1,10 @@
 <script>
-	import Navbar from "./../lib/sections/Navbar.svelte";
 	import AddBadges from "./../lib/layouts/People/AddBadges.svelte";
 	import AddActivities from "./../lib/layouts/People/AddActivities.svelte";
 	import { Link } from "svelte-routing";
 	import Logo from "../res/Logo_poziom_ciemne_tło_PNG.png";
 	import AddRanks from "../lib/layouts/People/AddRanks.svelte";
+	import { onMount } from "svelte";
 
 	let formData = {
 		name: "",
@@ -25,6 +25,8 @@
 		badges: [],
 		activities: [],
 	};
+
+	let places = [];
 
 	//--- Handling Date Inputs ---
 
@@ -116,22 +118,6 @@
 		formData = { ...formData };
 	}
 
-	// function handleInputChange(index, event, key, i) {
-	// 	if(key == "sub_badges") formData["badges"][i][key][index] = event.target.value;
-	// 	else if (key == "badge_name") formData["badges"][i]
-	// 	else formData[key][index] = event.target.value;
-
-	// 	// Additional Functionality
-
-	// 	// if (index === formData[key].length - 1 && event.target.value.trim() !== "") {
-	// 	// 	addInput(key);
-	// 	// } else if (formData[key][index] === "") {
-	// 	// 	for (let i = formData[key].length - 1; i > index; i--) {
-	// 	// 		removeInput(i, key);
-	// 	// 	}
-	// 	// }
-	// }
-
 	function removeInput(index, key) {
 		formData[key].splice(index);
 		formData = { ...formData };
@@ -209,8 +195,19 @@
 		}
 	}
 
+	async function fetchPlaces() {
+		const response = await fetch(`${import.meta.env.VITE_DB_URL}places`);
+		const data = await response.json();
+		places = data;
+		places.sort((a, b) => a.name.localeCompare(b.name));
+	};
+
 	let miniNavbar = 0;
 	let biggerNavbar = 0;
+
+	onMount(() => {
+		fetchPlaces();
+	});
 </script>
 
 <div class="h-screen bg-gray-900 flex justify-center flex-col items-center">
@@ -795,14 +792,21 @@
 
 						<div class="relative">
 							<label for="birth_place" class="block text-white font-bold mb-2">Miejsce Urodzenia:</label>
-							<input
-								type="text"
+							<!-- <input
+								type="number"
+								min="0"
 								name="birth_place_id"
 								id="birth_place"
 								placeholder="np. Warszawa..."
 								class="w-full p-2 border rounded-md"
 								bind:value={formData.birth_place}
-							/>
+							/> -->
+							<select name="birth_place" id="birth_place" bind:value={formData.birth_place} class="w-full p-2 border rounded-md">
+								<option value="0">Wybierz z listy...</option>
+								{#each places as place}
+									<option value={place.id}>{place.name}</option>
+								{/each}
+							</select>
 						</div>
 					</div>
 
@@ -858,14 +862,12 @@
 
 						<div class="mb-4 relative">
 							<label for="death_place" class="block text-white font-bold mb-2">Miejsce Śmierci:</label>
-							<input
-								type="text"
-								name="death_place_id"
-								id="death_place"
-								placeholder="np. Warszawa..."
-								class="w-full p-2 border rounded-md"
-								bind:value={formData.death_place}
-							/>
+							<select name="birth_place" id="birth_place" bind:value={formData.death_place} class="w-full p-2 border rounded-md">
+								<option value="0">Wybierz z listy...</option>
+								{#each places as place}
+									<option value={place.id}>{place.name}</option>
+								{/each}
+							</select>
 						</div>
 					</div>
 				</div>

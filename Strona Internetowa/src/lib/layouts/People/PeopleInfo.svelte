@@ -414,42 +414,21 @@
 						</div>
 					{/each}
 				{/if}
-				<!-- <div class="mt-4 eventsShadow w-[400px] rounded-xl p-2">
-					<p class="text-2xl font-semibold text-gray-300 mb-2">1919-1939</p>
-					<div class="py-4">
-						<div class="w-full">
-							<p class="text-lg font-semibold text-gray-300 mb-2 w-fit m-auto px-5 border-b">Bitwy:</p>
-						</div>
-						<p class="text-base text-gray-400">I Powstanie Śląskie (1919)</p>
-						<p class="text-base text-gray-400">Wojna polsko-bolszewicka (1919-1921)</p>
-					</div>
-				</div>
-
-				<div class="mt-4 eventsShadow w-[400px] rounded-xl p-2">
-					<p class="text-2xl font-semibold text-gray-300 mb-2">WWII</p>
-					<div class="py-4">
-						<div class="w-full">
-							<p class="text-lg font-semibold text-gray-300 mb-2 w-fit m-auto px-5 border-b">Okręgi AK:</p>
-						</div>
-						<p class="text-base text-gray-400">Kraków</p>
-						<p class="text-base text-gray-400">Lublin</p>
-						<p class="text-base text-gray-400">Białystok</p>
-					</div>
-					<div class="py-4">
-						<div class="w-full">
-							<p class="text-lg font-semibold text-gray-300 mb-2 w-fit m-auto px-5 border-b">Polskie siły zbrojne na zachodzie:</p>
-							<p class="text-base text-gray-400">II Korpus Polski (gen.Wł.Andersa)</p>
-							<p class="text-base text-gray-400">Cichociemni</p>
-						</div>
-					</div>
-					<div class="py-4">
-						<div class="w-full">
-							<p class="text-lg font-semibold text-gray-300 mb-2 w-fit m-auto px-5 border-b">Wrzesień 1939 - Armie:</p>
-							<p class="text-base text-gray-400">armia Prusy</p>
-						</div>
-					</div>
-				</div> -->
 			</div>
+		</div>
+
+		<div class="mt-16 mb-20">
+			<p class="text-3xl font-semibold text-gray-300 mb-2">Cmentarz:</p>
+			<div class="w-full flex justify-center mb-4">
+				<div class="w-[75px] h-[2px] bg-gray-300"></div>
+			</div>
+			<p class="text-xl text-center text-gray-400 mx-1 sm:mx-4 md:mx-20 xl:mx-40">
+				{#if data.cemetery}
+					{data.cemetery}, kw. {data.quarter}, rz. {data.row}, gr. {data.grave}
+				{:else}
+					Brak Danych...
+				{/if}
+			</p>
 		</div>
 
 		<div class="mt-16 mb-20">
